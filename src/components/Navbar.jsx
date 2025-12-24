@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronDown, Search, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,12 +9,25 @@ export default function Navbar() {
   const [desktopServices, setDesktopServices] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
+  // ✅ Scroll effect to toggle background
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-black">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
+        scrolled ? "bg-black" : "bg-transparent"
+      } backdrop-blur-sm`}
+    >
       {/* ================= TOP NAV BAR ================= */}
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between text-white">
-
         {/* LOGO */}
         <Link href="/" className="leading-tight">
           <h1 className="text-2xl font-bold">
@@ -27,7 +40,6 @@ export default function Navbar() {
 
         {/* ================= DESKTOP MENU ================= */}
         <nav className="hidden md:flex items-center gap-10 text-sm font-medium">
-
           <Link href="/" className="hover:text-[#25ccad] transition">
             HOME
           </Link>
@@ -54,12 +66,27 @@ export default function Navbar() {
                   <div className="h-[2px] bg-[#25ccad] w-16 ml-4" />
 
                   <ul className="py-3">
-                    <DesktopItem href="/services/web-development" label="Web Development" />
-                    <DesktopItem href="/services/mobile-development" label="Mobile Development" />
-                    <DesktopItem href="/services/cms-solution" label="CMS Solution" />
+                    <DesktopItem
+                      href="/services/web-development"
+                      label="Web Development"
+                    />
+                    <DesktopItem
+                      href="/services/mobile-development"
+                      label="Mobile Development"
+                    />
+                    <DesktopItem
+                      href="/services/cms-solution"
+                      label="CMS Solution"
+                    />
                     <DesktopItem href="/services/ui-ux" label="UI/UX" />
-                    <DesktopItem href="/services/digital-marketing" label="Digital Marketing" />
-                    <DesktopItem href="/services/it-staff-augmentation" label="IT Staff Augmentation" />
+                    <DesktopItem
+                      href="/services/digital-marketing"
+                      label="Digital Marketing"
+                    />
+                    <DesktopItem
+                      href="/services/it-staff-augmentation"
+                      label="IT Staff Augmentation"
+                    />
                   </ul>
                 </motion.div>
               )}
@@ -127,7 +154,6 @@ export default function Navbar() {
 
             {/* MOBILE MENU ITEMS */}
             <div className="px-6 py-10 space-y-8 text-lg font-semibold text-white">
-
               <MobileLink href="/" close={setMobileOpen} label="HOME" />
 
               {/* MOBILE SERVICES */}
@@ -139,7 +165,9 @@ export default function Navbar() {
                   SERVICES
                   <ChevronDown
                     size={18}
-                    className={`transition ${mobileServices ? "rotate-180" : ""}`}
+                    className={`transition ${
+                      mobileServices ? "rotate-180" : ""
+                    }`}
                   />
                 </button>
 
@@ -151,12 +179,36 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="ml-4 mt-5 space-y-4 text-white/90"
                     >
-                      <MobileLink href="/services/web-development" label="Web Development" close={setMobileOpen} />
-                      <MobileLink href="/services/mobile-development" label="Mobile Development" close={setMobileOpen} />
-                      <MobileLink href="/services/cms-solution" label="CMS Solution" close={setMobileOpen} />
-                      <MobileLink href="/services/ui-ux" label="UI/UX" close={setMobileOpen} />
-                      <MobileLink href="/services/digital-marketing" label="Digital Marketing" close={setMobileOpen} />
-                      <MobileLink href="/services/it-staff-augmentation" label="IT Staff Augmentation" close={setMobileOpen} />
+                      <MobileLink
+                        href="/services/web-development"
+                        label="Web Development"
+                        close={setMobileOpen}
+                      />
+                      <MobileLink
+                        href="/services/mobile-development"
+                        label="Mobile Development"
+                        close={setMobileOpen}
+                      />
+                      <MobileLink
+                        href="/services/cms-solution"
+                        label="CMS Solution"
+                        close={setMobileOpen}
+                      />
+                      <MobileLink
+                        href="/services/ui-ux"
+                        label="UI/UX"
+                        close={setMobileOpen}
+                      />
+                      <MobileLink
+                        href="/services/digital-marketing"
+                        label="Digital Marketing"
+                        close={setMobileOpen}
+                      />
+                      <MobileLink
+                        href="/services/it-staff-augmentation"
+                        label="IT Staff Augmentation"
+                        close={setMobileOpen}
+                      />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -164,7 +216,11 @@ export default function Navbar() {
 
               <MobileLink href="/about" close={setMobileOpen} label="ABOUT" />
               <MobileLink href="/news" close={setMobileOpen} label="NEWS" />
-              <MobileLink href="/contact" close={setMobileOpen} label="CONTACT US" />
+              <MobileLink
+                href="/contact"
+                close={setMobileOpen}
+                label="CONTACT US"
+              />
             </div>
           </motion.div>
         )}

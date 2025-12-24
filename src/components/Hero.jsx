@@ -1,66 +1,70 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 
 export default function HeroSection() {
-  return (
-    <section className="relative w-screen h-screen overflow-hidden bg-black flex items-center justify-center">
+  const heroRef = useRef(null);
 
-      {/* 🎬 Background Video */}
+  const handleMouseMove = (e) => {
+    const rect = heroRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    heroRef.current.style.setProperty("--x", `${x}px`);
+    heroRef.current.style.setProperty("--y", `${y}px`);
+  };
+
+  return (
+    <section
+      ref={heroRef}
+      onMouseMove={handleMouseMove}
+      className="hero relative w-full h-[190vh] overflow-hidden bg-black"
+    >
+      
+      {/* 🖼️ Image BEHIND */}
+      <div
+        className="masked-image absolute inset-0 bg-center bg-cover"
+        style={{ backgroundImage: "url('/webint.webp')" }}
+      />
+
+      {/* 🎬 Video ON TOP */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover brightness-110"
+        className="absolute inset-0 w-full h-full object-cover brightness-[0.9]"
       >
         <source src="/hero.mp4" type="video/mp4" />
       </video>
+      <div
+        className="absolute bottom-[12%] left-[44%] -translate-x-1/2 
+  bg-black/75 backdrop-blur-lg rounded-2xl p-8 w-[988px]
+  text-center border border-white/10 shadow-2xl"
+      >
+        <img src="/rentbuddy.png" alt="Announcement" className="mx-auto mb-4" />
+      </div>
 
-      {/* ✨ Light overlay to keep video bright */}
-      <div className="absolute inset-0 bg-black/5"></div>
+      {/* ✨ Glow */}
+      <div className="glow-layer absolute inset-0 pointer-events-none" />
 
-      {/* 🖤 Black Box with Your Text */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 
-  bg-black/75 backdrop-blur-lg rounded-2xl p-8 
-  w-[92%] sm:w-[85%] md:w-[70%] lg:w-[60%] max-w-4xl 
-  text-center border border-white/10 shadow-2xl">
-
-
-        {/* Heading */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight tracking-tight">
-          Webintegratorz
+      {/* 🧠 Content */}
+      <div className="relative z-10 max-w-5xl px-40 pt-40 text-white">
+        <h1 className="text-6xl font-bold leading-tight">
+          Everything App <br /> for your teams
         </h1>
 
-        {/* Main Text */}
-        <p className="text-base sm:text-lg md:text-xl text-white/90 mb-3 leading-relaxed">
-          We Innovate, Build and Excel — crafting modern, secure, and scalable digital products
-          that drive business growth through intelligent engineering and seamless AI integration.
+        <p className="mt-6 text-lg opacity-80 max-w-xl">
+          Open-source platform replacing Jira, Linear, Slack & Notion.
         </p>
 
-        {/* Sub Text */}
-        <p className="text-sm sm:text-base md:text-lg text-white/70 mb-6 leading-relaxed">
-          From custom web platforms to backend-powered systems, automation, and security-first software —
-          we transform ideas into high-performance solutions for startups, professionals, and enterprises.
-        </p>
-
-        {/* Buttons */}
-        <div className="flex flex-wrap gap-4">
-          <a
-            href="#"
-            className="px-6 py-3 bg-[#27ccae] text-black font-semibold text-lg rounded-full hover:shadow-lg hover:shadow-[#27ccae]/40 transition"
-          >
-            Get Started
-          </a>
-
-          <a
-            href="#"
-            className="px-6 py-3 border border-[#27ccae] text-[#27ccae] font-semibold text-lg rounded-full hover:bg-[#27ccae]/10 transition"
-          >
-            Get Quote
-          </a>
-        </div>
-
+        <button
+          className="mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-medium transition"
+        >
+          Get Started
+        </button>
       </div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+
     </section>
   );
 }
