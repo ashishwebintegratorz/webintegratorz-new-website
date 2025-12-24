@@ -85,7 +85,7 @@ export default function Navbar() {
                     />
                     <DesktopItem
                       href="/services/it-staff-augmentation"
-                      label="IT Staff Augmentation"
+                      label="AI Integration"
                     />
                   </ul>
                 </motion.div>
@@ -106,10 +106,16 @@ export default function Navbar() {
           </Link>
         </nav>
 
+         <button
+          className="mt-1 px-4 py-3 bg-[#27ccae] hover:bg-#27ccae rounded-lg text-white font-medium transition"
+        >
+          Get Started
+        </button>
+
         {/* ================= RIGHT ICONS ================= */}
         <div className="flex items-center gap-3">
           <button className="hidden md:block p-2 rounded-full hover:bg-white/10 transition">
-            <Search size={18} />
+           
           </button>
 
           {/* MOBILE MENU BUTTON */}
@@ -206,7 +212,7 @@ export default function Navbar() {
                       />
                       <MobileLink
                         href="/services/it-staff-augmentation"
-                        label="IT Staff Augmentation"
+                        label="AI Integration"
                         close={setMobileOpen}
                       />
                     </motion.div>

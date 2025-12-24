@@ -20,11 +20,7 @@ export default function HeroSection() {
       className="hero relative w-full h-[190vh] overflow-hidden bg-black"
     >
       
-      {/* 🖼️ Image BEHIND */}
-      <div
-        className="masked-image absolute inset-0 bg-center bg-cover"
-        style={{ backgroundImage: "url('/webint.webp')" }}
-      />
+      
 
       {/* 🎬 Video ON TOP */}
       <video
@@ -41,7 +37,7 @@ export default function HeroSection() {
   bg-black/75 backdrop-blur-lg rounded-2xl p-8 w-[988px]
   text-center border border-white/10 shadow-2xl"
       >
-        <img src="/rentbuddy.png" alt="Announcement" className="mx-auto mb-4" />
+        <img src="/rentbuddy.png" alt="Announcement" className="mx-auto mb-16" />
       </div>
 
       {/* ✨ Glow */}
@@ -57,11 +53,7 @@ export default function HeroSection() {
           Open-source platform replacing Jira, Linear, Slack & Notion.
         </p>
 
-        <button
-          className="mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-medium transition"
-        >
-          Get Started
-        </button>
+       
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
 
