@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChevronDown, Search, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
@@ -11,7 +11,6 @@ export default function Navbar() {
   const [mobileServices, setMobileServices] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // ✅ Scroll effect to toggle background
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -20,15 +19,14 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
         scrolled ? "bg-black" : "bg-transparent"
       } backdrop-blur-sm`}
     >
-      {/* ================= TOP NAV BAR ================= */}
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between text-white">
-        {/* LOGO */}
         <Link href="/" className="leading-tight">
           <h1 className="text-2xl font-bold">
             Web<span className="text-[#25ccad]">integratorz</span>
@@ -38,13 +36,11 @@ export default function Navbar() {
           </p>
         </Link>
 
-        {/* ================= DESKTOP MENU ================= */}
         <nav className="hidden md:flex items-center gap-10 text-sm font-medium">
           <Link href="/" className="hover:text-[#25ccad] transition">
             HOME
           </Link>
 
-          {/* SERVICES (DESKTOP) */}
           <div
             className="relative"
             onMouseEnter={() => setDesktopServices(true)}
@@ -64,29 +60,13 @@ export default function Navbar() {
                   className="absolute top-full mt-4 left-0 w-72 bg-black border border-white/10 shadow-2xl"
                 >
                   <div className="h-[2px] bg-[#25ccad] w-16 ml-4" />
-
                   <ul className="py-3">
-                    <DesktopItem
-                      href="/services/web-development"
-                      label="Web Development"
-                    />
-                    <DesktopItem
-                      href="/services/mobile-development"
-                      label="Mobile Development"
-                    />
-                    <DesktopItem
-                      href="/services/cms-solution"
-                      label="CMS Solution"
-                    />
+                    <DesktopItem href="/services/web-development" label="Web Development" />
+                    <DesktopItem href="/services/mobile-development" label="Mobile Development" />
+                    <DesktopItem href="/services/cms-solution" label="CMS Solution" />
                     <DesktopItem href="/services/ui-ux" label="UI/UX" />
-                    <DesktopItem
-                      href="/services/digital-marketing"
-                      label="Digital Marketing"
-                    />
-                    <DesktopItem
-                      href="/services/it-staff-augmentation"
-                      label="AI Integration"
-                    />
+                    <DesktopItem href="/services/digital-marketing" label="Digital Marketing" />
+                    <DesktopItem href="/services/ai" label="AI Integration" />
                   </ul>
                 </motion.div>
               )}
@@ -96,29 +76,25 @@ export default function Navbar() {
           <Link href="/about" className="hover:text-[#25ccad] transition">
             ABOUT
           </Link>
-
           <Link href="/news" className="hover:text-[#25ccad] transition">
             NEWS
           </Link>
-
           <Link href="/contact" className="hover:text-[#25ccad] transition">
             CONTACT US
           </Link>
         </nav>
 
-         <button
-          className="mt-1 px-4 py-3 bg-[#27ccae] hover:bg-#27ccae rounded-lg text-white font-medium transition"
-        >
-          Get Started
-        </button>
+       <button
+  onClick={() => {
+    window.location.href = "/contact"; // redirects to contact page
+  }}
+  className="mt-1 px-4 py-3 bg-[#27ccad] hover:bg-[#1fa98d] rounded-lg text-white font-medium transition"
+>
+  Get Started
+</button>
 
-        {/* ================= RIGHT ICONS ================= */}
+
         <div className="flex items-center gap-3">
-          <button className="hidden md:block p-2 rounded-full hover:bg-white/10 transition">
-           
-          </button>
-
-          {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setMobileOpen(true)}
             className="md:hidden p-2 rounded-lg hover:bg-white/10 transition"
@@ -128,7 +104,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ================= MOBILE FULLSCREEN MENU ================= */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -137,7 +112,6 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[999] bg-black md:hidden"
           >
-            {/* MOBILE HEADER */}
             <div className="flex items-center justify-between px-6 h-20 border-b border-white/10">
               <Link href="/" onClick={() => setMobileOpen(false)}>
                 <h2 className="text-xl font-bold text-white">
@@ -148,7 +122,6 @@ export default function Navbar() {
                 </p>
               </Link>
 
-              {/* ✅ FIXED CLOSE BUTTON */}
               <button
                 onClick={() => setMobileOpen(false)}
                 className="p-2 rounded-full bg-white/10 hover:bg-[#25ccad]/20 transition"
@@ -158,11 +131,8 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* MOBILE MENU ITEMS */}
             <div className="px-6 py-10 space-y-8 text-lg font-semibold text-white">
-              <MobileLink href="/" close={setMobileOpen} label="HOME" />
-
-              {/* MOBILE SERVICES */}
+              <MobileLink href="/" label="HOME" close={setMobileOpen} />
               <div>
                 <button
                   onClick={() => setMobileServices(!mobileServices)}
@@ -171,9 +141,7 @@ export default function Navbar() {
                   SERVICES
                   <ChevronDown
                     size={18}
-                    className={`transition ${
-                      mobileServices ? "rotate-180" : ""
-                    }`}
+                    className={`transition ${mobileServices ? "rotate-180" : ""}`}
                   />
                 </button>
 
@@ -185,48 +153,20 @@ export default function Navbar() {
                       exit={{ height: 0, opacity: 0 }}
                       className="ml-4 mt-5 space-y-4 text-white/90"
                     >
-                      <MobileLink
-                        href="/services/web-development"
-                        label="Web Development"
-                        close={setMobileOpen}
-                      />
-                      <MobileLink
-                        href="/services/mobile-development"
-                        label="Mobile Development"
-                        close={setMobileOpen}
-                      />
-                      <MobileLink
-                        href="/services/cms-solution"
-                        label="CMS Solution"
-                        close={setMobileOpen}
-                      />
-                      <MobileLink
-                        href="/services/ui-ux"
-                        label="UI/UX"
-                        close={setMobileOpen}
-                      />
-                      <MobileLink
-                        href="/services/digital-marketing"
-                        label="Digital Marketing"
-                        close={setMobileOpen}
-                      />
-                      <MobileLink
-                        href="/services/it-staff-augmentation"
-                        label="AI Integration"
-                        close={setMobileOpen}
-                      />
+                      <MobileLink href="/services/web-development" label="Web Development" close={setMobileOpen} />
+                      <MobileLink href="/services/mobile-development" label="Mobile Development" close={setMobileOpen} />
+                      <MobileLink href="/services/cms-solution" label="CMS Solution" close={setMobileOpen} />
+                      <MobileLink href="/services/ui-ux" label="UI/UX" close={setMobileOpen} />
+                      <MobileLink href="/services/digital-marketing" label="Digital Marketing" close={setMobileOpen} />
+                      <MobileLink href="/services/ai" label="AI Integration" close={setMobileOpen} />
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
 
-              <MobileLink href="/about" close={setMobileOpen} label="ABOUT" />
-              <MobileLink href="/news" close={setMobileOpen} label="NEWS" />
-              <MobileLink
-                href="/contact"
-                close={setMobileOpen}
-                label="CONTACT US"
-              />
+              <MobileLink href="/about" label="ABOUT" close={setMobileOpen} />
+              <MobileLink href="/news" label="NEWS" close={setMobileOpen} />
+              <MobileLink href="/contact" label="CONTACT US" close={setMobileOpen} />
             </div>
           </motion.div>
         )}
@@ -234,8 +174,6 @@ export default function Navbar() {
     </header>
   );
 }
-
-/* ================= COMPONENTS ================= */
 
 function DesktopItem({ href, label }) {
   return (

@@ -34,7 +34,7 @@ export default function HeroSection() {
       </video>
       <div
         className="absolute bottom-[12%] left-[44%] -translate-x-1/2 
-  bg-black/75 backdrop-blur-lg rounded-2xl p-8 w-[988px]
+  bg-black/75 backdrop-blur-lg rounded-2xl p-4 w-[988px]
   text-center border border-white/10 shadow-2xl"
       >
         <img src="/rentbuddy.png" alt="Announcement" className="mx-auto mb-16" />
@@ -46,11 +46,11 @@ export default function HeroSection() {
       {/* 🧠 Content */}
       <div className="relative z-10 max-w-5xl px-40 pt-40 text-white">
         <h1 className="text-6xl font-bold leading-tight">
-          Everything App <br /> for your teams
+          Webintegratorz   <br />  Your partner in
         </h1>
 
         <p className="mt-6 text-lg opacity-80 max-w-xl">
-          Open-source platform replacing Jira, Linear, Slack & Notion.
+         Web, Mobile, SaaS & AI/ML Solutions 
         </p>
 
        
