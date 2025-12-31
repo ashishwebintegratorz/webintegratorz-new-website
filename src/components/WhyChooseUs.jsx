@@ -1,8 +1,10 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useRouter } from "next/navigation";
 
 export default function WhyChooseUs() {
+  const router = useRouter();
   const sectionRefs = useRef([]);
 
   useEffect(() => {
@@ -141,12 +143,11 @@ export default function WhyChooseUs() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-[#25ccad] text-black font-semibold rounded-xl hover:opacity-90 transition">
+              <button
+                onClick={() => router.push("/contact-us")}
+                className="px-8 py-4 bg-[#25ccad] text-black font-semibold rounded-xl hover:opacity-90 transition"
+              >
                 Get Started Today
-              </button>
-
-              <button className="px-8 py-4 border-2 border-[#25ccad] text-[#25ccad] font-semibold rounded-xl hover:bg-[#25ccad]/10 transition">
-                View Our Work
               </button>
             </div>
           </div>

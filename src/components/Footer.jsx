@@ -70,10 +70,10 @@ const Footer = () => {
               {[
                 "Web Development",
                 "Mobile Development",
+                 " CMS Solutions",
                 "UI/UX Design",
                 "Digital Marketing",
-                "IT Staff Augmentation",
-                "Brand Building",
+                "AI Integration",
               ].map((item, i) => (
                 <li key={i}>
                   <a

@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const WorkflowCycle = () => {
+  const router = useRouter(); // initialize this
   const svgRef = useRef(null);
   const [activeStep, setActiveStep] = useState(0);
 
@@ -436,8 +438,11 @@ const WorkflowCycle = () => {
                 Let's transform your vision into reality with our proven development process
               </p>
               
-              <button className="group inline-flex items-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
-                Get Free Consultation
+              <button
+        onClick={() => router.push("/contact-us")} // ⬅ redirect added
+        className="group inline-flex items-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+      >
+        Get Free Consultation
                 <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>

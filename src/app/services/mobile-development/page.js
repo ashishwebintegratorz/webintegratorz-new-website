@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Smartphone, Code2, Zap, Shield, Users, ArrowRight, Star, CheckCircle2, Globe, Sparkles, Rocket, ChevronRight } from 'lucide-react';
 
-export default function MobileDevelopmentPage() {
+export default function MobileDevelopmentpage() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

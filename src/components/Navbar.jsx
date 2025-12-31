@@ -4,21 +4,24 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
+  const router = useRouter();
   const [desktopServices, setDesktopServices] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "auto";
+  }, [mobileOpen]);
 
   return (
     <header
@@ -27,20 +30,19 @@ export default function Navbar() {
       } backdrop-blur-sm`}
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between text-white">
-        <Link href="/" className="leading-tight">
-          <h1 className="text-2xl font-bold">
-            Web<span className="text-[#25ccad]">integratorz</span>
-          </h1>
-          <p className="text-[10px] tracking-widest text-white/60">
-            WE INNOVATE, BUILD AND EXCEL
-          </p>
-        </Link>
 
-        <nav className="hidden md:flex items-center gap-10 text-sm font-medium">
-          <Link href="/" className="hover:text-[#25ccad] transition">
-            HOME
+        {/* LOGO */}
+        <div className="flex justify-start items-center">
+          <Link href="/" className="leading-tight">
+            <img src="/weblogo.webp" alt="Company Logo" className="w-17 h-16 object-contain" />
           </Link>
+        </div>
 
+        {/* DESKTOP NAV */}
+        <nav className="hidden md:flex items-center gap-10 text-sm font-medium">
+          <Link href="/" className="hover:text-[#25ccad] transition">HOME</Link>
+
+          {/* SERVICES DROPDOWN */}
           <div
             className="relative"
             onMouseEnter={() => setDesktopServices(true)}
@@ -61,88 +63,84 @@ export default function Navbar() {
                 >
                   <div className="h-[2px] bg-[#25ccad] w-16 ml-4" />
                   <ul className="py-3">
-                    <DesktopItem href="/services/web-development" label="Web Development" />
-                    <DesktopItem href="/services/mobile-development" label="Mobile Development" />
-                    <DesktopItem href="/services/cms-solution" label="CMS Solution" />
-                    <DesktopItem href="/services/ui-ux" label="UI/UX" />
-                    <DesktopItem href="/services/digital-marketing" label="Digital Marketing" />
-                    <DesktopItem href="/services/ai" label="AI Integration" />
+                    <ServiceItem href="/services/web-development" label="Web Development" active />
+                    <ServiceItem href="/services/mobile-development" label="Mobile Development" />
+                    <ServiceItem href="/services/cms-solution" label="CMS Solution" />
+                    <ServiceItem href="/services/ui-ux" label="UI/UX Design" />
+                    <ServiceItem href="/services/digital-marketing" label="Digital Marketing" />
+                    <ServiceItem href="/services/ai-integration" label="AI Integration" />
                   </ul>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
 
-          <Link href="/about" className="hover:text-[#25ccad] transition">
-            ABOUT
-          </Link>
-          <Link href="/news" className="hover:text-[#25ccad] transition">
-            NEWS
-          </Link>
-          <Link href="/contact" className="hover:text-[#25ccad] transition">
-            CONTACT US
-          </Link>
+          <Link href="/about" className="hover:text-[#25ccad] transition">ABOUT</Link>
+          <Link href="/news" className="hover:text-[#25ccad] transition">NEWS</Link>
+          <Link href="/contact-us" className="hover:text-[#25ccad] transition">CONTACT US</Link>
         </nav>
 
-       <button
-  onClick={() => {
-    window.location.href = "/contact"; // redirects to contact page
-  }}
-  className="mt-1 px-4 py-3 bg-[#27ccad] hover:bg-[#1fa98d] rounded-lg text-white font-medium transition"
->
-  Get Started
-</button>
-
-
-        <div className="flex items-center gap-3">
+        {/* DESKTOP RIGHT BUTTON */}
+        <div className="hidden md:flex items-center">
           <button
-            onClick={() => setMobileOpen(true)}
-            className="md:hidden p-2 rounded-lg hover:bg-white/10 transition"
+            onClick={() => router.push("/contact-us")}
+            className="mt-1 px-4 py-3 bg-[#25ccad] hover:bg-[#1fa98d] rounded-lg text-black font-medium transition"
           >
-            <Menu size={24} />
+            Get Started
+          </button>
+        </div>
+
+        {/* MOBILE HAMBURGER */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 rounded-lg hover:bg-white/10 transition"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
+      {/* MOBILE FULLSCREEN MENU */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[999] bg-black md:hidden"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[999] bg-black flex flex-col h-screen overflow-y-auto scrollbar-hide"
           >
-            <div className="flex items-center justify-between px-6 h-20 border-b border-white/10">
-              <Link href="/" onClick={() => setMobileOpen(false)}>
-                <h2 className="text-xl font-bold text-white">
-                  Web<span className="text-[#25ccad]">integratorz</span>
-                </h2>
-                <p className="text-[10px] tracking-widest text-white/60">
-                  WE INNOVATE, BUILD AND EXCEL
-                </p>
-              </Link>
 
-              <button
-                onClick={() => setMobileOpen(false)}
-                className="p-2 rounded-full bg-white/10 hover:bg-[#25ccad]/20 transition"
-                aria-label="Close menu"
-              >
-                <X size={24} className="text-white" />
-              </button>
+            {/* FIXED CLOSE BUTTON (UI SAME) */}
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="fixed top-6 right-6 z-[1000] text-white bg-black/30 p-2 rounded-lg"
+            >
+              <X size={28} />
+            </button>
+
+            {/* LOGO */}
+            <div className="px-6 pt-8">
+              <Link href="/" onClick={() => setMobileOpen(false)} className="leading-tight">
+                <img src="/weblogo.webp" alt="Company Logo" className="w-22 h-14 object-contain" />
+              </Link>
             </div>
 
-            <div className="px-6 py-10 space-y-8 text-lg font-semibold text-white">
-              <MobileLink href="/" label="HOME" close={setMobileOpen} />
+            {/* MOBILE LINKS */}
+            <div className="px-6 py-20 space-y-8 text-lg font-semibold text-white">
+              <Link href="/" onClick={() => setMobileOpen(false)} className="block hover:text-[#25ccad] transition">
+                HOME
+              </Link>
+
+              {/* SERVICES ACCORDION */}
               <div>
                 <button
                   onClick={() => setMobileServices(!mobileServices)}
-                  className="flex items-center justify-between w-full hover:text-[#25ccad]"
+                  className="flex items-center justify-between w-full hover:text-[#25ccad] transition"
                 >
                   SERVICES
-                  <ChevronDown
-                    size={18}
-                    className={`transition ${mobileServices ? "rotate-180" : ""}`}
-                  />
+                  <ChevronDown size={20} className={`transition-transform ${mobileServices ? "rotate-180" : ""}`} />
                 </button>
 
                 <AnimatePresence>
@@ -151,23 +149,35 @@ export default function Navbar() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="ml-4 mt-5 space-y-4 text-white/90"
+                      transition={{ duration: 0.3 }}
+                      className="ml-4 mt-5 space-y-5 text-white/90 text-base"
                     >
-                      <MobileLink href="/services/web-development" label="Web Development" close={setMobileOpen} />
-                      <MobileLink href="/services/mobile-development" label="Mobile Development" close={setMobileOpen} />
-                      <MobileLink href="/services/cms-solution" label="CMS Solution" close={setMobileOpen} />
-                      <MobileLink href="/services/ui-ux" label="UI/UX" close={setMobileOpen} />
-                      <MobileLink href="/services/digital-marketing" label="Digital Marketing" close={setMobileOpen} />
-                      <MobileLink href="/services/ai" label="AI Integration" close={setMobileOpen} />
+                      <MobileItem href="/services/web-development" label="Web Development" close={setMobileOpen} />
+                      <MobileItem href="/services/mobile-development" label="Mobile Development" close={setMobileOpen} />
+                      <MobileItem href="/services/cms-solution" label="CMS Solution" close={setMobileOpen} />
+                      <MobileItem href="/services/ui-ux" label="UI/UX Design" close={setMobileOpen} />
+                      <MobileItem href="/services/digital-marketing" label="Digital Marketing" close={setMobileOpen} />
+                      <MobileItem href="/services/ai-integration" label="AI Integration" close={setMobileOpen} />
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
 
-              <MobileLink href="/about" label="ABOUT" close={setMobileOpen} />
-              <MobileLink href="/news" label="NEWS" close={setMobileOpen} />
-              <MobileLink href="/contact" label="CONTACT US" close={setMobileOpen} />
+              <MobileItem href="/about" label="ABOUT" close={setMobileOpen} />
+              <MobileItem href="/news" label="NEWS" close={setMobileOpen} />
+              <MobileItem href="/contact-us" label="CONTACT US" close={setMobileOpen} />
             </div>
+
+            {/* MOBILE GET STARTED BUTTON */}
+            <div className="px-6 pb-10 mt-auto">
+              <button
+                onClick={() => router.push("/contact-us")}
+                className="w-full py-4 bg-[#25ccad] hover:bg-[#1fa98d] rounded-lg text-black font-bold text-sm transition"
+              >
+                Get Started
+              </button>
+            </div>
+
           </motion.div>
         )}
       </AnimatePresence>
@@ -175,12 +185,15 @@ export default function Navbar() {
   );
 }
 
-function DesktopItem({ href, label }) {
+/* DESKTOP DROPDOWN ITEM */
+function ServiceItem({ href, label, active }) {
   return (
-    <li className="border-b border-white/5">
+    <li className="border-b border-white/10">
       <Link
         href={href}
-        className="block px-5 py-3 text-sm text-white hover:text-[#25ccad] hover:bg-white/5 transition"
+        className={`block px-5 py-3 text-sm font-medium ${
+          active ? "text-[#25ccad]" : "text-white"
+        } hover:bg-[#25ccad]/20 hover:text-[#25ccad] transition`}
       >
         {label}
       </Link>
@@ -188,12 +201,13 @@ function DesktopItem({ href, label }) {
   );
 }
 
-function MobileLink({ href, label, close }) {
+/* MOBILE MENU ITEM */
+function MobileItem({ href, label, close }) {
   return (
     <Link
       href={href}
       onClick={() => close(false)}
-      className="block hover:text-[#25ccad]"
+      className="block hover:text-[#25ccad] transition"
     >
       {label}
     </Link>

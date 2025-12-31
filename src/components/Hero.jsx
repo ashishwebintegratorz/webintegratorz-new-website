@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 
-export default function HeroSection() {
+export default function HeroSection({ mobileOpen }) {
   const heroRef = useRef(null);
 
   const handleMouseMove = (e) => {
@@ -17,46 +17,48 @@ export default function HeroSection() {
     <section
       ref={heroRef}
       onMouseMove={handleMouseMove}
-      className="hero relative w-full h-[190vh] overflow-hidden bg-black"
+      className="hero relative w-full h-[190vh] overflow-hidden bg-black text-white"
+      style={{ display: mobileOpen ? "none" : "block" }} 
     >
-      
-      
+      {/* 🎬 Video Background */}
+      {!mobileOpen && (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.9]"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+      )}
 
-      {/* 🎬 Video ON TOP */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover brightness-[0.9]"
-      >
-        <source src="/hero.mp4" type="video/mp4" />
-      </video>
+      {/* 📣 Banner Image */}
       <div
-        className="absolute bottom-[12%] left-[44%] -translate-x-1/2 
+  className="absolute bottom-[12%] left-[44%] -translate-x-1/2 
   bg-black/75 backdrop-blur-lg rounded-2xl p-4 w-[988px]
   text-center border border-white/10 shadow-2xl"
-      >
-        <img src="/rentbuddy.png" alt="Announcement" className="mx-auto mb-16" />
-      </div>
+>
+  <img src="/rentbuddy.png" alt="Announcement" className="mx-auto mb-16" />
+</div>
 
-      {/* ✨ Glow */}
+
+      {/* ✨ Glow Effect */}
       <div className="glow-layer absolute inset-0 pointer-events-none" />
 
-      {/* 🧠 Content */}
-      <div className="relative z-10 max-w-5xl px-40 pt-40 text-white">
-        <h1 className="text-6xl font-bold leading-tight">
-          Webintegratorz   <br />  Your partner in
+      {/* 🧠 Hero Text Content */}
+      <div className="relative z-10 max-w-5xl px-6 md:px-40 pt-32 md:pt-40 text-center md:text-left">
+        <h1 className="text-5xl md:text-6xl font-bold leading-tight mx-auto md:mx-0">
+          Webintegratorz <br className="md:hidden"/>  Your partner in
         </h1>
 
-        <p className="mt-6 text-lg opacity-80 max-w-xl">
-         Web, Mobile, SaaS & AI/ML Solutions 
+        <p className="mt-4 md:mt-6 text-base md:text-lg opacity-80 max-w-md md:max-w-xl mx-auto md:mx-0">
+          Web, Mobile, SaaS & AI/ML Solutions
         </p>
-
-       
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
 
+      {/* Bottom Fade Gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
     </section>
   );
 }
