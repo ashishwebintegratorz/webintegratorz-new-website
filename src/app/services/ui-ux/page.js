@@ -1,9 +1,11 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import { Palette, Figma, Sparkles, ArrowRight, CheckCircle2, Zap, Users, Eye, Pencil, Layout, Smartphone, Monitor, Layers } from 'lucide-react';
 
 export default function UIUXDesignPage() {
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
 
@@ -140,13 +142,15 @@ export default function UIUXDesignPage() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <button className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group">
-                  Start Your Project
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="px-8 py-4 bg-slate-800/50 border border-[#27ccae]/30 rounded-xl font-bold text-base hover:bg-slate-800 transition-all duration-300 hover:border-[#27ccae]/50">
-                  View Portfolio
-                </button>
+                <button
+  onClick={() => router.push("/contact-us")}
+  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+>
+  Get Started
+  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</button>
+
+               
               </div>
 
               {/* Stats */}
@@ -380,10 +384,14 @@ export default function UIUXDesignPage() {
               Ready to elevate your digital experience? Let's discuss your project and bring your vision to life.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <button className="px-10 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-lg hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                Start Your Project
-                <ArrowRight className="w-5 h-5" />
-              </button>
+              <button
+  onClick={() => router.push("/contact-us")}
+  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+>
+  Get Started
+  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</button>
+
              
             </div>
           </div>

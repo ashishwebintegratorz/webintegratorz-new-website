@@ -256,11 +256,7 @@ export default function NewsUpdates() {
                 </div>
 
                 {/* CTA Button */}
-                <button className="group/btn relative px-8 py-4 bg-[#27ccae] text-black font-bold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#27ccae]/50 hover:scale-105 flex items-center gap-2">
-                  <span className="relative z-10">Get in for Your Project</span>
-                  <ArrowRight className="w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-[#27ccae] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
-                </button>
+              
               </div>
 
               {/* Right Visual */}
@@ -359,37 +355,7 @@ export default function NewsUpdates() {
           </div>
         </div>
 
-        {/* Newsletter CTA */}
-        <div className="mt-20 relative group animate-slideUp" style={{ animationDelay: '0.9s' }}>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#27ccae] to-cyan-500 rounded-3xl blur-2xl opacity-10 group-hover:opacity-20 transition-opacity duration-500" />
-          
-          <div className="relative bg-gradient-to-br from-gray-900 to-gray-900/80 backdrop-blur-xl border border-[#27ccae]/30 rounded-3xl p-12 text-center">
-            <div className="max-w-2xl mx-auto space-y-6">
-              <div className="inline-flex p-4 bg-[#27ccae]/10 rounded-2xl mb-4">
-                <Sparkles className="w-8 h-8 text-[#27ccae]" />
-              </div>
-              
-              <h3 className="text-4xl md:text-5xl font-black">
-                Never Miss an <span className="text-[#27ccae]">Update</span>
-              </h3>
-              
-              <p className="text-lg text-gray-400">
-                Subscribe to our newsletter and stay informed about our latest innovations, partnerships, and industry insights.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto pt-4">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-6 py-4 bg-black/50 border border-gray-800 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-[#27ccae] transition-colors"
-                />
-                <button className="px-8 py-4 bg-[#27ccae] hover:bg-[#22b89a] text-black font-bold rounded-xl transition-colors whitespace-nowrap">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+       
 
       </div>
     </div>

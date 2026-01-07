@@ -1,9 +1,11 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import { Smartphone, Code2, Zap, Shield, Users, ArrowRight, Star, CheckCircle2, Globe, Sparkles, Rocket, ChevronRight } from 'lucide-react';
 
 export default function MobileDevelopmentpage() {
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -113,13 +115,15 @@ export default function MobileDevelopmentpage() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <button className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group">
-                  Get Started
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="px-8 py-4 bg-slate-800/50 border border-[#27ccae]/30 rounded-xl font-bold text-base hover:bg-slate-800 transition-all duration-300 hover:border-[#27ccae]/50">
-                  View Portfolio
-                </button>
+               <button
+  onClick={() => router.push("/contact-us")}
+  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+>
+  Get Started
+  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</button>
+
+               
               </div>
 
               {/* Trust Indicators */}
@@ -347,15 +351,7 @@ export default function MobileDevelopmentpage() {
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
               Let's transform your idea into a mobile app that users will love. Get a free consultation today.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <button className="px-10 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-lg hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                Start Your Project
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              <button className="px-10 py-4 bg-transparent border-2 border-[#27ccae] rounded-xl font-bold text-lg hover:bg-[#27ccae]/10 transition-all duration-300">
-                Schedule a Call
-              </button>
-            </div>
+           
           </div>
         </div>
       </section>

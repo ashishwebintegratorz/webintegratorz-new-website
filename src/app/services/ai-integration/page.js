@@ -1,9 +1,11 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import { Brain, Cpu, Sparkles, Zap, ArrowRight, CheckCircle2, Code, Database, MessageSquare, Image, LineChart, Bot, Workflow, Lock, Globe, TrendingUp } from 'lucide-react';
 
 export default function AIIntegrationPage() {
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
 
@@ -173,13 +175,15 @@ export default function AIIntegrationPage() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <button className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group">
-                  Get Started
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="px-8 py-4 bg-slate-800/50 border border-[#27ccae]/30 rounded-xl font-bold text-base hover:bg-slate-800 transition-all duration-300 hover:border-[#27ccae]/50 backdrop-blur-sm">
-                  Watch Demo
-                </button>
+               <button
+  onClick={() => router.push("/contact-us")}
+  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+>
+  Get Started
+  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</button>
+
+                
               </div>
 
               {/* Stats */}
@@ -475,37 +479,7 @@ export default function AIIntegrationPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#27ccae]/20 to-emerald-500/20 blur-3xl"></div>
-        </div>
-        
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
-          <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-12 border border-[#27ccae]/30 shadow-2xl shadow-[#27ccae]/20">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#27ccae] to-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg animate-float">
-              <Brain className="w-8 h-8 text-white" />
-            </div>
-            
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Ready to Unlock
-              <span className="block mt-2 bg-gradient-to-r from-[#27ccae] to-emerald-400 bg-clip-text text-transparent">
-                AI's Full Potential?
-              </span>
-            </h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Let's discuss how AI can transform your business. Schedule a free consultation with our AI experts today.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <button className="px-10 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-lg hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                Start AI Journey
-                <ArrowRight className="w-5 h-5" />
-              </button>
-             
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       
     </div>

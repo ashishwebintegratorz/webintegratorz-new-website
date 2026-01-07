@@ -1,8 +1,10 @@
 'use client';
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useRouter } from "next/navigation";  // ✔ added
 
 export default function WebDevelopmentPage() {
+  const router = useRouter();  // ✔ added
+  const heroRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState('mern');
 
@@ -116,10 +118,7 @@ export default function WebDevelopmentPage() {
             From concept to deployment, we deliver enterprise-grade solutions.
           </p>
           <div className="webdev-hero-buttons">
-            <button className="webdev-btn webdev-btn-primary">
-              Start Your Project
-              <span className="webdev-btn-arrow">→</span>
-            </button>
+           
             <button className="webdev-btn webdev-btn-secondary">
               View Our Work
             </button>
@@ -266,67 +265,30 @@ const App = () => {
         </div>
       </section>
 
-      {/* Projects Showcase */}
-      <section className="webdev-projects">
-        <div className="webdev-container">
-          <div className="webdev-section-header">
-            <span className="webdev-section-tag">PORTFOLIO</span>
-            <h2 className="webdev-section-title">
-              Featured <span className="webdev-text-gradient">Projects</span>
-            </h2>
-          </div>
-
-          <div className="webdev-projects-grid">
-            {projects.map((project, index) => (
-              <div 
-                key={index} 
-                className="webdev-project-card"
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                <div className="webdev-project-image">
-                  <span className="webdev-project-emoji">{project.image}</span>
-                </div>
-                <div className="webdev-project-content">
-                  <h3 className="webdev-project-title">{project.title}</h3>
-                  <p className="webdev-project-description">{project.description}</p>
-                  <div className="webdev-project-tech">
-                    {project.tech.map((tech, i) => (
-                      <span key={i} className="webdev-project-tag">{tech}</span>
-                    ))}
-                  </div>
-                </div>
-                <div className="webdev-project-overlay">
-                  <button className="webdev-project-btn">View Case Study →</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      
       {/* CTA Section */}
-      <section className="webdev-cta">
-        <div className="webdev-cta-bg">
-          <div className="webdev-cta-pattern"></div>
-        </div>
-        <div className="webdev-container">
-          <div className="webdev-cta-content">
-            <h2 className="webdev-cta-title">Ready to Build Something Amazing?</h2>
-            <p className="webdev-cta-text">
-              Let&apos;s discuss your project and create a solution that exceeds expectations
-            </p>
-            <div className="webdev-cta-buttons">
-              <button className="webdev-btn webdev-btn-primary webdev-btn-large">
-                Get Started Today
-                <span className="webdev-btn-arrow">→</span>
-              </button>
-              <button className="webdev-btn webdev-btn-outline webdev-btn-large">
-                Schedule a Call
-              </button>
-            </div>
+     <section className="webdev-cta">
+      <div className="webdev-cta-bg">
+        <div className="webdev-cta-pattern"></div>
+      </div>
+      <div className="webdev-container">
+        <div className="webdev-cta-content">
+          <h2 className="webdev-cta-title">Ready to Build Something Amazing?</h2>
+          <p className="webdev-cta-text">
+            Let&apos;s discuss your project and create a solution that exceeds expectations
+          </p>
+          <div className="webdev-cta-buttons">
+            <button
+              onClick={() => router.push("/contact-us")}
+              className="webdev-btn webdev-btn-primary webdev-btn-large webdev-btn-large"
+            >
+              Get in Touch
+              <span className="webdev-btn-arrow">→</span>
+            </button>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
     </div>
   );
 }

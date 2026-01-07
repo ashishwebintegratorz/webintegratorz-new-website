@@ -1,9 +1,11 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import { Layers, Zap, Shield, Globe, CheckCircle2, ArrowRight, Code, Layout, Sparkles, Database, Lock, Gauge } from 'lucide-react';
 
 export default function CMSSolutionsPage() {
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -112,13 +114,15 @@ export default function CMSSolutionsPage() {
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center">
-                <button className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group">
-                  Get Started
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="px-8 py-4 bg-slate-800/50 border border-[#27ccae]/30 rounded-xl font-bold text-base hover:bg-slate-800 transition-all duration-300 hover:border-[#27ccae]/50">
-                  Schedule Demo
-                </button>
+                <button
+  onClick={() => router.push("/contact-us")}
+  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+>
+  Get Started
+  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</button>
+
+                
               </div>
             </div>
           </div>
@@ -236,10 +240,14 @@ export default function CMSSolutionsPage() {
               Let's build a CMS solution that scales with your ambitions. Get started with a free consultation.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <button className="px-10 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-lg hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                Get Started Now
-                <ArrowRight className="w-5 h-5" />
-              </button>
+             <button
+  onClick={() => router.push("/contact-us")}
+  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+>
+  Get Started Now
+  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</button>
+
              
             </div>
           </div>

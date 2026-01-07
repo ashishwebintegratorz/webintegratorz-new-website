@@ -1,156 +1,319 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from "next/navigation";
 
-export default function WhyChooseUs() {
+
+export default function WhyChooseUsSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeCard, setActiveCard] = useState(null);
+  const sectionRef = useRef(null);
   const router = useRouter();
-  const sectionRefs = useRef([]);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  
 
   useEffect(() => {
-    const observers = sectionRefs.current.map((ref) => {
-      if (!ref) return null;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-      observer.observe(ref);
-      return observer;
-    });
-
-    return () => observers.forEach((o) => o?.disconnect());
+    return () => observer.disconnect();
   }, []);
 
-  const reasons = [
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const stats = [
+    { number: "500+", label: "Projects Delivered" },
+    { number: "200+", label: "Happy Clients" },
+    { number: "50+", label: "Expert Talent" },
+    { number: "99%", label: "Success Rate" }
+  ];
+
+  const features = [
     {
-      title: 'Global Expertise, Local Impact',
-      description:
-        'We deliver culturally aligned digital solutions across global markets while maintaining strong local understanding.',
-      icon: '🌍',
+      icon: "💰",
+      title: "Transparent Pricing",
+      description: "Clear, upfront costs with no hidden fees. You know exactly what you're paying for.",
+      color: "#25ccad"
     },
     {
-      title: 'Cost-Effective Solutions',
-      description:
-        'Our offshore development model helps startups and SMEs reduce costs without compromising on quality.',
-      icon: '💰',
+      icon: "⚡",
+      title: "Proven Expertise",
+      description: "Years of experience delivering cutting-edge solutions across industries.",
+      color: "#25ccad"
     },
     {
-      title: 'Tech-First Approach',
-      description:
-        'We specialize in modern frameworks like React, Next.js, WordPress, Shopify, and scalable architectures.',
-      icon: '⚡',
+      icon: "🎯",
+      title: "Top-Notch IT Solutions",
+      description: "Enterprise-grade technology solutions that scale with your business growth.",
+      color: "#25ccad"
     },
     {
-      title: 'AI-Powered Growth',
-      description:
-        'We build intelligent, AI-ready platforms designed to give businesses a long-term competitive edge.',
-      icon: '🤖',
+      icon: "🔒",
+      title: "Secure & Reliable",
+      description: "Bank-level security protocols ensuring your data is always protected.",
+      color: "#25ccad"
     },
+    {
+      icon: "📈",
+      title: "ROI Focused",
+      description: "Every solution designed to maximize your return on investment.",
+      color: "#25ccad"
+    },
+    {
+      icon: "🌐",
+      title: "24/7 Support",
+      description: "Round-the-clock support team ready to assist whenever you need us.",
+      color: "#25ccad"
+    }
+  ];
+
+  const teamMembers = [
+    { name: "Team Lead", role: "Strategy" },
+    { name: "Developer", role: "Engineering" },
+    { name: "Designer", role: "Creative" },
+    { name: "Manager", role: "Operations" }
   ];
 
   return (
-    <section className="relative min-h-screen bg-black overflow-hidden">
-      {/* Subtle brand glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-24 left-12 w-72 h-72 bg-[#25ccad]/15 rounded-full blur-[150px]" />
-        <div className="absolute bottom-24 right-12 w-96 h-96 bg-[#25ccad]/10 rounded-full blur-[180px]" />
+    <section 
+      ref={sectionRef}
+      className="why-section"
+    >
+      {/* Animated Background */}
+      <div className="why-background">
+        {/* Gradient Orbs */}
+        <div className="orb orb-top"></div>
+        <div className="orb orb-bottom"></div>
+        
+        {/* Grid Lines */}
+        <div className="grid-lines"></div>
+
+        {/* Animated Particles */}
+        <div className="particles-container">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${5 + Math.random() * 10}s`
+              }}
+            ></div>
+          ))}
+        </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <span className="inline-block mb-4 text-[#25ccad] font-semibold text-sm tracking-wider uppercase bg-[#25ccad]/10 px-4 py-2 rounded-full border border-[#25ccad]/30">
-            Trusted IT Firm In India
-          </span>
+      {/* Content Container - Perfectly Aligned with Navbar */}
+      <div className="why-container">
+        {/* Header Section */}
+        <div className="why-header">
+          {/* Badge */}
+          <div className={`badge-wrapper ${isVisible ? 'visible' : ''}`}>
+            <div className="badge">
+              <div className="badge-dot"></div>
+              <span className="badge-text">WHY US</span>
+            </div>
+            <div className="badge-line"></div>
+          </div>
 
-          <h2 className="text-5xl sm:text-6xl font-extrabold text-white mb-6">
-            Why Choose <span className="text-[#25ccad]">Webintegratorz</span>?
-          </h2>
+          {/* Main Heading */}
+          <div className={`heading-wrapper ${isVisible ? 'visible' : ''}`}>
+            <h2 className="main-heading">
+              <span className="heading-white">Why </span>
+              <span className="heading-brand-wrapper">
+                <span className="heading-brand">Webintegratorz</span>
+                <div className="heading-underline"></div>
+              </span>
+              <span className="heading-white">?</span>
+            </h2>
 
-          <p className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto">
-            A technology partner that blends innovation, reliability, and
-            cost-efficiency to help your business scale confidently.
-          </p>
+            <p className="heading-description">
+              We wholeheartedly support you in transforming your vision into a tangible reality, 
+              ensuring that your digital transformation serves as a robust foundation for your 
+              sustained growth and success in the ever-evolving marketplace.
+            </p>
+          </div>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {reasons.map((reason, index) => (
+        {/* Stats Counter Section */}
+        <div className={`stats-grid ${isVisible ? 'visible' : ''}`}>
+          {stats.map((stat, index) => (
             <div
               key={index}
-              ref={(el) => (sectionRefs.current[index] = el)}
-              className="group relative bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-[#25ccad]/50 transition-all duration-500 opacity-0 translate-y-10"
+              className="stat-card"
+              style={{
+                animationDelay: `${index * 100}ms`
+              }}
             >
-              {/* Top accent */}
-              <div className="absolute top-0 left-0 h-1 w-full bg-[#25ccad] rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-
-              <div className="p-8 lg:p-10">
-                {/* Icon */}
-                <div className="mb-6">
-                  <div className="w-16 h-16 flex items-center justify-center rounded-xl bg-[#25ccad]/15 text-3xl group-hover:scale-110 transition-transform">
-                    {reason.icon}
-                  </div>
-                </div>
-
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#25ccad] transition">
-                  {reason.title}
-                </h3>
-
-                <p className="text-white/70 leading-relaxed">
-                  {reason.description}
-                </p>
-
-                <div className="mt-6 flex items-center text-[#25ccad] font-semibold opacity-0 group-hover:opacity-100 transition">
-                  <span className="text-sm">Learn more</span>
-                  <svg
-                    className="w-5 h-5 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </div>
+              {/* Glow Effect */}
+              <div className="stat-glow"></div>
+              
+              <div className="stat-content">
+                <div className="stat-number">{stat.number}</div>
+                <div className="stat-label">{stat.label}</div>
               </div>
+
+              {/* Corner Accent */}
+              <div className="stat-corner"></div>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-24">
-          <div className="inline-block bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-12 max-w-3xl">
-            <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-              Ready to Transform Your Business?
-            </h3>
+        {/* Two Column Layout */}
+        <div className="content-columns">
+          {/* Left Column - Image/Visual Section */}
+          <div className={`left-column ${isVisible ? 'visible' : ''}`}>
+            <div className="visual-wrapper">
+              {/* Main Image Container */}
+              <div className="main-visual">
+                {/* Decorative Circle Top Left */}
+                <div className="decorative-circle circle-top"></div>
+                
+                {/* Goal Badge */}
+                <div className="goal-badge">
+                  <div className="goal-text-main">OUR GOAL</div>
+                  <div className="goal-text-sub">IS YOUR</div>
+                  <div className="goal-text-large">SUCCESS</div>
+                </div>
 
-            <p className="text-lg text-white/70 mb-8">
-              Partner with Webintegratorz and build secure, scalable digital
-              products with confidence.
-            </p>
+                {/* Team Grid */}
+                <div className="team-section">
+                  <div className="team-grid">
+                    {teamMembers.map((member, index) => (
+                      <div 
+                        key={index}
+                        className="team-card"
+                      >
+                        {/* Avatar */}
+                        <div className="team-avatar">
+                          {member.name.charAt(0)}
+                        </div>
+                        <div className="team-info">
+                          <h4 className="team-name">{member.name}</h4>
+                          <p className="team-role">{member.role}</p>
+                        </div>
+                        {/* Hover effect */}
+                        <div className="team-hover"></div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Team Excellence Label */}
+                  <div className="team-label">
+                    <div className="team-badge">
+                      <span className="team-badge-icon">✨</span>
+                      <span className="team-badge-text">Team Excellence</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => router.push("/contact-us")}
-                className="px-8 py-4 bg-[#25ccad] text-black font-semibold rounded-xl hover:opacity-90 transition"
-              >
-                Get Started Today
-              </button>
+              {/* Workspace Cards */}
+              <div className="workspace-cards">
+                <div className="workspace-card">
+                  <div className="workspace-icon-wrapper">
+                    <span className="workspace-icon">💡</span>
+                  </div>
+                  <p className="workspace-title">Innovation Hub</p>
+                  <p className="workspace-subtitle">Creative Solutions</p>
+                </div>
+                <div className="workspace-card">
+                  <div className="workspace-icon-wrapper">
+                    <span className="workspace-icon">🚀</span>
+                  </div>
+                  <p className="workspace-title">Fast Delivery</p>
+                  <p className="workspace-subtitle">Quick Turnaround</p>
+                </div>
+              </div>
+
+              {/* Decorative Circle Bottom Right */}
+              <div className="decorative-circle circle-bottom"></div>
             </div>
           </div>
+
+          {/* Right Column - Features Grid (NO ARROW ICONS) */}
+          <div className={`right-column ${isVisible ? 'visible' : ''}`}>
+            <div className="features-grid">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="feature-card"
+                  onMouseEnter={() => setActiveCard(index)}
+                  onMouseLeave={() => setActiveCard(null)}
+                  style={{
+                    animationDelay: `${index * 100}ms`
+                  }}
+                >
+                  <div className="feature-content">
+                    {/* Hover Glow */}
+                    <div className="feature-glow"></div>
+                    
+                    <div className="feature-inner">
+                      {/* Icon */}
+                      <div className="feature-icon-wrapper">
+                        <span className="feature-icon">{feature.icon}</span>
+                      </div>
+
+                      {/* Content */}
+                      <div className="feature-text">
+                        <h3 className="feature-title">{feature.title}</h3>
+                        <p className="feature-description">{feature.description}</p>
+                      </div>
+
+                      {/* NO ARROW ICON - REMOVED */}
+                    </div>
+
+                    {/* Active Indicator */}
+                    {activeCard === index && (
+                      <div className="feature-indicator"></div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className={`cta-section ${isVisible ? 'visible' : ''}`}>
+         <button
+  className="cta-button"
+  onClick={() => router.push("/contact-us")}
+  onMouseMove={handleMouseMove}
+>
+  <span className="cta-text">
+    Get a Free Consultation
+    <svg className="cta-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
+  </span>
+  <div className="cta-bg"></div>
+  <div
+    className="cta-follow"
+    style={{
+      left: mousePosition.x - 64,
+      top: mousePosition.y - 64,
+    }}
+  ></div>
+</button>
         </div>
       </div>
     </section>

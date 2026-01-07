@@ -10,7 +10,7 @@ export default function ContactPage() {
   }, []);
 
   return (
-    <div className="contact-page-wrapper">
+    <div className="contact-page-wrapper mt-12">
       <div className="decorative-circle circle-1"></div>
       <div className="decorative-circle circle-2"></div>
 

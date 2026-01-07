@@ -4,9 +4,22 @@ import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const WorkflowCycle = () => {
-  const router = useRouter(); // initialize this
+  const router = useRouter();
   const svgRef = useRef(null);
   const [activeStep, setActiveStep] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if mobile on mount and resize
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -113,11 +126,8 @@ const WorkflowCycle = () => {
   };
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-slate-50 to-white py-32 overflow-hidden">
+    <section className="relative w-full bg-gradient-to-b from-slate-50 to-white py-16 md:py-32 overflow-hidden">
       {/* Subtle Grid Background */}
-
-     
-
       <div className="absolute inset-0 opacity-[0.02]">
         <div 
           className="w-full h-full"
@@ -135,31 +145,34 @@ const WorkflowCycle = () => {
       <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-emerald-100/30 rounded-full blur-[120px]" />
       <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-blue-100/30 rounded-full blur-[120px]" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center mb-24">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white rounded-full mb-8 text-sm font-medium tracking-wide">
+        <div className="text-center mb-12 md:mb-24">
+          <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-slate-900 text-white rounded-full mb-6 md:mb-8 text-xs sm:text-sm font-medium tracking-wide">
             <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
             HOW WE WORK
           </div>
 
-          <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-            Our Development{" "}
-            <span className="text-emerald-600">Process</span>
-          </h2>
+         <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight px-4 text-black">
+  Our Development{" "}
+  <span style={{ color: "#25ccad" }}>Process</span>
+</h2>
 
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+
+          <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed px-4">
             A systematic approach that ensures quality, efficiency, and exceptional results at every stage
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 md:mb-32">
           
-          {/* Left: Circular Workflow Diagram */}
+          {/* Left: Workflow Diagram (Desktop: Circular, Mobile: Vertical Timeline) */}
           <div className="relative">
-            <div className="relative w-full max-w-[600px] mx-auto aspect-square">
+            
+            {/* DESKTOP VIEW - Circular Diagram */}
+            <div className="hidden lg:block relative w-full max-w-[600px] mx-auto aspect-square">
               
               {/* SVG Container */}
               <svg 
@@ -170,13 +183,13 @@ const WorkflowCycle = () => {
                 <defs>
                   {/* Gradients */}
                   <linearGradient id="circleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#10b981" stopOpacity="0.2"/>
+                    <stop offset="0%" stopColor="#25ccad" stopOpacity="0.2"/>
                     <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.2"/>
                   </linearGradient>
 
                   <linearGradient id="activeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#10b981"/>
-                    <stop offset="100%" stopColor="#059669"/>
+                    <stop offset="0%" stopColor="#25ccad"/>
+                    <stop offset="100%" stopColor="#25ccad"/>
                   </linearGradient>
 
                   {/* Glow Filter */}
@@ -247,7 +260,7 @@ const WorkflowCycle = () => {
                     <circle
                       key={`particle-${i}`}
                       r="3"
-                      fill="#10b981"
+                      fill="#25ccad"
                       opacity="0.6"
                       filter="url(#glow)"
                     >
@@ -343,11 +356,100 @@ const WorkflowCycle = () => {
                   </div>
                 );
               })}
+
+              {/* Progress Indicator - Desktop */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-8">
+                <div className="flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-lg border border-slate-100">
+                  <div className="flex gap-1.5">
+                    {workflowSteps.map((_, index) => (
+                      <div
+                        key={index}
+                        className={`h-1.5 rounded-full transition-all duration-500 ${
+                          index === activeStep
+                            ? 'w-8 bg-emerald-500'
+                            : index < activeStep
+                            ? 'w-1.5 bg-emerald-300'
+                            : 'w-1.5 bg-slate-200'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-xs font-semibold text-slate-600 ml-2">
+                    Step {activeStep + 1}/6
+                  </span>
+                </div>
+              </div>
             </div>
 
-            {/* Progress Indicator */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-8">
-              <div className="flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-lg border border-slate-100">
+            {/* MOBILE VIEW - Vertical Timeline */}
+            <div className="lg:hidden space-y-6 px-4">
+              {workflowSteps.map((step, index) => {
+                const isActive = index === activeStep;
+                
+                return (
+                  <div
+                    key={index}
+                    className={`relative transition-all duration-500 ${
+                      isActive ? 'scale-105' : 'scale-100'
+                    }`}
+                  >
+                    {/* Timeline Line */}
+                    {index < workflowSteps.length - 1 && (
+                      <div className="absolute left-8 top-20 w-0.5 h-full bg-gradient-to-b from-emerald-200 to-transparent" />
+                    )}
+
+                    {/* Step Card */}
+                    <div className={`relative bg-white rounded-2xl shadow-lg border-2 transition-all duration-500 ${
+                      isActive 
+                        ? 'border-emerald-500 shadow-emerald-200/50' 
+                        : 'border-slate-200'
+                    }`}>
+                      {/* Glow Effect for Active */}
+                      {isActive && (
+                        <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-2xl blur-lg" />
+                      )}
+                      
+                      <div className="relative p-6 flex gap-4">
+                        {/* Icon Circle */}
+                        <div className={`flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 ${
+                          isActive
+                            ? 'bg-gradient-to-br from-emerald-500 to-emerald-600 shadow-lg'
+                            : 'bg-slate-100'
+                        }`}>
+                          <div className={`w-8 h-8 ${
+                            isActive ? 'text-white' : 'text-slate-600'
+                          }`}>
+                            {step.icon}
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-1">
+                          <div className={`text-xs font-bold mb-1 ${
+                            isActive ? 'text-emerald-600' : 'text-slate-400'
+                          }`}>
+                            {step.number}
+                          </div>
+                          <h3 className="text-lg font-bold text-slate-900 mb-2">
+                            {step.title}
+                          </h3>
+                          <p className="text-sm text-slate-600 leading-relaxed">
+                            {step.description}
+                          </p>
+                        </div>
+
+                        {/* Active Indicator */}
+                        {isActive && (
+                          <div className="absolute top-6 right-6 w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* Progress Indicator - Mobile */}
+              <div className="flex items-center justify-center gap-2 bg-white px-6 py-3 rounded-full shadow-lg border border-slate-100 mx-auto w-fit mt-8">
                 <div className="flex gap-1.5">
                   {workflowSteps.map((_, index) => (
                     <div
@@ -363,36 +465,36 @@ const WorkflowCycle = () => {
                   ))}
                 </div>
                 <span className="text-xs font-semibold text-slate-600 ml-2">
-                  Step {activeStep + 1}/6
+                  {activeStep + 1}/6
                 </span>
               </div>
             </div>
           </div>
 
           {/* Right: Tech Stack */}
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8 px-4 lg:px-0">
             <div>
-              <h3 className="text-3xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3 md:mb-4">
                 Powered by Modern Technology
               </h3>
-              <p className="text-lg text-slate-600 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
                 We leverage cutting-edge tools and frameworks to build scalable, high-performance applications that drive business growth.
               </p>
             </div>
 
             {/* Tech Grid */}
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-4 gap-3 sm:gap-4 md:gap-6">
               {techStack.map((tech, index) => (
                 <div
                   key={index}
                   className="group relative"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="aspect-square bg-white rounded-2xl flex items-center justify-center shadow-md border border-slate-100 transition-all duration-300 hover:shadow-xl hover:scale-110 hover:border-emerald-200 cursor-pointer">
+                  <div className="aspect-square bg-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-md border border-slate-100 transition-all duration-300 hover:shadow-xl hover:scale-110 hover:border-emerald-200 cursor-pointer p-2 sm:p-3">
                     <img 
                       src={tech.logo}
                       alt={tech.name}
-                      className="w-12 h-12 object-contain"
+                      className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain"
                     />
                   </div>
                   
@@ -407,46 +509,58 @@ const WorkflowCycle = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
+            <div className="grid grid-cols-3 gap-4 md:gap-6 pt-6 md:pt-8">
               <div className="text-center">
-                <div className="text-4xl font-black text-slate-900 mb-2">500+</div>
-                <div className="text-sm font-medium text-slate-600">Projects Delivered</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 md:mb-2">500+</div>
+                <div className="text-xs sm:text-sm font-medium text-slate-600">Projects Delivered</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-black text-slate-900 mb-2">98%</div>
-                <div className="text-sm font-medium text-slate-600">Client Satisfaction</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 md:mb-2">98%</div>
+                <div className="text-xs sm:text-sm font-medium text-slate-600">Client Satisfaction</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-black text-slate-900 mb-2">15+</div>
-                <div className="text-sm font-medium text-slate-600">Years Experience</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1 md:mb-2">15+</div>
+                <div className="text-xs sm:text-sm font-medium text-slate-600">Years Experience</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* CTA */}
-        <div className="relative">
-          <div className="bg-slate-900 rounded-3xl p-16 text-center relative overflow-hidden">
+        <div className="relative px-4 lg:px-0">
+          <div className="bg-slate-900 rounded-2xl md:rounded-3xl p-8 md:p-16 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/10 to-blue-600/10" />
-            <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-emerald-500/10 rounded-full blur-3xl" />
             
             <div className="relative">
-              <h3 className="text-4xl font-bold text-white mb-4">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4">
                 Ready to Start Your Project?
               </h3>
-              <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-slate-300 mb-6 md:mb-8 max-w-2xl mx-auto">
                 Let's transform your vision into reality with our proven development process
               </p>
               
               <button
-        onClick={() => router.push("/contact-us")} // ⬅ redirect added
-        className="group inline-flex items-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-      >
-        Get Free Consultation
-                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </button>
+  onClick={() => router.push("/contact-us")}
+  className="group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 text-black text-sm sm:text-base font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+  style={{ backgroundColor: "#25ccad" }} // ← BRAND COLOR APPLIED
+>
+  Get Free Consultation
+  <svg
+    className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M17 8l4 4m0 0l-4 4m4-4H3"
+    />
+  </svg>
+</button>
+
             </div>
           </div>
         </div>

@@ -1,8 +1,8 @@
 "use client";
 
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer"; // ← ADD THIS
 import { useState } from "react";
 
 export default function RootLayout({ children }) {
@@ -11,12 +11,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="antialiased">
-        <ClientLayoutWrapper>
-          <Navbar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
+        <Navbar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
 
-          {/* Hide Hero/background when mobile menu is open */}
-          {!mobileOpen && children}
-        </ClientLayoutWrapper>
+        {!mobileOpen && (
+          <>
+            {children}
+            <Footer />  {/* ← FOOTER WILL NOW SHOW */}
+          </>
+        )}
       </body>
     </html>
   );
