@@ -13,6 +13,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
   const [mobileAIServices, setMobileAIServices] = useState(false);
+  const [activeMobileAICategory, setActiveMobileAICategory] = useState(null);
   const [scrolled, setScrolled] = useState(false);
 
   const coreServices = [
@@ -147,10 +148,9 @@ export default function Navbar() {
                             <h4 className="text-[10px] font-bold tracking-[0.2em] text-[#25ccad] uppercase opacity-80">{category.title}</h4>
                             <div className="space-y-1">
                               {category.items.map((service, sIdx) => (
-                                <Link
+                                <div
                                   key={sIdx}
-                                  href={service.href}
-                                  className="group flex items-center gap-3 py-2 px-3 rounded-xl hover:bg-white/5 transition-all -ml-3"
+                                  className="group flex items-center gap-3 py-2 px-3 rounded-xl hover:bg-white/5 transition-all -ml-3 cursor-default"
                                 >
                                   <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-[#25ccad]/10 transition-all">
                                     <service.icon size={14} className="text-[#25ccad] group-hover:text-white transition-colors" />
@@ -158,7 +158,7 @@ export default function Navbar() {
                                   <span className="text-[13px] font-medium text-white/50 group-hover:text-white transition-colors">
                                     {service.label}
                                   </span>
-                                </Link>
+                                </div>
                               ))}
                             </div>
                           </div>
@@ -278,21 +278,37 @@ export default function Navbar() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="ml-4 mt-6 space-y-4 border-l-2 border-[#25ccad]/30 pl-6"
+                        className="ml-4 mt-6 space-y-6 border-l-2 border-[#25ccad]/30 pl-6"
                       >
                         {aiCategories.map((category, cIdx) => (
-                          <div key={cIdx} className="space-y-3">
-                            <p className="text-xs font-bold text-[#25ccad] uppercase tracking-widest opacity-60 mb-2">{category.title}</p>
-                            {category.items.map((service, idx) => (
-                              <Link
-                                key={idx}
-                                href={service.href}
-                                onClick={() => setMobileOpen(false)}
-                                className="flex items-center gap-3 py-1 text-lg font-medium text-white/50 active:text-[#25ccad]"
-                              >
-                                {service.label}
-                              </Link>
-                            ))}
+                          <div key={cIdx} className="space-y-4">
+                            <button
+                              onClick={() => setActiveMobileAICategory(activeMobileAICategory === cIdx ? null : cIdx)}
+                              className="flex items-center justify-between w-full text-left group"
+                            >
+                              <p className="text-xs font-bold text-[#25ccad] uppercase tracking-widest opacity-60">{category.title}</p>
+                              <ChevronRight size={16} className={`text-[#25ccad] transition-transform duration-300 ${activeMobileAICategory === cIdx ? "rotate-90" : ""}`} />
+                            </button>
+
+                            <AnimatePresence>
+                              {activeMobileAICategory === cIdx && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  className="space-y-3 overflow-hidden"
+                                >
+                                  {category.items.map((service, idx) => (
+                                    <div
+                                      key={idx}
+                                      className="flex items-center gap-3 py-1 text-lg font-medium text-white/50 active:text-[#25ccad] transition-colors cursor-default"
+                                    >
+                                      {service.label}
+                                    </div>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
                           </div>
                         ))}
                       </motion.div>
