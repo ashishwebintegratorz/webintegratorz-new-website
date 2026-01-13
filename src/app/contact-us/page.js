@@ -17,7 +17,12 @@ import {
   Globe
 } from 'lucide-react';
 
+import Breadcrumbs from '@/components/Breadcrumbs';
+
 export default function ContactUsPage() {
+  const breadcrumbItems = [
+    { label: 'Contact Us', href: '/contact-us' }
+  ];
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -88,6 +93,8 @@ export default function ContactUsPage() {
           >
             <div className="space-y-10">
               <div>
+                <Breadcrumbs items={breadcrumbItems} />
+
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -99,13 +106,13 @@ export default function ContactUsPage() {
                 </motion.div>
 
                 <h1 className="text-6xl md:text-8xl font-black leading-[0.95] tracking-tighter mb-10">
-                  Fuel your <br />
+                  Connect with <br />
                   <span className="text-[#25ccad] relative">
-                    Digital
+                    Webintegratorz.
                     <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#25ccad]/20" viewBox="0 0 100 10" preserveAspectRatio="none">
                       <path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="8" />
                     </svg>
-                  </span> Vision.
+                  </span>
                 </h1>
 
                 <p className="text-xl text-slate-500 max-w-lg leading-relaxed font-medium">

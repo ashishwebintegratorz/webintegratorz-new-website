@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import { Layers, Zap, Shield, Globe, CheckCircle2, ArrowRight, Code, Layout, Sparkles, Database, Lock, Gauge } from 'lucide-react';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function CMSSolutionsPage() {
   const router = useRouter();
@@ -86,43 +87,44 @@ export default function CMSSolutionsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
-      
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 right-10 w-72 h-72 bg-[#27ccae]/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute bottom-20 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <Breadcrumbs items={[{ label: 'Services', href: '/services' }, { label: 'SaaS & CMS', href: '/services/cms-solution' }]} />
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <div className={`${mounted ? 'animate-fadeIn' : 'opacity-0'}`}>
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#27ccae]/10 border border-[#27ccae]/30 rounded-full text-sm mb-8">
                 <Sparkles className="w-4 h-4 text-[#27ccae]" />
-                <span className="text-[#27ccae] font-medium">Professional CMS Solutions</span>
+                <span className="text-[#27ccae] font-medium">Enterprise SaaS & CMS Experts</span>
               </div>
-              
+
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
-                Powerful CMS 
+                Architecting Scalable
                 <span className="block mt-2 bg-gradient-to-r from-[#27ccae] via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                  Built For Scale
+                  Enterprise SaaS & CMS
                 </span>
               </h1>
-              
+
               <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto mb-8">
                 Take control of your content with enterprise-grade CMS solutions. Fast, secure, and built to grow with your business.
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center">
                 <button
-  onClick={() => router.push("/contact-us")}
-  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
->
-  Get Started
-  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-</button>
+                  onClick={() => router.push("/contact-us")}
+                  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+                >
+                  Get Started
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
 
-                
+
               </div>
             </div>
           </div>
@@ -205,7 +207,7 @@ export default function CMSSolutionsPage() {
             <h3 className="text-2xl font-bold mb-2">Platforms We Master</h3>
             <p className="text-slate-400">Expert implementation across all major CMS platforms</p>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-6">
             {platforms.map((platform, idx) => (
               <div key={idx} className="px-8 py-4 bg-slate-800/50 border border-[#27ccae]/20 rounded-xl hover:border-[#27ccae]/50 hover:bg-slate-800 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#27ccae]/20 flex items-center gap-3">
@@ -217,17 +219,17 @@ export default function CMSSolutionsPage() {
         </div>
       </section>
 
-     
 
-           
-      
+
+
+
 
       {/* CTA Section */}
       <section className="py-20 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#27ccae]/20 to-emerald-500/20 blur-3xl"></div>
         </div>
-        
+
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
           <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-12 border border-[#27ccae]/30 shadow-2xl shadow-[#27ccae]/20">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
@@ -240,21 +242,21 @@ export default function CMSSolutionsPage() {
               Let's build a CMS solution that scales with your ambitions. Get started with a free consultation.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-             <button
-  onClick={() => router.push("/contact-us")}
-  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
->
-  Get Started Now
-  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-</button>
+              <button
+                onClick={() => router.push("/contact-us")}
+                className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+              >
+                Get Started Now
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
 
-             
+
             </div>
           </div>
         </div>
       </section>
 
-     
+
     </div>
   );
 }

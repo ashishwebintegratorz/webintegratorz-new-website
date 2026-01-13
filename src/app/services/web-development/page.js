@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from "next/navigation";  // ✔ added
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function WebDevelopmentPage() {
   const router = useRouter();  // ✔ added
@@ -11,6 +12,11 @@ export default function WebDevelopmentPage() {
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const breadcrumbItems = [
+    { label: 'Services', href: '/services' },
+    { label: 'Web Development', href: '/services/web-development' }
+  ];
 
   const technologies = {
     mern: [
@@ -105,20 +111,21 @@ export default function WebDevelopmentPage() {
         </div>
 
         <div className={`webdev-hero-content ${isVisible ? 'visible' : ''}`}>
+          <Breadcrumbs items={breadcrumbItems} />
           <div className="webdev-badge">
             <span className="webdev-badge-dot"></span>
             MERN Stack Specialists
           </div>
           <h1 className="webdev-hero-title">
-            Web Development
-            <span className="webdev-title-highlight"> That Scales</span>
+            Engineering High-Performance,
+            <span className="webdev-title-highlight"> Scalable Web Apps</span>
           </h1>
           <p className="webdev-hero-subtitle">
-            Building powerful, modern web applications with React, Node.js, and cutting-edge technologies. 
+            Building powerful, modern web applications with React, Node.js, and cutting-edge technologies.
             From concept to deployment, we deliver enterprise-grade solutions.
           </p>
           <div className="webdev-hero-buttons">
-           
+
             <button className="webdev-btn webdev-btn-secondary">
               View Our Work
             </button>
@@ -153,7 +160,7 @@ export default function WebDevelopmentPage() {
             <span className="webdev-code-dot" style={{ background: '#27c93f' }}></span>
           </div>
           <pre className="webdev-code-content">
-{`import { useState } from 'react';
+            {`import { useState } from 'react';
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -192,19 +199,19 @@ const App = () => {
           </div>
 
           <div className="webdev-tech-tabs">
-            <button 
+            <button
               className={`webdev-tab ${activeTab === 'mern' ? 'active' : ''}`}
               onClick={() => setActiveTab('mern')}
             >
               MERN Stack
             </button>
-            <button 
+            <button
               className={`webdev-tab ${activeTab === 'frontend' ? 'active' : ''}`}
               onClick={() => setActiveTab('frontend')}
             >
               Frontend
             </button>
-            <button 
+            <button
               className={`webdev-tab ${activeTab === 'backend' ? 'active' : ''}`}
               onClick={() => setActiveTab('backend')}
             >
@@ -214,8 +221,8 @@ const App = () => {
 
           <div className="webdev-tech-grid">
             {technologies[activeTab].map((tech, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="webdev-tech-card"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
@@ -242,8 +249,8 @@ const App = () => {
 
           <div className="webdev-services-grid">
             {services.map((service, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="webdev-service-card"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -265,30 +272,30 @@ const App = () => {
         </div>
       </section>
 
-      
+
       {/* CTA Section */}
-     <section className="webdev-cta">
-      <div className="webdev-cta-bg">
-        <div className="webdev-cta-pattern"></div>
-      </div>
-      <div className="webdev-container">
-        <div className="webdev-cta-content">
-          <h2 className="webdev-cta-title">Ready to Build Something Amazing?</h2>
-          <p className="webdev-cta-text">
-            Let&apos;s discuss your project and create a solution that exceeds expectations
-          </p>
-          <div className="webdev-cta-buttons">
-            <button
-              onClick={() => router.push("/contact-us")}
-              className="webdev-btn webdev-btn-primary webdev-btn-large webdev-btn-large"
-            >
-              Get in Touch
-              <span className="webdev-btn-arrow">→</span>
-            </button>
+      <section className="webdev-cta">
+        <div className="webdev-cta-bg">
+          <div className="webdev-cta-pattern"></div>
+        </div>
+        <div className="webdev-container">
+          <div className="webdev-cta-content">
+            <h2 className="webdev-cta-title">Ready to Build Something Amazing?</h2>
+            <p className="webdev-cta-text">
+              Let&apos;s discuss your project and create a solution that exceeds expectations
+            </p>
+            <div className="webdev-cta-buttons">
+              <button
+                onClick={() => router.push("/contact-us")}
+                className="webdev-btn webdev-btn-primary webdev-btn-large webdev-btn-large"
+              >
+                Get in Touch
+                <span className="webdev-btn-arrow">→</span>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
 }

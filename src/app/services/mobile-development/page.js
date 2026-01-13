@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import { Smartphone, Code2, Zap, Shield, Users, ArrowRight, Star, CheckCircle2, Globe, Sparkles, Rocket, ChevronRight } from 'lucide-react';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function MobileDevelopmentpage() {
   const router = useRouter();
@@ -85,45 +86,46 @@ export default function MobileDevelopmentpage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
-      
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#27ccae]/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#27ccae]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <Breadcrumbs items={[{ label: 'Services', href: '/services' }, { label: 'Mobile Development', href: '/services/mobile-development' }]} />
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className={`space-y-8 ${mounted ? 'animate-slideInLeft' : 'opacity-0'}`}>
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#27ccae]/10 border border-[#27ccae]/30 rounded-full text-sm">
                 <Sparkles className="w-4 h-4 text-[#27ccae]" />
-                <span className="text-[#27ccae] font-medium">World-Class Mobile Development</span>
+                <span className="text-[#27ccae] font-medium">Leading Mobile App Development Company in India</span>
               </div>
-              
+
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-                Transform Your
+                Building High-Performance,
                 <span className="block mt-2 bg-gradient-to-r from-[#27ccae] via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                  Vision Into Reality
+                  Scalable Mobile Apps
                 </span>
               </h1>
-              
+
               <p className="text-xl text-slate-300 leading-relaxed">
                 We craft exceptional mobile experiences that captivate users and drive business growth. From concept to App Store, we're your trusted partner.
               </p>
 
               <div className="flex flex-wrap gap-4">
-               <button
-  onClick={() => router.push("/contact-us")}
-  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
->
-  Get Started
-  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-</button>
+                <button
+                  onClick={() => router.push("/contact-us")}
+                  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+                >
+                  Get Started
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
 
-               
+
               </div>
 
               {/* Trust Indicators */}
@@ -163,7 +165,7 @@ export default function MobileDevelopmentpage() {
                       </div>
                       <div className="w-full h-1 bg-white/30 rounded-full"></div>
                       <div className="grid grid-cols-2 gap-4 w-full">
-                        {[1,2,3,4].map((i) => (
+                        {[1, 2, 3, 4].map((i) => (
                           <div key={i} className="aspect-square bg-white/20 rounded-2xl"></div>
                         ))}
                       </div>
@@ -207,7 +209,7 @@ export default function MobileDevelopmentpage() {
               <div
                 key={idx}
                 className="group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-8 border border-[#27ccae]/10 hover:border-[#27ccae]/30 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#27ccae]/20"
-                style={{animationDelay: `${idx * 150}ms`}}
+                style={{ animationDelay: `${idx * 150}ms` }}
               >
                 {/* Icon */}
                 <div className={`w-14 h-14 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
@@ -220,7 +222,7 @@ export default function MobileDevelopmentpage() {
                     <h3 className="text-2xl font-bold mb-1">{service.title}</h3>
                     <p className="text-sm text-[#27ccae] font-medium">{service.subtitle}</p>
                   </div>
-                  
+
                   <p className="text-slate-400 leading-relaxed">
                     {service.description}
                   </p>
@@ -237,7 +239,7 @@ export default function MobileDevelopmentpage() {
 
                   {/* CTA */}
                   <button className="mt-6 flex items-center gap-2 text-[#27ccae] font-semibold group-hover:gap-3 transition-all">
-                    Learn More 
+                    Learn More
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -257,7 +259,7 @@ export default function MobileDevelopmentpage() {
             <h3 className="text-2xl font-bold mb-2">Powered By Cutting-Edge Technology</h3>
             <p className="text-slate-400">We leverage the best tools to build exceptional apps</p>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-6">
             {techStack.map((tech, idx) => (
               <div key={idx} className="px-8 py-4 bg-slate-800/50 border border-[#27ccae]/20 rounded-xl hover:border-[#27ccae]/50 hover:bg-slate-800 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#27ccae]/20">
@@ -339,11 +341,11 @@ export default function MobileDevelopmentpage() {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#27ccae]/20 to-emerald-500/20 blur-3xl"></div>
         </div>
-        
+
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
           <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-12 border border-[#27ccae]/30 shadow-2xl shadow-[#27ccae]/20">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Ready to Build Something 
+              Ready to Build Something
               <span className="block mt-2 bg-gradient-to-r from-[#27ccae] to-emerald-400 bg-clip-text text-transparent">
                 Extraordinary?
               </span>
@@ -351,12 +353,12 @@ export default function MobileDevelopmentpage() {
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
               Let's transform your idea into a mobile app that users will love. Get a free consultation today.
             </p>
-           
+
           </div>
         </div>
       </section>
 
-     
+
     </div>
   );
 }

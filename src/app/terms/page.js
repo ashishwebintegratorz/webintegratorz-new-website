@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { FileText, Gavel, Scale, AlertCircle, Clock, Globe, Laptop, ArrowRight } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const TermsAndConditions = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -52,6 +53,7 @@ const TermsAndConditions = () => {
             <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#25ccad] opacity-[0.03] rounded-full blur-[100px] -z-0" />
 
             <div className="relative z-10 max-w-4xl mx-auto px-6">
+                <Breadcrumbs items={[{ label: 'Terms & Conditions', href: '/terms' }]} />
                 {/* Header Section */}
                 <div className={`transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#25ccad]/10 text-[#25ccad] rounded-full mb-8 text-xs font-black tracking-widest uppercase border border-[#25ccad]/20">

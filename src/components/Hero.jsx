@@ -70,11 +70,10 @@ export default function HeroSection({ mobileOpen }) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.15] md:leading-tight text-white max-w-3xl"
+              className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.15] md:leading-tight text-white max-w-4xl"
             >
-              Your Partner in <br className="hidden sm:block" />
-              Web, Mobile, SaaS &<br className="hidden sm:block" />
-              <span style={{ color: "#25ccad" }}>AI/ML Solutions</span>
+              A Top <span style={{ color: "#25ccad" }}>IT Company in India</span> <br className="hidden md:block" />
+              Powering Global Digital Transformation
             </motion.h1>
 
             <motion.p
@@ -82,14 +81,9 @@ export default function HeroSection({ mobileOpen }) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-6 md:mt-4 text-base md:text-lg lg:text-xl leading-relaxed text-white/90 max-w-2xl"
+              className="mt-6 md:mt-4 text-base md:text-lg lg:text-xl leading-relaxed text-white/90 max-w-3xl"
             >
-              <span style={{ color: "#25ccad", fontWeight: 600 }}>At Webintegratorz</span>{" "}
-              we empower businesses globally with{" "}
-              <span className="text-white md:text-[#25ccad] md:font-medium">
-                Web, Mobile, SaaS & AI/ML solutions
-              </span>{" "}
-              that scale securely and perform seamlessly — helping brands grow with confidence.
+              We deliver <span className="text-white md:text-[#25ccad] md:font-medium">AI-powered, scalable, and future-ready digital solutions</span> for startups and enterprises across global markets, ensuring innovation and excellence in every project.
             </motion.p>
 
             {/* Button with Arrow */}

@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, Target, Megaphone, Search, Share2, BarChart3, ArrowRight, CheckCircle2, Sparkles, Zap, Users, Globe, Mail, Instagram, MessageCircle } from 'lucide-react';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function DigitalMarketingPage() {
   const router = useRouter();
@@ -112,44 +113,45 @@ export default function DigitalMarketingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
-      
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-96 h-96 bg-[#27ccae]/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#27ccae]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <Breadcrumbs items={[{ label: 'Services', href: '/services' }, { label: 'Digital Marketing', href: '/services/digital-marketing' }]} />
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className={`space-y-8 ${mounted ? 'animate-slideInLeft' : 'opacity-0'}`}>
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#27ccae]/10 border border-[#27ccae]/30 rounded-full text-sm">
                 <Sparkles className="w-4 h-4 text-[#27ccae]" />
-                <span className="text-[#27ccae] font-medium">Results-Driven Marketing Agency</span>
+                <span className="text-[#27ccae] font-medium">Results-Driven Digital Marketing Agency</span>
               </div>
-              
+
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-                Grow Your Business
+                Data-Driven Digital Marketing
                 <span className="block mt-2 bg-gradient-to-r from-[#27ccae] via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                  Exponentially
+                  & SEO Growth Strategies
                 </span>
               </h1>
-              
+
               <p className="text-xl text-slate-300 leading-relaxed">
                 Data-driven digital marketing strategies that deliver measurable results. More traffic, more leads, more revenue.
               </p>
 
               <div className="flex flex-wrap gap-4">
-               <button
-  onClick={() => router.push("/contact-us")}
-  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
->
-  Get Started
-  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-</button>
+                <button
+                  onClick={() => router.push("/contact-us")}
+                  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+                >
+                  Get Started
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
 
-                
+
               </div>
 
               {/* Stats */}
@@ -189,8 +191,8 @@ export default function DigitalMarketingPage() {
                     <svg className="w-full h-full" viewBox="0 0 400 160" preserveAspectRatio="none">
                       <defs>
                         <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor="#27ccae" stopOpacity="0.3"/>
-                          <stop offset="100%" stopColor="#27ccae" stopOpacity="0.05"/>
+                          <stop offset="0%" stopColor="#27ccae" stopOpacity="0.3" />
+                          <stop offset="100%" stopColor="#27ccae" stopOpacity="0.05" />
                         </linearGradient>
                       </defs>
                       <path
@@ -291,7 +293,7 @@ export default function DigitalMarketingPage() {
             <h3 className="text-2xl font-bold mb-2">Multi-Channel Marketing</h3>
             <p className="text-slate-400">Reach your audience wherever they are</p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {channels.map((channel, idx) => (
               <div key={idx} className="group bg-gradient-to-br from-slate-800/30 to-slate-900/30 rounded-xl p-6 border border-[#27ccae]/10 hover:border-[#27ccae]/30 transition-all duration-300 hover:-translate-y-1">
@@ -384,7 +386,7 @@ export default function DigitalMarketingPage() {
               <p className="text-xl text-slate-300 leading-relaxed">
                 We don't just run campaigns—we build growth engines that scale with your business.
               </p>
-              
+
               <div className="space-y-4 pt-4">
                 {benefits.map((benefit, idx) => (
                   <div key={idx} className="flex items-start gap-3">
@@ -426,10 +428,10 @@ export default function DigitalMarketingPage() {
         </div>
       </section>
 
-      
-        
-      
-     
+
+
+
+
     </div>
   );
 }

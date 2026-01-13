@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import { Palette, Figma, Sparkles, ArrowRight, CheckCircle2, Zap, Users, Eye, Pencil, Layout, Smartphone, Monitor, Layers } from 'lucide-react';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function UIUXDesignPage() {
   const router = useRouter();
@@ -113,44 +114,45 @@ export default function UIUXDesignPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
-      
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-96 h-96 bg-[#27ccae]/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#27ccae]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <Breadcrumbs items={[{ label: 'Services', href: '/services' }, { label: 'UI/UX Design', href: '/services/ui-ux' }]} />
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className={`space-y-8 ${mounted ? 'animate-slideInLeft' : 'opacity-0'}`}>
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#27ccae]/10 border border-[#27ccae]/30 rounded-full text-sm">
                 <Sparkles className="w-4 h-4 text-[#27ccae]" />
-                <span className="text-[#27ccae] font-medium">Award-Winning Design Studio</span>
+                <span className="text-[#27ccae] font-medium">Leading UI/UX Design Company in India</span>
               </div>
-              
+
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-                Design That
+                Strategic UI/UX Design
                 <span className="block mt-2 bg-gradient-to-r from-[#27ccae] via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                  Drives Results
+                  for Digital Excellence
                 </span>
               </h1>
-              
+
               <p className="text-xl text-slate-300 leading-relaxed">
                 We craft beautiful, user-centered experiences that don't just look good—they solve real problems and drive measurable business outcomes.
               </p>
 
               <div className="flex flex-wrap gap-4">
                 <button
-  onClick={() => router.push("/contact-us")}
-  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
->
-  Get Started
-  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-</button>
+                  onClick={() => router.push("/contact-us")}
+                  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+                >
+                  Get Started
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
 
-               
+
               </div>
 
               {/* Stats */}
@@ -182,7 +184,7 @@ export default function UIUXDesignPage() {
                     <div className="h-32 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-2xl flex items-center justify-center">
                       <Palette className="w-16 h-16 text-white opacity-50" />
                     </div>
-                    
+
                     <div className="grid grid-cols-3 gap-3">
                       <div className="h-20 bg-slate-800 rounded-xl border border-[#27ccae]/20"></div>
                       <div className="h-20 bg-slate-800 rounded-xl border border-[#27ccae]/20"></div>
@@ -266,7 +268,7 @@ export default function UIUXDesignPage() {
               <h3 className="text-2xl font-bold mb-2">What We Design</h3>
               <p className="text-slate-400">Versatile expertise across all digital platforms</p>
             </div>
-            
+
             <div className="grid md:grid-cols-4 gap-6">
               {capabilities.map((capability, idx) => (
                 <div key={idx} className="flex items-center gap-3 p-4 bg-slate-800/50 rounded-xl border border-[#27ccae]/10 hover:border-[#27ccae]/30 transition-all duration-300 hover:scale-105">
@@ -351,7 +353,7 @@ export default function UIUXDesignPage() {
             <h3 className="text-2xl font-bold mb-2">Design Tools We Master</h3>
             <p className="text-slate-400">Industry-leading software for world-class results</p>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-6">
             {tools.map((tool, idx) => (
               <div key={idx} className="px-8 py-4 bg-slate-800/50 border border-[#27ccae]/20 rounded-xl hover:border-[#27ccae]/50 hover:bg-slate-800 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#27ccae]/20">
@@ -367,13 +369,13 @@ export default function UIUXDesignPage() {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#27ccae]/20 to-emerald-500/20 blur-3xl"></div>
         </div>
-        
+
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
           <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-12 border border-[#27ccae]/30 shadow-2xl shadow-[#27ccae]/20">
             <div className="w-16 h-16 bg-gradient-to-br from-[#27ccae] to-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
               <Palette className="w-8 h-8 text-white" />
             </div>
-            
+
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               Let's Create Something
               <span className="block mt-2 bg-gradient-to-r from-[#27ccae] to-emerald-400 bg-clip-text text-transparent">
@@ -385,20 +387,20 @@ export default function UIUXDesignPage() {
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <button
-  onClick={() => router.push("/contact-us")}
-  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
->
-  Get Started
-  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-</button>
+                onClick={() => router.push("/contact-us")}
+                className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+              >
+                Get Started
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
 
-             
+
             </div>
           </div>
         </div>
       </section>
 
-      
+
     </div>
   );
 }
