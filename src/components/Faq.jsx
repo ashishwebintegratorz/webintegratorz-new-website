@@ -80,7 +80,7 @@ export default function Faq() {
                 }`}
             >
               <div className="overflow-hidden">
-                <p className="text-lg text-black/90 leading-relaxed">
+                <p className="text-base md:text-lg text-black/90 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>

@@ -34,6 +34,7 @@ export default function HeroSection({ mobileOpen }) {
             className="absolute inset-0 w-full h-full object-cover brightness-90"
           >
             <source src="/herovedio.webm" type="video/webm" />
+            <source src="/hero.mp4" type="video/mp4" />
           </video>
           {/* Mobile-only overlay for better readability */}
           <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />

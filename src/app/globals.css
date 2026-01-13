@@ -34,14 +34,17 @@ body {
     --radius: 0.5rem;
   }
 
+  /* Improved Selection */
+  ::selection {
+    background-color: #25ccad;
+    color: #000;
+  }
+
   .dark {
     --background: 222 47% 11%;
     --foreground: 0 0% 100%;
   }
 }
-
-
-
 
 /* ======================================================
    BASE STYLES
@@ -49,11 +52,49 @@ body {
 @layer base {
   * {
     @apply border-border;
+    outline-color: #25ccad;
+    /* Better tap behavior on mobile */
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
     @apply bg-background text-foreground;
     scroll-behavior: smooth;
+    /* Optimized font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Improved Touch Targets */
+  button,
+  a {
+    touch-action: manipulation;
+  }
+
+  /* Focus states for accessibility */
+  :focus-visible {
+    outline: 2px solid #25ccad;
+    outline-offset: 2px;
+  }
+
+  /* Custom Premium Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #000;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 10px;
+    border: 2px solid #000;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #25ccad;
   }
 }
 
@@ -331,7 +372,8 @@ body {
   animation: contact-float 3s ease-in-out infinite;
 }
 
-.contact-logo h1 {
+.contact-logo h1,
+.contact-logo .logo-text {
   font-family: 'Syne', sans-serif;
   font-size: 32px;
   font-weight: 800;
