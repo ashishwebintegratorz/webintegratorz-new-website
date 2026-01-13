@@ -118,11 +118,11 @@ const Casestudies = () => {
             </svg>
           </div>
 
-          <h1 className="section-title">
+          <h2 className="section-title">
             What It's Like To Build With
             <br />
             <span className="brand-name">Webintegratorz</span>
-          </h1>
+          </h2>
         </div>
 
         {/* Carousel Wrapper */}

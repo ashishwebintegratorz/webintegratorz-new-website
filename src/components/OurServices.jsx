@@ -104,13 +104,12 @@ export default function ServicesPage() {
             Our Services
           </motion.span>
 
-          <h1 className="text-5xl sm:text-6xl font-extrabold text-slate-900 mb-6">
+          <h2 className="text-5xl sm:text-6xl font-extrabold text-slate-900 mb-6">
             Transform Your Business with{' '}
             <span style={{ color: "#25ccad", fontWeight: 700 }}>
               Expert Solutions
             </span>
-
-          </h1>
+          </h2>
 
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             Comprehensive digital services designed to help your business grow,

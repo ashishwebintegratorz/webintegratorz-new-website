@@ -97,10 +97,10 @@ export default function AboutPage() {
             <div className="contact-container">
                 <header className={`contact-header ${isVisible ? 'visible' : ''}`}>
                     <div className="contact-logo">
-                        <h1>webintegratorz</h1>
+                        <div className="text-3xl font-black tracking-tighter text-white lowercase">webintegratorz</div>
                         <div className="contact-tagline">We Innovate, Build and Excel</div>
                     </div>
-                    <h2 className="text-4xl xs:text-5xl md:text-6xl font-extrabold px-4">Let&apos;s Build Something Amazing Together</h2>
+                    <h1 className="text-4xl xs:text-5xl md:text-6xl font-extrabold px-4 text-white">Let&apos;s Build Something Amazing Together</h1>
                     <p className="contact-subtitle px-4 mt-4">
                         We&apos;re here to transform your vision into reality with cutting-edge web, mobile, SaaS, and AI/ML solutions.
                     </p>

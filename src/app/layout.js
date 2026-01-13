@@ -2,8 +2,8 @@ import "./globals.css";
 import ClientLayoutWrapper from "../components/ClientLayoutWrapper";
 
 export const metadata = {
-    title: "Top IT Company in India | AI, MERN Stack & Enterprise Software Development",
-    description: "Webintegratorz Technologies is a top IT company in India delivering AI-powered, MERN stack, and enterprise software solutions. Trusted global IT outsourcing partner for UAE, USA, Europe, Japan & India.",
+    title: "Top IT Company in India | AI & Software Development",
+    description: "Webintegratorz Technologies is a leading IT company in India specializing in AI, MERN stack, and custom software development for global enterprises.",
     keywords: [
         "Top IT Company in India",
         "IT Outsourcing India",
@@ -20,6 +20,9 @@ export const metadata = {
     ],
     viewport: "width=device-width, initial-scale=1",
     robots: "index, follow",
+    alternates: {
+        canonical: "https://webintegratorz.com",
+    },
 };
 
 export default function RootLayout({ children }) {
