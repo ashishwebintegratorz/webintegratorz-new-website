@@ -5,11 +5,11 @@
   "description": "Next.js project",
   "license": "ISC",
   "scripts": {
-    "dev": "node server.js",
-    "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "lint": "eslint"
-  },
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "eslint"
+},
   "dependencies": {
     "@next/font": "^14.2.15",
     "@studio-freight/lenis": "^1.0.42",

@@ -30,9 +30,9 @@ export default function NewsUpdates() {
     category: 'Partnership',
     image: '/api/placeholder/800/500',
     stats: [
-      { value: '100+', label: 'Projects' },
-      { value: '50+', label: 'Clients' },
-      { value: '10+', label: 'Years' }
+      { value: 'Global', label: 'Trusted Company' },
+      { value: '100%', label: 'Client Satisfaction' },
+      { value: '100%', label: 'Job Success' }
     ]
   };
 
@@ -80,7 +80,7 @@ export default function NewsUpdates() {
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Grid Pattern */}
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `linear-gradient(#27ccae 1px, transparent 1px), linear-gradient(90deg, #27ccae 1px, transparent 1px)`,
@@ -88,14 +88,14 @@ export default function NewsUpdates() {
             animation: 'gridMove 20s linear infinite'
           }}
         />
-        
+
         {/* Gradient Orbs */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#27ccae] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob" />
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000" />
         <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000" />
-        
+
         {/* Mouse Follower Glow */}
-        <div 
+        <div
           className="absolute w-[600px] h-[600px] pointer-events-none transition-all duration-300 ease-out"
           style={{
             left: mousePosition.x - 300,
@@ -162,41 +162,44 @@ export default function NewsUpdates() {
       `}</style>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
-        
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
+
         {/* Header Section */}
-        <div className="text-center mb-20 animate-slideUp">
+        <div className="text-center mb-12 md:mb-20 animate-slideUp">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#27ccae]/10 border border-[#27ccae]/30 rounded-full mb-6 backdrop-blur-sm">
             <Sparkles className="w-4 h-4 text-[#27ccae]" />
             <span className="text-sm font-semibold text-[#27ccae] tracking-wider">LATEST UPDATES</span>
           </div>
-          
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-none">
+
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-[1.1] md:leading-none">
             <span className="bg-gradient-to-r from-white via-[#27ccae] to-cyan-400 bg-clip-text text-transparent">
               What's New
             </span>
           </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+
+          <p className="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed px-4 md:px-0">
             Stay ahead with our latest innovations, partnerships, and achievements in the world of technology
           </p>
         </div>
 
         {/* Featured News - Datatonic Collaboration */}
-        <div 
-          className="relative mb-20 group animate-slideUp"
+        <a
+          href="https://datatoniq.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative block mb-20 group animate-slideUp cursor-pointer"
           style={{ animationDelay: '0.2s' }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-[#27ccae] to-cyan-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
-          
+
           <div className="relative bg-gradient-to-br from-gray-900/90 via-gray-900/50 to-gray-900/90 backdrop-blur-xl border border-[#27ccae]/30 rounded-3xl overflow-hidden">
             {/* Shimmer Effect */}
             <div className="absolute inset-0 shimmer pointer-events-none" />
-            
-            <div className="grid lg:grid-cols-2 gap-8 p-8 lg:p-12">
+
+            <div className="grid lg:grid-cols-2 gap-8 p-6 md:p-8 lg:p-12">
               {/* Left Content */}
               <div className="space-y-6">
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
                   <div className="flex items-center gap-2 px-4 py-2 bg-[#27ccae]/20 border border-[#27ccae] rounded-full">
                     <TrendingUp className="w-4 h-4 text-[#27ccae]" />
                     <span className="text-sm font-bold text-[#27ccae] uppercase tracking-wider">
@@ -209,16 +212,21 @@ export default function NewsUpdates() {
                   </div>
                 </div>
 
-                <div>
-                  <h2 className="text-5xl lg:text-6xl font-black mb-3 leading-none">
-                    Collab with <span className="text-[#27ccae]">Datatonic</span>
-                  </h2>
-                  <p className="text-xl text-gray-400 font-medium">
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-xl p-2 flex items-center justify-center flex-shrink-0">
+                      <img src="/datatoniqlogo.png" alt="Datatoniq Logo" className="w-full h-auto object-contain" />
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight md:leading-none">
+                      Collab with <span className="text-[#27ccae]">Datatoniq</span>
+                    </h2>
+                  </div>
+                  <p className="text-lg md:text-xl text-gray-400 font-medium">
                     {featuredNews.subtitle}
                   </p>
                 </div>
 
-                <p className="text-lg text-gray-300 leading-relaxed">
+                <p className="text-base md:text-lg text-gray-300 leading-relaxed">
                   {featuredNews.description}
                 </p>
 
@@ -228,7 +236,7 @@ export default function NewsUpdates() {
                     Collaboration Highlights
                   </h3>
                   {featuredNews.highlights.map((highlight, index) => (
-                    <div 
+                    <div
                       key={index}
                       className="flex items-start gap-3 text-gray-300"
                     >
@@ -239,30 +247,29 @@ export default function NewsUpdates() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-4 pt-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 pt-6">
                   {featuredNews.stats.map((stat, index) => (
-                    <div 
+                    <div
                       key={index}
-                      className="text-center p-4 bg-black/40 rounded-xl border border-gray-800/50"
+                      className={`text-center p-3 md:p-4 bg-black/40 rounded-xl border border-gray-800/50 ${index === 2 ? 'col-span-2 sm:col-span-1' : ''}`}
                     >
-                      <div className="text-3xl font-black text-[#27ccae] mb-1">
+                      <div className="text-2xl md:text-3xl font-black text-[#27ccae] mb-1">
                         {stat.value}
                       </div>
-                      <div className="text-xs text-gray-400 uppercase tracking-wider">
+                      <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-wider">
                         {stat.label}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                {/* CTA Button */}
-              
+
               </div>
 
               {/* Right Visual */}
               <div className="relative lg:flex items-center justify-center hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#27ccae]/20 via-transparent to-cyan-500/20 rounded-2xl" />
-                
+
                 {/* Decorative Elements */}
                 <div className="relative w-full h-full flex items-center justify-center">
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -272,29 +279,25 @@ export default function NewsUpdates() {
                     <div className="w-80 h-80 border border-[#27ccae]/20 rounded-full" style={{ animation: 'float 6s ease-in-out infinite' }} />
                   </div>
                   <div className="relative z-10 text-center">
-                    <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-[#27ccae] to-cyan-500 rounded-3xl flex items-center justify-center transform rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-[#27ccae] to-cyan-500 rounded-3xl flex items-center justify-center transform rotate-12 group-hover:rotate-0 transition-all duration-500">
                       <Sparkles className="w-16 h-16 text-white" />
                     </div>
                     <div className="text-6xl font-black text-white/10 leading-none">
-                      NEW<br/>ERA
+                      NEW<br />ERA
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </a>
 
         {/* Recent Updates Grid */}
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           <div className="flex items-center justify-between animate-slideUp" style={{ animationDelay: '0.4s' }}>
-            <h2 className="text-4xl md:text-5xl font-black">
+            <h2 className="text-3xl md:text-5xl font-black">
               Recent <span className="text-[#27ccae]">Updates</span>
             </h2>
-            <button className="hidden md:flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all duration-300 group">
-              <span className="text-sm font-semibold">View All</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -310,7 +313,7 @@ export default function NewsUpdates() {
                 >
                   {/* Hover Glow */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${update.color} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl`} />
-                  
+
                   <div className="relative z-10 space-y-4">
                     <div className="flex items-start justify-between">
                       <div className={`p-3 bg-gradient-to-br ${update.color} rounded-xl`}>
@@ -334,19 +337,16 @@ export default function NewsUpdates() {
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-2 text-[#27ccae] font-semibold text-sm group-hover:gap-3 transition-all">
-                      <span>Learn More</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
+
                   </div>
 
                   {/* Animated Border */}
                   <div className={`absolute inset-0 rounded-2xl transition-opacity duration-300 ${activeCard === update.id ? 'opacity-100' : 'opacity-0'}`}>
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#27ccae] via-cyan-500 to-[#27ccae] opacity-50 blur-sm" 
-                         style={{ 
-                           backgroundSize: '200% 100%',
-                           animation: activeCard === update.id ? 'shimmer 2s linear infinite' : 'none'
-                         }} 
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#27ccae] via-cyan-500 to-[#27ccae] opacity-50 blur-sm"
+                      style={{
+                        backgroundSize: '200% 100%',
+                        animation: activeCard === update.id ? 'shimmer 2s linear infinite' : 'none'
+                      }}
                     />
                   </div>
                 </div>
@@ -354,9 +354,6 @@ export default function NewsUpdates() {
             })}
           </div>
         </div>
-
-       
-
       </div>
     </div>
   );

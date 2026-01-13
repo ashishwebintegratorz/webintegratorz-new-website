@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 
-export default function FAQSection() {
+export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
   const router = useRouter();
 
@@ -44,9 +44,9 @@ export default function FAQSection() {
 
   return (
     <section
-  className="w-full py-20 px-6 md:px-10"
-  style={{ backgroundColor: "#E9FAF6" }}
->
+      className="w-full py-20 px-6 md:px-10"
+      style={{ backgroundColor: "#ffffff" }}
+    >
 
 
       {/* Header */}
@@ -54,7 +54,7 @@ export default function FAQSection() {
         <h2 className="text-4xl md:text-5xl font-extrabold text-black mb-4">
           Frequently Asked Questions
         </h2>
-        <div className="w-20 h-[3px] bg-black/20 mx-auto rounded-full"></div>
+        <div className="w-20 h-[3px] bg-[#25ccad]/40 mx-auto rounded-full"></div>
       </div>
 
       {/* Accordion */}
@@ -64,22 +64,20 @@ export default function FAQSection() {
 
             <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              className="w-full flex justify-between items-center text-left"
+              className="w-full flex justify-between items-center text-left group"
             >
-              <span className="text-xl font-semibold text-black pr-6">
+              <span className="text-xl font-semibold text-black pr-6 group-hover:text-[#25ccad] transition-colors">
                 {faq.question}
               </span>
               <ChevronDown
-                className={`w-6 h-6 text-black transition-transform duration-300 ${
-                  openIndex === index ? "rotate-180" : ""
-                }`}
+                className={`w-6 h-6 text-black transition-all duration-300 group-hover:text-[#25ccad] ${openIndex === index ? "rotate-180" : ""
+                  }`}
               />
             </button>
 
             <div
-              className={`grid transition-all duration-300 ease-in-out ${
-                openIndex === index ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0"
-              }`}
+              className={`grid transition-all duration-300 ease-in-out ${openIndex === index ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0"
+                }`}
             >
               <div className="overflow-hidden">
                 <p className="text-lg text-black/90 leading-relaxed">
@@ -96,7 +94,8 @@ export default function FAQSection() {
       <div className="text-center mt-14">
         <button
           onClick={() => router.push("/contact-us")}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white font-semibold rounded-xl text-lg hover:opacity-90 transition"
+          className="inline-flex items-center gap-2 px-8 py-4 text-black font-bold rounded-xl text-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          style={{ backgroundColor: "#25ccad" }}
         >
           More Questions? Contact Us →
         </button>

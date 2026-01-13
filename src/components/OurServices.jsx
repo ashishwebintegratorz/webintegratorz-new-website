@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Globe, Cpu, ShoppingCart, Smartphone, Brain, LineChart, Bot, Settings, Palette, ShieldCheck } from 'lucide-react';
 
 export default function ServicesPage() {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -9,70 +10,70 @@ export default function ServicesPage() {
   const services = [
     {
       id: 1,
-      icon: '💻',
+      icon: Globe,
       title: 'Web Development',
       description:
         'Build high-performance, scalable websites using modern frameworks like React, Next.js, and Vue. Our expert team delivers responsive, SEO-optimized solutions that drive engagement and conversions. From landing pages to complex web applications, we ensure your digital presence stands out with cutting-edge technology and best engineering practices.',
     },
     {
       id: 2,
-      icon: '⚙️',
+      icon: Cpu,
       title: 'Custom Software & Product Development',
       description:
         'Transform your unique business requirements into powerful software solutions. We design and develop custom applications tailored to your workflows, ensuring seamless integration with existing systems. Our agile development process guarantees flexibility, scalability, and a product that evolves with your business needs.',
     },
     {
       id: 3,
-      icon: '🛒',
+      icon: ShoppingCart,
       title: 'E-commerce Development',
       description:
         'Launch and scale your online store with feature-rich e-commerce platforms built on Shopify, WooCommerce, or custom solutions. We optimize every aspect—from checkout flows to inventory management—ensuring speed, security, and an exceptional shopping experience that maximizes your sales and customer satisfaction.',
     },
     {
       id: 4,
-      icon: '📱',
+      icon: Smartphone,
       title: 'Mobile App & SaaS Solutions',
       description:
         'Create powerful mobile applications and SaaS platforms that deliver exceptional user experiences across all devices. Whether native iOS/Android apps or progressive web apps, we build solutions that are intuitive, performant, and designed for long-term growth. Our cloud-native architecture ensures reliability and scalability.',
     },
     {
       id: 5,
-      icon: '🤖',
+      icon: Brain,
       title: 'AI / ML Development',
       description:
         'Leverage the power of artificial intelligence and machine learning to gain competitive advantages. From predictive analytics to natural language processing, we build intelligent systems that automate processes, uncover insights, and drive data-driven decision making. Transform your business with cutting-edge AI solutions.',
     },
     {
       id: 6,
-      icon: '📈',
+      icon: LineChart,
       title: 'SEO & Digital Growth',
       description:
         'Increase your online visibility and drive qualified traffic with proven SEO strategies and digital marketing campaigns. Our data-driven approach combines technical SEO, content optimization, and performance tracking to improve rankings, boost conversions, and deliver measurable ROI for your business.',
     },
     {
       id: 7,
-      icon: '👥',
+      icon: Bot,
       title: 'AI Integration',
       description:
         'Seamlessly integrate AI capabilities into your existing systems and workflows. We help businesses adopt AI technologies like chatbots, recommendation engines, and automation tools without disrupting operations. Enhance efficiency, improve customer experiences, and stay ahead of the competition with smart AI integration.',
     },
     {
       id: 8,
-      icon: '🛠️',
+      icon: Settings,
       title: 'Support & Maintenance',
       description:
         'Keep your digital products running smoothly with our comprehensive support and maintenance services. We provide regular updates, security patches, performance monitoring, and quick issue resolution. Our proactive approach ensures your systems stay secure, up-to-date, and optimized for peak performance.',
     },
     {
       id: 9,
-      icon: '🎨',
+      icon: Palette,
       title: 'Brand Building',
       description:
         'Create a memorable brand identity that resonates with your target audience. From logo design to comprehensive brand guidelines, we craft visual identities and compelling narratives that build trust and recognition. Our strategic approach ensures consistency across all touchpoints and long-term brand equity.',
     },
     {
       id: 10,
-      icon: '🔐',
+      icon: ShieldCheck,
       title: 'Cyber Security',
       description:
         'Protect your digital assets with enterprise-grade security solutions. We implement robust security measures including vulnerability assessments, penetration testing, encryption, and compliance frameworks. Safeguard your applications, data, and infrastructure against evolving cyber threats with our comprehensive security services.',
@@ -80,11 +81,14 @@ export default function ServicesPage() {
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-white via-green-50 to-white py-24 px-6">
+    <section
+      className="min-h-screen py-12 px-6"
+      style={{ backgroundColor: "#E9FAF6" }}
+    >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -102,9 +106,9 @@ export default function ServicesPage() {
 
           <h1 className="text-5xl sm:text-6xl font-extrabold text-slate-900 mb-6">
             Transform Your Business with{' '}
-           <span style={{ color: "#25ccad", fontWeight: 700 }}>
-  Expert Solutions
-</span>
+            <span style={{ color: "#25ccad", fontWeight: 700 }}>
+              Expert Solutions
+            </span>
 
           </h1>
 
@@ -134,7 +138,7 @@ export default function ServicesPage() {
             >
               {/* Hover glow */}
               <motion.div
-                className="absolute -inset-0.5 bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl blur-xl"
+                className="absolute -inset-0.5 bg-gradient-to-r from-[#25ccad] to-emerald-400 rounded-2xl blur-xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: hoveredCard === service.id ? 1 : 0 }}
                 transition={{ duration: 0.5 }}
@@ -148,13 +152,13 @@ export default function ServicesPage() {
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="w-16 h-16 flex items-center justify-center rounded-xl bg-green-100 text-3xl shadow-sm">
-                    {service.icon}
+                  <div className="w-16 h-16 flex items-center justify-center rounded-xl bg-[#25ccad]/10 group-hover:bg-[#25ccad] transition-all duration-300 shadow-sm">
+                    <service.icon size={32} className="text-[#25ccad] group-hover:text-black transition-colors" />
                   </div>
                 </motion.div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-green-700 transition">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-[#25ccad] transition-colors">
                   {service.title}
                 </h3>
 
@@ -165,7 +169,7 @@ export default function ServicesPage() {
 
                 {/* Bottom accent */}
                 <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-600 to-emerald-600 rounded-b-2xl"
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#25ccad] to-emerald-400 rounded-b-2xl"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: hoveredCard === service.id ? 1 : 0 }}
                   transition={{ duration: 0.3 }}
@@ -178,19 +182,19 @@ export default function ServicesPage() {
 
         {/* Let's Talk Button */}
         <motion.div
-          className="text-center mt-16"
+          className="text-center mt-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <motion.button
-  onClick={() => window.location.href = '/contact-us'}
-  className="group/btn relative inline-flex items-center gap-3 px-10 py-5 text-black font-bold text-lg rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
-  style={{ backgroundColor: "#25ccad" }} // ← FORCED BRAND COLOR
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
->
+            onClick={() => window.location.href = '/contact-us'}
+            className="group/btn relative inline-flex items-center gap-3 px-10 py-5 text-black font-bold text-lg rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+            style={{ backgroundColor: "#25ccad" }} // ← FORCED BRAND COLOR
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
 
 
 
@@ -201,19 +205,19 @@ export default function ServicesPage() {
               whileHover={{ x: '100%' }}
               transition={{ duration: 0.6 }}
             />
-            
+
             <span className="relative z-10">Let's Talk</span>
-            
+
             <motion.svg
               className="relative z-10 w-6 h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
               animate={{ x: [0, 5, 0] }}
-              transition={{ 
-                duration: 1.5, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
               }}
             >
               <path

@@ -16,11 +16,11 @@ const Footer = () => {
 
   // Stable social icons array (no dynamic className generation)
   const socialIcons = [
-    { Icon: Linkedin, href: "#" },
-    { Icon: Twitter, href: "#" },
-    { Icon: Facebook, href: "#" },
-    { Icon: Instagram, href: "#" },
-    { Icon: Youtube, href: "#" },
+    { Icon: Linkedin, href: "https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A83544760&keywords=webintegratorz%20technologies&origin=ENTITY_SEARCH_HOME_HISTORY&position=0&sid=%2CY2" },
+    { Icon: Twitter, href: "https://twitter.com/webintegratorz" },
+    { Icon: Facebook, href: "https://facebook.com/webintegratorz" },
+    { Icon: Instagram, href: "https://www.instagram.com/webintegratorz_technologies/" },
+    { Icon: Youtube, href: "https://youtube.com/@webintegratorz" },
   ];
 
   return (
@@ -31,7 +31,7 @@ const Footer = () => {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#25ccad] rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* MAIN GRID */}
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
 
@@ -41,7 +41,7 @@ const Footer = () => {
               <img
                 src="/weblogo.webp"
                 alt="Webintegratorz Logo"
-                className="w-46 md:w-58 object-contain"
+                className="w-46 md:w-58 object-contain -ml-2 md:-ml-3"
               />
             </div>
 
@@ -56,6 +56,8 @@ const Footer = () => {
                 <a
                   key={i}
                   href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="social-link"
                   className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 hover:bg-[#25ccad] hover:text-black transition-all duration-300"
                 >
@@ -72,12 +74,12 @@ const Footer = () => {
               <span className="block w-10 h-1 bg-[#25ccad] mt-2 rounded-full" />
             </h3>
             <ul className="space-y-4">
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2"/>Web Development</a></li>
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2"/>Mobile Development</a></li>
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2"/>CMS Solutions</a></li>
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2"/>UI/UX Design</a></li>
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2"/>Digital Marketing</a></li>
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2"/>AI Integration</a></li>
+              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />Web Development</a></li>
+              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />Mobile Development</a></li>
+              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />CMS Solutions</a></li>
+              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />UI/UX Design</a></li>
+              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />Digital Marketing</a></li>
+              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />AI Integration</a></li>
             </ul>
           </div>
 
@@ -106,6 +108,14 @@ const Footer = () => {
                   <p className="text-sm text-white/80">UDYAM-MP-30-0031514</p>
                 </div>
               </div>
+
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                <MapPin className="w-5 h-5 text-[#25ccad]" />
+                <div>
+                  <p className="text-xs text-white/50">DUNS Number</p>
+                  <p className="text-sm text-white/80">93-356-9189</p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -118,7 +128,7 @@ const Footer = () => {
             <ul className="space-y-4">
               <li><a href="/news" className="text-white/70 hover:text-[#25ccad] transition">News</a></li>
               <li><a href="/contact-us" className="text-white/70 hover:text-[#25ccad] transition">Contact Us</a></li>
-              <li><a href="/" className="text-white/70 hover:text-[#25ccad] transition">Our CEO</a></li>
+              <li><a href="/about" className="text-white/70 hover:text-[#25ccad] transition">About</a></li>
               <li><a href="/privacy-policy" className="text-white/70 hover:text-[#25ccad] transition">Privacy Policy</a></li>
               <li><a href="/terms" className="text-white/70 hover:text-[#25ccad] transition">Terms & Conditions</a></li>
               <li><a href="/cookies" className="text-white/70 hover:text-[#25ccad] transition">Cookie Policy</a></li>
