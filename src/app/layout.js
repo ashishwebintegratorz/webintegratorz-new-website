@@ -23,6 +23,28 @@ export const metadata = {
     alternates: {
         canonical: "https://webintegratorz.com",
     },
+    openGraph: {
+        title: "Top IT Company in India | AI & Software Development",
+        description: "Webintegratorz Technologies is a leading IT company in India specializing in AI, MERN stack, and custom software development.",
+        url: "https://webintegratorz.com",
+        siteName: "Webintegratorz",
+        images: [
+            {
+                url: "/webint.webp",
+                width: 1200,
+                height: 630,
+                alt: "Webintegratorz Technologies",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Top IT Company in India | AI & Software Development",
+        description: "Webintegratorz Technologies is a leading IT company in India specializing in AI, MERN stack, and custom software development.",
+        images: ["/webint.webp"],
+    },
 };
 
 export default function RootLayout({ children }) {

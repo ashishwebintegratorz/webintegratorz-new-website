@@ -55,7 +55,7 @@ const Casestudies = () => {
       subtitle: "Online Retail Solution",
       description: "BUILDING THE NEXT GEN E-COMMERCE EXPERIENCE",
       location: "USA",
-      image: "/images/ecommerce.png"
+      image: "/images/fresh.png"
     },
     {
       id: 6,
@@ -63,7 +63,7 @@ const Casestudies = () => {
       subtitle: "Patient Management System",
       description: "TRANSFORMING HEALTHCARE WITH TECHNOLOGY",
       location: "Canada",
-      image: "/images/healthcare.png"
+      image: "/images/fresh.png"
     },
     {
       id: 7,
