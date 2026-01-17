@@ -148,9 +148,10 @@ export default function Navbar() {
                                                         <h4 className="text-[10px] font-bold tracking-[0.2em] text-[#25ccad] uppercase opacity-80">{category.title}</h4>
                                                         <div className="space-y-1">
                                                             {category.items.map((service, sIdx) => (
-                                                                <div
+                                                                <Link
                                                                     key={sIdx}
-                                                                    className="group flex items-center gap-3 py-2 px-3 rounded-xl hover:bg-white/5 transition-all -ml-3 cursor-default"
+                                                                    href={service.href}
+                                                                    className="group flex items-center gap-3 py-2 px-3 rounded-xl hover:bg-white/5 transition-all -ml-3"
                                                                 >
                                                                     <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-[#25ccad]/10 transition-all">
                                                                         <service.icon size={14} className="text-[#25ccad] group-hover:text-white transition-colors" />
@@ -158,7 +159,7 @@ export default function Navbar() {
                                                                     <span className="text-[13px] font-medium text-white/50 group-hover:text-white transition-colors">
                                                                         {service.label}
                                                                     </span>
-                                                                </div>
+                                                                </Link>
                                                             ))}
                                                         </div>
                                                     </div>
@@ -299,12 +300,14 @@ export default function Navbar() {
                                                                     className="space-y-3 overflow-hidden"
                                                                 >
                                                                     {category.items.map((service, idx) => (
-                                                                        <div
+                                                                        <Link
                                                                             key={idx}
-                                                                            className="flex items-center gap-3 py-1 text-lg font-medium text-white/50 active:text-[#25ccad] transition-colors cursor-default"
+                                                                            href={service.href}
+                                                                            onClick={() => setMobileOpen(false)}
+                                                                            className="flex items-center gap-3 py-1 text-lg font-medium text-white/50 active:text-[#25ccad] transition-colors"
                                                                         >
                                                                             {service.label}
-                                                                        </div>
+                                                                        </Link>
                                                                     ))}
                                                                 </motion.div>
                                                             )}

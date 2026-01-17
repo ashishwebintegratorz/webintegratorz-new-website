@@ -74,11 +74,11 @@ export default function ContactUsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#ffffff] text-slate-900 pt-32 pb-20 selection:bg-[#25ccad]/30 relative overflow-hidden font-inter">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white pt-32 pb-20 selection:bg-[#25ccad]/30 relative overflow-hidden font-inter">
 
-      {/* Premium Design Accents - Minimal & Pure */}
-      <div className="absolute top-0 right-[-10%] w-[60%] h-[60%] bg-[#E9FAF6] rounded-full blur-[150px] -z-10 opacity-70" />
-      <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-[#25ccad]/5 rounded-full blur-[120px] -z-10 opacity-50" />
+      {/* Premium Design Accents - Dark & Energetic */}
+      <div className="absolute top-0 right-[-10%] w-[60%] h-[60%] bg-[#25ccad]/10 rounded-full blur-[150px] -z-10 opacity-40" />
+      <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-[#25ccad]/5 rounded-full blur-[120px] -z-10 opacity-30" />
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
 
@@ -115,30 +115,30 @@ export default function ContactUsPage() {
                   </span>
                 </h1>
 
-                <p className="text-xl text-slate-500 max-w-lg leading-relaxed font-medium">
+                <p className="text-xl text-slate-300 max-w-lg leading-relaxed font-medium">
                   Experience a partnership built on transparency, technical excellence, and rapid scaling. Fill the form to initiate a high-priority discussion.
                 </p>
               </div>
 
               {/* High-End Trust Indicators */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="p-8 bg-[#E9FAF6]/30 border border-[#25ccad]/10 rounded-[2rem]">
+                <div className="p-8 bg-[#25ccad]/10 border border-[#25ccad]/20 rounded-[2rem] backdrop-blur-sm">
                   <Clock className="w-8 h-8 text-[#25ccad] mb-4" />
                   <h4 className="text-sm font-black uppercase tracking-widest text-[#25ccad] mb-2">Response Time</h4>
-                  <p className="text-2xl font-black text-slate-800 tracking-tight">Under 2 Hours</p>
+                  <p className="text-2xl font-black text-white tracking-tight">Under 2 Hours</p>
                 </div>
 
-                <div className="p-8 bg-slate-50 border border-slate-100 rounded-[2rem]">
+                <div className="p-8 bg-slate-800/50 border border-slate-700 rounded-[2rem] backdrop-blur-sm">
                   <ShieldCheck className="w-8 h-8 text-slate-400 mb-4" />
                   <h4 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-2">Priority Support</h4>
-                  <p className="text-2xl font-black text-slate-800 tracking-tight">Active Team</p>
+                  <p className="text-2xl font-black text-white tracking-tight">Active Team</p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-16 pt-10 border-t border-slate-100 flex items-center justify-between">
+            <div className="mt-16 pt-10 border-t border-slate-800 flex items-center justify-between">
               <div>
-                <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-3">Support Central</p>
+                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3">Support Central</p>
                 <p className="text-2xl font-black text-[#25ccad] tracking-tight">+91 89899 44488</p>
               </div>
               <div className="flex -space-x-3">
@@ -161,7 +161,7 @@ export default function ContactUsPage() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="lg:w-[55%] relative"
           >
-            <div className="bg-white p-8 md:p-14 rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(37,204,173,0.12)] border border-slate-50 relative overflow-hidden group">
+            <div className="bg-slate-900/50 backdrop-blur-xl p-8 md:p-14 rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 relative overflow-hidden group">
 
               {/* Submission Animation */}
               <AnimatePresence>
@@ -170,7 +170,7 @@ export default function ContactUsPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-white/98 backdrop-blur-md z-50 flex flex-col items-center justify-center text-center p-10"
+                    className="absolute inset-0 bg-slate-950/98 backdrop-blur-md z-50 flex flex-col items-center justify-center text-center p-10"
                   >
                     <div className="w-24 h-24 bg-[#25ccad]/10 rounded-full flex items-center justify-center mb-8 relative">
                       <motion.div
@@ -180,8 +180,8 @@ export default function ContactUsPage() {
                       />
                       <CheckCircle2 className="w-12 h-12 text-[#25ccad]" />
                     </div>
-                    <h2 className="text-4xl font-black mb-4 tracking-tight">Syncing with WhatsApp</h2>
-                    <p className="text-slate-500 font-bold max-w-xs leading-relaxed">
+                    <h2 className="text-4xl font-black mb-4 tracking-tight text-white">Syncing with WhatsApp</h2>
+                    <p className="text-slate-400 font-bold max-w-xs leading-relaxed">
                       Handshaking with our priority support channel...
                     </p>
                   </motion.div>
@@ -189,7 +189,7 @@ export default function ContactUsPage() {
               </AnimatePresence>
 
               <div className="flex items-center justify-between mb-12">
-                <h2 className="text-4xl font-black tracking-tight">Inquiry Form</h2>
+                <h2 className="text-4xl font-black tracking-tight text-white">Inquiry Form</h2>
                 <div className="flex gap-1">
                   <span className="w-2 h-2 rounded-full bg-[#25ccad]" />
                   <span className="w-4 h-2 rounded-full bg-[#25ccad]/30" />
@@ -200,7 +200,7 @@ export default function ContactUsPage() {
               <form onSubmit={handleWhatsAppSubmit} className="space-y-8">
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                    <label className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
                       <User size={14} className="text-[#25ccad]" /> Full Name
                     </label>
                     <input
@@ -212,12 +212,12 @@ export default function ContactUsPage() {
                       onFocus={() => setActiveField('name')}
                       onBlur={() => setActiveField(null)}
                       onChange={handleInputChange}
-                      className={`w-full px-7 py-5 bg-slate-50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold placeholder:text-slate-300 ${activeField === 'name' ? 'border-[#25ccad] bg-white ring-8 ring-[#25ccad]/5' : 'border-transparent'
+                      className={`w-full px-7 py-5 bg-slate-800/50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-600 ${activeField === 'name' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/5'
                         }`}
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                    <label className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
                       <Mail size={14} className="text-[#25ccad]" /> Business Email
                     </label>
                     <input
@@ -229,7 +229,7 @@ export default function ContactUsPage() {
                       onFocus={() => setActiveField('email')}
                       onBlur={() => setActiveField(null)}
                       onChange={handleInputChange}
-                      className={`w-full px-7 py-5 bg-slate-50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold placeholder:text-slate-300 ${activeField === 'email' ? 'border-[#25ccad] bg-white ring-8 ring-[#25ccad]/5' : 'border-transparent'
+                      className={`w-full px-7 py-5 bg-slate-800/50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-600 ${activeField === 'email' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/5'
                         }`}
                     />
                   </div>
@@ -237,7 +237,7 @@ export default function ContactUsPage() {
 
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                    <label className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
                       <Phone size={14} className="text-[#25ccad]" /> Phone Number
                     </label>
                     <input
@@ -249,12 +249,12 @@ export default function ContactUsPage() {
                       onFocus={() => setActiveField('phone')}
                       onBlur={() => setActiveField(null)}
                       onChange={handleInputChange}
-                      className={`w-full px-7 py-5 bg-slate-50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold placeholder:text-slate-300 ${activeField === 'phone' ? 'border-[#25ccad] bg-white ring-8 ring-[#25ccad]/5' : 'border-transparent'
+                      className={`w-full px-7 py-5 bg-slate-800/50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-600 ${activeField === 'phone' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/5'
                         }`}
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                    <label className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
                       <FileText size={14} className="text-[#25ccad]" /> Project Nature
                     </label>
                     <div className="relative">
@@ -264,20 +264,20 @@ export default function ContactUsPage() {
                         onFocus={() => setActiveField('projectType')}
                         onBlur={() => setActiveField(null)}
                         onChange={handleInputChange}
-                        className={`w-full px-7 py-5 bg-slate-50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-black appearance-none cursor-pointer ${activeField === 'projectType' ? 'border-[#25ccad] bg-white ring-8 ring-[#25ccad]/5' : 'border-transparent'
+                        className={`w-full px-7 py-5 bg-slate-800/50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-black appearance-none cursor-pointer text-white ${activeField === 'projectType' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/5'
                           }`}
                       >
                         {projectOptions.map(option => (
-                          <option key={option} value={option}>{option}</option>
+                          <option key={option} value={option} className="bg-slate-900">{option}</option>
                         ))}
                       </select>
-                      <ChevronRight className="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 rotate-90 pointer-events-none" />
+                      <ChevronRight className="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 rotate-90 pointer-events-none" />
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <label className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                  <label className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
                     <Send size={14} className="text-[#25ccad]" /> Detailed Message
                   </label>
                   <textarea
@@ -289,7 +289,7 @@ export default function ContactUsPage() {
                     onFocus={() => setActiveField('message')}
                     onBlur={() => setActiveField(null)}
                     onChange={handleInputChange}
-                    className={`w-full px-7 py-5 bg-slate-50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold placeholder:text-slate-300 resize-none ${activeField === 'message' ? 'border-[#25ccad] bg-white ring-8 ring-[#25ccad]/5' : 'border-transparent'
+                    className={`w-full px-7 py-5 bg-slate-800/50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-600 resize-none ${activeField === 'message' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/5'
                       }`}
                   ></textarea>
                 </div>
