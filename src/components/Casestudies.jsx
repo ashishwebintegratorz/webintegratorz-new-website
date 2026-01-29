@@ -51,11 +51,11 @@ const Casestudies = () => {
     },
     {
       id: 5,
-      title: "E-Commerce Platform",
-      subtitle: "Online Retail Solution",
-      description: "BUILDING THE NEXT GEN E-COMMERCE EXPERIENCE",
-      location: "USA",
-      image: "/images/fresh.png"
+      title: "Gober Superapp",
+      subtitle: "All-in-one Superapp",
+      description: "BOLIVIAN SUPERAPP OFFERING DELIVERY, TRANSPORT & PAYMENTS",
+      location: "Bolivia",
+      image: "/icone7.png"
     },
     {
       id: 6,
@@ -63,15 +63,15 @@ const Casestudies = () => {
       subtitle: "Patient Management System",
       description: "TRANSFORMING HEALTHCARE WITH TECHNOLOGY",
       location: "Canada",
-      image: "/images/fresh.png"
+      image: "/icone1.png"
     },
     {
       id: 7,
-      title: "Global Finserv",
-      subtitle: "Digital Banking App",
-      description: "SCALEABLE CLOUD-NATIVE FINTECH SOLUTION",
+      title: "Global Health Research",
+      subtitle: "Hospital Research Centre",
+      description: "ADVANCED MEDICAL RESEARCH & CLINICAL DATA ANALYTICS",
       location: "Germany",
-      image: "/images/rentbuddy1.png"
+      image: "/icone3.png"
     },
     {
       id: 8,
@@ -79,7 +79,7 @@ const Casestudies = () => {
       subtitle: "Personalized Learning",
       description: "PERSONALIZED LEARNING JOURNEYS POWERED BY AI",
       location: "India",
-      image: "/images/newera.jpeg"
+      image: "/icone4.webp"
     },
     {
       id: 9,
@@ -87,7 +87,7 @@ const Casestudies = () => {
       subtitle: "Cabs & Logistics",
       description: "OPTIMIZED FLEET MANAGEMENT & ROUTING PLATFORM",
       location: "UK",
-      image: "/images/fresh.png"
+      image: "/icone6.webp"
     }
   ];
 
@@ -147,45 +147,47 @@ const Casestudies = () => {
               }}
             >
               {CasestudiesData.map((study) => (
-                <div key={study.id} className="study-card w-full sm:w-1/2 md:w-1/3 flex-shrink-0">
-                  {/* Card Image Area */}
-                  <div className="card-image-wrapper">
-                    <img
-                      src={study.image}
-                      alt={study.title}
-                      className="card-image"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextElementSibling.style.display = 'flex';
-                      }}
-                    />
-                    {/* Fallback Placeholder */}
-                    <div className="card-placeholder">
-                      <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="#25ccad" strokeWidth="1.5" />
-                        <circle cx="8.5" cy="8.5" r="1.5" fill="#25ccad" />
-                        <path d="M3 16L7 12L10 15L14 11L21 18V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V16Z" fill="#25ccad" opacity="0.4" />
-                      </svg>
-                      <span>Add Image</span>
+                <div key={study.id} className="study-card flex-shrink-0">
+                  <div className="study-content-inner">
+                    {/* Card Image Area */}
+                    <div className="card-image-wrapper">
+                      <img
+                        src={study.image}
+                        alt={study.title}
+                        className="card-image"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextElementSibling.style.display = 'flex';
+                        }}
+                      />
+                      {/* Fallback Placeholder */}
+                      <div className="card-placeholder">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+                          <rect x="3" y="3" width="18" height="18" rx="2" stroke="#25ccad" strokeWidth="1.5" />
+                          <circle cx="8.5" cy="8.5" r="1.5" fill="#25ccad" />
+                          <path d="M3 16L7 12L10 15L14 11L21 18V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V16Z" fill="#25ccad" opacity="0.4" />
+                        </svg>
+                        <span>Add Image</span>
+                      </div>
+
+                      {/* Text Overlay */}
+                      <div className="card-overlay">
+                        <p className="overlay-text">{study.description}</p>
+                      </div>
                     </div>
 
-                    {/* Text Overlay */}
-                    <div className="card-overlay">
-                      <p className="overlay-text">{study.description}</p>
-                    </div>
-                  </div>
-
-                  {/* Card Info Footer */}
-                  <div className="card-footer">
-                    <div className="footer-left">
-                      <h3 className="card-title">{study.title}</h3>
-                      <p className="card-subtitle">{study.subtitle}</p>
-                    </div>
-                    <div className="footer-right">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#25ccad" />
-                      </svg>
-                      <span className="location">{study.location}</span>
+                    {/* Card Info Footer */}
+                    <div className="card-footer">
+                      <div className="footer-left">
+                        <h3 className="card-title">{study.title}</h3>
+                        <p className="card-subtitle">{study.subtitle}</p>
+                      </div>
+                      <div className="footer-right">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#25ccad" />
+                        </svg>
+                        <span className="location">{study.location}</span>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -72,14 +72,14 @@ export default function Navbar() {
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
 
                 {/* LOGO - Left Side */}
-                <div className="flex items-center flex-shrink-0 -ml-4 md:-ml-6">
+                <div className="flex items-center flex-shrink-0 -ml-4 xl:-ml-6">
                     <Link href="/" className="leading-tight">
-                        <img src="/weblogo.webp" alt="Company Logo" className="w-auto h-12 md:h-16 object-contain" />
+                        <img src="/weblogo.webp" alt="Company Logo" className="w-auto h-12 xl:h-16 object-contain" />
                     </Link>
                 </div>
 
                 {/* DESKTOP NAV - Center/Right aligned */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden xl:flex items-center gap-8">
                     <nav className="flex items-center gap-8 text-sm font-medium">
                         <Link href="/" className="hover:text-[#25ccad] transition">HOME</Link>
 
@@ -139,10 +139,10 @@ export default function Navbar() {
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: 12, scale: 0.98 }}
                                         transition={{ duration: 0.2, ease: "easeOut" }}
-                                        className="absolute top-full -left-64 pt-4 z-50"
+                                        className="absolute top-full -left-[350px] xl:-left-64 pt-4 z-50"
                                     >
-                                        <div className="w-[800px] bg-[#050505]/95 backdrop-blur-2xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.7)] overflow-hidden rounded-3xl p-8">
-                                            <div className="grid grid-cols-3 gap-8">
+                                        <div className="w-[760px] xl:w-[800px] bg-[#050505]/95 backdrop-blur-2xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.7)] overflow-hidden rounded-3xl p-6 xl:p-8">
+                                            <div className="grid grid-cols-3 gap-6 xl:gap-8">
                                                 {aiCategories.map((category, idx) => (
                                                     <div key={idx} className="space-y-4">
                                                         <h4 className="text-[10px] font-bold tracking-[0.2em] text-[#25ccad] uppercase opacity-80">{category.title}</h4>
@@ -187,7 +187,7 @@ export default function Navbar() {
                 </div>
 
                 {/* MOBILE HAMBURGER */}
-                <div className="md:hidden flex items-center">
+                <div className="xl:hidden flex items-center">
                     <button
                         type="button"
                         onClick={() => setMobileOpen(!mobileOpen)}
@@ -233,7 +233,7 @@ export default function Navbar() {
                                 className="space-y-8"
                             >
                                 <motion.div variants={{ hidden: { x: 20, opacity: 0 }, show: { x: 0, opacity: 1 } }}>
-                                    <Link href="/" onClick={() => setMobileOpen(false)} className="text-4xl font-bold text-white active:text-[#25ccad] transition block">
+                                    <Link href="/" onClick={() => setMobileOpen(false)} className="text-3xl md:text-5xl font-bold text-white active:text-[#25ccad] transition block">
                                         Home
                                     </Link>
                                 </motion.div>
@@ -241,7 +241,7 @@ export default function Navbar() {
                                 <motion.div variants={{ hidden: { x: 20, opacity: 0 }, show: { x: 0, opacity: 1 } }}>
                                     <button
                                         onClick={() => setMobileServices(!mobileServices)}
-                                        className="flex items-center justify-between w-full text-4xl font-bold text-white group"
+                                        className="flex items-center justify-between w-full text-3xl md:text-5xl font-bold text-white group"
                                     >
                                         Services
                                         <ChevronDown size={28} className={`transition-transform duration-500 text-[#25ccad] ${mobileServices ? "rotate-180" : ""}`} />
@@ -252,10 +252,10 @@ export default function Navbar() {
                                                 initial={{ height: 0, opacity: 0 }}
                                                 animate={{ height: "auto", opacity: 1 }}
                                                 exit={{ height: 0, opacity: 0 }}
-                                                className="ml-4 mt-6 space-y-5 border-l-2 border-[#25ccad]/30 pl-6"
+                                                className="ml-4 mt-6 space-y-5 border-l-2 border-[#25ccad]/30 pl-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:space-y-0"
                                             >
                                                 {coreServices.map((item, i) => (
-                                                    <Link key={i} href={item.href} onClick={() => setMobileOpen(false)} className="block text-xl font-medium text-white/60 active:text-[#25ccad]">
+                                                    <Link key={i} href={item.href} onClick={() => setMobileOpen(false)} className="block text-xl md:text-2xl font-medium text-white/60 active:text-[#25ccad]">
                                                         {item.label}
                                                     </Link>
                                                 ))}
@@ -268,7 +268,7 @@ export default function Navbar() {
                                 <motion.div variants={{ hidden: { x: 20, opacity: 0 }, show: { x: 0, opacity: 1 } }}>
                                     <button
                                         onClick={() => setMobileAIServices(!mobileAIServices)}
-                                        className="flex items-center justify-between w-full text-4xl font-bold text-white group"
+                                        className="flex items-center justify-between w-full text-3xl md:text-5xl font-bold text-white group"
                                     >
                                         AI Integration
                                         <ChevronDown size={28} className={`transition-transform duration-500 text-[#25ccad] ${mobileAIServices ? "rotate-180" : ""}`} />
@@ -279,60 +279,48 @@ export default function Navbar() {
                                                 initial={{ height: 0, opacity: 0 }}
                                                 animate={{ height: "auto", opacity: 1 }}
                                                 exit={{ height: 0, opacity: 0 }}
-                                                className="ml-4 mt-6 space-y-6 border-l-2 border-[#25ccad]/30 pl-6"
+                                                className="ml-4 mt-6 space-y-8 border-l-2 border-[#25ccad]/30 pl-6"
                                             >
-                                                {aiCategories.map((category, cIdx) => (
-                                                    <div key={cIdx} className="space-y-4">
-                                                        <button
-                                                            onClick={() => setActiveMobileAICategory(activeMobileAICategory === cIdx ? null : cIdx)}
-                                                            className="flex items-center justify-between w-full text-left group"
-                                                        >
-                                                            <p className="text-xs font-bold text-[#25ccad] uppercase tracking-widest opacity-60">{category.title}</p>
-                                                            <ChevronRight size={16} className={`text-[#25ccad] transition-transform duration-300 ${activeMobileAICategory === cIdx ? "rotate-90" : ""}`} />
-                                                        </button>
-
-                                                        <AnimatePresence>
-                                                            {activeMobileAICategory === cIdx && (
-                                                                <motion.div
-                                                                    initial={{ height: 0, opacity: 0 }}
-                                                                    animate={{ height: "auto", opacity: 1 }}
-                                                                    exit={{ height: 0, opacity: 0 }}
-                                                                    className="space-y-3 overflow-hidden"
-                                                                >
-                                                                    {category.items.map((service, idx) => (
-                                                                        <Link
-                                                                            key={idx}
-                                                                            href={service.href}
-                                                                            onClick={() => setMobileOpen(false)}
-                                                                            className="flex items-center gap-3 py-1 text-lg font-medium text-white/50 active:text-[#25ccad] transition-colors"
-                                                                        >
-                                                                            {service.label}
-                                                                        </Link>
-                                                                    ))}
-                                                                </motion.div>
-                                                            )}
-                                                        </AnimatePresence>
-                                                    </div>
-                                                ))}
+                                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                                    {aiCategories.map((category, cIdx) => (
+                                                        <div key={cIdx} className="space-y-4">
+                                                            <div>
+                                                                <p className="text-xs font-bold text-[#25ccad] uppercase tracking-widest opacity-60 mb-2">{category.title}</p>
+                                                            </div>
+                                                            <div className="space-y-3">
+                                                                {category.items.map((service, idx) => (
+                                                                    <Link
+                                                                        key={idx}
+                                                                        href={service.href}
+                                                                        onClick={() => setMobileOpen(false)}
+                                                                        className="flex items-center gap-3 py-1 text-lg font-medium text-white/50 active:text-[#25ccad] transition-colors"
+                                                                    >
+                                                                        {service.label}
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
                                 </motion.div>
 
                                 <motion.div variants={{ hidden: { x: 20, opacity: 0 }, show: { x: 0, opacity: 1 } }}>
-                                    <Link href="/about" onClick={() => setMobileOpen(false)} className="text-4xl font-bold text-white active:text-[#25ccad] transition block">
+                                    <Link href="/about" onClick={() => setMobileOpen(false)} className="text-3xl md:text-5xl font-bold text-white active:text-[#25ccad] transition block">
                                         About
                                     </Link>
                                 </motion.div>
 
                                 <motion.div variants={{ hidden: { x: 20, opacity: 0 }, show: { x: 0, opacity: 1 } }}>
-                                    <Link href="/news" onClick={() => setMobileOpen(false)} className="text-4xl font-bold text-white active:text-[#25ccad] transition block">
+                                    <Link href="/news" onClick={() => setMobileOpen(false)} className="text-3xl md:text-5xl font-bold text-white active:text-[#25ccad] transition block">
                                         News
                                     </Link>
                                 </motion.div>
 
                                 <motion.div variants={{ hidden: { x: 20, opacity: 0 }, show: { x: 0, opacity: 1 } }}>
-                                    <Link href="/contact-us" onClick={() => setMobileOpen(false)} className="text-4xl font-bold text-[#25ccad] block">
+                                    <Link href="/contact-us" onClick={() => setMobileOpen(false)} className="text-3xl md:text-5xl font-bold text-[#25ccad] block">
                                         Contact Us
                                     </Link>
                                 </motion.div>

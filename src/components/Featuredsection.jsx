@@ -6,17 +6,15 @@ import { motion } from "framer-motion";
 
 export default function Featuredsection() {
   const mediaLogos = [
-    { name: "Forbes", img: "/images/fresh.png" },
-    { name: "Fortune", img: "/images/fresh.png" },
-    { name: "TechCrunch", img: "/images/fresh.png" },
-    { name: "Yahoo", img: "/images/fresh.png" },
-    { name: "AOL", img: "/images/fresh.png" },
-    { name: "ANI India", img: "/images/fresh.png" },
-    { name: "YourStory", img: "/images/fresh.png" },
+    { name: "Forbes", img: "/icone1.png" },
+    { name: "Fortune", img: "/icone3.png" },
+    { name: "TechCrunch", img: "/icone4.webp" },
+    { name: "Yahoo", img: "/icone5.svg" },
+    { name: "AOL", img: "/icone6.webp" },
   ];
 
-  // Duplicate logos for seamless infinite scroll
-  const marqueeLogos = [...mediaLogos, ...mediaLogos];
+  // Triple logos to ensure a massive continuous track for high-speed seamlessness
+  const marqueeLogos = [...mediaLogos, ...mediaLogos, ...mediaLogos, ...mediaLogos];
 
   return (
     <section className="w-full bg-white py-24 overflow-hidden relative">
@@ -47,15 +45,11 @@ export default function Featuredsection() {
 
       {/* Modern Marquee Container */}
       <div className="relative flex items-center">
-        {/* Gradient Fades for Smooth Edges */}
-        <div className="absolute left-0 top-0 w-32 md:w-64 h-full bg-gradient-to-r from-white to-transparent z-10" />
-        <div className="absolute right-0 top-0 w-32 md:w-64 h-full bg-gradient-to-l from-white to-transparent z-10" />
-
         <motion.div
           initial={{ x: 0 }}
-          animate={{ x: "-100%" }}
+          animate={{ x: "-50%" }}
           transition={{
-            duration: 40,
+            duration: 10,
             repeat: Infinity,
             ease: "linear",
           }}

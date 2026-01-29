@@ -124,11 +124,8 @@ export default function OurPresenceSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative w-[320px] md:w-[480px] h-[240px] md:h-[360px] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:shadow-[0_40px_80px_rgba(37,204,173,0.3)] transition-all duration-700"
+              className="group relative w-[320px] md:w-[480px] h-[240px] md:h-[360px] rounded-[2.5rem] overflow-hidden transition-all duration-700"
             >
-              {/* Premium Border Glow */}
-              <div className="absolute inset-0 border-[1.5px] border-white/20 group-hover:border-[#25ccad]/40 rounded-[2.5rem] z-30 transition-colors duration-500"></div>
-
               {/* Parallax Image Component */}
               <div className="absolute inset-0 w-full h-full z-0">
                 <img
