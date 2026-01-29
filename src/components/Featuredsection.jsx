@@ -49,7 +49,7 @@ export default function Featuredsection() {
           initial={{ x: 0 }}
           animate={{ x: "-50%" }}
           transition={{
-            duration: 10,
+            duration: 30,
             repeat: Infinity,
             ease: "linear",
           }}
