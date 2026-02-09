@@ -46,7 +46,7 @@ export default function HeroSection({ mobileOpen }) {
 
       {/* Hero Content Container - Desktop & Mobile Optimized */}
       <div className="absolute inset-0 z-10 flex flex-col">
-        <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 pt-20 sm:pt-24 md:pt-28 pb-8 sm:pb-10 flex flex-col flex-1">
+        <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-24 pb-4 sm:pb-6 flex flex-col flex-1">
 
           {/* Tagline at top */}
           <motion.div
@@ -54,7 +54,7 @@ export default function HeroSection({ mobileOpen }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-6 md:mb-4"
+            className="mb-4 md:mb-2"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 md:bg-transparent md:border-none md:p-0">
               <div className="w-1.5 h-1.5 rounded-full bg-[#25ccad] animate-pulse md:hidden" />
@@ -65,13 +65,13 @@ export default function HeroSection({ mobileOpen }) {
           </motion.div>
 
           {/* Main Hero Text */}
-          <div className="flex-1 flex flex-col justify-center">
+          <div className="flex-1 flex flex-col justify-center gap-4">
             <motion.h1
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.15] md:leading-tight text-white max-w-4xl"
+              className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-white max-w-4xl"
             >
               A Top <span style={{ color: "#25ccad" }}>IT Company in India</span> <br className="hidden md:block" />
               Powering Global Digital Transformation
@@ -82,7 +82,7 @@ export default function HeroSection({ mobileOpen }) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-6 md:mt-4 text-base md:text-lg lg:text-xl leading-relaxed text-white/90 max-w-3xl"
+              className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-white/90 max-w-3xl"
             >
               We deliver <span className="text-white md:text-[#25ccad] md:font-medium">AI-powered, scalable, and future-ready digital solutions</span> for startups and enterprises across global markets, ensuring innovation and excellence in every project.
             </motion.p>
@@ -93,11 +93,11 @@ export default function HeroSection({ mobileOpen }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="mt-8 md:mt-6"
+              className="mt-4 md:mt-2"
             >
               <button
                 onClick={() => router.push("/contact-us")}
-                className="group relative px-8 py-3.5 md:px-9 md:py-4 text-base md:text-lg lg:text-xl font-bold rounded-2xl md:rounded-xl transition-all duration-300 flex items-center justify-center gap-3 group w-full md:w-auto overflow-hidden"
+                className="group relative px-6 py-3 md:px-8 md:py-3.5 text-base md:text-lg font-bold rounded-2xl md:rounded-xl transition-all duration-300 flex items-center justify-center gap-3 group w-full md:w-auto overflow-hidden"
                 style={{ backgroundColor: "#25ccad", color: "#000" }}
               >
                 <span className="relative z-10">Get Free Consultation</span>
@@ -112,44 +112,44 @@ export default function HeroSection({ mobileOpen }) {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="mt-auto pt-8 md:pt-6"
+            className="mt-auto pt-6"
           >
-            <div className="grid grid-cols-2 md:flex md:flex-wrap items-end gap-x-4 sm:gap-x-8 gap-y-6 md:gap-10 lg:gap-14">
+            <div className="grid grid-cols-2 md:flex md:flex-wrap items-end gap-x-4 sm:gap-x-8 gap-y-4 md:gap-10 lg:gap-12">
 
               {/* AWS Certified Badge */}
               <div className="flex flex-col items-start group">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-2 md:mb-3 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
                   <img src="/AWS.png" alt="AWS" className="w-full h-full object-contain" />
                 </div>
-                <p className="text-white text-[10px] md:text-sm font-bold leading-tight tracking-wide">AWS CERTIFIED</p>
-                <p className="text-white/70 text-[9px] md:text-xs font-medium mt-1">PROFESSIONAL</p>
+                <p className="text-white text-[9px] md:text-xs font-bold leading-tight tracking-wide">AWS CERTIFIED</p>
+                <p className="text-white/70 text-[8px] md:text-[10px] font-medium mt-1">PROFESSIONAL</p>
               </div>
 
               {/* LinkedIn Badge */}
               <div className="flex flex-col items-start group">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-2 md:mb-3 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
                   <img src="/linkedin-logo.svg" alt="LinkedIn" className="w-full h-full object-contain" />
                 </div>
-                <p className="text-white text-[10px] md:text-sm font-bold leading-tight tracking-wide">TOP RATED AGENCY</p>
-                <p className="text-white/70 text-[9px] md:text-xs font-medium mt-1">2023 & 2024</p>
+                <p className="text-white text-[9px] md:text-xs font-bold leading-tight tracking-wide">TOP RATED AGENCY</p>
+                <p className="text-white/70 text-[8px] md:text-[10px] font-medium mt-1">2023 & 2024</p>
               </div>
 
               {/* Digital Marketing Badge */}
               <div className="flex flex-col items-start group">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-2 md:mb-3 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
                   <img src="/digital.png" alt="Digital Marketing" className="w-full h-full object-contain" />
                 </div>
-                <p className="text-white text-[10px] md:text-sm font-bold leading-tight tracking-wide">DIGITAL MARKETING</p>
-                <p className="text-white/70 text-[9px] md:text-xs font-medium mt-1">CERTIFIED</p>
+                <p className="text-white text-[9px] md:text-xs font-bold leading-tight tracking-wide">DIGITAL MARKETING</p>
+                <p className="text-white/70 text-[8px] md:text-[10px] font-medium mt-1">CERTIFIED</p>
               </div>
 
               {/* Excellence Award Badge */}
               <div className="flex flex-col items-start group">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-2 md:mb-3 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
-                  <Award className="w-10 h-10 md:w-16 md:h-16 text-[#25ccad]" strokeWidth={1.5} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
+                  <Award className="w-10 h-10 md:w-14 md:h-14 text-[#25ccad]" strokeWidth={1.5} />
                 </div>
-                <p className="text-white text-[10px] md:text-sm font-bold leading-tight tracking-wide">EXCELLENCE AWARD</p>
-                <p className="text-white/70 text-[9px] md:text-xs font-medium mt-1">CERTIFIED PROF.</p>
+                <p className="text-white text-[9px] md:text-xs font-bold leading-tight tracking-wide">EXCELLENCE AWARD</p>
+                <p className="text-white/70 text-[8px] md:text-[10px] font-medium mt-1">CERTIFIED PROF.</p>
               </div>
             </div>
           </motion.div>
