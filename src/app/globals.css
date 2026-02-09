@@ -21,8 +21,8 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --background: 222 47% 11%;
+    --foreground: 0 0% 100%;
 
     --primary: 222 47% 11%;
     --primary-foreground: 0 0% 100%;
@@ -57,13 +57,20 @@ body {
     -webkit-tap-highlight-color: transparent;
   }
 
+  html {
+    height: -webkit-fill-available;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#000000] text-foreground;
     scroll-behavior: smooth;
+    min-height: 100vh;
+    min-height: 100dvh;
     /* Optimized font rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
 
   /* Improved Touch Targets */

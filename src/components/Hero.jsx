@@ -114,7 +114,7 @@ export default function HeroSection({ mobileOpen }) {
             transition={{ duration: 1, delay: 0.8 }}
             className="mt-auto pt-8 md:pt-6"
           >
-            <div className="grid grid-cols-2 md:flex md:flex-wrap items-end gap-x-6 gap-y-10 md:gap-10 lg:gap-14">
+            <div className="grid grid-cols-2 md:flex md:flex-wrap items-end gap-x-4 sm:gap-x-8 gap-y-6 md:gap-10 lg:gap-14">
 
               {/* AWS Certified Badge */}
               <div className="flex flex-col items-start group">
@@ -167,7 +167,7 @@ export default function HeroSection({ mobileOpen }) {
         
         @media (min-width: 768px) {
           .hero {
-            min-height: 85vh !important;
+            min-height: 100vh !important;
           }
         }
 
@@ -175,6 +175,7 @@ export default function HeroSection({ mobileOpen }) {
         @media (max-width: 640px) {
           .hero {
             min-height: 100vh;
+            min-height: 100dvh;
             height: auto;
           }
         }
