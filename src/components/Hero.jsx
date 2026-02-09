@@ -46,7 +46,7 @@ export default function HeroSection({ mobileOpen }) {
 
       {/* Hero Content Container - Desktop & Mobile Optimized */}
       <div className="absolute inset-0 z-10 flex flex-col">
-        <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-24 pb-4 sm:pb-6 flex flex-col flex-1">
+        <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 pt-28 sm:pt-32 md:pt-36 pb-4 sm:pb-6 flex flex-col flex-1">
 
           {/* Tagline at top */}
           <motion.div
@@ -54,11 +54,11 @@ export default function HeroSection({ mobileOpen }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-4 md:mb-2"
+            className="mb-6 md:mb-4"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 md:bg-transparent md:border-none md:p-0">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 md:bg-transparent md:border-none md:p-0">
               <div className="w-1.5 h-1.5 rounded-full bg-[#25ccad] animate-pulse md:hidden" />
-              <p className="text-[10px] sm:text-xs md:text-sm font-medium text-white/70 tracking-wider uppercase">
+              <p className="text-[11px] sm:text-xs md:text-sm font-semibold text-white/90 tracking-[0.15em] uppercase">
                 INNOVATE / BUILD / EXCEED
               </p>
             </div>

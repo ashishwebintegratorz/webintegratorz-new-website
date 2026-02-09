@@ -6,11 +6,11 @@ import { ChevronDown, Menu, X, Bot, MessageSquare, Cloud, LineChart, Sparkles, B
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 
-export default function Navbar() {
+export default function Navbar({ mobileOpen, setMobileOpen }) {
     const router = useRouter();
     const [desktopServices, setDesktopServices] = useState(false);
     const [desktopAIServices, setDesktopAIServices] = useState(false);
-    const [mobileOpen, setMobileOpen] = useState(false);
+    // Remove local mobileOpen state as it's now a prop
     const [mobileServices, setMobileServices] = useState(false);
     const [mobileAIServices, setMobileAIServices] = useState(false);
     const [activeMobileAICategory, setActiveMobileAICategory] = useState(null);
