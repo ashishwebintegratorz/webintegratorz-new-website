@@ -76,7 +76,7 @@ const Footer = () => {
               Services
               <span className="block w-10 h-1 bg-[#25ccad] mt-2 rounded-full" />
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-6 mt-6">
               <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />Web Development</a></li>
               <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />Mobile Development</a></li>
               <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />CMS Solutions</a></li>
@@ -128,7 +128,7 @@ const Footer = () => {
               Quick Links
               <span className="block w-10 h-1 bg-[#25ccad] mt-2 rounded-full" />
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-6 mt-6">
               <li><a href="/news" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">News</a></li>
               <li><a href="/contact-us" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Contact Us</a></li>
               <li><a href="/about" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">About</a></li>

@@ -99,30 +99,7 @@
    KEYFRAMES
 ====================================================== */
 
-/* Floating movement */
-@keyframes float {
 
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(40px, -40px);
-  }
-}
-
-@keyframes float-delayed {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(-30px, 30px);
-  }
-}
 
 /* Fade in from bottom */
 @keyframes fade-up {
@@ -209,25 +186,7 @@
 /* ======================================================
    ANIMATION DELAYS
 ====================================================== */
-.delay-100 {
-  animation-delay: 0.1s;
-}
 
-.delay-200 {
-  animation-delay: 0.2s;
-}
-
-.delay-300 {
-  animation-delay: 0.3s;
-}
-
-.delay-500 {
-  animation-delay: 0.5s;
-}
-
-.delay-1000 {
-  animation-delay: 1s;
-}
 
 
 /* ======================================================
@@ -290,13 +249,12 @@
   animation: spin-slow 20s linear infinite;
 }
 
+
 /* ============================================
-   CONTACT PAGE STYLES
+   CONTACT PAGE STYLES (Used by About & Contact)
    ============================================ */
 
-
-
-/* CSS Variables for Contact Page */
+/* CSS Variables for Contact/About Pages */
 :root {
   --contact-primary: #1a9b8e;
   --contact-primary-dark: #147a70;
@@ -747,7 +705,7 @@
 }
 
 /* ============================================
-   END OF CONTACT PAGE STYLES
+   END OF CONTACT/ABOUT PAGE STYLES
    ============================================ */
 
 /* ============================================
@@ -1684,58 +1642,6 @@
 
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-20px);
-  }
 }
 
 .animate-slideInLeft {
@@ -4393,239 +4299,5 @@ body {
   max-width: 100vw;
 }
 
-/* Our Presence Section Styles */
 
-
-.presence-section {
-  background: #e3faf5;
-  padding: 40px 0 80px 0;
-  overflow: hidden;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 50px;
-  padding: 0 20px;
-}
-
-.badge-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.arrow-line {
-  width: 40px;
-  height: 2px;
-  background: #25ccad;
-  position: relative;
-}
-
-.arrow-line::after {
-  content: '';
-  position: absolute;
-  right: -6px;
-  top: -3px;
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid #25ccad;
-  border-top: 2px solid #25ccad;
-  transform: rotate(45deg);
-}
-
-.arrow-line.left::after {
-  display: none;
-}
-
-.arrow-line.left::before {
-  content: '';
-  position: absolute;
-  left: -6px;
-  top: -3px;
-  width: 8px;
-  height: 8px;
-  border-left: 2px solid #25ccad;
-  border-bottom: 2px solid #25ccad;
-  transform: rotate(45deg);
-}
-
-.badge-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: #ffffff;
-  /* Change to white for visibility */
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 0 8px rgba(37, 204, 173, 0.6);
-  /* optional glow so it pops */
-  position: relative;
-  z-index: 20;
-}
-
-.section-title {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(32px, 5vw, 48px);
-  font-weight: 900;
-  color: #1a1a1a;
-  line-height: 1.2;
-  margin: 0;
-}
-
-/* Scrolling Container */
-.scroll-container {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  cursor: grab;
-  user-select: none;
-}
-
-.scroll-container::-webkit-scrollbar {
-  display: none;
-}
-
-.scroll-container:active {
-  cursor: grabbing;
-}
-
-.cards-wrapper {
-  display: flex;
-  gap: 30px;
-  padding: 0 50px 20px 50px;
-  width: max-content;
-}
-
-/* Event Cards */
-.event-card {
-  position: relative;
-  width: 380px;
-  height: 280px;
-  border-radius: 24px;
-  overflow: hidden;
-  flex-shrink: 0;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-.event-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(37, 204, 173, 0.2);
-}
-
-.card-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.event-card:hover .card-image {
-  transform: scale(1.05);
-}
-
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(0, 0, 0, 0.4) 50%,
-      transparent 100%);
-}
-
-.card-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 30px;
-  z-index: 2;
-}
-
-.card-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 8px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.card-location {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.location-icon {
-  width: 16px;
-  height: 16px;
-  color: #25ccad;
-}
-
-/* Top Badge on Card */
-.card-badge {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 8px 16px;
-  background: rgba(37, 204, 173, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  color: #000000;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  z-index: 2;
-}
-
-/* Placeholder Styling */
-.placeholder-content {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #25ccad 0%, #1a9d88 100%);
-  padding: 30px;
-}
-
-.placeholder-icon {
-  font-size: 64px;
-  margin-bottom: 20px;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .presence-section {
-    padding: 60px 0;
-  }
-
-  .cards-wrapper {
-    padding: 0 20px 20px 20px;
-  }
-
-  .event-card {
-    width: 320px;
-    height: 240px;
-  }
-
-  .section-title {
-    font-size: 28px;
-  }
-}
+/* End of Styles */

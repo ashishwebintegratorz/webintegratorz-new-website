@@ -88,7 +88,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                 {/* DESKTOP NAV - Center/Right aligned */}
                 <div className="hidden xl:flex items-center gap-8">
                     <nav className="flex items-center gap-8 text-sm font-medium">
-                        <Link href="/" className="hover:text-[#25ccad] transition">HOME</Link>
+                        <Link href="/" className="hover:text-[#25ccad] transition py-3 px-1">HOME</Link>
 
                         {/* SERVICES DROPDOWN */}
                         <div
@@ -96,7 +96,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                             onMouseEnter={() => setDesktopServices(true)}
                             onMouseLeave={() => setDesktopServices(false)}
                         >
-                            <div className="flex items-center gap-1 cursor-pointer hover:text-[#25ccad] transition">
+                            <div className="flex items-center gap-1 cursor-pointer hover:text-[#25ccad] transition py-3 px-1">
                                 SERVICES <ChevronDown size={14} />
                             </div>
 
@@ -135,7 +135,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                             onMouseEnter={() => setDesktopAIServices(true)}
                             onMouseLeave={() => setDesktopAIServices(false)}
                         >
-                            <div className="flex items-center gap-1 cursor-pointer hover:text-[#25ccad] transition">
+                            <div className="flex items-center gap-1 cursor-pointer hover:text-[#25ccad] transition py-3 px-1">
                                 AI INTEGRATION <ChevronDown size={14} />
                             </div>
 
@@ -178,9 +178,9 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                             </AnimatePresence>
                         </div>
 
-                        <Link href="/about" className="hover:text-[#25ccad] hover:underline underline-offset-4 decoration-[#25ccad]/30 transition">ABOUT</Link>
-                        <Link href="/news" className="hover:text-[#25ccad] hover:underline underline-offset-4 decoration-[#25ccad]/30 transition">NEWS</Link>
-                        <Link href="/contact-us" className="hover:text-[#25ccad] hover:underline underline-offset-4 decoration-[#25ccad]/30 transition">CONTACT US</Link>
+                        <Link href="/about" className="hover:text-[#25ccad] hover:underline underline-offset-4 decoration-[#25ccad]/30 transition py-3 px-1">ABOUT</Link>
+                        <Link href="/news" className="hover:text-[#25ccad] hover:underline underline-offset-4 decoration-[#25ccad]/30 transition py-3 px-1">NEWS</Link>
+                        <Link href="/contact-us" className="hover:text-[#25ccad] hover:underline underline-offset-4 decoration-[#25ccad]/30 transition py-3 px-1">CONTACT US</Link>
                     </nav>
 
                     {/* GET STARTED BUTTON */}
@@ -218,8 +218,15 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                     >
                         {/* Top Bar with Logo and Close */}
                         <div className="px-6 py-6 flex items-center justify-between border-b border-white/10">
-                            <Link href="/" onClick={() => setMobileOpen(false)}>
-                                <img src="/weblogo.webp" alt="Logo" className="h-12 w-auto object-contain" />
+                            <Link href="/" onClick={() => setMobileOpen(false)} className="block relative w-48 h-12">
+                                <Image
+                                    src="/weblogo.webp"
+                                    alt="Logo"
+                                    fill
+                                    sizes="192px"
+                                    className="object-contain"
+                                    priority
+                                />
                             </Link>
                             <button
                                 type="button"
@@ -264,7 +271,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                                                 className="ml-4 mt-6 space-y-5 border-l-2 border-[#25ccad]/30 pl-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:space-y-0"
                                             >
                                                 {coreServices.map((item, i) => (
-                                                    <Link key={i} href={item.href} onClick={() => setMobileOpen(false)} className="block text-xl md:text-2xl font-medium text-white/60 active:text-[#25ccad]">
+                                                    <Link key={i} href={item.href} onClick={() => setMobileOpen(false)} className="block text-xl md:text-2xl font-medium text-white/60 active:text-[#25ccad] py-3">
                                                         {item.label}
                                                     </Link>
                                                 ))}
@@ -302,7 +309,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                                                                         key={idx}
                                                                         href={service.href}
                                                                         onClick={() => setMobileOpen(false)}
-                                                                        className="flex items-center gap-3 py-1 text-lg font-medium text-white/50 active:text-[#25ccad] transition-colors"
+                                                                        className="flex items-center gap-3 py-3 text-lg font-medium text-white/50 active:text-[#25ccad] transition-colors"
                                                                     >
                                                                         {service.label}
                                                                     </Link>

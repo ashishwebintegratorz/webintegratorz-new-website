@@ -59,8 +59,7 @@ export default function HeroSection({ mobileOpen }) {
           {/* Tagline at top */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="mb-6 md:mb-4"
           >
@@ -76,8 +75,7 @@ export default function HeroSection({ mobileOpen }) {
           <div className="flex-1 flex flex-col justify-center gap-4">
             <motion.h1
               initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-white max-w-4xl"
             >
@@ -87,8 +85,7 @@ export default function HeroSection({ mobileOpen }) {
 
             <motion.p
               initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-white/90 max-w-3xl"
             >

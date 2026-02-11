@@ -140,7 +140,7 @@ export default function FocusAreasSection() {
                       };
                       router.push(routeMap[area.title]);
                     }}
-                    className="flex items-center gap-2 text-[#25ccad] font-semibold transition-all group-hover:gap-4"
+                    className="flex items-center gap-2 text-[#25ccad] font-semibold transition-all group-hover:gap-4 py-3 px-1"
                   >
                     <span>Learn More</span>
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

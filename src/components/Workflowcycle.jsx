@@ -399,9 +399,11 @@ const WorkflowCycle = () => {
                   className="group relative"
                 >
                   <div className="aspect-square bg-white rounded-2xl flex items-center justify-center shadow-md border border-slate-100 transition-all duration-300 hover:shadow-xl hover:border-emerald-200 p-4 cursor-pointer">
-                    <img
+                    <Image
                       src={tech.logo}
                       alt={tech.name}
+                      width={48}
+                      height={48}
                       className="w-10 h-10 md:w-12 md:h-12 object-contain"
                     />
                   </div>

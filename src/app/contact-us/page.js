@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Send,
@@ -143,8 +144,14 @@ export default function ContactUsPage() {
               </div>
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map(i => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 shadow-sm overflow-hidden">
-                    <img src={`https://i.pravatar.cc/100?u=${i}`} alt="user" className="w-full h-full object-cover grayscale opacity-80" />
+                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 shadow-sm overflow-hidden relative">
+                    <Image
+                      src={`https://i.pravatar.cc/100?u=${i}`}
+                      alt="user"
+                      fill
+                      sizes="40px"
+                      className="object-cover grayscale opacity-80"
+                    />
                   </div>
                 ))}
                 <div className="w-10 h-10 rounded-full border-2 border-white bg-[#25ccad] flex items-center justify-center text-[10px] font-black text-white">

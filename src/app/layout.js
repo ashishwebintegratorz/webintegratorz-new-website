@@ -11,6 +11,7 @@ const spaceGrotesk = localFont({
         },
     ],
     variable: "--font-space-grotesk",
+    display: "swap",
 });
 
 export const metadata = {
@@ -62,6 +63,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
+            <head>
+                {/* Preload critical resources */}
+                <link
+                    rel="preload"
+                    href="/font/SpaceGrotesk-VariableFont_wght.ttf"
+                    as="font"
+                    type="font/ttf"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    rel="preload"
+                    href="/weblogo.webp"
+                    as="image"
+                />
+            </head>
             <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
                 <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
             </body>

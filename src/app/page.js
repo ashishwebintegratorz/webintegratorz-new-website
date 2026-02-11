@@ -1,9 +1,9 @@
 "use client";
 import dynamic from "next/dynamic";
-const Hero = dynamic(() => import("@/components/Hero"), { ssr: true });
-const Focusareassection = dynamic(() => import("@/components/Focusareassection"));
-const OurServices = dynamic(() => import("@/components/OurServices"));
-const WhyChooseUs = dynamic(() => import("@/components/WhyChooseUs"));
+import Hero from "@/components/Hero";
+import Focusareassection from "@/components/Focusareassection";
+import OurServices from "@/components/OurServices";
+import WhyChooseUs from "@/components/WhyChooseUs";
 const Casestudies = dynamic(() => import("@/components/Casestudies"));
 const Workflowcycle = dynamic(() => import("@/components/Workflowcycle"));
 const Featuredsection = dynamic(() => import("@/components/Featuredsection"));

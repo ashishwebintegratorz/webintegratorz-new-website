@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Sparkles, TrendingUp, ArrowRight, Calendar, Users, Zap, Award, Globe, ChevronRight } from 'lucide-react';
 
 export default function NewsUpdates() {
@@ -28,7 +29,7 @@ export default function NewsUpdates() {
     ],
     date: 'December 2024',
     category: 'Partnership',
-    image: '/api/placeholder/800/500',
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop',
     stats: [
       { value: 'Global', label: 'Trusted Company' },
       { value: '100%', label: 'Client Satisfaction' },
@@ -215,7 +216,13 @@ export default function NewsUpdates() {
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-xl p-2 flex items-center justify-center flex-shrink-0">
-                      <img src="/datatoniqlogo.png" alt="Datatoniq Logo" className="w-full h-auto object-contain" />
+                      <Image
+                        src="/datatoniqlogo.png"
+                        alt="Datatoniq Logo"
+                        width={48}
+                        height={48}
+                        className="w-full h-auto object-contain"
+                      />
                     </div>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight md:leading-none">
                       Collab with <span className="text-[#27ccae]">Datatoniq</span>
