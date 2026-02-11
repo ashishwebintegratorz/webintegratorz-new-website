@@ -40,10 +40,13 @@ export default function WhyChooseUsSection() {
   }, []);
 
   const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+    const { clientX, clientY, currentTarget } = e;
+    requestAnimationFrame(() => {
+      const rect = currentTarget.getBoundingClientRect();
+      setMousePosition({
+        x: clientX - rect.left,
+        y: clientY - rect.top,
+      });
     });
   };
 

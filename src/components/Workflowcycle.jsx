@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState, useMemo } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
@@ -446,11 +447,12 @@ const WorkflowCycle = () => {
               <div className="flex items-center gap-8">
                 <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-[#25ccad]/20 p-1 relative flex-shrink-0">
                   <div className="absolute inset-0 rounded-full border border-[#25ccad] animate-ping opacity-20" />
-                  <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden transition-all duration-700">
-                    <img
-                      src="ceo.jpeg"
+                  <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden transition-all duration-700 relative">
+                    <Image
+                      src="/ceo.jpeg"
                       alt="Ashish Meena"
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                   </div>
                 </div>

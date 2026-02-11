@@ -11,6 +11,7 @@ import {
   Youtube,
   Cookie,
 } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,11 +39,12 @@ const Footer = () => {
 
           {/* BRAND */}
           <div className="space-y-10">
-            <div className="flex justify-start">
-              <img
+            <div className="flex justify-start relative w-58 h-12">
+              <Image
                 src="/weblogo.webp"
                 alt="Webintegratorz Logo"
-                className="w-46 md:w-58 object-contain -ml-2 md:-ml-3"
+                fill
+                className="object-contain -ml-2 md:-ml-3"
               />
             </div>
 

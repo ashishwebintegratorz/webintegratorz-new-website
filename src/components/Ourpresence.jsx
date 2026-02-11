@@ -6,31 +6,39 @@ import { motion } from 'framer-motion';
 
 export default function OurPresenceSection() {
   const scrollRef = useRef(null);
+  const [loopRun, setLoopRun] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    let scrollInterval;
+    let rafId;
+    let lastTime = 0;
+    const speed = 0.12; // pixels per millisecond (faster move)
 
-    const startScrolling = () => {
-      scrollInterval = setInterval(() => {
-        if (!isPaused && scrollContainer) {
-          scrollContainer.scrollLeft += 1;
+    const scroll = (time) => {
+      if (!lastTime) lastTime = time;
+      const deltaTime = Math.min(time - lastTime, 100); // Cap delta to avoid jumps
+      lastTime = time;
 
-          // Reset to beginning when reaching the end
-          if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-            scrollContainer.scrollLeft = 0;
-          }
+      if (!isPaused && scrollContainer) {
+        scrollContainer.scrollLeft += speed * deltaTime;
+
+        // Reset to beginning when reaching the end
+        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+        if (scrollContainer.scrollLeft >= maxScroll - 5) {
+          scrollContainer.scrollLeft = 0;
+          setLoopRun(prev => prev + 1); // Increment to trigger re-animation
         }
-      }, 20);
+      }
+      rafId = requestAnimationFrame(scroll);
     };
 
-    startScrolling();
+    rafId = requestAnimationFrame(scroll);
 
     return () => {
-      if (scrollInterval) clearInterval(scrollInterval);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, [isPaused]);
 
@@ -112,26 +120,31 @@ export default function OurPresenceSection() {
       <div
         ref={scrollRef}
         className="scroll-container overflow-x-auto overflow-y-hidden cursor-grab active:cursor-grabbing select-none"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: 'auto' }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         <div className="cards-wrapper flex gap-8 md:gap-12 px-8 md:px-24 pb-24 w-max">
           {events.map((event, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              key={`${loopRun}-${index}`}
+              initial={{ opacity: 0, x: 80, scale: 0.9 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.1,
+                ease: [0.16, 1, 0.3, 1]
+              }}
               className="group relative w-[320px] md:w-[480px] h-[240px] md:h-[360px] rounded-[2.5rem] overflow-hidden transition-all duration-700"
             >
               {/* Parallax Image Component */}
               <div className="absolute inset-0 w-full h-full z-0">
-                <img
+                <Image
                   src={event.image}
                   alt={event.title}
+                  fill
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  sizes="(max-width: 768px) 320px, 480px"
                 />
                 {/* Curator Gradient Overlay: Solid base for shining white text */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent z-10"></div>

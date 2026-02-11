@@ -11,11 +11,16 @@ export default function HeroSection({ mobileOpen }) {
 
   const handleMouseMove = (e) => {
     if (!heroRef.current) return;
-    const rect = heroRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    heroRef.current.style.setProperty("--x", `${x}px`);
-    heroRef.current.style.setProperty("--y", `${y}px`);
+    const { clientX, clientY, currentTarget } = e;
+
+    // Use requestAnimationFrame to decouple DOM reads/writes from mouse events
+    requestAnimationFrame(() => {
+      const rect = currentTarget.getBoundingClientRect();
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+      heroRef.current.style.setProperty("--x", `${x}px`);
+      heroRef.current.style.setProperty("--y", `${y}px`);
+    });
   };
 
   return (
@@ -122,7 +127,13 @@ export default function HeroSection({ mobileOpen }) {
               {/* AWS Certified Badge */}
               <div className="flex flex-col items-start group">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105 relative">
-                  <Image src="/AWS.png" alt="AWS" fill className="object-contain" />
+                  <Image
+                    src="/AWS.png"
+                    alt="AWS"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 40px, 64px"
+                  />
                 </div>
                 <p className="text-white text-[9px] md:text-xs font-bold leading-tight tracking-wide">AWS CERTIFIED</p>
                 <p className="text-white/70 text-[8px] md:text-[10px] font-medium mt-1">PROFESSIONAL</p>
@@ -131,7 +142,13 @@ export default function HeroSection({ mobileOpen }) {
               {/* LinkedIn Badge */}
               <div className="flex flex-col items-start group">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105 relative">
-                  <Image src="/linkedin-logo.svg" alt="LinkedIn" fill className="object-contain" />
+                  <Image
+                    src="/linkedin-logo.svg"
+                    alt="LinkedIn"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 40px, 64px"
+                  />
                 </div>
                 <p className="text-white text-[9px] md:text-xs font-bold leading-tight tracking-wide">TOP RATED AGENCY</p>
                 <p className="text-white/70 text-[8px] md:text-[10px] font-medium mt-1">2023 & 2024</p>
@@ -140,7 +157,13 @@ export default function HeroSection({ mobileOpen }) {
               {/* Digital Marketing Badge */}
               <div className="flex flex-col items-start group">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105 relative">
-                  <Image src="/digital.png" alt="Digital Marketing" fill className="object-contain" />
+                  <Image
+                    src="/digital.png"
+                    alt="Digital Marketing"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 40px, 64px"
+                  />
                 </div>
                 <p className="text-white text-[9px] md:text-xs font-bold leading-tight tracking-wide">DIGITAL MARKETING</p>
                 <p className="text-white/70 text-[8px] md:text-[10px] font-medium mt-1">CERTIFIED</p>

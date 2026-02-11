@@ -67,6 +67,7 @@ export default function Featuredsection() {
                   width={200}
                   height={80}
                   className="object-contain transform group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 160px, 200px"
                 />
               </div>
             </div>

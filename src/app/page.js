@@ -1,15 +1,14 @@
 "use client";
 import dynamic from "next/dynamic";
-import Focusareassection from "@/components/Focusareassection";
-import OurServices from "@/components/OurServices";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Casestudies from "@/components/Casestudies";
-import Workflowcycle from "@/components/Workflowcycle";
-import Featuredsection from "@/components/Featuredsection";
-import Ourpresence from "@/components/Ourpresence";
-import Faq from "@/components/Faq";
-
-const Hero = dynamic(() => import("@/components/Hero"));
+const Hero = dynamic(() => import("@/components/Hero"), { ssr: true });
+const Focusareassection = dynamic(() => import("@/components/Focusareassection"));
+const OurServices = dynamic(() => import("@/components/OurServices"));
+const WhyChooseUs = dynamic(() => import("@/components/WhyChooseUs"));
+const Casestudies = dynamic(() => import("@/components/Casestudies"));
+const Workflowcycle = dynamic(() => import("@/components/Workflowcycle"));
+const Featuredsection = dynamic(() => import("@/components/Featuredsection"));
+const Ourpresence = dynamic(() => import("@/components/Ourpresence"));
+const Faq = dynamic(() => import("@/components/Faq"));
 
 export default function Home() {
   const faqSchema = {

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown, Menu, X, Bot, MessageSquare, Cloud, LineChart, Sparkles, Building2, Brain, Layers, Cpu, Database, ChevronRight, Users } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -73,8 +74,14 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
 
                 {/* LOGO - Left Side */}
                 <div className="flex items-center flex-shrink-0 -ml-4 xl:-ml-6">
-                    <Link href="/" className="leading-tight">
-                        <img src="/weblogo.webp" alt="Company Logo" className="w-auto h-12 xl:h-16 object-contain" />
+                    <Link href="/" className="leading-tight block relative w-48 h-12 xl:w-64 xl:h-16">
+                        <Image
+                            src="/weblogo.webp"
+                            alt="Company Logo"
+                            fill
+                            className="object-contain"
+                            priority
+                        />
                     </Link>
                 </div>
 
