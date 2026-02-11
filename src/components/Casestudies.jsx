@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 
 const Casestudies = () => {
@@ -151,14 +152,12 @@ const Casestudies = () => {
                   <div className="study-content-inner">
                     {/* Card Image Area */}
                     <div className="card-image-wrapper">
-                      <img
+                      <Image
                         src={study.image}
                         alt={study.title}
-                        className="card-image"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.nextElementSibling.style.display = 'flex';
-                        }}
+                        fill
+                        className="card-image object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       {/* Fallback Placeholder */}
                       <div className="card-placeholder">

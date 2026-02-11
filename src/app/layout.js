@@ -1,5 +1,17 @@
 import "./globals.css";
+import localFont from "next/font/local";
 import ClientLayoutWrapper from "../components/ClientLayoutWrapper";
+
+const spaceGrotesk = localFont({
+    src: [
+        {
+            path: "../../public/font/SpaceGrotesk-VariableFont_wght.ttf",
+            weight: "400 700",
+            style: "normal",
+        },
+    ],
+    variable: "--font-space-grotesk",
+});
 
 export const metadata = {
     title: "Top IT Company in India | AI & Software Development",
@@ -50,7 +62,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className="antialiased">
+            <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
                 <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
             </body>
         </html>

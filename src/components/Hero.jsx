@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Award } from "lucide-react";
 import { motion } from "framer-motion";
@@ -21,7 +22,7 @@ export default function HeroSection({ mobileOpen }) {
     <section
       ref={heroRef}
       onMouseMove={handleMouseMove}
-      className="hero relative w-full min-h-screen overflow-hidden bg-black"
+      className="hero relative w-full h-auto min-h-screen min-h-[100dvh] md:min-h-screen overflow-hidden bg-black"
       style={{ display: mobileOpen ? "none" : "block" }}
     >
       {!mobileOpen && (
@@ -31,10 +32,12 @@ export default function HeroSection({ mobileOpen }) {
             loop
             muted
             playsInline
+            aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover brightness-90"
           >
             <source src="/herovedio.webm" type="video/webm" />
             <source src="/hero.mp4" type="video/mp4" />
+            <track kind="captions" src={null} label="No captions needed" default />
           </video>
           {/* Mobile-only overlay for better readability */}
           <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
@@ -97,7 +100,7 @@ export default function HeroSection({ mobileOpen }) {
             >
               <button
                 onClick={() => router.push("/contact-us")}
-                className="group relative px-6 py-3 md:px-8 md:py-3.5 text-base md:text-lg font-bold rounded-2xl md:rounded-xl transition-all duration-300 flex items-center justify-center gap-3 group w-full md:w-auto overflow-hidden"
+                className="group relative px-6 py-3 md:px-8 md:py-3.5 text-base md:text-lg font-bold rounded-2xl md:rounded-xl transition-all duration-300 flex items-center justify-center gap-3 w-full md:w-auto overflow-hidden hover:scale-110 active:scale-95"
                 style={{ backgroundColor: "#25ccad", color: "#000" }}
               >
                 <span className="relative z-10">Get Free Consultation</span>
@@ -118,8 +121,8 @@ export default function HeroSection({ mobileOpen }) {
 
               {/* AWS Certified Badge */}
               <div className="flex flex-col items-start group">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
-                  <img src="/AWS.png" alt="AWS" className="w-full h-full object-contain" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105 relative">
+                  <Image src="/AWS.png" alt="AWS" fill className="object-contain" />
                 </div>
                 <p className="text-white text-[9px] md:text-xs font-bold leading-tight tracking-wide">AWS CERTIFIED</p>
                 <p className="text-white/70 text-[8px] md:text-[10px] font-medium mt-1">PROFESSIONAL</p>
@@ -127,8 +130,8 @@ export default function HeroSection({ mobileOpen }) {
 
               {/* LinkedIn Badge */}
               <div className="flex flex-col items-start group">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
-                  <img src="/linkedin-logo.svg" alt="LinkedIn" className="w-full h-full object-contain" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105 relative">
+                  <Image src="/linkedin-logo.svg" alt="LinkedIn" fill className="object-contain" />
                 </div>
                 <p className="text-white text-[9px] md:text-xs font-bold leading-tight tracking-wide">TOP RATED AGENCY</p>
                 <p className="text-white/70 text-[8px] md:text-[10px] font-medium mt-1">2023 & 2024</p>
@@ -136,8 +139,8 @@ export default function HeroSection({ mobileOpen }) {
 
               {/* Digital Marketing Badge */}
               <div className="flex flex-col items-start group">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
-                  <img src="/digital.png" alt="Digital Marketing" className="w-full h-full object-contain" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 flex items-center justify-start transition-transform duration-300 group-hover:scale-105 relative">
+                  <Image src="/digital.png" alt="Digital Marketing" fill className="object-contain" />
                 </div>
                 <p className="text-white text-[9px] md:text-xs font-bold leading-tight tracking-wide">DIGITAL MARKETING</p>
                 <p className="text-white/70 text-[8px] md:text-[10px] font-medium mt-1">CERTIFIED</p>
@@ -158,28 +161,6 @@ export default function HeroSection({ mobileOpen }) {
 
       {/* Bottom overlay gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-28 bg-gradient-to-t from-black to-transparent" />
-
-      {/* Hover Scale Effect */}
-      <style jsx>{`
-        button:hover {
-          transform: scale(1.1);
-        }
-        
-        @media (min-width: 768px) {
-          .hero {
-            min-height: 100vh !important;
-          }
-        }
-
-        /* Mobile specific adjustments */
-        @media (max-width: 640px) {
-          .hero {
-            min-height: 100vh;
-            min-height: 100dvh;
-            height: auto;
-          }
-        }
-      `}</style>
     </section>
   );
 }
