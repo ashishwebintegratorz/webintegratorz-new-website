@@ -42,7 +42,7 @@ export default function OurPresenceSection() {
     },
     {
       title: "Tech Workshop",
-      location: "Vision College",
+      location: "Softvision College",
       image: "/vision.jpeg",
     },
     {
@@ -57,7 +57,7 @@ export default function OurPresenceSection() {
     },
     {
       title: "Tech Workshop",
-      location: "Vision College",
+      location: "Softvision College",
       image: "/vision.jpeg",
     },
     {
