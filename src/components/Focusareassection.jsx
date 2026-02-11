@@ -82,10 +82,10 @@ export default function FocusAreasSection() {
       <div className="relative max-w-[1400px] mx-auto px-4 sm:px-0">
         {/* Header */}
         <div className={`text-center mb-16 md:mb-24 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#25ccad]/10 border border-[#25ccad]/20 mb-6 font-bold">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25ccad]/10 border border-[#25ccad]/20 mb-8 font-bold">
             <div className="w-2 h-2 rounded-full bg-[#25ccad] animate-pulse"></div>
-            <span className="text-[#25ccad] text-[10px] sm:text-xs tracking-[0.2em] uppercase">
-              What We Do Best
+            <span className="text-[#25ccad] text-[10px] sm:text-xs tracking-[0.2em] uppercase font-black">
+              WHAT WE DO BEST
             </span>
           </div>
 

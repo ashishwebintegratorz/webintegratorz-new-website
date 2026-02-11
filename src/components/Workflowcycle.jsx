@@ -154,10 +154,12 @@ const WorkflowCycle = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-slate-900 text-white rounded-full mb-6 md:mb-8 text-xs sm:text-sm font-medium tracking-wide"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#25ccad]/10 border border-[#25ccad]/20 mb-8 font-bold"
           >
-            <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-            HOW WE WORK
+            <div className="w-2 h-2 rounded-full bg-[#25ccad] animate-pulse" />
+            <span className="text-[#25ccad] text-xs tracking-[0.2em] uppercase font-bold">
+              HOW WE WORK
+            </span>
           </motion.div>
 
           <motion.h2
@@ -453,7 +455,7 @@ const WorkflowCycle = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-3xl font-black text-white tracking-tight">Ashish Meena</h4>
+                  <p className="text-3xl font-black text-white tracking-tight">Ashish Meena</p>
                   <p className="text-[#25ccad] font-black text-xs uppercase tracking-[0.2em] mt-1">CEO & Founder, Webintegratorz</p>
                   <div className="h-[2px] w-20 bg-white/10 my-4" />
                   <p className="text-slate-400 text-sm font-medium leading-relaxed tracking-wide">Direct Expert Strategy for Scaling Your Business Worldwide.</p>

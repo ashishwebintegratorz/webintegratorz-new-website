@@ -13,6 +13,7 @@ export default function ServicesOverviewPage() {
       <div className="max-w-7xl mx-auto px-6">
         <Breadcrumbs items={breadcrumbItems} />
       </div>
+      <h1 className="sr-only">Our IT & AI Services Overview</h1>
       <OurServices />
     </main>
   );

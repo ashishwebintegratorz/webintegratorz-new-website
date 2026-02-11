@@ -217,7 +217,7 @@ export default function WhyChooseUsSection() {
                           {member.name.charAt(0)}
                         </div>
                         <div className="team-info">
-                          <h4 className="team-name">{member.name}</h4>
+                          <p className="team-name">{member.name}</p>
                           <p className="team-role">{member.role}</p>
                         </div>
                         {/* Hover effect */}
@@ -240,14 +240,14 @@ export default function WhyChooseUsSection() {
               <div className="workspace-cards">
                 <div className="workspace-card">
                   <div className="workspace-icon-wrapper">
-                    <Lightbulb className="workspace-icon" size={18} style={{ color: '#25ccad' }} />
+                    <Lightbulb className="workspace-icon" size={18} />
                   </div>
                   <p className="workspace-title">Innovation Hub</p>
                   <p className="workspace-subtitle">Creative Solutions</p>
                 </div>
                 <div className="workspace-card">
                   <div className="workspace-icon-wrapper">
-                    <Rocket className="workspace-icon" size={18} style={{ color: '#25ccad' }} />
+                    <Rocket className="workspace-icon" size={18} />
                   </div>
                   <p className="workspace-title">Fast Delivery</p>
                   <p className="workspace-subtitle">Quick Turnaround</p>

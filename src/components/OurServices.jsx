@@ -94,15 +94,18 @@ export default function ServicesPage() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
         >
-          <motion.span
-            className="inline-block mb-4 text-green-700 font-semibold text-sm tracking-wider uppercase bg-green-100 px-5 py-2 rounded-full border border-green-200"
+          <motion.div
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#25ccad]/10 border border-[#25ccad]/20 mb-8 font-bold"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Our Services
-          </motion.span>
+            <div className="w-2 h-2 rounded-full bg-[#25ccad] animate-pulse"></div>
+            <span className="text-[#25ccad] text-xs tracking-[0.2em] uppercase">
+              Our Services
+            </span>
+          </motion.div>
 
           <h2 className="text-5xl sm:text-6xl font-extrabold text-slate-900 mb-6">
             Transform Your Business with{' '}

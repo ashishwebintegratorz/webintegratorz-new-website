@@ -60,9 +60,9 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="social-link"
-                  className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 hover:bg-[#25ccad] hover:text-black transition-all duration-300"
+                  className="w-12 h-12 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 hover:bg-[#25ccad] hover:text-black transition-all duration-300"
                 >
-                  <item.Icon className="w-4 h-4" />
+                  <item.Icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
@@ -75,12 +75,12 @@ const Footer = () => {
               <span className="block w-10 h-1 bg-[#25ccad] mt-2 rounded-full" />
             </h3>
             <ul className="space-y-4">
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />Web Development</a></li>
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />Mobile Development</a></li>
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />CMS Solutions</a></li>
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />UI/UX Design</a></li>
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />Digital Marketing</a></li>
-              <li><a href="#" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><ArrowRight className="w-4 h-4 mr-2" />AI Integration</a></li>
+              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />Web Development</a></li>
+              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />Mobile Development</a></li>
+              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />CMS Solutions</a></li>
+              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />UI/UX Design</a></li>
+              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />Digital Marketing</a></li>
+              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />AI Integration</a></li>
             </ul>
           </div>
 
@@ -127,12 +127,12 @@ const Footer = () => {
               <span className="block w-10 h-1 bg-[#25ccad] mt-2 rounded-full" />
             </h3>
             <ul className="space-y-4">
-              <li><a href="/news" className="text-white/70 hover:text-[#25ccad] transition">News</a></li>
-              <li><a href="/contact-us" className="text-white/70 hover:text-[#25ccad] transition">Contact Us</a></li>
-              <li><a href="/about" className="text-white/70 hover:text-[#25ccad] transition">About</a></li>
-              <li><a href="/privacy-policy" className="text-white/70 hover:text-[#25ccad] transition">Privacy Policy</a></li>
-              <li><a href="/terms" className="text-white/70 hover:text-[#25ccad] transition">Terms & Conditions</a></li>
-              <li><a href="/cookies" className="flex items-center text-white/70 hover:text-[#25ccad] transition"><Cookie className="w-4 h-4 mr-2 text-[#25ccad]" />Cookie Policy</a></li>
+              <li><a href="/news" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">News</a></li>
+              <li><a href="/contact-us" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Contact Us</a></li>
+              <li><a href="/about" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">About</a></li>
+              <li><a href="/privacy-policy" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Privacy Policy</a></li>
+              <li><a href="/terms" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Terms & Conditions</a></li>
+              <li><a href="/cookies" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><Cookie className="w-4 h-4 mr-2 text-[#25ccad]" />Cookie Policy</a></li>
             </ul>
           </div>
         </div>
@@ -140,18 +140,18 @@ const Footer = () => {
         {/* BOTTOM BAR */}
         <div className="border-t border-white/10 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col items-center md:items-start gap-2">
-            <p className="text-sm text-white/60">
+            <p className="text-sm text-white/80">
               © {currentYear} <span className="text-[#25ccad] font-semibold">Webintegratorz</span>. All rights reserved.
             </p>
-            <p className="text-[10px] text-white/40 max-w-[450px] text-center md:text-left leading-relaxed">
-              We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. <a href="/cookies" className="text-[#25ccad] hover:underline">Manage Preferences</a>
+            <p className="text-[10px] text-white/60 max-w-[450px] text-center md:text-left leading-relaxed">
+              We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. <a href="/cookies" className="text-[#25ccad] underline underline-offset-2 decoration-[#25ccad]/40 hover:decoration-[#25ccad] transition-all">Manage Preferences</a>
             </p>
           </div>
 
-          <div className="flex gap-6 text-xs text-white/50">
-            <a href="/privacy-policy" className="hover:text-[#25ccad] transition">Privacy</a>
-            <a href="/cookies" className="hover:text-[#25ccad] transition">Cookies</a>
-            <a href="/sitemap.xml" className="hover:text-[#25ccad] transition">Sitemap</a>
+          <div className="flex gap-6 text-xs text-white/70">
+            <a href="/privacy-policy" className="hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Privacy</a>
+            <a href="/cookies" className="hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Cookies</a>
+            <a href="/sitemap.xml" className="hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Sitemap</a>
           </div>
         </div>
       </div>

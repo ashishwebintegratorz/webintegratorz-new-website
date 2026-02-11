@@ -111,7 +111,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                                                         </div>
                                                         <div>
                                                             <p className="text-sm font-semibold text-white/80 group-hover:text-white transition-colors">{item.label}</p>
-                                                            <p className="text-[10px] text-white/30 group-hover:text-white/50 leading-tight">{item.desc}</p>
+                                                            <p className="text-[10px] text-white/70 group-hover:text-white leading-tight">{item.desc}</p>
                                                         </div>
                                                     </Link>
                                                 ))}
@@ -145,7 +145,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                                             <div className="grid grid-cols-3 gap-6 xl:gap-8">
                                                 {aiCategories.map((category, idx) => (
                                                     <div key={idx} className="space-y-4">
-                                                        <h4 className="text-[10px] font-bold tracking-[0.2em] text-[#25ccad] uppercase opacity-80">{category.title}</h4>
+                                                        <p className="text-[10px] font-bold tracking-[0.2em] text-[#25ccad] uppercase opacity-80">{category.title}</p>
                                                         <div className="space-y-1">
                                                             {category.items.map((service, sIdx) => (
                                                                 <Link
@@ -156,7 +156,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                                                                     <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-[#25ccad]/10 transition-all">
                                                                         <service.icon size={14} className="text-[#25ccad] group-hover:text-white transition-colors" />
                                                                     </div>
-                                                                    <span className="text-[13px] font-medium text-white/50 group-hover:text-white transition-colors">
+                                                                    <span className="text-[13px] font-medium text-white/70 group-hover:text-white transition-colors">
                                                                         {service.label}
                                                                     </span>
                                                                 </Link>
@@ -171,9 +171,9 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                             </AnimatePresence>
                         </div>
 
-                        <Link href="/about" className="hover:text-[#25ccad] transition">ABOUT</Link>
-                        <Link href="/news" className="hover:text-[#25ccad] transition">NEWS</Link>
-                        <Link href="/contact-us" className="hover:text-[#25ccad] transition">CONTACT US</Link>
+                        <Link href="/about" className="hover:text-[#25ccad] hover:underline underline-offset-4 decoration-[#25ccad]/30 transition">ABOUT</Link>
+                        <Link href="/news" className="hover:text-[#25ccad] hover:underline underline-offset-4 decoration-[#25ccad]/30 transition">NEWS</Link>
+                        <Link href="/contact-us" className="hover:text-[#25ccad] hover:underline underline-offset-4 decoration-[#25ccad]/30 transition">CONTACT US</Link>
                     </nav>
 
                     {/* GET STARTED BUTTON */}
@@ -191,7 +191,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                     <button
                         type="button"
                         onClick={() => setMobileOpen(!mobileOpen)}
-                        className="p-2 rounded-lg hover:bg-white/10 transition"
+                        className="p-3 rounded-lg hover:bg-white/10 transition"
                         aria-label={mobileOpen ? "Close menu" : "Open menu"}
                     >
                         {mobileOpen ? <X size={24} /> : <Menu size={24} />}
