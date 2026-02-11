@@ -192,6 +192,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                         type="button"
                         onClick={() => setMobileOpen(!mobileOpen)}
                         className="p-2 rounded-lg hover:bg-white/10 transition"
+                        aria-label={mobileOpen ? "Close menu" : "Open menu"}
                     >
                         {mobileOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
@@ -217,6 +218,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                                 type="button"
                                 onClick={() => setMobileOpen(false)}
                                 className="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full border border-white/10 active:scale-90 transition-transform"
+                                aria-label="Close menu"
                             >
                                 <X size={24} className="text-[#25ccad]" />
                             </button>

@@ -307,9 +307,10 @@ const WorkflowCycle = () => {
                     }}
                   >
                     {/* Step Circle */}
-                    <div
+                    <button
                       onClick={() => setActiveStep(index)}
-                      className={`relative w-20 h-20 rounded-full flex flex-col items-center justify-center cursor-pointer transition-all duration-500 border-4 will-change-transform ${isActive
+                      aria-label={`Go to step ${step.number}: ${step.title}`}
+                      className={`relative w-20 h-20 rounded-full flex flex-col items-center justify-center cursor-pointer transition-all duration-500 border-4 outline-none focus-visible:ring-2 focus-visible:ring-[#25ccad] focus-visible:ring-offset-2 will-change-transform ${isActive
                         ? 'bg-gradient-to-br from-[#25ccad] to-emerald-600 border-white shadow-[0_20px_40px_rgba(37,204,173,0.3)] scale-110'
                         : 'bg-white border-slate-100 shadow-lg hover:border-emerald-200 hover:scale-105'
                         }`}
@@ -320,7 +321,7 @@ const WorkflowCycle = () => {
                       <span className={`text-[10px] font-black transition-colors ${isActive ? 'text-white' : 'text-slate-900'}`}>
                         {step.number}
                       </span>
-                    </div>
+                    </button>
 
                     {/* Info Card - Improved Pointer Events */}
                     <div className={`absolute ${index <= 2 ? 'top-full mt-6' : 'bottom-full mb-6'} left-1/2 -translate-x-1/2 w-72 transition-all duration-500 ${isActive

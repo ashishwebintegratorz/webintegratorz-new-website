@@ -9,7 +9,7 @@ import Featuredsection from "@/components/Featuredsection";
 import Ourpresence from "@/components/Ourpresence";
 import Faq from "@/components/Faq";
 
-const Hero = dynamic(() => import("@/components/Hero"), { ssr: false });
+const Hero = dynamic(() => import("@/components/Hero"));
 
 export default function Home() {
   const faqSchema = {
