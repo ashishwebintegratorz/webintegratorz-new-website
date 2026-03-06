@@ -1,6 +1,7 @@
 import "./globals.css";
 import localFont from "next/font/local";
 import ClientLayoutWrapper from "../components/ClientLayoutWrapper";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const spaceGrotesk = localFont({
     src: [
@@ -80,6 +81,7 @@ export default function RootLayout({ children }) {
             </head>
             <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
                 <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+                <SpeedInsights />
             </body>
         </html>
     );
