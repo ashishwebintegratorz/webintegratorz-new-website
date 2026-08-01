@@ -1,5 +1,5 @@
 const { createServer } = require("http");
-const { parse } = require("url");
+
 const next = require("next");
 
 const dev = process.env.NODE_ENV !== "production";
@@ -12,8 +12,21 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   createServer(async (req, res) => {
     try {
-      const parsedUrl = parse(req.url, true);
-      const { pathname, query } = parsedUrl;
+      const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+      const pathname = url.pathname;
+      const query = {};
+      for (const [key, val] of url.searchParams.entries()) {
+        if (query[key] !== undefined) {
+          if (Array.isArray(query[key])) {
+            query[key].push(val);
+          } else {
+            query[key] = [query[key], val];
+          }
+        } else {
+          query[key] = val;
+        }
+      }
+      const parsedUrl = { pathname, query, path: req.url, href: req.url };
 
       // Custom routes (optional)
       if (pathname === "/a") {

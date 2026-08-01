@@ -39,7 +39,7 @@ const Footer = () => {
 
           {/* BRAND */}
           <div className="space-y-10">
-            <div className="flex justify-start relative w-58 h-12">
+            <div className="flex justify-start relative w-56 h-12">
               <Image
                 src="/weblogo.webp"
                 alt="Webintegratorz Logo"

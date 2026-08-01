@@ -14,6 +14,11 @@ const spaceGrotesk = localFont({
     display: "swap",
 });
 
+export const viewport = {
+    width: "device-width",
+    initialScale: 1,
+};
+
 export const metadata = {
     title: "Top IT Company in India | AI & Software Development",
     description: "Webintegratorz Technologies is a leading IT company in India specializing in AI, MERN stack, and custom software development for global enterprises.",
@@ -31,7 +36,6 @@ export const metadata = {
         "Custom Software Development India",
         "Offshore Development Center India"
     ],
-    viewport: "width=device-width, initial-scale=1",
     robots: "index, follow",
     alternates: {
         canonical: "https://webintegratorz.com",
