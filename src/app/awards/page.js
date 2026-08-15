@@ -105,8 +105,8 @@ export default function AwardsPage() {
 
   const certifications = [
     { name: 'UDYAM Registered Enterprise', badge: 'UDYAM-MP-23-0104875', org: 'Govt. of India MSME' },
-    { name: 'D-U-N-S Verified Global Business', badge: 'DUNS-91-864-1049', org: 'Dun & Bradstreet' },
     { name: 'AWS Cloud Architecture Partner', badge: 'Certified Solutions', org: 'Amazon Web Services' },
+    { name: 'SOC 2 & ISO 27001 Security Ready', badge: 'Enterprise Compliant', org: 'Information Security' },
     { name: 'W3C WAI Accessibility Specialist', badge: 'WCAG 2.2 Conformance', org: 'Universal Accessibility' },
   ];
 

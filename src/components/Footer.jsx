@@ -188,8 +188,8 @@ const Footer = () => {
               <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
                 <ShieldCheck className="w-4 h-4 text-[#00f5a0] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-[10px] text-slate-400 font-bold uppercase">Global DUNS ID</p>
-                  <p className="text-xs text-slate-200 font-medium">93-356-9189</p>
+                  <p className="text-[10px] text-slate-400 font-bold uppercase">Security &amp; Privacy</p>
+                  <p className="text-xs text-slate-200 font-medium">SOC 2 &amp; GDPR Compliant</p>
                 </div>
               </div>
             </div>
