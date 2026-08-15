@@ -127,20 +127,20 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                                         transition={{ duration: 0.2, ease: "easeOut" }}
                                         className="absolute top-full left-0 pt-3 z-50"
                                     >
-                                        <div className="w-[360px] bg-[#090d16]/95 backdrop-blur-2xl border border-white/[0.12] shadow-[0_30px_90px_rgba(0,0,0,0.8)] rounded-2xl p-4 overflow-hidden">
-                                            <div className="space-y-1.5">
+                                        <div className="w-[380px] bg-[#070b14] border-2 border-white/20 shadow-[0_30px_100px_rgba(0,0,0,0.98)] rounded-3xl p-5 overflow-hidden">
+                                            <div className="space-y-2">
                                                 {coreServices.map((item, i) => (
                                                     <Link 
                                                         key={i} 
                                                         href={item.href} 
-                                                        className="group flex items-start gap-3.5 p-3 rounded-xl hover:bg-white/[0.06] transition-all border border-transparent hover:border-white/[0.05]"
+                                                        className="group flex items-start gap-3.5 p-3 rounded-2xl bg-[#0d1424] hover:bg-[#131d33] border border-white/10 hover:border-[#00f5a0]/40 transition-all shadow-sm"
                                                     >
-                                                        <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0] group-hover:bg-[#00f5a0] group-hover:text-black transition-all shrink-0 mt-0.5">
-                                                            <item.icon size={17} />
+                                                        <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-[#00f5a0] group-hover:bg-[#00f5a0] group-hover:text-black transition-all shrink-0 mt-0.5">
+                                                            <item.icon size={18} />
                                                         </div>
                                                         <div>
-                                                            <p className="text-sm font-semibold text-white group-hover:text-[#00f5a0] transition-colors">{item.label}</p>
-                                                            <p className="text-xs text-slate-300 leading-snug mt-0.5">{item.desc}</p>
+                                                            <p className="text-sm font-bold text-white group-hover:text-[#00f5a0] transition-colors">{item.label}</p>
+                                                            <p className="text-xs text-slate-200 leading-snug mt-0.5 font-normal">{item.desc}</p>
                                                         </div>
                                                     </Link>
                                                 ))}
@@ -151,7 +151,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                             </AnimatePresence>
                         </div>
 
-                        {/* AI INTEGRATION MEGA DROPDOWN */}
+                        {/* AI INTEGRATION MEGA DROPDOWN (100% SOLID & FULLY VISIBLE) */}
                         <div
                             className="relative"
                             onMouseEnter={() => setDesktopAIServices(true)}
@@ -178,33 +178,33 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: 10, scale: 0.98 }}
                                         transition={{ duration: 0.2, ease: "easeOut" }}
-                                        className="absolute top-full -left-20 pt-3 z-50"
+                                        className="absolute top-full -left-28 xl:-left-20 pt-3 z-50"
                                     >
-                                        <div className="w-[820px] bg-[#090d16]/98 backdrop-blur-2xl border border-white/[0.12] shadow-[0_30px_90px_rgba(0,0,0,0.8)] rounded-3xl p-6 overflow-hidden">
-                                            <div className="grid grid-cols-3 gap-6">
+                                        <div className="w-[840px] bg-[#070b14] border-2 border-white/20 shadow-[0_35px_100px_rgba(0,0,0,0.98)] rounded-3xl p-6 overflow-hidden">
+                                            <div className="grid grid-cols-3 gap-5">
                                                 {aiCategories.map((category, idx) => (
-                                                    <div key={idx} className="space-y-3">
-                                                        <div className="flex items-center gap-2 pb-2 border-b border-white/[0.08]">
-                                                            <div className="w-1.5 h-1.5 rounded-full bg-[#00f5a0]" />
-                                                            <p className="text-[11px] font-bold tracking-wider text-slate-300 uppercase">{category.title}</p>
+                                                    <div key={idx} className="p-4 rounded-2xl bg-[#0d1424] border border-white/10 space-y-3">
+                                                        <div className="flex items-center gap-2 pb-2.5 border-b border-white/10">
+                                                            <div className="w-2 h-2 rounded-full bg-[#00f5a0]" />
+                                                            <p className="text-xs font-black tracking-wider text-[#00f5a0] uppercase">{category.title}</p>
                                                         </div>
-                                                        <div className="space-y-1">
+                                                        <div className="space-y-1.5">
                                                             {category.items.map((service, sIdx) => (
                                                                 <Link
                                                                     key={sIdx}
                                                                     href={service.href}
-                                                                    className="group flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-white/[0.06] transition-all"
+                                                                    className="group flex items-center justify-between py-2 px-2.5 rounded-xl hover:bg-[#131e36] border border-transparent hover:border-white/10 transition-all"
                                                                 >
                                                                     <div className="flex items-center gap-2.5">
-                                                                        <div className="w-7 h-7 rounded-lg bg-white/[0.04] flex items-center justify-center text-slate-400 group-hover:text-[#00f5a0] group-hover:bg-emerald-500/10 transition-all">
+                                                                        <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center text-slate-200 group-hover:text-black group-hover:bg-[#00f5a0] transition-all">
                                                                             <service.icon size={14} />
                                                                         </div>
-                                                                        <span className="text-[13px] font-medium text-slate-300 group-hover:text-white transition-colors">
+                                                                        <span className="text-[13px] font-bold text-slate-100 group-hover:text-white transition-colors">
                                                                             {service.label}
                                                                         </span>
                                                                     </div>
                                                                     {service.badge && (
-                                                                        <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-500/20 text-[#00f5a0] border border-emerald-500/30">
+                                                                        <span className="text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md bg-emerald-500/30 text-[#00f5a0] border border-emerald-500/50">
                                                                             {service.badge}
                                                                         </span>
                                                                     )}
@@ -216,17 +216,19 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                                             </div>
 
                                             {/* AI Banner Footer */}
-                                            <div className="mt-5 p-4 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900/60 to-cyan-950/40 border border-emerald-500/20 flex items-center justify-between">
+                                            <div className="mt-5 p-4 rounded-2xl bg-[#091522] border border-emerald-500/40 flex items-center justify-between">
                                                 <div className="flex items-center gap-3">
-                                                    <Zap size={18} className="text-[#00f5a0]" />
+                                                    <div className="w-8 h-8 rounded-xl bg-emerald-500/20 flex items-center justify-center text-[#00f5a0]">
+                                                        <Zap size={18} />
+                                                    </div>
                                                     <div>
-                                                        <p className="text-xs font-semibold text-white">Enterprise AI Proof-of-Concept in 14 Days</p>
-                                                        <p className="text-[11px] text-slate-400">Validate AI ROI before scaling production infrastructure.</p>
+                                                        <p className="text-xs font-bold text-white">Enterprise AI Proof-of-Concept in 14 Days</p>
+                                                        <p className="text-[11px] text-slate-300">Validate AI ROI before scaling production infrastructure.</p>
                                                     </div>
                                                 </div>
                                                 <Link 
                                                     href="/contact-us"
-                                                    className="px-4 py-1.5 rounded-xl bg-[#00f5a0] text-black text-xs font-bold hover:bg-[#00d9f5] transition-all flex items-center gap-1.5"
+                                                    className="px-4 py-2 rounded-xl bg-[#00f5a0] text-black text-xs font-black hover:bg-[#00d9f5] transition-all flex items-center gap-1.5 shadow-lg shadow-emerald-500/20"
                                                 >
                                                     Launch PoC <ArrowRight size={12} />
                                                 </Link>
