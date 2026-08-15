@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import AccessibilityWidget from "./AccessibilityWidget";
 
 export default function ClientLayoutWrapper({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -24,6 +25,7 @@ export default function ClientLayoutWrapper({ children }) {
             {children}
           </main>
           <Footer />
+          <AccessibilityWidget />
         </>
       )}
     </>

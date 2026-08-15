@@ -267,17 +267,24 @@ const Casestudies = () => {
           </div>
         </div>
 
-        {/* Dynamic Pagination Indicators */}
-        <div className="flex justify-center items-center gap-2 mt-10">
+        {/* Dynamic Pagination Indicators (Accessible 32px Touch Targets) */}
+        <div className="flex justify-center items-center gap-1.5 mt-10" role="tablist" aria-label="Case studies pagination">
           {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
             <button
               key={idx}
+              type="button"
               onClick={() => setCurrentIndex(idx)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                idx === currentIndex ? 'w-8 bg-[#00f5a0]' : 'w-2 bg-white/20 hover:bg-white/40'
-              }`}
-              aria-label={`Slide ${idx + 1}`}
-            />
+              className="w-8 h-8 flex items-center justify-center rounded-full focus:outline-none"
+              aria-label={`Go to case study slide ${idx + 1}`}
+              aria-selected={idx === currentIndex}
+              role="tab"
+            >
+              <span
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  idx === currentIndex ? 'w-8 bg-[#00f5a0]' : 'w-2.5 bg-white/40 hover:bg-white/80'
+                }`}
+              />
+            </button>
           ))}
         </div>
 

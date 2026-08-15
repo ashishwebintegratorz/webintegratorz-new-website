@@ -103,6 +103,59 @@
     }
   }
 
+  /* Accessibility Widget Dynamic Customization Classes */
+  html.a11y-text-large {
+    font-size: 115% !important;
+  }
+
+  html.a11y-text-xlarge {
+    font-size: 130% !important;
+  }
+
+  html.a11y-high-contrast {
+    filter: contrast(160%) !important;
+  }
+
+  html.a11y-high-contrast body {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  html.a11y-monochrome {
+    filter: grayscale(100%) !important;
+  }
+
+  html.a11y-invert {
+    filter: invert(100%) hue-rotate(180deg) !important;
+  }
+
+  html.a11y-dyslexic * {
+    font-family: Arial, Helvetica, sans-serif !important;
+    letter-spacing: 0.05em !important;
+    line-height: 1.7 !important;
+  }
+
+  html.a11y-highlight-links a,
+  html.a11y-highlight-links button {
+    outline: 2px solid #facc15 !important;
+    outline-offset: 2px !important;
+    text-decoration: underline !important;
+    text-decoration-color: #facc15 !important;
+    text-decoration-thickness: 2px !important;
+  }
+
+  html.a11y-pause-animations *,
+  html.a11y-pause-animations ::before,
+  html.a11y-pause-animations ::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html.a11y-big-cursor,
+  html.a11y-big-cursor * {
+    cursor: default !important;
+  }
+
   /* Custom Premium Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;

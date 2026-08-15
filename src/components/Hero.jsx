@@ -82,18 +82,18 @@ export default function HeroSection({ mobileOpen }) {
           transition={{ duration: 0.6 }}
           className="flex flex-wrap items-center gap-3 mb-6"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/[0.1] backdrop-blur-xl shadow-lg hover:border-emerald-400/40 transition-colors">
-            <span className="flex h-2 w-2 relative">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0a101d] border border-white/20 backdrop-blur-xl shadow-lg hover:border-emerald-400/60 transition-colors">
+            <span className="flex h-2.5 w-2.5 relative" aria-hidden="true">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00f5a0] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00f5a0]"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00f5a0]"></span>
             </span>
-            <p className="text-xs sm:text-[13px] font-semibold text-slate-200 tracking-wide">
+            <p className="text-xs sm:text-[13px] font-bold text-white tracking-wide">
               ✦ Next-Gen AI &amp; Enterprise Digital Engineering
             </p>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[#00f5a0] text-xs sm:text-[13px] font-bold shadow-lg">
-            <Globe2 size={14} className="text-[#00f5a0]" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#05241b] border border-[#00f5a0]/50 text-[#00f5a0] text-xs sm:text-[13px] font-extrabold shadow-lg">
+            <Globe2 size={15} className="text-[#00f5a0]" aria-hidden="true" />
             <span>100% Fully Remote • Solving Complex Problems Globally</span>
           </div>
         </motion.div>
@@ -105,18 +105,18 @@ export default function HeroSection({ mobileOpen }) {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.08] text-white"
+              className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.08] text-white"
             >
               Architecting <br className="hidden sm:inline" />
-              <span className="text-gradient-emerald">Intelligent Software</span> &amp; <br />
-              <span className="text-gradient-silver">Enterprise AI Solutions</span>
+              <span className="text-[#00f5a0] font-black drop-shadow-[0_0_30px_rgba(0,245,160,0.3)]">Intelligent Software</span> &amp; <br />
+              <span className="text-slate-100 font-black">Enterprise AI Solutions</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="text-base sm:text-lg md:text-xl leading-relaxed text-slate-300 max-w-2xl font-normal"
+              className="text-base sm:text-lg md:text-xl leading-relaxed text-slate-200 max-w-2xl font-normal"
             >
               A 100% fully remote engineering organization solving complex technical problems globally. We build mission-critical web applications, custom Generative AI ecosystems, and high-performance digital products for high-growth startups and global innovators worldwide.
             </motion.p>
@@ -130,7 +130,7 @@ export default function HeroSection({ mobileOpen }) {
             >
               <button
                 onClick={() => router.push("/contact-us")}
-                className="group relative px-8 py-4 bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#00f5a0] bg-[length:200%_auto] hover:bg-[position:right_center] rounded-2xl font-bold text-black text-base md:text-lg flex items-center justify-center gap-3 shadow-[0_0_35px_-5px_rgba(0,245,160,0.5)] transition-all duration-500 hover:scale-[1.02] active:scale-95"
+                className="group relative px-8 py-4 bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#00f5a0] bg-[length:200%_auto] hover:bg-[position:right_center] rounded-2xl font-black text-black text-base md:text-lg flex items-center justify-center gap-3 shadow-[0_0_35px_-5px_rgba(0,245,160,0.5)] transition-all duration-500 hover:scale-[1.02] active:scale-95"
               >
                 <span>Book Free Architecture Session</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
@@ -142,7 +142,7 @@ export default function HeroSection({ mobileOpen }) {
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                   else router.push("/#casestudies");
                 }}
-                className="px-6 py-4 bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.12] hover:border-white/[0.25] backdrop-blur-xl rounded-2xl font-semibold text-white text-base md:text-lg flex items-center justify-center gap-2 transition-all duration-300"
+                className="px-6 py-4 bg-white/[0.08] hover:bg-white/[0.15] border border-white/20 hover:border-white/40 backdrop-blur-xl rounded-2xl font-bold text-white text-base md:text-lg flex items-center justify-center gap-2 transition-all duration-300"
               >
                 <span>View Proven Case Studies</span>
               </button>
@@ -155,13 +155,13 @@ export default function HeroSection({ mobileOpen }) {
               transition={{ duration: 0.8, delay: 0.55 }}
               className="pt-4 flex flex-wrap items-center gap-2"
             >
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest mr-2 flex items-center gap-1.5">
+              <span className="text-xs font-bold text-slate-300 uppercase tracking-widest mr-2 flex items-center gap-1.5">
                 <Cpu size={14} className="text-[#00f5a0]" /> Core Stack:
               </span>
               {techPills.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="text-xs font-medium px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-white hover:border-emerald-500/30 transition-colors"
+                  className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-[#090d16] border border-white/20 text-slate-200 hover:text-white hover:border-emerald-400/50 transition-colors"
                 >
                   {tech}
                 </span>
@@ -175,16 +175,16 @@ export default function HeroSection({ mobileOpen }) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="glass-panel p-6 sm:p-8 rounded-3xl relative overflow-hidden shadow-2xl"
+              className="glass-panel p-6 sm:p-8 rounded-3xl relative overflow-hidden shadow-2xl bg-[#090d16]/98 border border-white/20"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
               
-              <div className="flex items-center justify-between pb-6 border-b border-white/[0.08]">
+              <div className="flex items-center justify-between pb-6 border-b border-white/[0.12]">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#00f5a0]">Delivery Impact</p>
-                  <h3 className="text-xl font-bold text-white mt-0.5">Enterprise Engineering</h3>
+                  <p className="text-xs font-extrabold uppercase tracking-wider text-[#00f5a0]">Delivery Impact</p>
+                  <h2 className="text-xl font-black text-white mt-0.5">Enterprise Engineering</h2>
                 </div>
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0]">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-[#00f5a0]">
                   <Zap size={20} />
                 </div>
               </div>
@@ -192,32 +192,32 @@ export default function HeroSection({ mobileOpen }) {
               {/* Metric 2x2 Grid */}
               <div className="grid grid-cols-2 gap-4 my-6">
                 {metrics.map((m, i) => (
-                  <div key={i} className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-emerald-500/30 transition-all">
-                    <p className="text-2xl sm:text-3xl font-extrabold text-white text-gradient-emerald">{m.value}</p>
-                    <p className="text-xs font-semibold text-slate-200 mt-1">{m.label}</p>
-                    <p className="text-[10px] text-slate-400 mt-0.5">{m.sub}</p>
+                  <div key={i} className="p-3.5 rounded-2xl bg-white/[0.05] border border-white/[0.1] hover:border-emerald-500/50 transition-all">
+                    <p className="text-2xl sm:text-3xl font-black text-white text-[#00f5a0]">{m.value}</p>
+                    <p className="text-xs font-bold text-white mt-1">{m.label}</p>
+                    <p className="text-[10px] text-slate-300 font-semibold mt-0.5">{m.sub}</p>
                   </div>
                 ))}
               </div>
 
               {/* Client Rating Card */}
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-950/30 to-slate-900/50 border border-emerald-500/20 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-[#06151f] border border-emerald-500/40 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
-                    <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-black text-xs border-2 border-[#030712]">W</div>
-                    <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center font-bold text-black text-xs border-2 border-[#030712]">AI</div>
-                    <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white text-xs border-2 border-[#030712]">IT</div>
+                    <div className="w-8 h-8 rounded-full bg-[#00f5a0] flex items-center justify-center font-black text-black text-xs border-2 border-[#030712]">W</div>
+                    <div className="w-8 h-8 rounded-full bg-[#00d9f5] flex items-center justify-center font-black text-black text-xs border-2 border-[#030712]">AI</div>
+                    <div className="w-8 h-8 rounded-full bg-[#3b82f6] flex items-center justify-center font-black text-white text-xs border-2 border-[#030712]">IT</div>
                   </div>
                   <div>
-                    <div className="flex items-center text-amber-400 text-xs">
+                    <div className="flex items-center text-amber-300 text-xs font-bold" aria-label="5 out of 5 stars rating">
                       {"★★★★★"}
                     </div>
-                    <p className="text-[11px] text-slate-300 font-medium mt-0.5">Top-Rated Global Agency</p>
+                    <p className="text-[11px] text-slate-200 font-bold mt-0.5">Top-Rated Global Agency</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs font-bold text-[#00f5a0]">100%</span>
-                  <p className="text-[10px] text-slate-400">NDA Protected</p>
+                  <span className="text-xs font-black text-[#00f5a0]">100%</span>
+                  <p className="text-[10px] text-slate-300 font-medium">NDA Protected</p>
                 </div>
               </div>
             </motion.div>
