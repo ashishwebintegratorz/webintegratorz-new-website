@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -16,7 +17,9 @@ import {
   Globe2, 
   Zap, 
   FileText,
-  BadgeCheck
+  BadgeCheck,
+  GraduationCap,
+  MapPin
 } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
@@ -33,6 +36,7 @@ export default function AwardsPage() {
     { id: 'all', label: 'All Honors & Awards' },
     { id: 'ai', label: 'AI & Engineering' },
     { id: 'delivery', label: 'Client Excellence & Reviews' },
+    { id: 'academic', label: 'Keynotes & Symposiums' },
     { id: 'compliance', label: 'Security & Certifications' }
   ];
 
@@ -67,7 +71,16 @@ export default function AwardsPage() {
       description: 'Awarded for autonomous agent workflow systems, private RAG pipelines, and enterprise-grade vector search integrations.',
       tags: ['AI Agents', 'LangGraph', 'Enterprise RAG']
     },
-
+    {
+      id: 4,
+      category: 'academic',
+      year: '2024 – 2025',
+      title: 'Cloud Architecture Keynote Excellence',
+      issuer: 'Softvision College Tech Symposium',
+      rank: 'Guest of Honor',
+      description: 'Invited as keynote speakers to deliver technical masterclasses on Modern Full-Stack Cloud Architecture, distributed microservices, and AI-first engineering.',
+      tags: ['Keynote Speaker', 'Tech Symposium', 'Academic Excellence']
+    },
     {
       id: 5,
       category: 'delivery',
@@ -180,6 +193,78 @@ export default function AwardsPage() {
             <p className="text-xs text-slate-400 mt-0.5">Solving problems worldwide</p>
           </div>
         </div>
+
+        {/* FEATURED KEYNOTE HONORS SPOTLIGHT (SOFTVISION COLLEGE) */}
+        <section className="mb-24">
+          <div className="group relative rounded-3xl p-px overflow-hidden shadow-2xl">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#00f5a0]/40 via-cyan-500/30 to-[#00f5a0]/40 opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="relative bg-[#090d16]/95 backdrop-blur-xl rounded-3xl p-8 sm:p-12 lg:p-14 border border-white/[0.08] overflow-hidden">
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                
+                {/* Left Photo */}
+                <div className="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/[0.08] shadow-2xl">
+                  <Image
+                    src="/vision.jpeg"
+                    alt="Softvision College Tech Symposium Keynote"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-transparent opacity-60" />
+                  
+                  <div className="absolute top-4 left-4">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[#00f5a0]">
+                      Keynote &amp; Symposium
+                    </span>
+                  </div>
+
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 text-xs font-semibold text-white">
+                    <MapPin size={14} className="text-[#00f5a0] shrink-0" />
+                    <span>Softvision College of Science &amp; Technology</span>
+                  </div>
+                </div>
+
+                {/* Right Details */}
+                <div className="lg:col-span-7 space-y-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0]">
+                      <GraduationCap size={20} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-[#00f5a0] uppercase tracking-wider">Academic &amp; Technology Leadership</p>
+                      <p className="text-xs text-slate-400">Institutional Recognition</p>
+                    </div>
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl font-black text-white leading-snug">
+                    Keynote Address on Modern Cloud Architecture &amp; Enterprise Software
+                  </h3>
+
+                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+                    Invited as distinguished keynote speakers and industry mentors at the Softvision College Technical Symposium. Our leadership presented real-world architectural blueprints for scalable MERN microservices, cloud orchestration, and AI-assisted software delivery to aspiring computer scientists and engineers.
+                  </p>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                    <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                      <p className="text-xs font-bold text-white">Keynote Speaker</p>
+                      <p className="text-[10px] text-slate-400">Technical Symposium</p>
+                    </div>
+                    <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                      <p className="text-xs font-bold text-white">Industry Mentor</p>
+                      <p className="text-[10px] text-slate-400">Engineering Labs</p>
+                    </div>
+                    <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] col-span-2 sm:col-span-1">
+                      <p className="text-xs font-bold text-[#00f5a0]">Cloud Systems</p>
+                      <p className="text-[10px] text-slate-400">MERN &amp; Distributed</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* AWARDS CATALOG & FILTER */}
         <section className="mb-24">
