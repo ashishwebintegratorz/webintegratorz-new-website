@@ -67,16 +67,7 @@ export default function AwardsPage() {
       description: 'Awarded for autonomous agent workflow systems, private RAG pipelines, and enterprise-grade vector search integrations.',
       tags: ['AI Agents', 'LangGraph', 'Enterprise RAG']
     },
-    {
-      id: 4,
-      category: 'compliance',
-      year: '2025',
-      title: 'Digital Accessibility Remediation Excellence',
-      issuer: 'W3C / Global Accessibility Benchmark',
-      rank: 'Certified WAS/CPACC',
-      description: 'Acknowledged for outstanding source code remediation across WCAG 2.2, ADA Title III, EAA EN 301 549, and US Section 508 VPATs.',
-      tags: ['WCAG 2.2', 'ADA Title III', 'Section 508 VPAT']
-    },
+
     {
       id: 5,
       category: 'delivery',
