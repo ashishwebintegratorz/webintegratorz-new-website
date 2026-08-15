@@ -192,10 +192,10 @@ export default function HeroSection({ mobileOpen }) {
               {/* Metric 2x2 Grid */}
               <div className="grid grid-cols-2 gap-4 my-6">
                 {metrics.map((m, i) => (
-                  <div key={i} className="p-3.5 rounded-2xl bg-white/[0.05] border border-white/[0.1] hover:border-emerald-500/50 transition-all">
-                    <p className="text-2xl sm:text-3xl font-black text-white text-[#00f5a0]">{m.value}</p>
+                  <div key={i} className="p-3.5 rounded-2xl bg-[#091522] border border-white/10 hover:border-emerald-500/50 transition-all">
+                    <p className="text-2xl sm:text-3xl font-black text-[#00f5a0]">{m.value}</p>
                     <p className="text-xs font-bold text-white mt-1">{m.label}</p>
-                    <p className="text-[10px] text-slate-300 font-semibold mt-0.5">{m.sub}</p>
+                    <p className="text-[11px] text-slate-200 font-semibold mt-0.5">{m.sub}</p>
                   </div>
                 ))}
               </div>
@@ -206,10 +206,10 @@ export default function HeroSection({ mobileOpen }) {
                   <div className="flex -space-x-2">
                     <div className="w-8 h-8 rounded-full bg-[#00f5a0] flex items-center justify-center font-black text-black text-xs border-2 border-[#030712]">W</div>
                     <div className="w-8 h-8 rounded-full bg-[#00d9f5] flex items-center justify-center font-black text-black text-xs border-2 border-[#030712]">AI</div>
-                    <div className="w-8 h-8 rounded-full bg-[#3b82f6] flex items-center justify-center font-black text-white text-xs border-2 border-[#030712]">IT</div>
+                    <div className="w-8 h-8 rounded-full bg-[#1d4ed8] flex items-center justify-center font-black text-white text-xs border-2 border-[#030712]">IT</div>
                   </div>
                   <div>
-                    <div className="flex items-center text-amber-300 text-xs font-bold" aria-label="5 out of 5 stars rating">
+                    <div role="img" aria-label="5 out of 5 stars rating" className="flex items-center text-amber-300 text-xs font-bold">
                       {"★★★★★"}
                     </div>
                     <p className="text-[11px] text-slate-200 font-bold mt-0.5">Top-Rated Global Agency</p>
@@ -217,7 +217,7 @@ export default function HeroSection({ mobileOpen }) {
                 </div>
                 <div className="text-right">
                   <span className="text-xs font-black text-[#00f5a0]">100%</span>
-                  <p className="text-[10px] text-slate-300 font-medium">NDA Protected</p>
+                  <p className="text-[11px] text-slate-200 font-medium">NDA Protected</p>
                 </div>
               </div>
             </motion.div>
@@ -229,15 +229,15 @@ export default function HeroSection({ mobileOpen }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-12 sm:mt-16 pt-6 border-t border-white/[0.08]"
+          className="mt-12 sm:mt-16 pt-6 border-t border-white/10"
         >
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4">
+          <p className="text-xs font-bold text-slate-200 uppercase tracking-widest mb-4">
             Recognized &amp; Verified Excellence
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             
             {/* AWS Certified */}
-            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.15] transition-all group">
+            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#090d16] border border-white/10 hover:border-white/30 transition-all group">
               <div className="relative w-9 h-9 flex-shrink-0">
                 <Image
                   src="/AWS.png"
@@ -249,12 +249,12 @@ export default function HeroSection({ mobileOpen }) {
               </div>
               <div>
                 <p className="text-xs font-bold text-white group-hover:text-[#00f5a0] transition-colors">AWS CERTIFIED</p>
-                <p className="text-[10px] text-slate-400">Cloud Architecture</p>
+                <p className="text-[11px] text-slate-300 font-medium">Cloud Architecture</p>
               </div>
             </div>
 
             {/* LinkedIn Top Rated */}
-            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.15] transition-all group">
+            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#090d16] border border-white/10 hover:border-white/30 transition-all group">
               <div className="relative w-9 h-9 flex-shrink-0">
                 <Image
                   src="/linkedin-logo.svg"
@@ -266,12 +266,12 @@ export default function HeroSection({ mobileOpen }) {
               </div>
               <div>
                 <p className="text-xs font-bold text-white group-hover:text-[#00f5a0] transition-colors">TOP RATED AGENCY</p>
-                <p className="text-[10px] text-slate-400">Global Tech Talent</p>
+                <p className="text-[11px] text-slate-300 font-medium">Global Tech Talent</p>
               </div>
             </div>
 
             {/* Digital Transformation */}
-            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.15] transition-all group">
+            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#090d16] border border-white/10 hover:border-white/30 transition-all group">
               <div className="relative w-9 h-9 flex-shrink-0">
                 <Image
                   src="/digital.png"
@@ -283,18 +283,18 @@ export default function HeroSection({ mobileOpen }) {
               </div>
               <div>
                 <p className="text-xs font-bold text-white group-hover:text-[#00f5a0] transition-colors">AI &amp; DIGITAL EXP</p>
-                <p className="text-[10px] text-slate-400">Next-Gen Delivery</p>
+                <p className="text-[11px] text-slate-300 font-medium">Next-Gen Delivery</p>
               </div>
             </div>
 
             {/* ISO / Excellence Award */}
-            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.15] transition-all group">
-              <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0] flex-shrink-0">
+            <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#090d16] border border-white/10 hover:border-white/30 transition-all group">
+              <div className="w-9 h-9 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-[#00f5a0] flex-shrink-0">
                 <Award size={20} />
               </div>
               <div>
                 <p className="text-xs font-bold text-white group-hover:text-[#00f5a0] transition-colors">EXCELLENCE AWARD</p>
-                <p className="text-[10px] text-slate-400">Quality Certified SLA</p>
+                <p className="text-[11px] text-slate-300 font-medium">Quality Certified SLA</p>
               </div>
             </div>
 

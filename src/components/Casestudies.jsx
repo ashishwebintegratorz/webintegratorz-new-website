@@ -200,7 +200,7 @@ const Casestudies = () => {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/15 via-white/5 to-transparent group-hover:from-[#00f5a0]/40 transition-all duration-500" />
 
                 {/* Card Interior */}
-                <div className="relative flex-1 bg-[#090d16]/95 backdrop-blur-xl rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220] border border-white/[0.06]">
+                <div className="relative flex-1 bg-[#090d16] rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220] border border-white/10">
                   
                   {/* Image Container */}
                   <div className="relative w-full h-52 sm:h-56 bg-black/40 overflow-hidden">
@@ -211,17 +211,17 @@ const Casestudies = () => {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-black/30" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-black/40" />
 
                     {/* Tag badge on image */}
                     <div className="absolute top-4 left-4 flex items-center gap-2">
-                      <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white">
+                      <span className="text-[11px] font-black px-3 py-1 rounded-full bg-[#030712] border border-white/30 text-white">
                         {study.tag}
                       </span>
                     </div>
 
                     {/* Metric highlight badge */}
-                    <div className="absolute bottom-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/20 backdrop-blur-md border border-emerald-500/40 text-[#00f5a0] text-xs font-bold shadow-lg">
+                    <div className="absolute bottom-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#061e16] border border-emerald-500/60 text-[#00f5a0] text-xs font-black shadow-lg">
                       <TrendingUp size={13} />
                       <span>{study.metric}</span>
                     </div>
@@ -231,10 +231,10 @@ const Casestudies = () => {
                   <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-bold text-[#00f5a0] uppercase tracking-wider">
+                        <span className="text-xs font-black text-[#00f5a0] uppercase tracking-wider">
                           {study.subtitle}
                         </span>
-                        <div className="flex items-center gap-1 text-xs text-slate-400">
+                        <div className="flex items-center gap-1 text-xs text-slate-200 font-bold">
                           <MapPin size={13} className="text-[#00f5a0]" />
                           <span>{study.location}</span>
                         </div>
@@ -244,23 +244,22 @@ const Casestudies = () => {
                         {study.title}
                       </h3>
 
-                      <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                      <p className="text-sm text-slate-200 leading-relaxed font-normal">
                         {study.description}
                       </p>
                     </div>
 
                     {/* Card Footer Link */}
-                    <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                    <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
                       <button
                         onClick={() => router.push('/contact-us')}
-                        className="inline-flex items-center gap-2 text-xs font-bold text-slate-300 hover:text-[#00f5a0] transition-colors"
+                        className="inline-flex items-center gap-2 text-xs font-bold text-slate-100 hover:text-[#00f5a0] transition-colors py-1"
                       >
                         <span>Request Architecture Brief</span>
                         <ArrowUpRight size={15} className="text-[#00f5a0]" />
                       </button>
                     </div>
                   </div>
-
                 </div>
               </div>
             ))}

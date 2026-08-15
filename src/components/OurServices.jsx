@@ -197,14 +197,14 @@ export default function ServicesPage() {
                 {/* Glow Border Effect */}
                 <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 bg-gradient-to-b from-[#00f5a0]/30 to-transparent ${hoveredCard === service.id ? 'opacity-100' : 'opacity-20'}`} />
 
-                {/* Card Interior */}
-                <div className="relative flex-1 bg-[#090d16]/95 backdrop-blur-xl rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220]">
+                {/* Card Interior (100% Solid & High Contrast) */}
+                <div className="relative flex-1 bg-[#090d16] rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220] border border-white/10">
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0] group-hover:scale-110 group-hover:bg-[#00f5a0] group-hover:text-black transition-all duration-300">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-[#00f5a0] group-hover:scale-110 group-hover:bg-[#00f5a0] group-hover:text-black transition-all duration-300">
                         <service.icon size={24} />
                       </div>
-                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/[0.04] text-slate-400">
+                      <span className="text-xs font-black px-3 py-1 rounded-full bg-white/10 text-white border border-white/20">
                         0{index + 1}
                       </span>
                     </div>
@@ -213,16 +213,16 @@ export default function ServicesPage() {
                       {service.title}
                     </h3>
 
-                    <p className="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                    <p className="text-sm text-slate-200 leading-relaxed mb-6 font-normal">
                       {service.description}
                     </p>
 
                     {/* Key Deliverables Bullet Points */}
                     <div className="space-y-2 mb-6">
-                      <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Key Capabilities:</p>
+                      <p className="text-xs font-black text-[#00f5a0] uppercase tracking-wider">Key Capabilities:</p>
                       {service.deliverables.map((item, dIdx) => (
-                        <div key={dIdx} className="flex items-center gap-2 text-xs text-slate-300">
-                          <CheckCircle2 size={13} className="text-[#00f5a0] shrink-0" />
+                        <div key={dIdx} className="flex items-center gap-2 text-xs text-slate-100 font-medium">
+                          <CheckCircle2 size={14} className="text-[#00f5a0] shrink-0" />
                           <span>{item}</span>
                         </div>
                       ))}
@@ -230,10 +230,10 @@ export default function ServicesPage() {
                   </div>
 
                   {/* Card Bottom CTA */}
-                  <div className="pt-5 border-t border-white/[0.06] flex items-center justify-between">
+                  <div className="pt-5 border-t border-white/10 flex items-center justify-between">
                     <button
                       onClick={() => router.push(service.route)}
-                      className="inline-flex items-center gap-2 text-xs font-bold text-[#00f5a0] hover:text-white transition-colors group-hover:translate-x-1 duration-200"
+                      className="inline-flex items-center gap-2 text-xs font-black text-[#00f5a0] hover:text-white transition-colors group-hover:translate-x-1 duration-200 py-1"
                     >
                       <span>Explore Service Details</span>
                       <ArrowRight size={14} />

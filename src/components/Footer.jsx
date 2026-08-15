@@ -46,7 +46,7 @@ const Footer = () => {
             <h3 className="text-2xl sm:text-3xl font-black text-white">
               Ready to engineer your next digital breakthrough?
             </h3>
-            <p className="text-sm text-slate-400 max-w-xl">
+            <p className="text-sm text-slate-200 max-w-xl font-normal">
               Get in touch for a comprehensive technical consultation and tailored architecture estimate.
             </p>
           </div>
@@ -54,7 +54,7 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
             <Link
               href="/contact-us"
-              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#00f5a0] to-[#00d9f5] hover:opacity-95 text-black font-bold text-sm rounded-xl transition-all duration-300 shadow-[0_0_25px_rgba(0,245,160,0.3)] flex items-center justify-center gap-2 hover:scale-105 active:scale-95"
+              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#00f5a0] to-[#00d9f5] hover:opacity-95 text-black font-black text-sm rounded-xl transition-all duration-300 shadow-[0_0_25px_rgba(0,245,160,0.4)] flex items-center justify-center gap-2 hover:scale-105 active:scale-95"
             >
               <span>Schedule Free Tech Session</span>
               <ArrowRight size={16} />
@@ -76,7 +76,7 @@ const Footer = () => {
               />
             </div>
 
-            <p className="text-sm text-slate-300 leading-relaxed max-w-sm font-normal">
+            <p className="text-sm text-slate-200 leading-relaxed max-w-sm font-normal">
               Webintegratorz Technologies is a premier global AI &amp; IT engineering firm delivering scalable cloud architectures, generative AI ecosystems, and bespoke digital software.
             </p>
 
@@ -89,7 +89,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.label}
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.08] hover:bg-[#00f5a0] hover:text-black hover:border-transparent text-slate-300 transition-all duration-300"
+                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#090d16] border border-white/15 hover:bg-[#00f5a0] hover:text-black hover:border-transparent text-white transition-all duration-300"
                 >
                   <item.Icon className="w-4 h-4" />
                 </a>
@@ -99,43 +99,43 @@ const Footer = () => {
 
           {/* SERVICES COLUMN */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-sm font-bold tracking-wider text-white uppercase flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00f5a0]" />
+            <h4 className="text-sm font-black tracking-wider text-white uppercase flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#00f5a0]" />
               Core Capabilities
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/services/web-development" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                <Link href="/services/web-development" className="text-slate-200 hover:text-[#00f5a0] transition-colors flex items-center gap-2 font-medium">
                   <ArrowRight size={12} className="text-[#00f5a0]" /> Web &amp; SaaS Platforms
                 </Link>
               </li>
               <li>
-                <Link href="/services/accessibility-compliance" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                <Link href="/services/accessibility-compliance" className="text-slate-200 hover:text-[#00f5a0] transition-colors flex items-center gap-2 font-medium">
                   <ArrowRight size={12} className="text-[#00f5a0]" /> WCAG &amp; ADA Code Remediation
                 </Link>
               </li>
               <li>
-                <Link href="/services/ai-integration/generative-ai-development" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                <Link href="/services/ai-integration/generative-ai-development" className="text-slate-200 hover:text-[#00f5a0] transition-colors flex items-center gap-2 font-medium">
                   <ArrowRight size={12} className="text-[#00f5a0]" /> Generative AI &amp; LLMs
                 </Link>
               </li>
               <li>
-                <Link href="/services/ai-integration/agent-development" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                <Link href="/services/ai-integration/agent-development" className="text-slate-200 hover:text-[#00f5a0] transition-colors flex items-center gap-2 font-medium">
                   <ArrowRight size={12} className="text-[#00f5a0]" /> Autonomous AI Agents
                 </Link>
               </li>
               <li>
-                <Link href="/services/mobile-development" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                <Link href="/services/mobile-development" className="text-slate-200 hover:text-[#00f5a0] transition-colors flex items-center gap-2 font-medium">
                   <ArrowRight size={12} className="text-[#00f5a0]" /> Mobile &amp; Flutter Apps
                 </Link>
               </li>
               <li>
-                <Link href="/services/ui-ux" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                <Link href="/services/ui-ux" className="text-slate-200 hover:text-[#00f5a0] transition-colors flex items-center gap-2 font-medium">
                   <ArrowRight size={12} className="text-[#00f5a0]" /> UI/UX Design Systems
                 </Link>
               </li>
               <li>
-                <Link href="/services/digital-marketing" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                <Link href="/services/digital-marketing" className="text-slate-200 hover:text-[#00f5a0] transition-colors flex items-center gap-2 font-medium">
                   <ArrowRight size={12} className="text-[#00f5a0]" /> Technical SEO &amp; Growth
                 </Link>
               </li>
@@ -144,52 +144,52 @@ const Footer = () => {
 
           {/* QUICK LINKS */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-sm font-bold tracking-wider text-white uppercase flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00f5a0]" />
+            <h4 className="text-sm font-black tracking-wider text-white uppercase flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#00f5a0]" />
               Company
             </h4>
             <ul className="space-y-2.5 text-sm">
-              <li><Link href="/about" className="text-slate-300 hover:text-[#00f5a0] transition-colors">About Us</Link></li>
-              <li><Link href="/awards" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Awards &amp; Recognition</Link></li>
-              <li><Link href="/news" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Insights &amp; News</Link></li>
-              <li><Link href="/#casestudies" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Case Studies</Link></li>
-              <li><Link href="/contact-us" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Contact Careers</Link></li>
-              <li><Link href="/privacy-policy" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Terms of Service</Link></li>
+              <li><Link href="/about" className="text-slate-200 hover:text-[#00f5a0] transition-colors font-medium">About Us</Link></li>
+              <li><Link href="/awards" className="text-slate-200 hover:text-[#00f5a0] transition-colors font-medium">Awards &amp; Recognition</Link></li>
+              <li><Link href="/news" className="text-slate-200 hover:text-[#00f5a0] transition-colors font-medium">Insights &amp; News</Link></li>
+              <li><Link href="/#casestudies" className="text-slate-200 hover:text-[#00f5a0] transition-colors font-medium">Case Studies</Link></li>
+              <li><Link href="/contact-us" className="text-slate-200 hover:text-[#00f5a0] transition-colors font-medium">Contact Careers</Link></li>
+              <li><Link href="/privacy-policy" className="text-slate-200 hover:text-[#00f5a0] transition-colors font-medium">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-slate-200 hover:text-[#00f5a0] transition-colors font-medium">Terms of Service</Link></li>
             </ul>
           </div>
 
           {/* VERIFIED REGISTRATION & CONTACT */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-sm font-bold tracking-wider text-white uppercase flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00f5a0]" />
+            <h4 className="text-sm font-black tracking-wider text-white uppercase flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#00f5a0]" />
               Enterprise Verification
             </h4>
             <div className="space-y-3">
               <a
                 href="mailto:info@webintegratorz.com"
-                className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-emerald-500/30 transition-all"
+                className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#090d16] border border-white/10 hover:border-emerald-500/50 transition-all"
               >
                 <Mail className="w-4 h-4 text-[#00f5a0] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-[10px] text-slate-400 font-bold uppercase">Official Inquiries</p>
-                  <p className="text-xs text-white font-medium">info@webintegratorz.com</p>
+                  <p className="text-[10px] text-[#00f5a0] font-black uppercase">Official Inquiries</p>
+                  <p className="text-xs text-white font-bold">info@webintegratorz.com</p>
                 </div>
               </a>
 
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#090d16] border border-white/10">
                 <ShieldCheck className="w-4 h-4 text-[#00f5a0] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-[10px] text-slate-400 font-bold uppercase">Govt. Registration</p>
-                  <p className="text-xs text-slate-200 font-medium">UDYAM-MP-30-0031514</p>
+                  <p className="text-[10px] text-[#00f5a0] font-black uppercase">Govt. Registration</p>
+                  <p className="text-xs text-white font-bold">UDYAM-MP-30-0031514</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#090d16] border border-white/10">
                 <ShieldCheck className="w-4 h-4 text-[#00f5a0] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-[10px] text-slate-400 font-bold uppercase">Security &amp; Privacy</p>
-                  <p className="text-xs text-slate-200 font-medium">SOC 2 &amp; GDPR Compliant</p>
+                  <p className="text-[10px] text-[#00f5a0] font-black uppercase">Security &amp; Privacy</p>
+                  <p className="text-xs text-white font-bold">SOC 2 &amp; GDPR Compliant</p>
                 </div>
               </div>
             </div>
@@ -198,7 +198,7 @@ const Footer = () => {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="border-t border-white/[0.08] py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+        <div className="border-t border-white/10 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-200 font-medium">
           <p>© {currentYear} Webintegratorz Technologies. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/privacy-policy" className="hover:text-[#00f5a0] transition-colors">Privacy</Link>
