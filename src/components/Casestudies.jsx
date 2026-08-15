@@ -2,15 +2,24 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-
+import { useRouter } from 'next/navigation';
+import { ChevronLeft, ChevronRight, ArrowUpRight, MapPin, Sparkles, TrendingUp, Shield } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Casestudies = () => {
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(3);
 
   useEffect(() => {
     const updateSlides = () => {
-      setSlidesToShow(window.innerWidth < 640 ? 1 : 3);
+      if (window.innerWidth < 768) {
+        setSlidesToShow(1);
+      } else if (window.innerWidth < 1180) {
+        setSlidesToShow(2);
+      } else {
+        setSlidesToShow(3);
+      }
     };
     updateSlides();
     window.addEventListener('resize', updateSlides);
@@ -22,201 +31,256 @@ const Casestudies = () => {
       id: 1,
       title: "Rent Buddy",
       subtitle: "Rental Marketplace Platform",
-      description: "HOW RENT BUDDY BECAME A LEADING RENTAL PLATFORM",
+      description: "Scaled peer-to-peer real-time property & equipment rental ecosystem with automated tenant vetting.",
+      metric: "100k+ Active Listings",
       location: "India",
+      tag: "Web & SaaS",
       image: "/images/rentbuddy1.png"
     },
     {
       id: 2,
       title: "New Era Shipping",
-      subtitle: "UAE Logistics Solution",
-      description: "AI BASED SHIPPING & TRACKING SYSTEM",
+      subtitle: "AI Logistics & Freight System",
+      description: "AI-powered automated route dispatch and real-time cargo container tracking across GCC ports.",
+      metric: "+42% Dispatch Velocity",
       location: "UAE",
+      tag: "AI & Logistics",
       image: "/images/newera.jpeg"
     },
     {
       id: 3,
       title: "Fresh Go",
-      subtitle: "Mobile Commerce App",
-      description: "FRESH GO SCALED GLOBALLY WITH US",
+      subtitle: "Hyperlocal Quick-Commerce App",
+      description: "Ultra-fast mobile commerce app with instant delivery routing, dynamic cart surge, and inventory sync.",
+      metric: "$3.5M GMV Handled",
       location: "India",
+      tag: "Mobile App",
       image: "/images/fresh.png"
     },
     {
       id: 4,
       title: "Protech HPL",
-      subtitle: "Industrial Management System",
-      description: "HOW PROTECH HPL REVOLUTIONIZED MANUFACTURING",
+      subtitle: "Industrial ERP & Manufacturing",
+      description: "End-to-end industrial floor control, automated raw material scheduling, and predictive QA analytics.",
+      metric: "3.2x Ops Throughput",
       location: "India",
+      tag: "Custom Software",
       image: "/images/protech.webp"
     },
     {
       id: 5,
       title: "Gober Superapp",
-      subtitle: "All-in-one Superapp",
-      description: "BOLIVIAN SUPERAPP OFFERING DELIVERY, TRANSPORT & PAYMENTS",
+      subtitle: "All-in-One Multi-Service Superapp",
+      description: "Unified urban superapp powering ride-hailing, food delivery, and digital peer-to-peer wallet payments.",
+      metric: "500k+ App Installs",
       location: "Bolivia",
+      tag: "Superapp",
       image: "/icone7.png"
     },
     {
       id: 6,
-      title: "Healthcare Portal",
-      subtitle: "Patient Management System",
-      description: "TRANSFORMING HEALTHCARE WITH TECHNOLOGY",
+      title: "Healthcare Cloud Portal",
+      subtitle: "HIPAA Compliant Clinical EHR",
+      description: "Secure telemedicine platform with encrypted video consultations and real-time biometric tracking.",
+      metric: "99.99% Cloud Uptime",
       location: "Canada",
+      tag: "HealthTech",
       image: "/icone1.png"
     },
     {
       id: 7,
       title: "Global Health Research",
-      subtitle: "Hospital Research Centre",
-      description: "ADVANCED MEDICAL RESEARCH & CLINICAL DATA ANALYTICS",
+      subtitle: "Hospital Analytics Platform",
+      description: "High-throughput clinical trial data ingestion and machine learning biomarker identification engine.",
+      metric: "Petabyte Data Scale",
       location: "Germany",
+      tag: "Big Data & ML",
       image: "/icone3.png"
     },
     {
       id: 8,
       title: "EduQuest AI",
-      subtitle: "Personalized Learning",
-      description: "PERSONALIZED LEARNING JOURNEYS POWERED BY AI",
+      subtitle: "Adaptive Learning Engine",
+      description: "Personalized AI curriculum generator adapting to individual student pace using fine-tuned LLMs.",
+      metric: "88% Retention Rate",
       location: "India",
+      tag: "Gen AI",
       image: "/icone4.webp"
     },
     {
       id: 9,
       title: "Urban Fleet",
-      subtitle: "Cabs & Logistics",
-      description: "OPTIMIZED FLEET MANAGEMENT & ROUTING PLATFORM",
-      location: "UK",
+      subtitle: "Intelligent Fleet Routing",
+      description: "Dynamic telematics dashboard reducing fleet idle time through real-time traffic prediction models.",
+      metric: "28% Fuel Efficiency",
+      location: "United Kingdom",
+      tag: "IoT & Cloud",
       image: "/icone6.webp"
     }
   ];
 
+  const maxIndex = Math.max(0, CasestudiesData.length - slidesToShow);
+
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex >= CasestudiesData.length - slidesToShow ? 0 : prevIndex + 1
-    );
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? CasestudiesData.length - slidesToShow : prevIndex - 1
-    );
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   };
 
   return (
-    <section className="casestudies-section">
-      <div className="casestudies-container">
-        {/* Header */}
-        <div className="casestudies-header">
-          <div className="header-label">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M5 12L10 17L20 7" stroke="#25ccad" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <span>CASE STUDIES</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M5 12L10 17L20 7" stroke="#25ccad" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+    <section id="casestudies" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.06]">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/3 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="relative max-w-[1440px] mx-auto">
+        
+        {/* Header with Navigation Controls */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
+            >
+              <Sparkles size={14} className="text-[#00f5a0]" />
+              <span className="text-[#00f5a0] text-xs tracking-[0.2em] uppercase font-bold">
+                Proven Track Record
+              </span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]"
+            >
+              What It&apos;s Like To Build With <br />
+              <span className="text-gradient-emerald">Webintegratorz</span>
+            </motion.h2>
           </div>
 
-          <h2 className="section-title">
-            What It's Like To Build With
-            <br />
-            <span className="brand-name">Webintegratorz</span>
-          </h2>
+          {/* Slider Control Buttons */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={prevSlide}
+              className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/[0.1] hover:bg-white/[0.1] hover:border-emerald-500/40 text-white flex items-center justify-center transition-all duration-200 active:scale-95"
+              aria-label="Previous Slide"
+            >
+              <ChevronLeft size={22} />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="w-12 h-12 rounded-2xl bg-[#00f5a0] text-black hover:bg-[#00d9f5] flex items-center justify-center transition-all duration-200 shadow-[0_0_20px_rgba(0,245,160,0.3)] active:scale-95"
+              aria-label="Next Slide"
+            >
+              <ChevronRight size={22} />
+            </button>
+          </div>
         </div>
 
-        {/* Carousel Wrapper */}
-        <div className="carousel-wrapper">
-          {/* Left Navigation */}
-          <button
-            className="nav-button nav-left"
-            onClick={prevSlide}
-            aria-label="Previous"
+        {/* Carousel Slider */}
+        <div className="overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-out gap-6"
+            style={{
+              transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)`
+            }}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+            {CasestudiesData.map((study) => (
+              <div
+                key={study.id}
+                style={{ flex: `0 0 calc(${100 / slidesToShow}% - ${(slidesToShow - 1) * 24 / slidesToShow}px)` }}
+                className="group relative rounded-3xl p-px overflow-hidden flex flex-col min-w-0"
+              >
+                {/* Glow Border */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/15 via-white/5 to-transparent group-hover:from-[#00f5a0]/40 transition-all duration-500" />
 
-          {/* Cards Track */}
-          <div className="cards-container">
-            <div
-              className="cards-track"
-              style={{
-                transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)`
-              }}
-            >
-              {CasestudiesData.map((study) => (
-                <div key={study.id} className="study-card flex-shrink-0">
-                  <div className="study-content-inner">
-                    {/* Card Image Area */}
-                    <div className="card-image-wrapper">
-                      <Image
-                        src={study.image}
-                        alt={study.title}
-                        fill
-                        className="card-image object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                      {/* Fallback Placeholder */}
-                      <div className="card-placeholder">
-                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
-                          <rect x="3" y="3" width="18" height="18" rx="2" stroke="#25ccad" strokeWidth="1.5" />
-                          <circle cx="8.5" cy="8.5" r="1.5" fill="#25ccad" />
-                          <path d="M3 16L7 12L10 15L14 11L21 18V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V16Z" fill="#25ccad" opacity="0.4" />
-                        </svg>
-                        <span>Add Image</span>
-                      </div>
+                {/* Card Interior */}
+                <div className="relative flex-1 bg-[#090d16]/95 backdrop-blur-xl rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220] border border-white/[0.06]">
+                  
+                  {/* Image Container */}
+                  <div className="relative w-full h-52 sm:h-56 bg-black/40 overflow-hidden">
+                    <Image
+                      src={study.image}
+                      alt={study.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-black/30" />
 
-                      {/* Text Overlay */}
-                      <div className="card-overlay">
-                        <p className="overlay-text">{study.description}</p>
-                      </div>
+                    {/* Tag badge on image */}
+                    <div className="absolute top-4 left-4 flex items-center gap-2">
+                      <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white">
+                        {study.tag}
+                      </span>
                     </div>
 
-                    {/* Card Info Footer */}
-                    <div className="card-footer">
-                      <div className="footer-left">
-                        <h3 className="card-title">{study.title}</h3>
-                        <p className="card-subtitle">{study.subtitle}</p>
-                      </div>
-                      <div className="footer-right">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#25ccad" />
-                        </svg>
-                        <span className="location">{study.location}</span>
-                      </div>
+                    {/* Metric highlight badge */}
+                    <div className="absolute bottom-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/20 backdrop-blur-md border border-emerald-500/40 text-[#00f5a0] text-xs font-bold shadow-lg">
+                      <TrendingUp size={13} />
+                      <span>{study.metric}</span>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Right Navigation */}
-          <button
-            className="nav-button nav-right"
-            onClick={nextSlide}
-            aria-label="Next"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+                  {/* Body Content */}
+                  <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-bold text-[#00f5a0] uppercase tracking-wider">
+                          {study.subtitle}
+                        </span>
+                        <div className="flex items-center gap-1 text-xs text-slate-400">
+                          <MapPin size={13} className="text-[#00f5a0]" />
+                          <span>{study.location}</span>
+                        </div>
+                      </div>
+
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2.5 group-hover:text-[#00f5a0] transition-colors leading-snug">
+                        {study.title}
+                      </h3>
+
+                      <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                        {study.description}
+                      </p>
+                    </div>
+
+                    {/* Card Footer Link */}
+                    <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                      <button
+                        onClick={() => router.push('/contact-us')}
+                        className="inline-flex items-center gap-2 text-xs font-bold text-slate-300 hover:text-[#00f5a0] transition-colors"
+                      >
+                        <span>Request Architecture Brief</span>
+                        <ArrowUpRight size={15} className="text-[#00f5a0]" />
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Pagination Dots */}
-        <div className="pagination">
-          {Array.from({ length: CasestudiesData.length - slidesToShow + 1 }).map((_, index) => (
+        {/* Dynamic Pagination Indicators */}
+        <div className="flex justify-center items-center gap-2 mt-10">
+          {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
             <button
-              key={index}
-              className={`pagination-dot ${index === currentIndex ? 'active' : ''}`}
-              onClick={() => setCurrentIndex(index)}
-              aria-label={`Slide ${index + 1}`}
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                idx === currentIndex ? 'w-8 bg-[#00f5a0]' : 'w-2 bg-white/20 hover:bg-white/40'
+              }`}
+              aria-label={`Slide ${idx + 1}`}
             />
           ))}
         </div>
+
       </div>
     </section>
   );

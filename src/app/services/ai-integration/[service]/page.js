@@ -1,27 +1,38 @@
-import ComingSoonClient from "./ComingSoonClient";
+import ServiceDetailClient from "./ServiceDetailClient";
+import { aiServicesData } from "@/lib/aiServicesData";
 
 export async function generateStaticParams() {
-    const services = [
-        "generative-ai-development",
-        "llm-development",
-        "generative-ai-integration",
-        "chatgpt-integration",
-        "generative-ai-consulting",
-        "agent-development",
-        "chatbot-development",
-        "enterprise-ai",
-        "ai-as-a-service",
-        "ml-model-engineering",
-        "ml-development",
-        "ml-data-science-consulting",
-        "ai-consulting"
-    ];
-
+    const services = Object.keys(aiServicesData);
     return services.map((service) => ({
         service: service,
     }));
 }
 
-export default function Page({ params }) {
-    return <ComingSoonClient params={params} />;
+export async function generateMetadata({ params }) {
+    const resolvedParams = await params;
+    const serviceSlug = resolvedParams.service;
+    const data = aiServicesData[serviceSlug];
+
+    if (!data) {
+        return {
+            title: "AI Integration Services | Webintegratorz Technologies",
+            description: "Enterprise-grade AI, LLMs, and custom Machine Learning solutions engineered by Webintegratorz Technologies.",
+        };
+    }
+
+    return {
+        title: `${data.title} | Webintegratorz Technologies`,
+        description: data.description,
+        openGraph: {
+            title: `${data.title} | Webintegratorz Technologies`,
+            description: data.description,
+            url: `https://webintegratorz.com/services/ai-integration/${data.slug}`,
+            siteName: "Webintegratorz",
+        },
+    };
+}
+
+export default async function Page({ params }) {
+    const resolvedParams = await params;
+    return <ServiceDetailClient serviceSlug={resolvedParams.service} />;
 }

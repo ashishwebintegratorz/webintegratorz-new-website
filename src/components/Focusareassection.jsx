@@ -2,159 +2,208 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from "next/navigation";
-import { ChevronDown, Globe, Cpu, Brain, Smartphone, Bot, Palette } from "lucide-react";
+import { Globe, Cpu, Brain, Smartphone, Bot, Palette, ArrowRight, Sparkles, Code2, Layers, ShieldCheck, Zap } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function FocusAreasSection() {
   const router = useRouter();
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const focusAreas = [
     {
       number: "01",
-      title: "Web Development",
-      description: "We build fast, responsive and scalable websites tailored for businesses, delivering seamless user experiences and modern design",
-      icon: Globe
+      title: "Generative AI & LLM Systems",
+      description: "Custom AI agents, fine-tuned large language models, retrieval-augmented generation (RAG), and intelligent enterprise automations.",
+      icon: Brain,
+      tag: "Deep Tech",
+      tags: ["Agentic AI", "Custom LLMs", "RAG Pipelines", "OpenAI / Claude"],
+      route: "/services/ai-integration",
+      highlight: true
     },
     {
       number: "02",
-      title: "Software Development",
-      description: "We develop secure, scalable and high-performance software solutions to transform business ideas into powerful digital products",
-      icon: Cpu
+      title: "Full-Stack Web & SaaS Platforms",
+      description: "High-throughput, distributed cloud web platforms engineered with Next.js, React, Node.js, and microservices architecture.",
+      icon: Globe,
+      tag: "Scalable Architecture",
+      tags: ["Next.js 16", "React 19", "Microservices", "TypeScript"],
+      route: "/services/web-development",
+      highlight: false
     },
     {
       number: "03",
-      title: "AI Development",
-      description: "We create intelligent AI solutions that automate, optimize, and empower businesses with data-driven innovation",
-      icon: Brain
+      title: "Enterprise Software Engineering",
+      description: "Mission-critical custom software, CRM/ERP solutions, and secure API backends designed for enterprise reliability and scale.",
+      icon: Cpu,
+      tag: "Enterprise Core",
+      tags: ["Cloud-Native", "REST / GraphQL", "PostgreSQL", "Docker / K8s"],
+      route: "/services/web-development",
+      highlight: false
     },
     {
       number: "04",
-      title: "Android Development",
-      description: "We build smooth, user-friendly Android apps with high performance and modern UI for growing businesses",
-      icon: Smartphone
+      title: "Cross-Platform Mobile Engineering",
+      description: "Ultra-fluid native and hybrid iOS/Android applications built with Flutter and React Native for global scale.",
+      icon: Smartphone,
+      tag: "Mobile First",
+      tags: ["Flutter", "React Native", "iOS / Android", "Offline-First"],
+      route: "/services/mobile-development",
+      highlight: false
     },
     {
       number: "05",
-      title: "AI Integration",
-      description: "We seamlessly integrate AI into your existing systems to automate workflows, improve decisions, and boost efficiency",
-      icon: Bot
+      title: "Autonomous AI Workflows & Bots",
+      description: "Seamless integration of intelligent chatbots, multi-modal workflows, and automated decision-making engines into your existing stack.",
+      icon: Bot,
+      tag: "Automation",
+      tags: ["Multi-Agent", "Workflow AI", "CRM Bots", "Predictive ML"],
+      route: "/services/ai-integration",
+      highlight: false
     },
     {
       number: "06",
-      title: "UI/UX Design",
-      description: "We design intuitive, engaging and user-centric digital experiences that blend creativity with seamless functionality",
-      icon: Palette
+      title: "Product UI/UX & Design Systems",
+      description: "User-centric design systems, rapid interactive prototyping, and conversion-engineered interfaces built with precision.",
+      icon: Palette,
+      tag: "Design Craft",
+      tags: ["Design Tokens", "Figma Systems", "Micro-Interactions", "UX Research"],
+      route: "/services/ui-ux",
+      highlight: false
     }
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
 
   return (
     <section
-      ref={sectionRef}
-      className="relative w-full py-20 px-6 sm:px-10"
-      style={{ backgroundColor: "#ffffff" }}
+      onMouseMove={handleMouseMove}
+      className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden"
     >
-      {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#25ccad] opacity-[0.03] rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#25ccad] opacity-[0.03] rounded-full blur-3xl"></div>
+      {/* Ambient background glows */}
+      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Dot overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.02]"
+      {/* Grid Pattern */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.02]"
         style={{
-          backgroundImage: `radial-gradient(circle, #25ccad 1px, transparent 1px)`,
-          backgroundSize: '30px 30px'
+          backgroundImage: "radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)",
+          backgroundSize: "32px 32px"
         }}
-      ></div>
+      />
 
-      <div className="relative max-w-[1400px] mx-auto px-4 sm:px-0">
-        {/* Header */}
-        <div className={`text-center mb-16 md:mb-24 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25ccad]/10 border border-[#25ccad]/20 mb-8 font-bold">
-            <div className="w-2 h-2 rounded-full bg-[#25ccad] animate-pulse"></div>
-            <span className="text-[#25ccad] text-[10px] sm:text-xs tracking-[0.2em] uppercase font-black">
-              WHAT WE DO BEST
+      <div className="relative max-w-[1440px] mx-auto">
+        
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center mb-16 sm:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
+          >
+            <Sparkles size={14} className="text-[#00f5a0]" />
+            <span className="text-[#00f5a0] text-xs tracking-[0.2em] uppercase font-bold">
+              Engineering Capabilities
             </span>
-          </div>
+          </motion.div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-[1.1] tracking-tight">
-            Our Core
-            <br />
-            <span className="text-[#25ccad]">Focus Areas</span>
-          </h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]"
+          >
+            Our Core <span className="text-gradient-emerald">Focus Areas</span>
+          </motion.h2>
 
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
-            Delivering exceptional results through expertise, innovation, and unwavering commitment to excellence.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed"
+          >
+            From custom foundational AI systems to global-scale cloud applications, we turn ambitious technical visions into flawless digital realities.
+          </motion.p>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {focusAreas.map((area, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`group transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="group relative rounded-3xl p-px overflow-hidden transition-all duration-500"
             >
-              <div className="relative h-full bg-white rounded-3xl p-8 border-2 border-gray-100 transition-all duration-500 hover:border-[#25ccad] hover:shadow-[0_20px_60px_rgba(37,204,173,0.15)] hover:-translate-y-2">
-                <div className="relative">
+              {/* Outer Glowing Border on Hover */}
+              <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 ${area.highlight ? 'bg-gradient-to-b from-[#00f5a0]/40 via-white/5 to-transparent opacity-80 group-hover:opacity-100' : 'bg-gradient-to-b from-white/10 to-transparent opacity-40 group-hover:opacity-100 group-hover:from-emerald-400/40'}`} />
+
+              {/* Card Container */}
+              <div className="relative h-full bg-[#090d16]/90 backdrop-blur-xl rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220]">
+                
+                {/* Top Bar: Icon + Number */}
+                <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#25ccad]/10 group-hover:bg-[#25ccad] transition-all duration-300">
-                      <area.icon size={28} className="text-[#25ccad] group-hover:text-black transition-colors" />
+                    <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0] group-hover:scale-110 group-hover:bg-[#00f5a0] group-hover:text-black transition-all duration-300 shadow-lg">
+                      <area.icon size={26} />
                     </div>
-                    <span className="text-5xl font-bold text-[#25ccad]/20 group-hover:text-[#25ccad]/40 transition-colors">
-                      {area.number}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-slate-400 group-hover:text-slate-200">
+                        {area.tag}
+                      </span>
+                      <span className="text-3xl font-black text-white/10 group-hover:text-[#00f5a0]/30 transition-colors">
+                        {area.number}
+                      </span>
+                    </div>
                   </div>
 
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-[#25ccad] transition-colors">
+                  {/* Title & Description */}
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#00f5a0] transition-colors leading-snug">
                     {area.title}
                   </h3>
 
-                  <p className="text-gray-600 leading-relaxed mb-6">
+                  <p className="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
                     {area.description}
                   </p>
 
-                  {/* Redirect button */}
-                  <button
-                    onClick={() => {
-                      const routeMap = {
-                        "Web Development": "/services/web-development",
-                        "Software Development": "/services/web-development",
-                        "AI Development": "/services/ai-integration",
-                        "Android Development": "/services/mobile-development",
-                        "AI Integration": "/services/ai-integration",
-                        "UI/UX Design": "/services/ui-ux",
-                      };
-                      router.push(routeMap[area.title]);
-                    }}
-                    className="flex items-center gap-2 text-[#25ccad] font-semibold transition-all group-hover:gap-4 py-3 px-1"
-                  >
-                    <span>Learn More</span>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </button>
+                  {/* Tech Stack Chips */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {area.tags.map((t, idx) => (
+                      <span key={idx} className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-white/[0.03] border border-white/[0.06] text-slate-400 group-hover:border-emerald-500/20 group-hover:text-slate-300 transition-colors">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Corner accent */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-[#25ccad] opacity-0 group-hover:opacity-10 rounded-tr-3xl rounded-bl-full transition-opacity"></div>
+                {/* Bottom Action Link */}
+                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                  <button
+                    onClick={() => router.push(area.route)}
+                    className="inline-flex items-center gap-2 text-xs font-bold text-[#00f5a0] hover:text-[#00d9f5] group-hover:translate-x-1 transition-all"
+                  >
+                    <span>Explore Solutions</span>
+                    <ArrowRight size={14} />
+                  </button>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity animate-ping" />
+                </div>
+
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

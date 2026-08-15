@@ -1,236 +1,271 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Globe, Cpu, ShoppingCart, Smartphone, Brain, LineChart, Bot, Settings, Palette, ShieldCheck } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Globe, Cpu, ShoppingCart, Smartphone, Brain, LineChart, Bot, Settings, Palette, ShieldCheck, ArrowRight, CheckCircle2, Sparkles, Layers, Zap } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function ServicesPage() {
+  const router = useRouter();
+  const [activeCategory, setActiveCategory] = useState('all');
   const [hoveredCard, setHoveredCard] = useState(null);
+
+  const categories = [
+    { id: 'all', label: 'All Services' },
+    { id: 'compliance', label: 'Accessibility Remediation' },
+    { id: 'ai', label: 'AI & Data Intelligence' },
+    { id: 'web', label: 'Web & SaaS' },
+    { id: 'mobile', label: 'Mobile & Apps' },
+    { id: 'growth', label: 'Design & Growth' },
+  ];
 
   const services = [
     {
       id: 1,
-      icon: Globe,
-      title: 'Web Development',
-      description:
-        'Build high-performance, scalable websites using modern frameworks like React, Next.js, and Vue. Our expert team delivers responsive, SEO-optimized solutions that drive engagement and conversions. From landing pages to complex web applications, we ensure your digital presence stands out with cutting-edge technology and best engineering practices.',
+      category: 'compliance',
+      icon: ShieldCheck,
+      title: 'Digital Accessibility Code Remediation',
+      description: 'Hands-on source code remediation and certified compliance engineering for WCAG 2.2, ADA Title III, EAA (EN 301 549), Section 508 VPAT, AODA, GIGW 3.0, and BIS IS 17802.',
+      deliverables: ['WCAG 2.2 AA/AAA Source Code Fixes', 'ADA Title III & EAA Code Refactoring', 'Section 508 VPAT & ACR Attestation', 'GIGW 3.0 & BIS IS 17802 Remediation'],
+      route: '/services/accessibility-compliance'
     },
     {
       id: 2,
-      icon: Cpu,
-      title: 'Custom Software & Product Development',
-      description:
-        'Transform your unique business requirements into powerful software solutions. We design and develop custom applications tailored to your workflows, ensuring seamless integration with existing systems. Our agile development process guarantees flexibility, scalability, and a product that evolves with your business needs.',
+      category: 'web',
+      icon: Globe,
+      title: 'Full-Stack Web Development',
+      description: 'Architecting high-performance, scalable web platforms using Next.js 16, React 19, Node.js, and TypeScript. Optimized for extreme speed, search visibility, and maximum conversion rates.',
+      deliverables: ['Custom Next.js / React Apps', 'Microservices & API Gateways', 'Headless CMS Architecture', 'SEO & Core Web Vitals Optimization'],
+      route: '/services/web-development'
     },
     {
       id: 3,
-      icon: ShoppingCart,
-      title: 'E-commerce Development',
-      description:
-        'Launch and scale your online store with feature-rich e-commerce platforms built on Shopify, WooCommerce, or custom solutions. We optimize every aspect—from checkout flows to inventory management—ensuring speed, security, and an exceptional shopping experience that maximizes your sales and customer satisfaction.',
+      category: 'web',
+      icon: Cpu,
+      title: 'Custom SaaS & Cloud Architecture',
+      description: 'End-to-end multi-tenant SaaS engineering designed for high availability, enterprise security, automated tenant isolation, and seamless third-party billing integrations.',
+      deliverables: ['Multi-Tenant SaaS Backends', 'AWS & Cloud Deployment', 'Subscription & Stripe Integration', 'Enterprise RBAC & Auth'],
+      route: '/services/cms-solution'
     },
     {
       id: 4,
-      icon: Smartphone,
-      title: 'Mobile App & SaaS Solutions',
-      description:
-        'Create powerful mobile applications and SaaS platforms that deliver exceptional user experiences across all devices. Whether native iOS/Android apps or progressive web apps, we build solutions that are intuitive, performant, and designed for long-term growth. Our cloud-native architecture ensures reliability and scalability.',
+      category: 'ai',
+      icon: Brain,
+      title: 'Generative AI & LLM Engineering',
+      description: 'Empower your enterprise with custom large language models, proprietary domain fine-tuning, retrieval-augmented generation (RAG), and private vector databases.',
+      deliverables: ['Custom LLM Fine-Tuning', 'Enterprise RAG Pipelines', 'OpenAI / Anthropic Integrations', 'Vector Search (Pinecone/pgvector)'],
+      route: '/services/ai-integration/generative-ai-development'
     },
     {
       id: 5,
-      icon: Brain,
-      title: 'AI / ML Development',
-      description:
-        'Leverage the power of artificial intelligence and machine learning to gain competitive advantages. From predictive analytics to natural language processing, we build intelligent systems that automate processes, uncover insights, and drive data-driven decision making. Transform your business with cutting-edge AI solutions.',
+      category: 'ai',
+      icon: Bot,
+      title: 'Autonomous AI Agents & Workflows',
+      description: 'Deploy multi-agent autonomous systems that execute complex operational workflows, customer interaction pipelines, and predictive decision-making without manual intervention.',
+      deliverables: ['Autonomous Agent Systems', '24/7 Intelligent Support Bots', 'LangChain / CrewAI Integration', 'Workflow Process Automation'],
+      route: '/services/ai-integration/agent-development'
     },
     {
       id: 6,
-      icon: LineChart,
-      title: 'SEO & Digital Growth',
-      description:
-        'Increase your online visibility and drive qualified traffic with proven SEO strategies and digital marketing campaigns. Our data-driven approach combines technical SEO, content optimization, and performance tracking to improve rankings, boost conversions, and deliver measurable ROI for your business.',
+      category: 'mobile',
+      icon: Smartphone,
+      title: 'Cross-Platform Mobile Apps',
+      description: 'Native-feel, high-fidelity iOS and Android applications engineered using Flutter and React Native. Smooth 60fps animations, offline data syncing, and unified codebase efficiency.',
+      deliverables: ['Flutter & React Native Apps', 'Native iOS & Android Builds', 'Offline-First Sync Engine', 'App Store & Play Store Deployment'],
+      route: '/services/mobile-development'
     },
     {
       id: 7,
-      icon: Bot,
-      title: 'AI Integration',
-      description:
-        'Seamlessly integrate AI capabilities into your existing systems and workflows. We help businesses adopt AI technologies like chatbots, recommendation engines, and automation tools without disrupting operations. Enhance efficiency, improve customer experiences, and stay ahead of the competition with smart AI integration.',
+      category: 'growth',
+      icon: Palette,
+      title: 'UI/UX & Product Design Systems',
+      description: 'Human-centric UI/UX design that elevates brand authority and user engagement. From user journey mapping to comprehensive design systems and interactive Figma prototypes.',
+      deliverables: ['Design Systems & Component Kits', 'Interactive Prototypes', 'Conversion Rate Optimization (CRO)', 'Accessibility & Usability Audits'],
+      route: '/services/ui-ux'
     },
     {
       id: 8,
-      icon: Settings,
-      title: 'Support & Maintenance',
-      description:
-        'Keep your digital products running smoothly with our comprehensive support and maintenance services. We provide regular updates, security patches, performance monitoring, and quick issue resolution. Our proactive approach ensures your systems stay secure, up-to-date, and optimized for peak performance.',
+      category: 'growth',
+      icon: LineChart,
+      title: 'SEO & Performance Marketing',
+      description: 'Data-driven technical SEO, search engine dominance, and high-impact digital marketing strategies that attract qualified enterprise leads and scale revenue.',
+      deliverables: ['Technical & Programmatic SEO', 'Search Visibility Strategies', 'Content Performance Engines', 'Full-Funnel Analytics & Tracking'],
+      route: '/services/digital-marketing'
     },
     {
       id: 9,
-      icon: Palette,
-      title: 'Brand Building',
-      description:
-        'Create a memorable brand identity that resonates with your target audience. From logo design to comprehensive brand guidelines, we craft visual identities and compelling narratives that build trust and recognition. Our strategic approach ensures consistency across all touchpoints and long-term brand equity.',
+      category: 'web',
+      icon: ShoppingCart,
+      title: 'Enterprise E-Commerce Systems',
+      description: 'High-converting custom e-commerce and headless storefronts built for scale. Real-time inventory synchronization, instant checkout, and global payment compliance.',
+      deliverables: ['Headless Shopify / MedusaJS', 'Custom Payment Gateways', 'Omnichannel Inventory Sync', 'Cart Abandonment Engines'],
+      route: '/services/web-development'
     },
     {
       id: 10,
+      category: 'web',
       icon: ShieldCheck,
-      title: 'Cyber Security',
-      description:
-        'Protect your digital assets with enterprise-grade security solutions. We implement robust security measures including vulnerability assessments, penetration testing, encryption, and compliance frameworks. Safeguard your applications, data, and infrastructure against evolving cyber threats with our comprehensive security services.',
+      title: 'Enterprise Cyber Security & Compliance',
+      description: 'Rigorous application security audits, penetration testing, compliance architecture, and bank-grade data encryption to keep your digital assets impenetrable.',
+      deliverables: ['Vulnerability & Pentest Audits', 'OWASP Security Hardening', 'End-to-End Data Encryption', 'Compliance Prep (SOC2 / GDPR)'],
+      route: '/services/web-development'
     },
   ];
 
+  const filteredServices = activeCategory === 'all' 
+    ? services 
+    : services.filter(s => s.category === activeCategory);
+
   return (
-    <section
-      className="min-h-screen py-12 px-6"
-      style={{ backgroundColor: "#E9FAF6" }}
-    >
-      <div className="max-w-7xl mx-auto">
+    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.06]">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="relative max-w-[1440px] mx-auto">
+        
         {/* Header */}
-        <motion.div
-          className="text-center mb-10"
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
-        >
+        <div className="flex flex-col items-center text-center mb-14">
           <motion.div
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#25ccad]/10 border border-[#25ccad]/20 mb-8 font-bold"
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
           >
-            <div className="w-2 h-2 rounded-full bg-[#25ccad] animate-pulse"></div>
-            <span className="text-[#25ccad] text-xs tracking-[0.2em] uppercase">
-              Our Services
+            <Zap size={14} className="text-[#00f5a0]" />
+            <span className="text-[#00f5a0] text-xs tracking-[0.2em] uppercase font-bold">
+              Comprehensive Service Portfolio
             </span>
           </motion.div>
 
-          <h2 className="text-5xl sm:text-6xl font-extrabold text-slate-900 mb-6">
-            Transform Your Business with{' '}
-            <span style={{ color: "#25ccad", fontWeight: 700 }}>
-              Expert Solutions
-            </span>
-          </h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]"
+          >
+            Transform Your Vision with <br className="hidden sm:inline" />
+            <span className="text-gradient-emerald">Specialized Digital Engineering</span>
+          </motion.h2>
 
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Comprehensive digital services designed to help your business grow,
-            scale, and succeed.
-          </p>
-        </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed"
+          >
+            Deploy elite multidisciplinary engineering squads to accelerate your roadmap, optimize infrastructure, and outpace the competition.
+          </motion.p>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: [0.25, 0.4, 0.25, 1],
-              }}
-              onMouseEnter={() => setHoveredCard(service.id)}
-              onMouseLeave={() => setHoveredCard(null)}
-              className="group relative"
-              whileHover={{ scale: 1.02 }}
-            >
-              {/* Hover glow */}
-              <motion.div
-                className="absolute -inset-0.5 bg-gradient-to-r from-[#25ccad] to-emerald-400 rounded-2xl blur-xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: hoveredCard === service.id ? 1 : 0 }}
-                transition={{ duration: 0.5 }}
-              />
-
-              {/* Card */}
-              <div className="relative h-full bg-white rounded-2xl p-8 border border-green-200 shadow-md hover:shadow-xl transition-all duration-500">
-                {/* Icon */}
-                <motion.div
-                  className="mb-6"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="w-16 h-16 flex items-center justify-center rounded-xl bg-[#25ccad]/10 group-hover:bg-[#25ccad] transition-all duration-300 shadow-sm">
-                    <service.icon size={32} className="text-[#25ccad] group-hover:text-black transition-colors" />
-                  </div>
-                </motion.div>
-
-                {/* Title */}
-                <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-[#25ccad] transition-colors">
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-slate-600 leading-relaxed mb-6">
-                  {service.description}
-                </p>
-
-                {/* Bottom accent */}
-                <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#25ccad] to-emerald-400 rounded-b-2xl"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: hoveredCard === service.id ? 1 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  style={{ originX: 0 }}
-                />
-              </div>
-            </motion.div>
-          ))}
+          {/* Interactive Category Filter Pills */}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-10 p-1.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                  activeCategory === cat.id
+                    ? 'bg-gradient-to-r from-[#00f5a0] to-[#00d9f5] text-black shadow-lg font-bold shadow-emerald-500/20'
+                    : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Let's Talk Button */}
+        {/* Dynamic Services Grid */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+        >
+          <AnimatePresence>
+            {filteredServices.map((service, index) => (
+              <motion.div
+                key={service.id}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                onMouseEnter={() => setHoveredCard(service.id)}
+                onMouseLeave={() => setHoveredCard(null)}
+                className="group relative rounded-3xl p-px overflow-hidden flex flex-col"
+              >
+                {/* Glow Border Effect */}
+                <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 bg-gradient-to-b from-[#00f5a0]/30 to-transparent ${hoveredCard === service.id ? 'opacity-100' : 'opacity-20'}`} />
+
+                {/* Card Interior */}
+                <div className="relative flex-1 bg-[#090d16]/95 backdrop-blur-xl rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220]">
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0] group-hover:scale-110 group-hover:bg-[#00f5a0] group-hover:text-black transition-all duration-300">
+                        <service.icon size={24} />
+                      </div>
+                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/[0.04] text-slate-400">
+                        0{index + 1}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#00f5a0] transition-colors leading-snug">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                      {service.description}
+                    </p>
+
+                    {/* Key Deliverables Bullet Points */}
+                    <div className="space-y-2 mb-6">
+                      <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Key Capabilities:</p>
+                      {service.deliverables.map((item, dIdx) => (
+                        <div key={dIdx} className="flex items-center gap-2 text-xs text-slate-300">
+                          <CheckCircle2 size={13} className="text-[#00f5a0] shrink-0" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Card Bottom CTA */}
+                  <div className="pt-5 border-t border-white/[0.06] flex items-center justify-between">
+                    <button
+                      onClick={() => router.push(service.route)}
+                      className="inline-flex items-center gap-2 text-xs font-bold text-[#00f5a0] hover:text-white transition-colors group-hover:translate-x-1 duration-200"
+                    >
+                      <span>Explore Service Details</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Global Consult Banner */}
         <motion.div
-          className="text-center mt-8"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-16 sm:mt-20 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-emerald-950/40 via-[#090d16] to-cyan-950/40 border border-emerald-500/20 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8"
         >
-          <motion.button
-            onClick={() => window.location.href = '/contact-us'}
-            className="group/btn relative inline-flex items-center gap-3 px-10 py-5 text-black font-bold text-lg rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
-            style={{ backgroundColor: "#25ccad" }} // ← FORCED BRAND COLOR
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <div className="space-y-2 text-center md:text-left">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white">Need a Custom Dedicated Squad?</h3>
+            <p className="text-sm sm:text-base text-slate-300 max-w-xl font-normal">
+              Hire vetted React, Node.js, AI/ML, and Mobile engineers with rapid onboarding and flexible engagement models.
+            </p>
+          </div>
+          <button
+            onClick={() => router.push('/contact-us')}
+            className="px-8 py-4 bg-[#00f5a0] hover:bg-[#00d9f5] text-black font-bold text-base rounded-2xl shrink-0 transition-all duration-300 shadow-[0_0_30px_rgba(0,245,160,0.3)] hover:scale-105 active:scale-95"
           >
-
-
-
-            {/* Animated shine effect */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-              initial={{ x: '-100%' }}
-              whileHover={{ x: '100%' }}
-              transition={{ duration: 0.6 }}
-            />
-
-            <span className="relative z-10">Let's Talk</span>
-
-            <motion.svg
-              className="relative z-10 w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              animate={{ x: [0, 5, 0] }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </motion.svg>
-          </motion.button>
+            Hire Dedicated Engineers →
+          </button>
         </motion.div>
+
       </div>
     </section>
   );

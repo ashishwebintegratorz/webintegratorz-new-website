@@ -1,106 +1,156 @@
 'use client';
+
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, HelpCircle, MessageSquare, ArrowRight, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Faq() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(0);
   const router = useRouter();
 
   const faqs = [
     {
-      question: "Why is Webintegratorz Technologies considered a top IT company in India?",
-      answer: "Webintegratorz is recognized due to its AI-first engineering, MERN expertise, enterprise-grade security, and proven global delivery."
+      question: "Why is Webintegratorz Technologies considered a top AI & IT company?",
+      answer: "Webintegratorz Technologies is recognized for its AI-first engineering methodology, deep full-stack MERN & cloud expertise, strict enterprise security compliance, and a proven track record delivering scalable solutions for global clients across the USA, UAE, Europe, Japan, and India."
     },
     {
-      question: "What IT outsourcing services does Webintegratorz Technologies offer?",
-      answer: "We provide custom software, AI/ML, mobile apps, cloud engineering, and offshore development teams from India."
+      question: "What core IT outsourcing & digital engineering services do you provide?",
+      answer: "We offer end-to-end digital engineering including custom full-stack web platforms, Generative AI & autonomous agent development, multi-platform mobile apps (Flutter/React Native), SaaS cloud infrastructure, and dedicated offshore engineering squads."
     },
     {
-      question: "Do you provide AI development services for global enterprises?",
-      answer: "Yes, we build Generative AI, AI agents, predictive analytics, and custom machine learning models."
+      question: "How do you deliver enterprise Generative AI and custom LLM solutions?",
+      answer: "We design tailored AI architectures including custom LLM fine-tuning, retrieval-augmented generation (RAG) pipelines, proprietary vector databases, multi-agent automated workflows, and enterprise ChatGPT/Claude integrations with private data isolation."
     },
     {
-      question: "Can I hire dedicated developers from India through Webintegratorz?",
-      answer: "Absolutely — React, MERN, AI/ML, Mobile, and DevOps engineers are available with flexible engagement models."
+      question: "Can we hire dedicated developers and agile squads from Webintegratorz?",
+      answer: "Yes. You can hire dedicated full-stack engineers, React/Next.js developers, Python/AI specialists, mobile developers, and DevOps architects. We offer flexible engagement models: full squad pods, staff augmentation, or fixed milestone deliverables."
     },
     {
-      question: "Which countries do you serve for IT outsourcing?",
-      answer: "We serve UAE, USA, Europe, Japan, India and other global markets through remote/offshore delivery."
+      question: "Which global markets and timezones do you support?",
+      answer: "We actively serve clients across the United States, United Arab Emirates (GCC), United Kingdom, Germany, Japan, and India. Our engineers maintain substantial timezone overlap to ensure seamless real-time agile communication and daily standups."
     },
     {
-      question: "Do you work with startups and large enterprises?",
-      answer: "Yes, we partner with startups, scale-ups, and enterprises with tailored product and AI engineering."
+      question: "How do you protect our Intellectual Property (IP) and data security?",
+      answer: "We enforce bank-grade security protocols: 100% IP ownership transfer upon delivery, comprehensive non-disclosure agreements (NDAs), encrypted git repositories, OWASP secure coding compliance, and strict role-based access control."
     },
     {
-      question: "How do you ensure data security and compliance?",
-      answer: "We follow secure coding, encryption, access control, NDA protection, and compliance-ready architecture."
+      question: "What is the typical timeline and process to kick off a project?",
+      answer: "Following an initial discovery consultation, we provide an architectural brief and milestone estimate within 48-72 hours. We can initiate Phase 01 sprint discovery and squad onboarding in as fast as 7 to 10 business days."
     },
     {
-      question: "How can I get a project estimate or consultation?",
-      answer: "Reach us via email or WhatsApp for a free consultation and a customized project estimate."
+      question: "How can I schedule a consultation or get a project estimate?",
+      answer: "You can book a free architecture session via our contact page or email us at info@webintegratorz.com. Our lead solutions architect will review your technical requirements and provide an actionable scope estimate."
     }
   ];
 
   return (
-    <section
-      className="w-full py-20 px-6 md:px-10"
-      style={{ backgroundColor: "#ffffff" }}
-    >
+    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.06]">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/3 right-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
 
+      <div className="relative max-w-4xl mx-auto">
+        
+        {/* Header */}
+        <div className="flex flex-col items-center text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
+          >
+            <HelpCircle size={14} className="text-[#00f5a0]" />
+            <span className="text-[#00f5a0] text-xs font-bold uppercase tracking-[0.25em]">
+              Knowledge Base
+            </span>
+          </motion.div>
 
-      {/* Header */}
-      <div className="text-center mb-14">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-black mb-4">
-          Frequently Asked Questions
-        </h2>
-        <div className="w-20 h-[3px] bg-[#25ccad]/40 mx-auto rounded-full"></div>
-      </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight"
+          >
+            Frequently Asked <span className="text-gradient-emerald">Questions</span>
+          </motion.h2>
 
-      {/* Accordion */}
-      <div className="max-w-4xl mx-auto space-y-6">
-        {faqs.map((faq, index) => (
-          <div key={index} className="border-b border-black/10 pb-5">
+          <p className="mt-4 text-base text-slate-300 max-w-xl font-normal">
+            Everything you need to know about our engineering standards, engagement models, and AI delivery capabilities.
+          </p>
+        </div>
 
-            <button
-              onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              className="w-full flex justify-between items-center text-left group"
-            >
-              <span className="text-xl font-semibold text-black pr-6 group-hover:text-[#25ccad] transition-colors">
-                {faq.question}
-              </span>
-              <ChevronDown
-                className={`w-6 h-6 text-black transition-all duration-300 group-hover:text-[#25ccad] ${openIndex === index ? "rotate-180" : ""
-                  }`}
-              />
-            </button>
-
-            <div
-              className={`grid transition-all duration-300 ease-in-out ${openIndex === index ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0"
+        {/* Accordion Cards */}
+        <div className="space-y-4">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className={`rounded-2xl p-px transition-all duration-300 ${
+                  isOpen ? "bg-gradient-to-r from-emerald-500/40 via-cyan-500/30 to-transparent" : "bg-white/[0.06] hover:bg-white/[0.12]"
                 }`}
-            >
-              <div className="overflow-hidden">
-                <p className="text-base md:text-lg text-black/90 leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            </div>
+              >
+                <div className="rounded-2xl bg-[#090d16]/95 backdrop-blur-xl p-5 sm:p-6 overflow-hidden">
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    className="w-full flex justify-between items-center text-left gap-4 group"
+                  >
+                    <span className={`text-base sm:text-lg font-bold transition-colors ${isOpen ? "text-[#00f5a0]" : "text-white group-hover:text-slate-200"}`}>
+                      {faq.question}
+                    </span>
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "bg-emerald-500/20 text-[#00f5a0] rotate-180" : "bg-white/[0.04] text-slate-400"}`}>
+                      <ChevronDown size={18} />
+                    </div>
+                  </button>
 
-          </div>
-        ))}
-      </div>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="text-sm sm:text-base text-slate-300 leading-relaxed pt-4 mt-3 border-t border-white/[0.06] font-normal">
+                          {faq.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
 
-      {/* CTA */}
-      <div className="text-center mt-14">
-        <button
-          onClick={() => router.push("/contact-us")}
-          className="inline-flex items-center gap-2 px-8 py-4 text-black font-bold rounded-xl text-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-          style={{ backgroundColor: "#25ccad" }}
+        {/* Bottom Contact Callout */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-14 p-8 rounded-3xl bg-gradient-to-r from-emerald-950/30 via-[#090d16] to-cyan-950/30 border border-emerald-500/20 text-center flex flex-col sm:flex-row items-center justify-between gap-6"
         >
-          More Questions? Contact Us →
-        </button>
-      </div>
+          <div className="text-left">
+            <h3 className="text-lg font-bold text-white">Have a specific architectural query?</h3>
+            <p className="text-xs sm:text-sm text-slate-400 mt-0.5">Talk directly with our technical solutions team.</p>
+          </div>
 
+          <button
+            onClick={() => router.push("/contact-us")}
+            className="px-6 py-3 bg-[#00f5a0] hover:bg-[#00d9f5] text-black font-bold text-sm rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(0,245,160,0.3)] flex items-center gap-2 shrink-0 hover:scale-105"
+          >
+            <span>Ask Us Anything</span>
+            <ArrowRight size={14} />
+          </button>
+        </motion.div>
+
+      </div>
     </section>
   );
 }

@@ -10,161 +10,213 @@ import {
   Instagram,
   Youtube,
   Cookie,
+  ShieldCheck,
+  Zap,
+  Sparkles,
+  ArrowUp
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // Stable social icons array (no dynamic className generation)
   const socialIcons = [
-    { Icon: Linkedin, href: "https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A83544760&keywords=webintegratorz%20technologies&origin=ENTITY_SEARCH_HOME_HISTORY&position=0&sid=%2CY2" },
-    { Icon: Twitter, href: "https://twitter.com/webintegratorz" },
-    { Icon: Facebook, href: "https://facebook.com/webintegratorz" },
-    { Icon: Instagram, href: "https://www.instagram.com/webintegratorz_technologies/" },
-    { Icon: Youtube, href: "https://youtube.com/@webintegratorz" },
+    { Icon: Linkedin, href: "https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A83544760&keywords=webintegratorz%20technologies&origin=ENTITY_SEARCH_HOME_HISTORY&position=0&sid=%2CY2", label: "LinkedIn" },
+    { Icon: Twitter, href: "https://twitter.com/webintegratorz", label: "Twitter" },
+    { Icon: Facebook, href: "https://facebook.com/webintegratorz", label: "Facebook" },
+    { Icon: Instagram, href: "https://www.instagram.com/webintegratorz_technologies/", label: "Instagram" },
+    { Icon: Youtube, href: "https://youtube.com/@webintegratorz", label: "YouTube" },
   ];
 
   return (
-    <footer className="relative bg-black text-white overflow-hidden border-t border-white/10">
-      {/* Subtle background glow */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#25ccad] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#25ccad] rounded-full blur-3xl" />
-      </div>
+    <footer className="relative bg-[#030712] text-white overflow-hidden border-t border-white/[0.08]">
+      {/* Background ambient gradient glow */}
+      <div className="absolute top-0 left-1/4 w-[600px] h-[300px] bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[600px] h-[300px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
-        {/* MAIN GRID */}
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Top Newsletter / Quick Consultation Banner */}
+        <div className="py-12 sm:py-16 border-b border-white/[0.08] flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="space-y-2 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[#00f5a0] text-xs font-bold uppercase tracking-widest mb-1">
+              <Zap size={13} /> Accelerate Your Roadmap
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-black text-white">
+              Ready to engineer your next digital breakthrough?
+            </h3>
+            <p className="text-sm text-slate-400 max-w-xl">
+              Get in touch for a comprehensive technical consultation and tailored architecture estimate.
+            </p>
+          </div>
 
-          {/* BRAND */}
-          <div className="space-y-10">
-            <div className="flex justify-start relative w-56 h-12">
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
+            <Link
+              href="/contact-us"
+              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#00f5a0] to-[#00d9f5] hover:opacity-95 text-black font-bold text-sm rounded-xl transition-all duration-300 shadow-[0_0_25px_rgba(0,245,160,0.3)] flex items-center justify-center gap-2 hover:scale-105 active:scale-95"
+            >
+              <span>Schedule Free Tech Session</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+
+        {/* MAIN FOOTER GRID */}
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
+
+          {/* BRAND COLUMN */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="relative w-52 h-12">
               <Image
                 src="/weblogo.webp"
                 alt="Webintegratorz Logo"
                 fill
-                className="object-contain -ml-2 md:-ml-3"
+                className="object-contain"
               />
             </div>
 
-            <p className="text-sm text-white/70 leading-relaxed">
-              Transforming digital experiences through innovative web, mobile,
-              SaaS, and AI-powered solutions.
+            <p className="text-sm text-slate-300 leading-relaxed max-w-sm font-normal">
+              Webintegratorz Technologies is a premier global AI &amp; IT engineering firm delivering scalable cloud architectures, generative AI ecosystems, and bespoke digital software.
             </p>
 
-            {/* SOCIAL ICONS (Stable rendering) */}
-            <div className="flex gap-3">
+            {/* Social Link Capsules */}
+            <div className="flex gap-2.5 pt-2">
               {socialIcons.map((item, i) => (
                 <a
                   key={i}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="social-link"
-                  className="w-12 h-12 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 hover:bg-[#25ccad] hover:text-black transition-all duration-300"
+                  aria-label={item.label}
+                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.08] hover:bg-[#00f5a0] hover:text-black hover:border-transparent text-slate-300 transition-all duration-300"
                 >
-                  <item.Icon className="w-5 h-5" />
+                  <item.Icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* SERVICES */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">
-              Services
-              <span className="block w-10 h-1 bg-[#25ccad] mt-2 rounded-full" />
-            </h3>
-            <ul className="space-y-6 mt-6">
-              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />Web Development</a></li>
-              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />Mobile Development</a></li>
-              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />CMS Solutions</a></li>
-              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />UI/UX Design</a></li>
-              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />Digital Marketing</a></li>
-              <li><a href="#" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><ArrowRight className="w-4 h-4 mr-2" />AI Integration</a></li>
+          {/* SERVICES COLUMN */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-sm font-bold tracking-wider text-white uppercase flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00f5a0]" />
+              Core Capabilities
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              <li>
+                <Link href="/services/web-development" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                  <ArrowRight size={12} className="text-[#00f5a0]" /> Web &amp; SaaS Platforms
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/accessibility-compliance" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                  <ArrowRight size={12} className="text-[#00f5a0]" /> WCAG &amp; ADA Code Remediation
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/ai-integration/generative-ai-development" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                  <ArrowRight size={12} className="text-[#00f5a0]" /> Generative AI &amp; LLMs
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/ai-integration/agent-development" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                  <ArrowRight size={12} className="text-[#00f5a0]" /> Autonomous AI Agents
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/mobile-development" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                  <ArrowRight size={12} className="text-[#00f5a0]" /> Mobile &amp; Flutter Apps
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/ui-ux" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                  <ArrowRight size={12} className="text-[#00f5a0]" /> UI/UX Design Systems
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/digital-marketing" className="text-slate-300 hover:text-[#00f5a0] transition-colors flex items-center gap-2">
+                  <ArrowRight size={12} className="text-[#00f5a0]" /> Technical SEO &amp; Growth
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* CONTACT */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">
-              Contact
-              <span className="block w-10 h-1 bg-[#25ccad] mt-2 rounded-full" />
-            </h3>
-            <div className="space-y-5">
+          {/* QUICK LINKS */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="text-sm font-bold tracking-wider text-white uppercase flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00f5a0]" />
+              Company
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              <li><Link href="/about" className="text-slate-300 hover:text-[#00f5a0] transition-colors">About Us</Link></li>
+              <li><Link href="/awards" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Awards &amp; Recognition</Link></li>
+              <li><Link href="/news" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Insights &amp; News</Link></li>
+              <li><Link href="/#casestudies" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Case Studies</Link></li>
+              <li><Link href="/contact-us" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Contact Careers</Link></li>
+              <li><Link href="/privacy-policy" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-slate-300 hover:text-[#00f5a0] transition-colors">Terms of Service</Link></li>
+            </ul>
+          </div>
+
+          {/* VERIFIED REGISTRATION & CONTACT */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-sm font-bold tracking-wider text-white uppercase flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00f5a0]" />
+              Enterprise Verification
+            </h4>
+            <div className="space-y-3">
               <a
                 href="mailto:info@webintegratorz.com"
-                className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#25ccad] transition"
+                className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-emerald-500/30 transition-all"
               >
-                <Mail className="w-5 h-5 text-[#25ccad]" />
+                <Mail className="w-4 h-4 text-[#00f5a0] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs text-white/50">Email</p>
-                  <p className="text-sm text-white/80">info@webintegratorz.com</p>
+                  <p className="text-[10px] text-slate-400 font-bold uppercase">Official Inquiries</p>
+                  <p className="text-xs text-white font-medium">info@webintegratorz.com</p>
                 </div>
               </a>
 
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                <MapPin className="w-5 h-5 text-[#25ccad]" />
+              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                <ShieldCheck className="w-4 h-4 text-[#00f5a0] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs text-white/50">Registration</p>
-                  <p className="text-sm text-white/80">UDYAM-MP-30-0031514</p>
+                  <p className="text-[10px] text-slate-400 font-bold uppercase">Govt. Registration</p>
+                  <p className="text-xs text-slate-200 font-medium">UDYAM-MP-30-0031514</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                <MapPin className="w-5 h-5 text-[#25ccad]" />
+              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                <ShieldCheck className="w-4 h-4 text-[#00f5a0] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs text-white/50">DUNS Number</p>
-                  <p className="text-sm text-white/80">93-356-9189</p>
+                  <p className="text-[10px] text-slate-400 font-bold uppercase">Global DUNS ID</p>
+                  <p className="text-xs text-slate-200 font-medium">93-356-9189</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* QUICK LINKS */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">
-              Quick Links
-              <span className="block w-10 h-1 bg-[#25ccad] mt-2 rounded-full" />
-            </h3>
-            <ul className="space-y-6 mt-6">
-              <li><a href="/news" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">News</a></li>
-              <li><a href="/contact-us" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Contact Us</a></li>
-              <li><a href="/about" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">About</a></li>
-              <li><a href="/privacy-policy" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Privacy Policy</a></li>
-              <li><a href="/terms" className="text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Terms & Conditions</a></li>
-              <li><a href="/cookies" className="flex items-center text-white/90 hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]"><Cookie className="w-4 h-4 mr-2 text-[#25ccad]" />Cookie Policy</a></li>
-            </ul>
-          </div>
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="border-t border-white/10 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <p className="text-sm text-white/80">
-              © {currentYear} <span className="text-[#25ccad] font-semibold">Webintegratorz</span>. All rights reserved.
-            </p>
-            <p className="text-[10px] text-white/60 max-w-[450px] text-center md:text-left leading-relaxed">
-              We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. <a href="/cookies" className="text-[#25ccad] underline underline-offset-2 decoration-[#25ccad]/40 hover:decoration-[#25ccad] transition-all">Manage Preferences</a>
-            </p>
-          </div>
-
-          <div className="flex gap-6 text-xs text-white/70">
-            <a href="/privacy-policy" className="hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Privacy</a>
-            <a href="/cookies" className="hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Cookies</a>
-            <a href="/sitemap.xml" className="hover:text-[#25ccad] transition underline underline-offset-4 decoration-white/20 hover:decoration-[#25ccad]">Sitemap</a>
+        <div className="border-t border-white/[0.08] py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© {currentYear} Webintegratorz Technologies. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy-policy" className="hover:text-[#00f5a0] transition-colors">Privacy</Link>
+            <Link href="/cookies" className="hover:text-[#00f5a0] transition-colors">Cookie Policy</Link>
+            <Link href="/terms" className="hover:text-[#00f5a0] transition-colors">Terms</Link>
+            <Link href="/sitemap.xml" className="hover:text-[#00f5a0] transition-colors">Sitemap</Link>
           </div>
         </div>
+
       </div>
 
-      {/* SCROLL TO TOP BUTTON (Stable, unchanged color) */}
+      {/* Floating Back to Top Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-[#25ccad] text-black rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition z-50"
+        className="fixed bottom-6 right-6 w-11 h-11 bg-[#00f5a0] text-black rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(0,245,160,0.4)] hover:scale-110 active:scale-95 transition-all z-40"
         aria-label="Scroll to top"
       >
-        ↑
+        <ArrowUp size={18} />
       </button>
     </footer>
   );

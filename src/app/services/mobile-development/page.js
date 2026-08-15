@@ -41,7 +41,7 @@ export default function MobileDevelopmentpage() {
   ];
 
   const stats = [
-    { value: "500+", label: "Apps Delivered", icon: <Rocket className="w-5 h-5" /> },
+    { value: "100+", label: "Apps Delivered", icon: <Rocket className="w-5 h-5" /> },
     { value: "98%", label: "Client Satisfaction", icon: <Star className="w-5 h-5" /> },
     { value: "50M+", label: "Active Users", icon: <Users className="w-5 h-5" /> },
     { value: "15+", label: "Years Experience", icon: <Shield className="w-5 h-5" /> }
@@ -160,7 +160,7 @@ export default function MobileDevelopmentpage() {
                   <div className="relative z-10 w-56 h-[450px] bg-gradient-to-br from-slate-800 to-slate-900 rounded-[2.5rem] p-3 shadow-2xl shadow-[#27ccae]/30 border-2 border-[#27ccae]/30 hover:scale-105 transition-transform duration-500">
                     <div className="w-full h-full bg-gradient-to-br from-[#27ccae] to-emerald-400 rounded-[2rem] flex flex-col items-center justify-center gap-6 p-6">
                       <div className="text-center">
-                        <div className="text-4xl font-bold mb-2">500+</div>
+                        <div className="text-4xl font-bold mb-2">100+</div>
                         <div className="text-sm opacity-90">Apps Built</div>
                       </div>
                       <div className="w-full h-1 bg-white/30 rounded-full"></div>

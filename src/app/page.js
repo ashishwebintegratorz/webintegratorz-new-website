@@ -7,7 +7,6 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 const Casestudies = dynamic(() => import("@/components/Casestudies"));
 const Workflowcycle = dynamic(() => import("@/components/Workflowcycle"));
 const Featuredsection = dynamic(() => import("@/components/Featuredsection"));
-const Ourpresence = dynamic(() => import("@/components/Ourpresence"));
 const Faq = dynamic(() => import("@/components/Faq"));
 
 export default function Home() {
@@ -103,7 +102,6 @@ export default function Home() {
       <Casestudies />
       <Workflowcycle />
       <Featuredsection />
-      <Ourpresence />
       <Faq />
     </>
   );

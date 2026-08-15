@@ -1,333 +1,167 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from "next/navigation";
-import { CircleDollarSign, Zap, Target, Lock, TrendingUp, Clock, Lightbulb, Rocket, Sparkles } from "lucide-react";
-
+import { CircleDollarSign, Zap, Target, Lock, TrendingUp, Clock, Sparkles, ShieldCheck, CheckCircle2, ArrowRight, Award } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function WhyChooseUsSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeCard, setActiveCard] = useState(null);
-  const sectionRef = useRef(null);
   const router = useRouter();
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [particles, setParticles] = useState([]);
-
-
-  useEffect(() => {
-    // Generate particles only on the client to avoid hydration mismatch
-    setParticles([...Array(20)].map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      delay: `${Math.random() * 5}s`,
-      duration: `${5 + Math.random() * 10}s`
-    })));
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleMouseMove = (e) => {
-    const { clientX, clientY, currentTarget } = e;
-    requestAnimationFrame(() => {
-      const rect = currentTarget.getBoundingClientRect();
-      setMousePosition({
-        x: clientX - rect.left,
-        y: clientY - rect.top,
-      });
-    });
-  };
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   const stats = [
-    { number: "500+", label: "Projects Delivered" },
-    { number: "200+", label: "Happy Clients" },
-    { number: "50+", label: "Expert Talent" },
-    { number: "99%", label: "Success Rate" }
+    { number: "100+", label: "Clients Globally", sub: "Enterprise & funded startups" },
+    { number: "99.4%", label: "SLA Precision", sub: "On-time milestone delivery" },
+    { number: "15+", label: "Global Regions", sub: "USA, UAE, Europe, Japan" },
+    { number: "100%", label: "IP & NDA Protection", sub: "Enterprise code ownership" }
   ];
 
   const features = [
     {
-      icon: CircleDollarSign,
-      title: "Transparent Pricing",
-      description: "Clear, upfront costs with no hidden fees. You know exactly what you're paying for.",
-      color: "#25ccad"
-    },
-    {
-      icon: Zap,
-      title: "Proven Expertise",
-      description: "Years of experience delivering cutting-edge solutions across industries.",
-      color: "#25ccad"
-    },
-    {
-      icon: Target,
-      title: "Top-Notch IT Solutions",
-      description: "Enterprise-grade technology solutions that scale with your business growth.",
-      color: "#25ccad"
+      icon: Sparkles,
+      title: "AI-First Engineering",
+      description: "We don't just build traditional software; we infuse intelligence, LLM workflows, and modern agentic automation into your core architecture.",
+      tag: "Next-Gen Tech"
     },
     {
       icon: Lock,
-      title: "Secure & Reliable",
-      description: "Bank-level security protocols ensuring your data is always protected.",
-      color: "#25ccad"
+      title: "Bank-Grade Security & Compliance",
+      description: "Strict adherence to OWASP top 10, enterprise encryption standards, SOC2 preparation, and airtight non-disclosure agreements.",
+      tag: "Enterprise Trust"
+    },
+    {
+      icon: Zap,
+      title: "High-Velocity Agile Sprints",
+      description: "Bi-weekly sprint demos, continuous CI/CD delivery pipelines, and transparent milestone tracking with 0 hidden technical debt.",
+      tag: "Speed to Market"
+    },
+    {
+      icon: CircleDollarSign,
+      title: "Transparent Fixed / T&M Pricing",
+      description: "Predictable resource allocation, milestone-based escrow billing, and detailed resource transparency with no hidden overheads.",
+      tag: "Predictable ROI"
     },
     {
       icon: TrendingUp,
-      title: "ROI Focused",
-      description: "Every solution designed to maximize your return on investment.",
-      color: "#25ccad"
+      title: "Performance & Conversion Focused",
+      description: "Engineered for 95+ Core Web Vitals, ultra-low latency API backends, and conversion-optimized user funnels.",
+      tag: "Business Impact"
     },
     {
       icon: Clock,
-      title: "24/7 Support",
-      description: "Round-the-clock support team ready to assist whenever you need us.",
-      color: "#25ccad"
+      title: "24/7 Global Overlap Support",
+      description: "Dedicated account managers and engineering squads aligned with US, UK, UAE, and Asian timezones for round-the-clock responsiveness.",
+      tag: "Always-On SLA"
     }
   ];
 
-  const teamMembers = [
-    { name: "Team Lead", role: "Strategy" },
-    { name: "Developer", role: "Engineering" },
-    { name: "Designer", role: "Creative" },
-    { name: "Manager", role: "Operations" }
-  ];
-
   return (
-    <section
-      ref={sectionRef}
-      className="why-section pb-0"
-    >
-      {/* Animated Background */}
-      <div className="why-background">
-        {/* Gradient Orbs */}
-        <div className="orb orb-top"></div>
-        <div className="orb orb-bottom"></div>
+    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.06]">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-emerald-500/[0.04] rounded-full blur-[160px] pointer-events-none" />
 
-        {/* Grid Lines */}
-        <div className="grid-lines"></div>
-
-        {/* Animated Particles */}
-        <div className="particles-container">
-          {particles.map((p, i) => (
-            <div
-              key={i}
-              className="particle"
-              style={{
-                left: p.left,
-                top: p.top,
-                animationDelay: p.delay,
-                animationDuration: p.duration
-              }}
-            ></div>
-          ))}
-        </div>
-      </div>
-
-      {/* Content Container - Perfectly Aligned with Navbar */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
-        {/* Header Section */}
-        <div className="why-header">
-          {/* Badge */}
-          <div className={`badge-wrapper ${isVisible ? 'visible' : ''}`}>
-            <div className="badge">
-              <div className="badge-dot"></div>
-              <span className="badge-text">WHY US</span>
-            </div>
-            <div className="badge-line"></div>
-          </div>
-
-          {/* Main Heading */}
-          <div className={`heading-wrapper ${isVisible ? 'visible' : ''}`}>
-            <h2 className="main-heading">
-              <span className="heading-white">Why </span>
-              <span className="heading-brand-wrapper">
-                <span className="heading-brand">Webintegratorz</span>
-                <div className="heading-underline"></div>
-              </span>
-              <span className="heading-white">?</span>
-            </h2>
-
-            <p className="heading-description">
-              We wholeheartedly support you in transforming your vision into a tangible reality,
-              ensuring that your digital transformation serves as a robust foundation for your
-              sustained growth and success in the ever-evolving marketplace.
-            </p>
-          </div>
-        </div>
-
-        {/* Stats Counter Section */}
-        <div className={`stats-grid ${isVisible ? 'visible' : ''}`}>
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="stat-card"
-              style={{
-                animationDelay: `${index * 100}ms`
-              }}
-            >
-              {/* Glow Effect */}
-              <div className="stat-glow"></div>
-
-              <div className="stat-content">
-                <div className="stat-number">{stat.number}</div>
-                <div className="stat-label">{stat.label}</div>
-              </div>
-
-              {/* Corner Accent */}
-              <div className="stat-corner"></div>
-            </div>
-          ))}
-        </div>
-
-        {/* Two Column Layout */}
-        <div className="content-columns">
-          {/* Left Column - Image/Visual Section */}
-          <div className={`left-column ${isVisible ? 'visible' : ''}`}>
-            <div className="visual-wrapper">
-              {/* Main Image Container */}
-              <div className="main-visual">
-                {/* Decorative Circle Top Left */}
-                <div className="decorative-circle circle-top"></div>
-
-                {/* Goal Badge */}
-                <div className="goal-badge">
-                  <div className="goal-text-main">OUR GOAL</div>
-                  <div className="goal-text-sub">IS YOUR</div>
-                  <div className="goal-text-large">SUCCESS</div>
-                </div>
-
-                {/* Team Grid */}
-                <div className="team-section">
-                  <div className="team-grid">
-                    {teamMembers.map((member, index) => (
-                      <div
-                        key={index}
-                        className="team-card"
-                      >
-                        {/* Avatar */}
-                        <div className="team-avatar">
-                          {member.name.charAt(0)}
-                        </div>
-                        <div className="team-info">
-                          <p className="team-name">{member.name}</p>
-                          <p className="team-role">{member.role}</p>
-                        </div>
-                        {/* Hover effect */}
-                        <div className="team-hover"></div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Team Excellence Label */}
-                  <div className="team-label">
-                    <div className="team-badge">
-                      <Sparkles className="team-badge-icon" size={14} style={{ color: '#25ccad' }} />
-                      <span className="team-badge-text">Team Excellence</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Workspace Cards */}
-              <div className="workspace-cards">
-                <div className="workspace-card">
-                  <div className="workspace-icon-wrapper">
-                    <Lightbulb className="workspace-icon" size={18} />
-                  </div>
-                  <p className="workspace-title">Innovation Hub</p>
-                  <p className="workspace-subtitle">Creative Solutions</p>
-                </div>
-                <div className="workspace-card">
-                  <div className="workspace-icon-wrapper">
-                    <Rocket className="workspace-icon" size={18} />
-                  </div>
-                  <p className="workspace-title">Fast Delivery</p>
-                  <p className="workspace-subtitle">Quick Turnaround</p>
-                </div>
-              </div>
-
-              {/* Decorative Circle Bottom Right */}
-              <div className="decorative-circle circle-bottom"></div>
-            </div>
-          </div>
-
-          {/* Right Column - Features Grid (NO ARROW ICONS) */}
-          <div className={`right-column ${isVisible ? 'visible' : ''}`}>
-            <div className="features-grid">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="feature-card group"
-                  onMouseEnter={() => setActiveCard(index)}
-                  onMouseLeave={() => setActiveCard(null)}
-                  style={{
-                    animationDelay: `${index * 100}ms`
-                  }}
-                >
-                  <div className="feature-content">
-                    {/* Hover Glow */}
-                    <div className="feature-glow"></div>
-
-                    <div className="feature-inner">
-                      {/* Icon */}
-                      <div className="feature-icon-wrapper group-hover:bg-[#25ccad] transition-all">
-                        <feature.icon className="feature-icon text-[#25ccad] group-hover:text-black transition-colors" size={24} />
-                      </div>
-
-                      {/* Content */}
-                      <div className="feature-text">
-                        <h3 className="feature-title">{feature.title}</h3>
-                        <p className="feature-description">{feature.description}</p>
-                      </div>
-
-                      {/* NO ARROW ICON - REMOVED */}
-                    </div>
-
-                    {/* Active Indicator */}
-                    {activeCard === index && (
-                      <div className="feature-indicator"></div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className={`cta-section ${isVisible ? 'visible' : ''}`}>
-          <button
-            className="cta-button"
-            onClick={() => router.push("/contact-us")}
-            onMouseMove={handleMouseMove}
+      <div className="relative max-w-[1440px] mx-auto">
+        
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center mb-16 sm:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
           >
-            <span className="cta-text">
-              Get a Free Consultation
-              <svg className="cta-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+            <ShieldCheck size={14} className="text-[#00f5a0]" />
+            <span className="text-[#00f5a0] text-xs tracking-[0.2em] uppercase font-bold">
+              Why Partner With Us
             </span>
-            <div className="cta-bg"></div>
-            <div
-              className="cta-follow"
-              style={{
-                left: mousePosition.x - 64,
-                top: mousePosition.y - 64,
-              }}
-            ></div>
-          </button>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]"
+          >
+            Engineered for <span className="text-gradient-emerald">High-Stakes Reliability</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed"
+          >
+            We combine elite engineering discipline with cutting-edge AI expertise to deliver digital assets that perform, scale, and generate long-term equity.
+          </motion.p>
         </div>
+
+        {/* Top 4 KPI Metrics Ribbon */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-16">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="p-6 sm:p-8 rounded-3xl bg-[#090d16]/90 border border-white/[0.08] backdrop-blur-xl relative overflow-hidden group hover:border-emerald-500/30 transition-all"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-xl pointer-events-none group-hover:bg-emerald-500/15 transition-colors" />
+              <p className="text-3xl sm:text-4xl lg:text-5xl font-black text-white text-gradient-emerald">
+                {stat.number}
+              </p>
+              <p className="text-sm font-bold text-white mt-2">{stat.label}</p>
+              <p className="text-xs text-slate-400 mt-0.5">{stat.sub}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* 6 Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
+              className="group relative rounded-3xl p-px overflow-hidden flex flex-col"
+            >
+              {/* Outer glow line */}
+              <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 bg-gradient-to-b from-[#00f5a0]/30 via-white/5 to-transparent ${hoveredCard === index ? 'opacity-100' : 'opacity-20'}`} />
+
+              <div className="relative flex-1 bg-[#090d16]/95 backdrop-blur-xl rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220]">
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0] group-hover:scale-110 group-hover:bg-[#00f5a0] group-hover:text-black transition-all duration-300">
+                      <feature.icon size={22} />
+                    </div>
+                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/[0.04] text-slate-400 border border-white/[0.06]">
+                      {feature.tag}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#00f5a0] transition-colors leading-snug">
+                    {feature.title}
+                  </h3>
+
+                  <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                    {feature.description}
+                  </p>
+                </div>
+
+                <div className="pt-6 mt-6 border-t border-white/[0.06] flex items-center gap-2 text-xs font-semibold text-slate-400 group-hover:text-[#00f5a0] transition-colors">
+                  <CheckCircle2 size={14} className="text-[#00f5a0]" />
+                  <span>Guaranteed SLA Standard</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
