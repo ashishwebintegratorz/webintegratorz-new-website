@@ -83,10 +83,6 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                                     priority
                                 />
                             </div>
-                            <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#00f5a0] animate-pulse" />
-                                <span className="text-[10px] font-bold text-[#00f5a0] tracking-wider uppercase">AI-First</span>
-                            </div>
                         </Link>
                     </div>
 
