@@ -73,11 +73,11 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
 
                     {/* BRAND LOGO */}
                     <div className="flex items-center flex-shrink-0">
-                        <Link href="/" className="flex items-center gap-3 group">
+                        <Link href="/" aria-label="Webintegratorz Technologies Home" className="flex items-center gap-3 group">
                             <div className="relative w-44 sm:w-52 h-10 transition-transform duration-300 group-hover:scale-105">
                                 <Image
                                     src="/weblogo.webp"
-                                    alt="Webintegratorz Technologies"
+                                    alt="Webintegratorz Technologies Logo"
                                     fill
                                     className="object-contain"
                                     priority
@@ -91,7 +91,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                     </div>
 
                     {/* DESKTOP NAV */}
-                    <nav className="hidden xl:flex items-center gap-1 text-[13px] font-semibold tracking-wide">
+                    <nav aria-label="Primary Navigation" className="hidden xl:flex items-center gap-1 text-[13px] font-semibold tracking-wide">
                         <Link 
                             href="/" 
                             className={`px-4 py-2 rounded-xl transition-all duration-200 ${pathname === "/" ? "text-[#00f5a0] bg-white/[0.06]" : "text-slate-200 hover:text-white hover:bg-white/[0.04]"}`}
@@ -106,6 +106,11 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                             onMouseLeave={() => setDesktopServices(false)}
                         >
                             <button 
+                                type="button"
+                                aria-expanded={desktopServices}
+                                aria-haspopup="true"
+                                aria-controls="desktop-services-dropdown"
+                                onClick={() => setDesktopServices(!desktopServices)}
                                 className={`flex items-center gap-1.5 px-4 py-2 rounded-xl transition-all duration-200 ${desktopServices || pathname?.startsWith("/services") && !pathname?.includes("ai-integration") ? "text-[#00f5a0] bg-white/[0.06]" : "text-slate-200 hover:text-white hover:bg-white/[0.04]"}`}
                             >
                                 SERVICES
@@ -115,6 +120,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                             <AnimatePresence>
                                 {desktopServices && (
                                     <motion.div
+                                        id="desktop-services-dropdown"
                                         initial={{ opacity: 0, y: 10, scale: 0.98 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: 10, scale: 0.98 }}
@@ -134,17 +140,10 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                                                         </div>
                                                         <div>
                                                             <p className="text-sm font-semibold text-white group-hover:text-[#00f5a0] transition-colors">{item.label}</p>
-                                                            <p className="text-xs text-slate-400 leading-snug mt-0.5">{item.desc}</p>
+                                                            <p className="text-xs text-slate-300 leading-snug mt-0.5">{item.desc}</p>
                                                         </div>
                                                     </Link>
                                                 ))}
-                                            </div>
-                                            
-                                            <div className="mt-3 pt-3 border-t border-white/[0.08] flex items-center justify-between px-2 text-xs">
-                                                <span className="text-slate-400">Looking for custom architecture?</span>
-                                                <Link href="/contact-us" className="text-[#00f5a0] font-semibold flex items-center gap-1 hover:underline">
-                                                    Consult us <ArrowRight size={12} />
-                                                </Link>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -159,23 +158,29 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                             onMouseLeave={() => setDesktopAIServices(false)}
                         >
                             <button 
+                                type="button"
+                                aria-expanded={desktopAIServices}
+                                aria-haspopup="true"
+                                aria-controls="desktop-ai-dropdown"
+                                onClick={() => setDesktopAIServices(!desktopAIServices)}
                                 className={`flex items-center gap-1.5 px-4 py-2 rounded-xl transition-all duration-200 ${desktopAIServices || pathname?.includes("ai-integration") ? "text-[#00f5a0] bg-white/[0.06]" : "text-slate-200 hover:text-white hover:bg-white/[0.04]"}`}
                             >
-                                <Sparkles size={14} className="text-[#00f5a0] animate-pulse" />
-                                AI INTEGRATION
+                                <Sparkles size={14} className="text-[#00f5a0]" />
+                                AI SUITE
                                 <ChevronDown size={14} className={`transition-transform duration-300 ${desktopAIServices ? "rotate-180 text-[#00f5a0]" : ""}`} />
                             </button>
 
                             <AnimatePresence>
                                 {desktopAIServices && (
                                     <motion.div
+                                        id="desktop-ai-dropdown"
                                         initial={{ opacity: 0, y: 10, scale: 0.98 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: 10, scale: 0.98 }}
                                         transition={{ duration: 0.2, ease: "easeOut" }}
-                                        className="absolute top-full -left-48 xl:-left-36 pt-3 z-50"
+                                        className="absolute top-full -left-20 pt-3 z-50"
                                     >
-                                        <div className="w-[840px] bg-[#090d16]/95 backdrop-blur-2xl border border-white/[0.12] shadow-[0_30px_90px_rgba(0,0,0,0.85)] rounded-3xl p-6 overflow-hidden">
+                                        <div className="w-[820px] bg-[#090d16]/98 backdrop-blur-2xl border border-white/[0.12] shadow-[0_30px_90px_rgba(0,0,0,0.8)] rounded-3xl p-6 overflow-hidden">
                                             <div className="grid grid-cols-3 gap-6">
                                                 {aiCategories.map((category, idx) => (
                                                     <div key={idx} className="space-y-3">

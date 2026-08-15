@@ -204,39 +204,43 @@ export default function ContactUsPage() {
                 </div>
               </div>
 
-              <form onSubmit={handleWhatsAppSubmit} className="space-y-8">
+              <form onSubmit={handleWhatsAppSubmit} className="space-y-8" aria-label="Contact and Consultation Form">
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                      <User size={14} className="text-[#25ccad]" /> Full Name
+                    <label htmlFor="contact-name" className="text-xs font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
+                      <User size={14} className="text-[#25ccad]" /> Full Name <span className="text-emerald-400" aria-hidden="true">*</span>
                     </label>
                     <input
                       required
+                      id="contact-name"
                       type="text"
                       name="name"
+                      aria-required="true"
                       placeholder="e.g. John Anderson"
                       value={formData.name}
                       onFocus={() => setActiveField('name')}
                       onBlur={() => setActiveField(null)}
                       onChange={handleInputChange}
-                      className={`w-full px-7 py-5 bg-slate-800/50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-600 ${activeField === 'name' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/5'
+                      className={`w-full px-7 py-5 bg-slate-800/70 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-400 ${activeField === 'name' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/10'
                         }`}
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                      <Mail size={14} className="text-[#25ccad]" /> Business Email
+                    <label htmlFor="contact-email" className="text-xs font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
+                      <Mail size={14} className="text-[#25ccad]" /> Business Email <span className="text-emerald-400" aria-hidden="true">*</span>
                     </label>
                     <input
                       required
+                      id="contact-email"
                       type="email"
                       name="email"
+                      aria-required="true"
                       placeholder="john@company.com"
                       value={formData.email}
                       onFocus={() => setActiveField('email')}
                       onBlur={() => setActiveField(null)}
                       onChange={handleInputChange}
-                      className={`w-full px-7 py-5 bg-slate-800/50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-600 ${activeField === 'email' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/5'
+                      className={`w-full px-7 py-5 bg-slate-800/70 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-400 ${activeField === 'email' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/10'
                         }`}
                     />
                   </div>
@@ -244,59 +248,64 @@ export default function ContactUsPage() {
 
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                      <Phone size={14} className="text-[#25ccad]" /> Phone Number
+                    <label htmlFor="contact-phone" className="text-xs font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
+                      <Phone size={14} className="text-[#25ccad]" /> Phone Number <span className="text-emerald-400" aria-hidden="true">*</span>
                     </label>
                     <input
                       required
+                      id="contact-phone"
                       type="tel"
                       name="phone"
+                      aria-required="true"
                       placeholder="+91 89899 44488"
                       value={formData.phone}
                       onFocus={() => setActiveField('phone')}
                       onBlur={() => setActiveField(null)}
                       onChange={handleInputChange}
-                      className={`w-full px-7 py-5 bg-slate-800/50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-600 ${activeField === 'phone' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/5'
+                      className={`w-full px-7 py-5 bg-slate-800/70 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-400 ${activeField === 'phone' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/10'
                         }`}
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                    <label htmlFor="contact-project-type" className="text-xs font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
                       <FileText size={14} className="text-[#25ccad]" /> Project Nature
                     </label>
                     <div className="relative">
                       <select
+                        id="contact-project-type"
                         name="projectType"
                         value={formData.projectType}
                         onFocus={() => setActiveField('projectType')}
                         onBlur={() => setActiveField(null)}
                         onChange={handleInputChange}
-                        className={`w-full px-7 py-5 bg-slate-800/50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-black appearance-none cursor-pointer text-white ${activeField === 'projectType' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/5'
+                        className={`w-full px-7 py-5 bg-slate-800/70 border-2 rounded-[1.5rem] focus:outline-none transition-all font-black appearance-none cursor-pointer text-white ${activeField === 'projectType' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/10'
                           }`}
                       >
                         {projectOptions.map(option => (
                           <option key={option} value={option} className="bg-slate-900">{option}</option>
                         ))}
                       </select>
-                      <ChevronRight className="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 rotate-90 pointer-events-none" />
+                      <ChevronRight className="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 rotate-90 pointer-events-none" />
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <label className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                    <Send size={14} className="text-[#25ccad]" /> Detailed Message
+                  <label htmlFor="contact-message" className="text-xs font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
+                    <Send size={14} className="text-[#25ccad]" /> Detailed Message <span className="text-emerald-400" aria-hidden="true">*</span>
                   </label>
                   <textarea
                     required
                     rows="4"
+                    id="contact-message"
                     name="message"
+                    aria-required="true"
                     placeholder="Briefly describe your requirements..."
                     value={formData.message}
                     onFocus={() => setActiveField('message')}
                     onBlur={() => setActiveField(null)}
                     onChange={handleInputChange}
-                    className={`w-full px-7 py-5 bg-slate-800/50 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-600 resize-none ${activeField === 'message' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/5'
+                    className={`w-full px-7 py-5 bg-slate-800/70 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-400 resize-none ${activeField === 'message' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/10'
                       }`}
                   ></textarea>
                 </div>

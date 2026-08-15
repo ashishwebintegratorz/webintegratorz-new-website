@@ -592,8 +592,12 @@ export default function AccessibilityCompliancePage() {
                 >
                   <div className="rounded-2xl bg-[#090d16]/95 backdrop-blur-xl p-5 sm:p-6">
                     <button
+                      type="button"
+                      id={`a11y-faq-btn-${index}`}
+                      aria-expanded={isOpen}
+                      aria-controls={`a11y-faq-panel-${index}`}
                       onClick={() => setOpenFaq(isOpen ? null : index)}
-                      className="w-full flex justify-between items-center text-left gap-4 group"
+                      className="w-full flex justify-between items-center text-left gap-4 group focus:outline-none"
                     >
                       <span className={`text-base font-bold transition-colors ${isOpen ? "text-[#00f5a0]" : "text-white group-hover:text-slate-200"}`}>
                         {faq.q}
@@ -606,6 +610,9 @@ export default function AccessibilityCompliancePage() {
                     <AnimatePresence>
                       {isOpen && (
                         <motion.div
+                          id={`a11y-faq-panel-${index}`}
+                          role="region"
+                          aria-labelledby={`a11y-faq-btn-${index}`}
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}

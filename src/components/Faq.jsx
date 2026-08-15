@@ -97,8 +97,12 @@ export default function Faq() {
               >
                 <div className="rounded-2xl bg-[#090d16]/95 backdrop-blur-xl p-5 sm:p-6 overflow-hidden">
                   <button
+                    type="button"
+                    id={`faq-btn-${index}`}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-panel-${index}`}
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="w-full flex justify-between items-center text-left gap-4 group"
+                    className="w-full flex justify-between items-center text-left gap-4 group focus:outline-none"
                   >
                     <span className={`text-base sm:text-lg font-bold transition-colors ${isOpen ? "text-[#00f5a0]" : "text-white group-hover:text-slate-200"}`}>
                       {faq.question}
@@ -111,6 +115,9 @@ export default function Faq() {
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
+                        id={`faq-panel-${index}`}
+                        role="region"
+                        aria-labelledby={`faq-btn-${index}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
