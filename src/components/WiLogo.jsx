@@ -1,8 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useId } from 'react';
 
 export default function WiLogo({ className = "", size = "md", showWordmark = true }) {
+  const id = useId().replace(/:/g, '');
+
   // Size presets
   const sizeMap = {
     sm: { icon: 32, text: "text-lg", sub: "text-[9px]" },
@@ -12,6 +14,9 @@ export default function WiLogo({ className = "", size = "md", showWordmark = tru
 
   const currentSize = sizeMap[size] || sizeMap.md;
 
+  const gradPrimaryId = `wiGradPrimary-${id}`;
+  const gradAccentId = `wiGradAccent-${id}`;
+
   return (
     <div className={`flex items-center gap-3 select-none ${className}`}>
       {/* "Wi" Geometric Monogram Icon */}
@@ -20,10 +25,10 @@ export default function WiLogo({ className = "", size = "md", showWordmark = tru
         style={{ width: currentSize.icon, height: currentSize.icon }}
       >
         {/* Ambient Glow */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/30 via-indigo-500/30 to-fuchsia-500/30 rounded-xl blur-md pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 via-indigo-500/20 to-purple-500/20 rounded-xl blur-sm pointer-events-none" />
         
         {/* Icon Backdrop */}
-        <div className="relative w-full h-full rounded-xl bg-gradient-to-br from-[#0b1120] via-[#070b14] to-[#030712] border border-cyan-400/30 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.25)]">
+        <div className="relative w-full h-full rounded-xl bg-[#070b14] border border-cyan-400/30 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.2)]">
           <svg
             viewBox="0 0 48 48"
             fill="none"
@@ -32,25 +37,21 @@ export default function WiLogo({ className = "", size = "md", showWordmark = tru
             aria-hidden="true"
           >
             <defs>
-              <linearGradient id="wiGradPrimary" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+              <linearGradient id={gradPrimaryId} x1="6" y1="14" x2="40" y2="35" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stopColor="#38bdf8" />
                 <stop offset="50%" stopColor="#818cf8" />
                 <stop offset="100%" stopColor="#c084fc" />
               </linearGradient>
-              <linearGradient id="wiGradAccent" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+              <linearGradient id={gradAccentId} x1="37" y1="11" x2="43" y2="17" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stopColor="#00f2fe" />
-                <stop offset="100%" stopColor="#4facfe" />
+                <stop offset="100%" stopColor="#38bdf8" />
               </linearGradient>
-              <filter id="wiGlow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="1.5" result="glow" />
-                <feComposite in="SourceGraphic" in2="glow" operator="over" />
-              </filter>
             </defs>
 
             {/* Geometric "W" */}
             <path
               d="M6 14L13.5 35L20 20L26.5 35L34 14"
-              stroke="url(#wiGradPrimary)"
+              stroke={`url(#${gradPrimaryId})`}
               strokeWidth="4.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -59,18 +60,26 @@ export default function WiLogo({ className = "", size = "md", showWordmark = tru
             {/* Futuristic "i" Stem */}
             <path
               d="M40 22V35"
-              stroke="url(#wiGradPrimary)"
+              stroke={`url(#${gradPrimaryId})`}
               strokeWidth="4.5"
               strokeLinecap="round"
             />
 
-            {/* Illuminated "i" Neural Node Dot */}
+            {/* Illuminated "i" Neural Node Outer Glow Ring */}
             <circle
               cx="40"
               cy="14"
-              r="3"
-              fill="url(#wiGradAccent)"
-              filter="url(#wiGlow)"
+              r="4.5"
+              fill="#00f2fe"
+              opacity="0.25"
+            />
+
+            {/* Illuminated "i" Neural Node Core Dot */}
+            <circle
+              cx="40"
+              cy="14"
+              r="2.8"
+              fill={`url(#${gradAccentId})`}
             />
           </svg>
         </div>
