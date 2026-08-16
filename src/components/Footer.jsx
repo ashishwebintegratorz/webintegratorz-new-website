@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import WiLogo from "./WiLogo";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -67,14 +68,9 @@ const Footer = () => {
 
           {/* BRAND COLUMN */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="relative w-52 h-12">
-              <Image
-                src="/weblogo.webp"
-                alt="Webintegratorz Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
+            <Link href="/" aria-label="Webintegratorz Home" className="inline-block group">
+              <WiLogo size="lg" />
+            </Link>
 
             <p className="text-sm text-slate-200 leading-relaxed max-w-sm font-normal">
               Webintegratorz Technologies is a premier global AI &amp; IT engineering firm delivering scalable cloud architectures, generative AI ecosystems, and bespoke digital software.

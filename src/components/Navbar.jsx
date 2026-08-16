@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ChevronDown, Menu, X, Bot, MessageSquare, Cloud, LineChart, Sparkles, Building2, Brain, Layers, Cpu, Database, ArrowRight, ShieldCheck, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation";
+import WiLogo from "./WiLogo";
 
 export default function Navbar({ mobileOpen, setMobileOpen }) {
     const router = useRouter();
@@ -74,15 +75,7 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                     {/* BRAND LOGO */}
                     <div className="flex items-center flex-shrink-0">
                         <Link href="/" aria-label="Webintegratorz Technologies Home" className="flex items-center gap-3 group">
-                            <div className="relative w-44 sm:w-52 h-10 transition-transform duration-300 group-hover:scale-105">
-                                <Image
-                                    src="/weblogo.webp"
-                                    alt="Webintegratorz Technologies Logo"
-                                    fill
-                                    className="object-contain"
-                                    priority
-                                />
-                            </div>
+                            <WiLogo size="md" />
                         </Link>
                     </div>
 
@@ -302,14 +295,8 @@ export default function Navbar({ mobileOpen, setMobileOpen }) {
                     >
                         {/* Top Bar */}
                         <div className="px-6 py-5 flex items-center justify-between border-b border-white/[0.08]">
-                            <Link href="/" onClick={() => setMobileOpen(false)} className="relative w-44 h-10">
-                                <Image
-                                    src="/weblogo.webp"
-                                    alt="Logo"
-                                    fill
-                                    className="object-contain"
-                                    priority
-                                />
+                            <Link href="/" onClick={() => setMobileOpen(false)} aria-label="Home">
+                                <WiLogo size="sm" />
                             </Link>
                             <button
                                 type="button"

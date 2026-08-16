@@ -140,18 +140,18 @@ export default function HeroSection({ mobileOpen }) {
           transition={{ duration: 0.5 }}
           className="flex flex-wrap items-center gap-3 mb-6"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0a101d] border border-white/20 backdrop-blur-xl shadow-lg hover:border-emerald-400/60 transition-colors">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0a1020] border border-cyan-500/30 backdrop-blur-xl shadow-lg hover:border-cyan-400/60 transition-colors">
             <span className="flex h-2.5 w-2.5 relative" aria-hidden="true">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00f5a0] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00f5a0]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#38bdf8] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#38bdf8]"></span>
             </span>
             <p className="text-xs sm:text-[13px] font-bold text-white tracking-wide">
               ✦ Next-Gen AI &amp; Enterprise Digital Engineering
             </p>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#05241b] border border-[#00f5a0]/50 text-[#00f5a0] text-xs sm:text-[13px] font-extrabold shadow-lg">
-            <Globe2 size={15} className="text-[#00f5a0]" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#07132a] border border-cyan-400/40 text-cyan-300 text-xs sm:text-[13px] font-extrabold shadow-lg">
+            <Globe2 size={15} className="text-cyan-400" aria-hidden="true" />
             <span>100% Fully Remote • Solving Complex Problems Globally</span>
           </div>
         </motion.div>
@@ -168,7 +168,7 @@ export default function HeroSection({ mobileOpen }) {
               className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.06] text-white"
             >
               Engineering <br className="hidden sm:inline" />
-              <span className="text-[#00f5a0] font-black drop-shadow-[0_0_35px_rgba(0,245,160,0.35)]">Intelligent Software</span> &amp; <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] drop-shadow-[0_0_35px_rgba(56,189,248,0.4)]">Intelligent Software</span> &amp; <br />
               <span className="text-slate-100 font-black">Enterprise AI Solutions</span>
             </motion.h1>
 
@@ -191,7 +191,7 @@ export default function HeroSection({ mobileOpen }) {
               <button
                 type="button"
                 onClick={() => router.push("/contact-us")}
-                className="group relative px-8 py-4 bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#00f5a0] bg-[length:200%_auto] hover:bg-[position:right_center] rounded-2xl font-black text-black text-base md:text-lg flex items-center justify-center gap-3 shadow-[0_0_35px_-5px_rgba(0,245,160,0.5)] transition-all duration-500 hover:scale-[1.02] active:scale-95 cursor-pointer touch-manipulation"
+                className="group relative px-8 py-4 bg-gradient-to-r from-[#00f2fe] via-[#4facfe] to-[#6366f1] bg-[length:200%_auto] hover:bg-[position:right_center] rounded-2xl font-black text-white text-base md:text-lg flex items-center justify-center gap-3 shadow-[0_0_35px_-5px_rgba(6,182,212,0.5)] transition-all duration-500 hover:scale-[1.02] active:scale-95 cursor-pointer touch-manipulation"
               >
                 <span>Book Free Architecture Session</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
