@@ -7,8 +7,8 @@ import { Sparkles, Trophy } from "lucide-react";
 
 export default function Featuredsection() {
   const mediaLogos = [
-    { name: "Forbes", img: "/icone1.png" },
-    { name: "Fortune", img: "/icone3.png" },
+    { name: "Forbes", img: "/icone1.webp" },
+    { name: "Fortune", img: "/icone3.webp" },
     { name: "TechCrunch", img: "/icone4.webp" },
     { name: "Yahoo Finance", img: "/icone5.svg" },
     { name: "AOL", img: "/icone6.webp" },

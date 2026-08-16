@@ -35,7 +35,7 @@ const Casestudies = () => {
       metric: "100k+ Active Listings",
       location: "India",
       tag: "Web & SaaS",
-      image: "/images/rentbuddy1.png"
+      image: "/images/rentbuddy1.webp"
     },
     {
       id: 2,
@@ -55,7 +55,7 @@ const Casestudies = () => {
       metric: "$3.5M GMV Handled",
       location: "India",
       tag: "Mobile App",
-      image: "/images/fresh.png"
+      image: "/images/fresh.webp"
     },
     {
       id: 4,
@@ -85,7 +85,7 @@ const Casestudies = () => {
       metric: "99.99% Cloud Uptime",
       location: "Canada",
       tag: "HealthTech",
-      image: "/icone1.png"
+      image: "/icone1.webp"
     },
     {
       id: 7,
@@ -95,7 +95,7 @@ const Casestudies = () => {
       metric: "Petabyte Data Scale",
       location: "Germany",
       tag: "Big Data & ML",
-      image: "/icone3.png"
+      image: "/icone3.webp"
     },
     {
       id: 8,
@@ -208,6 +208,8 @@ const Casestudies = () => {
                       src={study.image}
                       alt={study.title}
                       fill
+                      loading="lazy"
+                      decoding="async"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />

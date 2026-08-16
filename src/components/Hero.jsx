@@ -8,11 +8,23 @@ import { motion } from "framer-motion";
 export default function HeroSection({ mobileOpen }) {
   const heroRef = useRef(null);
   const router = useRouter();
+  const [mountVideo, setMountVideo] = React.useState(false);
+
+  React.useEffect(() => {
+    // Only load video in the background for desktop users after hydration
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      const timer = setTimeout(() => {
+        setMountVideo(true);
+      }, 1200);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const handleMouseMove = (e) => {
-    if (!heroRef.current) return;
+    if (!heroRef.current || (typeof window !== "undefined" && window.innerWidth < 768)) return;
     const { clientX, clientY, currentTarget } = e;
     requestAnimationFrame(() => {
+      if (!heroRef.current) return;
       const rect = currentTarget.getBoundingClientRect();
       const x = clientX - rect.left;
       const y = clientY - rect.top;
@@ -39,21 +51,22 @@ export default function HeroSection({ mobileOpen }) {
       className="hero relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-between overflow-hidden bg-[#030712] text-white pt-24 sm:pt-28 md:pt-32"
       style={{ display: mobileOpen ? "none" : "flex" }}
     >
-      {/* Background Video with refined cyber darkness (Desktop/Tablet Optimized, 0ms mobile overhead) */}
+      {/* Background Video with refined cyber darkness (Desktop client idle mount, 0KB mobile payload) */}
       {!mobileOpen && (
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
-            className="hidden sm:block w-full h-full object-cover opacity-25 filter contrast-125"
-          >
-            <source src="/herovedio.webm" type="video/webm" />
-            <source src="/hero.mp4" type="video/mp4" />
-          </video>
+          {mountVideo && (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="none"
+              aria-hidden="true"
+              className="w-full h-full object-cover opacity-25 filter contrast-125"
+            >
+              <source src="/hero.mp4" type="video/mp4" />
+            </video>
+          )}
           {/* Cosmic ambient gradient layers */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#030712] via-transparent to-[#030712]" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(0,245,160,0.15),transparent_70%)]" />
@@ -241,9 +254,11 @@ export default function HeroSection({ mobileOpen }) {
             <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#090d16] border border-white/10 hover:border-white/30 transition-all group">
               <div className="relative w-9 h-9 flex-shrink-0">
                 <Image
-                  src="/AWS.png"
+                  src="/AWS.webp"
                   alt="AWS Certified"
                   fill
+                  loading="lazy"
+                  decoding="async"
                   className="object-contain"
                   sizes="36px"
                 />
@@ -261,6 +276,8 @@ export default function HeroSection({ mobileOpen }) {
                   src="/linkedin-logo.svg"
                   alt="LinkedIn Top Rated"
                   fill
+                  loading="lazy"
+                  decoding="async"
                   className="object-contain"
                   sizes="36px"
                 />
@@ -275,9 +292,11 @@ export default function HeroSection({ mobileOpen }) {
             <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#090d16] border border-white/10 hover:border-white/30 transition-all group">
               <div className="relative w-9 h-9 flex-shrink-0">
                 <Image
-                  src="/digital.png"
+                  src="/digital.webp"
                   alt="Digital Certified"
                   fill
+                  loading="lazy"
+                  decoding="async"
                   className="object-contain"
                   sizes="36px"
                 />
