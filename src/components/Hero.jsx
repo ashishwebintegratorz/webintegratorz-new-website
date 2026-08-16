@@ -39,7 +39,7 @@ export default function HeroSection({ mobileOpen }) {
       className="hero relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-between overflow-hidden bg-[#030712] text-white pt-24 sm:pt-28 md:pt-32"
       style={{ display: mobileOpen ? "none" : "flex" }}
     >
-      {/* Background Video with refined cyber darkness */}
+      {/* Background Video with refined cyber darkness (Desktop/Tablet Optimized, 0ms mobile overhead) */}
       {!mobileOpen && (
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <video
@@ -47,8 +47,9 @@ export default function HeroSection({ mobileOpen }) {
             loop
             muted
             playsInline
+            preload="metadata"
             aria-hidden="true"
-            className="w-full h-full object-cover opacity-25 filter contrast-125"
+            className="hidden sm:block w-full h-full object-cover opacity-25 filter contrast-125"
           >
             <source src="/herovedio.webm" type="video/webm" />
             <source src="/hero.mp4" type="video/mp4" />

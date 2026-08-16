@@ -20,6 +20,7 @@ export const viewport = {
 };
 
 export const metadata = {
+    metadataBase: new URL("https://www.webintegratorz.com"),
     title: "Top IT Company in India | AI & Software Development",
     description: "Webintegratorz Technologies is a leading IT company in India specializing in AI, MERN stack, and custom software development for global enterprises.",
     keywords: [
