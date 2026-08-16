@@ -118,21 +118,25 @@ export default function AccessibilityWidget() {
   const hasActiveOverrides = textSize !== 'normal' || contrastMode !== 'default' || dyslexicFont || highlightLinks || pauseAnimations || bigCursor;
 
   return (
-    <div ref={widgetRef} className="relative z-[9999]">
+    <div ref={widgetRef} className="relative z-[99999]">
       
-      {/* FLOATING ACCESSIBILITY TRIGGER BUTTON */}
-      <div className="fixed bottom-6 left-6 z-[9999] flex items-center gap-2.5">
+      {/* FLOATING ACCESSIBILITY TRIGGER BUTTON (Mobile & Tablet Optimized) */}
+      <div className="fixed bottom-5 left-5 sm:bottom-6 sm:left-6 z-[99999] flex items-center gap-2.5 pointer-events-auto select-none touch-manipulation">
         <button
           type="button"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsOpen((prev) => !prev);
+          }}
           aria-label={isOpen ? "Close Accessibility Options" : "Open Accessibility and Disability Options"}
           aria-expanded={isOpen}
           aria-controls="accessibility-modal"
-          className="relative w-13 h-13 p-3 rounded-2xl bg-[#00f5a0] text-black font-black flex items-center justify-center shadow-[0_0_30px_rgba(0,245,160,0.6)] hover:bg-[#00d9f5] hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#00f5a0]/50 cursor-pointer"
+          className="relative w-12 h-12 sm:w-14 sm:h-14 p-2.5 sm:p-3 rounded-2xl bg-[#00f5a0] text-black font-black flex items-center justify-center shadow-[0_0_30px_rgba(0,245,160,0.7)] hover:bg-[#00d9f5] hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#00f5a0]/50 cursor-pointer touch-manipulation"
         >
-          <Accessibility size={26} className="stroke-[2.5]" />
+          <Accessibility size={24} className="stroke-[2.5] sm:w-[26px] sm:h-[26px]" />
           {hasActiveOverrides && (
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-cyan-400 border-2 border-black rounded-full shadow" />
+            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 bg-cyan-400 border-2 border-black rounded-full shadow" />
           )}
         </button>
       </div>
@@ -141,10 +145,14 @@ export default function AccessibilityWidget() {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop for easy outside click dismissal */}
+            {/* Backdrop for easy outside click dismissal on mobile/tablet */}
             <div 
-              onClick={() => setIsOpen(false)} 
-              className="fixed inset-0 z-[9998] bg-black/40 backdrop-blur-sm transition-opacity" 
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setIsOpen(false);
+              }} 
+              className="fixed inset-0 z-[99998] bg-black/60 backdrop-blur-sm transition-opacity touch-manipulation" 
               aria-hidden="true"
             />
 
@@ -157,7 +165,8 @@ export default function AccessibilityWidget() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 15, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="fixed bottom-22 sm:bottom-24 left-6 z-[9999] w-[340px] sm:w-[380px] max-h-[82vh] overflow-y-auto rounded-3xl bg-[#070b14] border-2 border-white/20 shadow-[0_30px_90px_rgba(0,0,0,0.98)] p-6 text-white"
+              className="fixed bottom-20 sm:bottom-24 left-4 sm:left-6 right-4 sm:right-auto sm:w-[380px] max-h-[85vh] max-h-[85dvh] overflow-y-auto rounded-3xl bg-[#070b14] border-2 border-white/20 shadow-[0_30px_90px_rgba(0,0,0,0.98)] p-5 sm:p-6 text-white z-[99999] touch-manipulation"
+              style={{ WebkitOverflowScrolling: 'touch' }}
             >
               {/* Modal Header */}
               <div className="flex items-center justify-between pb-4 border-b border-white/10">
