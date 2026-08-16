@@ -106,21 +106,8 @@ export default function AboutPage() {
                     </p>
                 </header>
 
-                <div className="contact-grid">
+                <div className="contact-grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto">
                     <div className={`contact-card ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.1s' }}>
-                        <div className="contact-icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor" />
-                            </svg>
-                        </div>
-                        <h2 className="contact-card-title">Head Quarter</h2>
-                        <div className="contact-card-content">
-                            <p><strong>India</strong></p>
-                            <p>LG 19, Mangal City, AB Rd<br />Scheme 54, PU4, Indore<br />Madhya Pradesh 452010</p>
-                        </div>
-                    </div>
-
-                    <div className={`contact-card ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.2s' }}>
                         <div className="contact-icon-wrapper">
                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor" />
@@ -195,11 +182,6 @@ export default function AboutPage() {
                         <div className="contact-info-item">
                             <div className="contact-info-label">Legal Name</div>
                             <div className="contact-info-value">Webintegratorz Technologies</div>
-                        </div>
-
-                        <div className="contact-info-item">
-                            <div className="contact-info-label">Office Address</div>
-                            <div className="contact-info-value">70 Mahalaxmi Nagar<br />Indore 452010</div>
                         </div>
 
                         <div className="contact-info-item">
