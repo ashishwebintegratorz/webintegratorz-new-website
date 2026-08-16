@@ -13,7 +13,7 @@ export default function WhyChooseUsSection() {
     { number: "100+", label: "Clients Globally", sub: "Enterprise & funded startups" },
     { number: "99.4%", label: "SLA Precision", sub: "On-time milestone delivery" },
     { number: "15+", label: "Global Regions", sub: "USA, UAE, Europe, Japan" },
-    { number: "100%", label: "IP & NDA Protection", sub: "Enterprise code ownership" }
+    { number: "250+", label: "Projects Delivered", sub: "Web, SaaS & AI ecosystems" }
   ];
 
   const features = [
