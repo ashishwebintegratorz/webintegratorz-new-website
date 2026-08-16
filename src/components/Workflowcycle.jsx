@@ -13,8 +13,6 @@ import {
   CheckCircle2, 
   ArrowRight, 
   Sparkles, 
-  Zap, 
-  Cpu, 
   Terminal 
 } from "lucide-react";
 
@@ -84,86 +82,76 @@ export default function WorkflowCycle() {
     if (!isAutoPlaying) return;
     const timer = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 4500);
+    }, 5000);
     return () => clearInterval(timer);
   }, [isAutoPlaying, steps.length]);
 
   return (
-    <section id="process" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.06] content-auto">
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 -right-32 w-96 h-96 bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
-
+    <section id="process" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden content-auto">
       <div className="relative max-w-[1440px] mx-auto">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16 sm:mb-20">
+        <div className="flex flex-col items-center text-center mb-14">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 mb-4"
           >
-            <Sparkles size={14} className="text-[#00f5a0]" />
-            <span className="text-[#00f5a0] text-xs tracking-[0.2em] uppercase font-bold">
+            <Sparkles size={13} className="text-[#635BFF]" />
+            <span className="text-[#635BFF] text-xs tracking-wider uppercase font-bold">
               Engineering Lifecycle
             </span>
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight leading-[1.15]"
           >
-            From Concept to Scale: <br />
-            <span className="text-gradient-emerald">Our 6-Phase Engineering Workflow</span>
+            Our 6-Phase <span className="text-[#635BFF]">Engineering Workflow</span>
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed"
+            className="mt-4 text-base sm:text-lg text-[#475569] max-w-2xl font-normal leading-relaxed"
           >
             A disciplined, battle-tested execution framework designed to guarantee technical excellence, on-time delivery, and measurable ROI.
           </motion.p>
         </div>
 
-        {/* Interactive Step Navigator */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3 mb-10 p-2 rounded-2xl bg-[#090d16] border border-white/10">
+        {/* Step Navigator */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-8 p-1.5 rounded-xl bg-slate-100/90 border border-slate-200/80">
           {steps.map((step, idx) => {
             const Icon = step.icon;
             const isActive = activeStep === idx;
             return (
               <button
                 key={idx}
+                type="button"
                 onClick={() => {
                   setActiveStep(idx);
                   setIsAutoPlaying(false);
                 }}
-                className={`relative flex flex-col items-center text-center p-3 sm:p-4 rounded-xl transition-all duration-300 ${
+                className={`relative flex flex-col items-center text-center p-3 rounded-lg transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? "bg-[#0d1424] text-[#00f5a0] border border-emerald-500/60 shadow-[0_10px_30px_rgba(0,245,160,0.15)]"
-                    : "text-slate-300 hover:text-white hover:bg-white/[0.08]"
+                    ? "bg-white text-[#0A2540] shadow-sm font-bold border border-slate-200"
+                    : "text-slate-600 hover:text-slate-900"
                 }`}
               >
-                <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 transition-transform duration-300 ${isActive ? "bg-emerald-500/20 text-[#00f5a0] scale-110" : "bg-white/10 text-white"}`}>
-                  <Icon size={16} />
+                <div className={`w-7 h-7 rounded-md flex items-center justify-center mb-1.5 transition-colors ${isActive ? "bg-indigo-50 text-[#635BFF]" : "bg-slate-200/70 text-slate-600"}`}>
+                  <Icon size={14} />
                 </div>
-                <span className="text-[11px] font-black uppercase tracking-wider text-slate-200">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                   Step {step.number}
                 </span>
-                <span className="text-xs font-bold mt-0.5 line-clamp-1 text-white">
+                <span className="text-xs font-bold mt-0.5 line-clamp-1">
                   {step.title.split(" ")[0]}
                 </span>
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTabIndicator"
-                    className="absolute -bottom-2 w-6 h-1 bg-[#00f5a0] rounded-full"
-                  />
-                )}
               </button>
             );
           })}
@@ -173,44 +161,42 @@ export default function WorkflowCycle() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeStep}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.35 }}
-            className="rounded-3xl p-8 sm:p-12 bg-[#090d16] border border-white/15 shadow-2xl relative overflow-hidden"
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25 }}
+            className="rounded-2xl p-8 sm:p-10 bg-white border border-slate-200 shadow-[0_20px_50px_-15px_rgba(15,23,42,0.06)] relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               
               {/* Left Details */}
               <div className="lg:col-span-7 space-y-6">
                 <div className="flex items-center gap-3">
-                  <span className="px-3.5 py-1 rounded-full bg-[#05241b] border border-emerald-500/50 text-[#00f5a0] text-xs font-black tracking-widest uppercase">
+                  <span className="px-3 py-1 rounded-md bg-indigo-50 text-[#635BFF] border border-indigo-100 text-xs font-bold uppercase tracking-wider">
                     Phase {steps[activeStep].number} of 06
                   </span>
-                  <span className="text-xs text-slate-200 font-semibold">
+                  <span className="text-xs text-slate-500 font-medium">
                     {steps[activeStep].tagline}
                   </span>
                 </div>
 
-                <h3 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                <h3 className="text-2xl sm:text-3xl font-black text-[#0A2540] leading-tight">
                   {steps[activeStep].title}
                 </h3>
 
-                <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                <p className="text-sm sm:text-base text-[#475569] leading-relaxed font-normal">
                   {steps[activeStep].description}
                 </p>
 
                 {/* Key Deliverables Matrix */}
                 <div className="space-y-3 pt-2">
-                  <p className="text-xs font-black text-[#00f5a0] uppercase tracking-widest">
+                  <p className="text-xs font-bold text-[#0A2540] uppercase tracking-wider">
                     Phase Deliverables:
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {steps[activeStep].deliverables.map((del, dIdx) => (
-                      <div key={dIdx} className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#030712] border border-white/10 text-xs font-semibold text-white">
-                        <CheckCircle2 size={15} className="text-[#00f5a0] shrink-0" />
+                      <div key={dIdx} className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-50 border border-slate-200/80 text-xs font-semibold text-slate-800">
+                        <CheckCircle2 size={14} className="text-[#635BFF] shrink-0" />
                         <span>{del}</span>
                       </div>
                     ))}
@@ -218,12 +204,12 @@ export default function WorkflowCycle() {
                 </div>
 
                 {/* Tooling Tags */}
-                <div className="flex flex-wrap items-center gap-2 pt-4">
-                  <span className="text-xs font-bold text-slate-200 uppercase tracking-wider mr-2">
+                <div className="flex flex-wrap items-center gap-2 pt-2">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2">
                     Core Tooling:
                   </span>
                   {steps[activeStep].tools.map((tool, tIdx) => (
-                    <span key={tIdx} className="text-xs px-3 py-1 rounded-lg bg-[#05241b] border border-emerald-500/40 text-[#00f5a0] font-bold">
+                    <span key={tIdx} className="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700 font-semibold">
                       {tool}
                     </span>
                   ))}
@@ -232,53 +218,54 @@ export default function WorkflowCycle() {
 
               {/* Right Interactive Visual Card */}
               <div className="lg:col-span-5">
-                <div className="p-6 sm:p-8 rounded-3xl bg-[#030712] border border-white/15 relative overflow-hidden space-y-6">
+                <div className="p-6 sm:p-7 rounded-2xl bg-slate-50 border border-slate-200 space-y-5">
                   
-                  <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-[#00f5a0]">
-                        <Terminal size={20} />
+                  <div className="flex items-center justify-between pb-3.5 border-b border-slate-200">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-[#635BFF]">
+                        <Terminal size={16} />
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-white uppercase">Sprint Telemetry</p>
-                        <p className="text-[11px] text-slate-200 font-medium">Live Engineering Metrics</p>
+                        <p className="text-xs font-bold text-[#0A2540] uppercase">Sprint Execution</p>
+                        <p className="text-[11px] text-slate-500">Live Engineering Metrics</p>
                       </div>
                     </div>
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#00f5a0] animate-ping" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
 
                   <div className="space-y-4">
-                    <div className="p-4 rounded-2xl bg-[#090d16] border border-white/10">
-                      <div className="flex justify-between text-xs text-slate-200 mb-1.5 font-bold">
+                    <div className="p-3.5 rounded-xl bg-white border border-slate-200">
+                      <div className="flex justify-between text-xs text-slate-700 mb-1.5 font-bold">
                         <span>Phase Velocity</span>
-                        <span className="text-[#00f5a0] font-black">100% On-Track</span>
+                        <span className="text-emerald-600 font-black">100% On-Track</span>
                       </div>
-                      <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
+                      <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                         <div 
-                          className="h-full bg-gradient-to-r from-[#00f5a0] to-[#00d9f5] rounded-full transition-all duration-500" 
+                          className="h-full bg-[#635BFF] rounded-full transition-all duration-500" 
                           style={{ width: `${((activeStep + 1) / 6) * 100}%` }}
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3 text-center">
-                      <div className="p-3.5 rounded-2xl bg-[#090d16] border border-white/10">
-                        <p className="text-xl font-black text-[#00f5a0]">14 Days</p>
-                        <p className="text-[10px] text-slate-200 font-bold uppercase mt-0.5">Sprint Cycle</p>
+                    <div className="grid grid-cols-2 gap-2.5 text-center">
+                      <div className="p-3 rounded-xl bg-white border border-slate-200">
+                        <p className="text-xl font-black text-[#0A2540]">14 Days</p>
+                        <p className="text-[10px] text-slate-500 font-bold uppercase mt-0.5">Sprint Cycle</p>
                       </div>
-                      <div className="p-3.5 rounded-2xl bg-[#090d16] border border-white/10">
-                        <p className="text-xl font-black text-[#00f5a0]">0 Debt</p>
-                        <p className="text-[10px] text-slate-200 font-bold uppercase mt-0.5">Code Standard</p>
+                      <div className="p-3 rounded-xl bg-white border border-slate-200">
+                        <p className="text-xl font-black text-[#0A2540]">0 Debt</p>
+                        <p className="text-[10px] text-slate-500 font-bold uppercase mt-0.5">Code Standard</p>
                       </div>
                     </div>
                   </div>
 
                   <button
+                    type="button"
                     onClick={() => router.push('/contact-us')}
-                    className="w-full py-3.5 rounded-xl bg-[#00f5a0] hover:bg-[#00d9f5] text-black font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(0,245,160,0.4)] flex items-center justify-center gap-2"
+                    className="w-full py-3.5 rounded-xl bg-[#0A2540] hover:bg-[#635BFF] text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Start Phase 01 Discovery</span>
-                    <ArrowRight size={14} />
+                    <ArrowRight size={13} />
                   </button>
 
                 </div>

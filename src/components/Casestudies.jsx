@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, ChevronRight, ArrowUpRight, MapPin, Sparkles, TrendingUp, Shield } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, ArrowUpRight, MapPin, Sparkles, TrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Casestudies = () => {
   const router = useRouter();
@@ -99,22 +99,22 @@ const Casestudies = () => {
     },
     {
       id: 8,
-      title: "EduQuest AI",
-      subtitle: "Adaptive Learning Engine",
-      description: "Personalized AI curriculum generator adapting to individual student pace using fine-tuned LLMs.",
-      metric: "88% Retention Rate",
-      location: "India",
-      tag: "Gen AI",
+      title: "Fintech Settlement Hub",
+      subtitle: "Real-Time Payment Gateway",
+      description: "Sub-second ledger transactions with automated fraud detection and multi-currency banking rails.",
+      metric: "1M+ Daily Trx",
+      location: "USA",
+      tag: "Fintech & Web3",
       image: "/icone4.webp"
     },
     {
       id: 9,
-      title: "Urban Fleet",
-      subtitle: "Intelligent Fleet Routing",
-      description: "Dynamic telematics dashboard reducing fleet idle time through real-time traffic prediction models.",
-      metric: "28% Fuel Efficiency",
-      location: "United Kingdom",
-      tag: "IoT & Cloud",
+      title: "Smart Logistics Network",
+      subtitle: "Fleet Management IoT Hub",
+      description: "Predictive engine maintenance, real-time driver telemetry, and fuel consumption optimization dashboard.",
+      metric: "-28% Fuel Costs",
+      location: "UAE",
+      tag: "IoT & AI",
       image: "/icone6.webp"
     }
   ];
@@ -130,54 +130,51 @@ const Casestudies = () => {
   };
 
   return (
-    <section id="casestudies" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.06] content-auto">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
-
+    <section id="casestudies" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] overflow-hidden border-y border-slate-200/80 content-auto">
       <div className="relative max-w-[1440px] mx-auto">
         
         {/* Header with Navigation Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 mb-4"
             >
-              <Sparkles size={14} className="text-[#00f5a0]" />
-              <span className="text-[#00f5a0] text-xs tracking-[0.2em] uppercase font-bold">
+              <Sparkles size={13} className="text-[#635BFF]" />
+              <span className="text-[#635BFF] text-xs font-bold tracking-wider uppercase">
                 Proven Track Record
               </span>
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]"
+              className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight leading-[1.15]"
             >
-              What It&apos;s Like To Build With <br />
-              <span className="text-gradient-emerald">Webintegratorz</span>
+              Proven Enterprise <span className="text-[#635BFF]">Case Studies</span>
             </motion.h2>
           </div>
 
           {/* Slider Control Buttons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
+              type="button"
               onClick={prevSlide}
-              className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/[0.1] hover:bg-white/[0.1] hover:border-emerald-500/40 text-white flex items-center justify-center transition-all duration-200 active:scale-95"
+              className="w-11 h-11 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
               aria-label="Previous Slide"
             >
-              <ChevronLeft size={22} />
+              <ChevronLeft size={20} />
             </button>
             <button
+              type="button"
               onClick={nextSlide}
-              className="w-12 h-12 rounded-2xl bg-[#00f5a0] text-black hover:bg-[#00d9f5] flex items-center justify-center transition-all duration-200 shadow-[0_0_20px_rgba(0,245,160,0.3)] active:scale-95"
+              className="w-11 h-11 rounded-xl bg-[#0A2540] text-white hover:bg-[#635BFF] flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
               aria-label="Next Slide"
             >
-              <ChevronRight size={22} />
+              <ChevronRight size={20} />
             </button>
           </div>
         </div>
@@ -194,95 +191,88 @@ const Casestudies = () => {
               <div
                 key={study.id}
                 style={{ flex: `0 0 calc(${100 / slidesToShow}% - ${(slidesToShow - 1) * 24 / slidesToShow}px)` }}
-                className="group relative rounded-3xl p-px overflow-hidden flex flex-col min-w-0"
+                className="group relative rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden min-w-0"
               >
-                {/* Glow Border */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/15 via-white/5 to-transparent group-hover:from-[#00f5a0]/40 transition-all duration-500" />
-
-                {/* Card Interior */}
-                <div className="relative flex-1 bg-[#090d16] rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220] border border-white/10">
-                  
+                <div>
                   {/* Image Container */}
-                  <div className="relative w-full h-52 sm:h-56 bg-black/40 overflow-hidden">
+                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden">
                     <Image
                       src={study.image}
                       alt={study.title}
                       fill
                       loading="lazy"
                       decoding="async"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-black/40" />
-
+                    
                     {/* Tag badge on image */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2">
-                      <span className="text-[11px] font-black px-3 py-1 rounded-full bg-[#030712] border border-white/30 text-white">
+                    <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
+                      <span className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[#0A2540] shadow-sm">
                         {study.tag}
                       </span>
                     </div>
 
                     {/* Metric highlight badge */}
-                    <div className="absolute bottom-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#061e16] border border-emerald-500/60 text-[#00f5a0] text-xs font-black shadow-lg">
-                      <TrendingUp size={13} />
+                    <div className="absolute bottom-3.5 right-3.5 flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#0A2540]/90 backdrop-blur-md text-white text-xs font-bold shadow">
+                      <TrendingUp size={12} className="text-[#00D4FF]" />
                       <span>{study.metric}</span>
                     </div>
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-black text-[#00f5a0] uppercase tracking-wider">
-                          {study.subtitle}
-                        </span>
-                        <div className="flex items-center gap-1 text-xs text-slate-200 font-bold">
-                          <MapPin size={13} className="text-[#00f5a0]" />
-                          <span>{study.location}</span>
-                        </div>
+                  <div className="p-6 sm:p-7">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-bold text-[#635BFF] uppercase tracking-wider">
+                        {study.subtitle}
+                      </span>
+                      <div className="flex items-center gap-1 text-xs text-slate-500 font-medium">
+                        <MapPin size={12} className="text-slate-400" />
+                        <span>{study.location}</span>
                       </div>
-
-                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2.5 group-hover:text-[#00f5a0] transition-colors leading-snug">
-                        {study.title}
-                      </h3>
-
-                      <p className="text-sm text-slate-200 leading-relaxed font-normal">
-                        {study.description}
-                      </p>
                     </div>
 
-                    {/* Card Footer Link */}
-                    <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                      <button
-                        onClick={() => router.push('/contact-us')}
-                        className="inline-flex items-center gap-2 text-xs font-bold text-slate-100 hover:text-[#00f5a0] transition-colors py-1"
-                      >
-                        <span>Request Architecture Brief</span>
-                        <ArrowUpRight size={15} className="text-[#00f5a0]" />
-                      </button>
-                    </div>
+                    <h3 className="text-xl font-bold text-[#0A2540] mb-2 group-hover:text-[#635BFF] transition-colors leading-snug">
+                      {study.title}
+                    </h3>
+
+                    <p className="text-sm text-[#475569] leading-relaxed font-normal">
+                      {study.description}
+                    </p>
                   </div>
+                </div>
+
+                {/* Card Footer Link */}
+                <div className="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between">
+                  <button
+                    type="button"
+                    onClick={() => router.push('/contact-us')}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A2540] hover:text-[#635BFF] transition-colors py-1 cursor-pointer"
+                  >
+                    <span>Request Architecture Brief</span>
+                    <ArrowUpRight size={14} className="text-[#635BFF]" />
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Dynamic Pagination Indicators (Accessible 32px Touch Targets) */}
+        {/* Dynamic Pagination Indicators */}
         <div className="flex justify-center items-center gap-1.5 mt-10" role="tablist" aria-label="Case studies pagination">
           {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
             <button
               key={idx}
               type="button"
               onClick={() => setCurrentIndex(idx)}
-              className="w-8 h-8 flex items-center justify-center rounded-full focus:outline-none"
+              className="w-7 h-7 flex items-center justify-center rounded-full focus:outline-none cursor-pointer"
               aria-label={`Go to case study slide ${idx + 1}`}
               aria-selected={idx === currentIndex}
               role="tab"
             >
               <span
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  idx === currentIndex ? 'w-8 bg-[#00f5a0]' : 'w-2.5 bg-white/40 hover:bg-white/80'
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  idx === currentIndex ? 'w-7 bg-[#0A2540]' : 'w-2 bg-slate-300 hover:bg-slate-400'
                 }`}
               />
             </button>

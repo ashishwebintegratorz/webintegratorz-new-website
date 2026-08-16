@@ -10,8 +10,7 @@ import {
   MousePointer, 
   Pause, 
   RotateCcw,
-  Check,
-  ZoomIn
+  Check
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -120,7 +119,7 @@ export default function AccessibilityWidget() {
   return (
     <div ref={widgetRef} className="relative z-[99999]">
       
-      {/* FLOATING ACCESSIBILITY TRIGGER BUTTON (Mobile & Tablet Optimized) */}
+      {/* FLOATING ACCESSIBILITY TRIGGER BUTTON */}
       <div className="fixed bottom-5 left-5 sm:bottom-6 sm:left-6 z-[99999] flex items-center gap-2.5 pointer-events-auto select-none touch-manipulation">
         <button
           type="button"
@@ -132,11 +131,11 @@ export default function AccessibilityWidget() {
           aria-label={isOpen ? "Close Accessibility Options" : "Open Accessibility and Disability Options"}
           aria-expanded={isOpen}
           aria-controls="accessibility-modal"
-          className="relative w-12 h-12 sm:w-14 sm:h-14 p-2.5 sm:p-3 rounded-2xl bg-[#00f5a0] text-black font-black flex items-center justify-center shadow-[0_0_30px_rgba(0,245,160,0.7)] hover:bg-[#00d9f5] hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#00f5a0]/50 cursor-pointer touch-manipulation"
+          className="relative w-12 h-12 sm:w-13 sm:h-13 p-2.5 sm:p-3 rounded-2xl bg-[#0A2540] text-white font-bold flex items-center justify-center shadow-[0_4px_20px_rgba(10,37,64,0.3)] hover:bg-[#635BFF] hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-indigo-300 cursor-pointer touch-manipulation"
         >
-          <Accessibility size={24} className="stroke-[2.5] sm:w-[26px] sm:h-[26px]" />
+          <Accessibility size={22} className="stroke-[2.5]" />
           {hasActiveOverrides && (
-            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 bg-cyan-400 border-2 border-black rounded-full shadow" />
+            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#635BFF] border-2 border-white rounded-full shadow" />
           )}
         </button>
       </div>
@@ -145,14 +144,14 @@ export default function AccessibilityWidget() {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop for easy outside click dismissal on mobile/tablet */}
+            {/* Backdrop for outside click dismissal */}
             <div 
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 setIsOpen(false);
               }} 
-              className="fixed inset-0 z-[99998] bg-black/60 backdrop-blur-sm transition-opacity touch-manipulation" 
+              className="fixed inset-0 z-[99998] bg-slate-900/40 backdrop-blur-sm transition-opacity touch-manipulation" 
               aria-hidden="true"
             />
 
@@ -161,33 +160,33 @@ export default function AccessibilityWidget() {
               role="dialog"
               aria-modal="true"
               aria-labelledby="a11y-widget-title"
-              initial={{ opacity: 0, y: 15, scale: 0.95 }}
+              initial={{ opacity: 0, y: 15, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 15, scale: 0.95 }}
+              exit={{ opacity: 0, y: 15, scale: 0.96 }}
               transition={{ duration: 0.2 }}
-              className="fixed bottom-20 sm:bottom-24 left-4 sm:left-6 right-4 sm:right-auto sm:w-[380px] max-h-[85vh] max-h-[85dvh] overflow-y-auto rounded-3xl bg-[#070b14] border-2 border-white/20 shadow-[0_30px_90px_rgba(0,0,0,0.98)] p-5 sm:p-6 text-white z-[99999] touch-manipulation"
+              className="fixed bottom-20 sm:bottom-24 left-4 sm:left-6 right-4 sm:right-auto sm:w-[380px] max-h-[85vh] max-h-[85dvh] overflow-y-auto rounded-2xl bg-white border border-slate-200 shadow-[0_25px_70px_rgba(15,23,42,0.18)] p-5 sm:p-6 text-slate-900 z-[99999] touch-manipulation"
               style={{ WebkitOverflowScrolling: 'touch' }}
             >
               {/* Modal Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/10">
+              <div className="flex items-center justify-between pb-3.5 border-b border-slate-100">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-[#00f5a0] flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-indigo-50 text-[#635BFF] flex items-center justify-center">
                     <Accessibility size={18} />
                   </div>
                   <div>
-                    <h3 id="a11y-widget-title" className="text-base font-extrabold text-white">
+                    <h3 id="a11y-widget-title" className="text-sm font-bold text-[#0A2540]">
                       Accessibility Tools
                     </h3>
-                    <p className="text-[11px] text-slate-300">WCAG 2.2 &amp; ADA Modes</p>
+                    <p className="text-[11px] text-slate-500">WCAG 2.2 &amp; ADA Compliance</p>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
                   aria-label="Close accessibility menu"
-                  className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-all cursor-pointer"
+                  className="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-black flex items-center justify-center transition-all cursor-pointer"
                 >
-                  <X size={16} />
+                  <X size={15} />
                 </button>
               </div>
 
@@ -196,28 +195,28 @@ export default function AccessibilityWidget() {
 
                 {/* 1. TEXT SIZE */}
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#00f5a0] mb-2 flex items-center gap-1.5">
-                    <Type size={13} /> Text Size Scaling
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#0A2540] mb-2 flex items-center gap-1.5">
+                    <Type size={13} className="text-[#635BFF]" /> Text Size Scaling
                   </p>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-3 gap-1.5">
                     <button
                       type="button"
                       onClick={() => setTextSize('normal')}
-                      className={`py-2 px-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                      className={`py-2 px-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
                         textSize === 'normal'
-                          ? 'bg-[#00f5a0] text-black border-[#00f5a0]'
-                          : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'
+                          ? 'bg-[#0A2540] text-white border-[#0A2540]'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                       }`}
                     >
-                      100% Normal
+                      100% Default
                     </button>
                     <button
                       type="button"
                       onClick={() => setTextSize('large')}
-                      className={`py-2 px-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                      className={`py-2 px-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
                         textSize === 'large'
-                          ? 'bg-[#00f5a0] text-black border-[#00f5a0]'
-                          : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'
+                          ? 'bg-[#0A2540] text-white border-[#0A2540]'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                       }`}
                     >
                       115% Large
@@ -225,10 +224,10 @@ export default function AccessibilityWidget() {
                     <button
                       type="button"
                       onClick={() => setTextSize('xlarge')}
-                      className={`py-2 px-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                      className={`py-2 px-2 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
                         textSize === 'xlarge'
-                          ? 'bg-[#00f5a0] text-black border-[#00f5a0]'
-                          : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'
+                          ? 'bg-[#0A2540] text-white border-[#0A2540]'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                       }`}
                     >
                       130% X-Large
@@ -238,28 +237,28 @@ export default function AccessibilityWidget() {
 
                 {/* 2. CONTRAST MODES */}
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#00f5a0] mb-2 flex items-center gap-1.5">
-                    <Sun size={13} /> Contrast &amp; Colors
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#0A2540] mb-2 flex items-center gap-1.5">
+                    <Sun size={13} className="text-[#635BFF]" /> Contrast &amp; Colors
                   </p>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-1.5">
                     <button
                       type="button"
                       onClick={() => setContrastMode('default')}
-                      className={`py-2 px-3 rounded-xl text-xs font-bold border text-left transition-all cursor-pointer ${
+                      className={`py-2 px-2.5 rounded-lg text-xs font-bold border text-left transition-all cursor-pointer ${
                         contrastMode === 'default'
-                          ? 'bg-[#00f5a0] text-black border-[#00f5a0]'
-                          : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'
+                          ? 'bg-[#0A2540] text-white border-[#0A2540]'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                       }`}
                     >
-                      Standard Dark
+                      Standard Light
                     </button>
                     <button
                       type="button"
                       onClick={() => setContrastMode('high')}
-                      className={`py-2 px-3 rounded-xl text-xs font-bold border text-left transition-all cursor-pointer ${
+                      className={`py-2 px-2.5 rounded-lg text-xs font-bold border text-left transition-all cursor-pointer ${
                         contrastMode === 'high'
-                          ? 'bg-[#00f5a0] text-black border-[#00f5a0]'
-                          : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'
+                          ? 'bg-[#0A2540] text-white border-[#0A2540]'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                       }`}
                     >
                       High Contrast B&amp;W
@@ -267,10 +266,10 @@ export default function AccessibilityWidget() {
                     <button
                       type="button"
                       onClick={() => setContrastMode('monochrome')}
-                      className={`py-2 px-3 rounded-xl text-xs font-bold border text-left transition-all cursor-pointer ${
+                      className={`py-2 px-2.5 rounded-lg text-xs font-bold border text-left transition-all cursor-pointer ${
                         contrastMode === 'monochrome'
-                          ? 'bg-[#00f5a0] text-black border-[#00f5a0]'
-                          : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'
+                          ? 'bg-[#0A2540] text-white border-[#0A2540]'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                       }`}
                     >
                       Monochrome (Gray)
@@ -278,10 +277,10 @@ export default function AccessibilityWidget() {
                     <button
                       type="button"
                       onClick={() => setContrastMode('invert')}
-                      className={`py-2 px-3 rounded-xl text-xs font-bold border text-left transition-all cursor-pointer ${
+                      className={`py-2 px-2.5 rounded-lg text-xs font-bold border text-left transition-all cursor-pointer ${
                         contrastMode === 'invert'
-                          ? 'bg-[#00f5a0] text-black border-[#00f5a0]'
-                          : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'
+                          ? 'bg-[#0A2540] text-white border-[#0A2540]'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                       }`}
                     >
                       Invert Colors
@@ -289,71 +288,71 @@ export default function AccessibilityWidget() {
                   </div>
                 </div>
 
-                {/* 3. ASSISTIVE TOGGLE BUTTONS */}
-                <div className="space-y-2 pt-1">
+                {/* 3. ASSISTIVE TOGGLES */}
+                <div className="space-y-1.5 pt-1">
                   
                   {/* Dyslexia font */}
                   <button
                     type="button"
                     onClick={() => setDyslexicFont(!dyslexicFont)}
-                    className={`w-full py-2.5 px-3.5 rounded-xl text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
+                    className={`w-full py-2 px-3 rounded-lg text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
                       dyslexicFont
-                        ? 'bg-emerald-500/20 text-[#00f5a0] border-[#00f5a0]/50'
-                        : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'
+                        ? 'bg-indigo-50 text-[#635BFF] border-indigo-200'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                     }`}
                   >
                     <span className="flex items-center gap-2">
-                      <Type size={14} /> Dyslexia Friendly Font
+                      <Type size={13} /> Dyslexia Friendly Font
                     </span>
-                    {dyslexicFont && <Check size={14} className="text-[#00f5a0]" />}
+                    {dyslexicFont && <Check size={13} className="text-[#635BFF]" />}
                   </button>
 
                   {/* Highlight links */}
                   <button
                     type="button"
                     onClick={() => setHighlightLinks(!highlightLinks)}
-                    className={`w-full py-2.5 px-3.5 rounded-xl text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
+                    className={`w-full py-2 px-3 rounded-lg text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
                       highlightLinks
-                        ? 'bg-emerald-500/20 text-[#00f5a0] border-[#00f5a0]/50'
-                        : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'
+                        ? 'bg-indigo-50 text-[#635BFF] border-indigo-200'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                     }`}
                   >
                     <span className="flex items-center gap-2">
-                      <Underline size={14} /> Highlight All Links
+                      <Underline size={13} /> Highlight All Links
                     </span>
-                    {highlightLinks && <Check size={14} className="text-[#00f5a0]" />}
+                    {highlightLinks && <Check size={13} className="text-[#635BFF]" />}
                   </button>
 
                   {/* Pause Animations */}
                   <button
                     type="button"
                     onClick={() => setPauseAnimations(!pauseAnimations)}
-                    className={`w-full py-2.5 px-3.5 rounded-xl text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
+                    className={`w-full py-2 px-3 rounded-lg text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
                       pauseAnimations
-                        ? 'bg-emerald-500/20 text-[#00f5a0] border-[#00f5a0]/50'
-                        : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'
+                        ? 'bg-indigo-50 text-[#635BFF] border-indigo-200'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                     }`}
                   >
                     <span className="flex items-center gap-2">
-                      <Pause size={14} /> Stop / Pause Motion
+                      <Pause size={13} /> Stop / Pause Motion
                     </span>
-                    {pauseAnimations && <Check size={14} className="text-[#00f5a0]" />}
+                    {pauseAnimations && <Check size={13} className="text-[#635BFF]" />}
                   </button>
 
                   {/* Big Cursor */}
                   <button
                     type="button"
                     onClick={() => setBigCursor(!bigCursor)}
-                    className={`w-full py-2.5 px-3.5 rounded-xl text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
+                    className={`w-full py-2 px-3 rounded-lg text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
                       bigCursor
-                        ? 'bg-emerald-500/20 text-[#00f5a0] border-[#00f5a0]/50'
-                        : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'
+                        ? 'bg-indigo-50 text-[#635BFF] border-indigo-200'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                     }`}
                   >
                     <span className="flex items-center gap-2">
-                      <MousePointer size={14} /> Large Reading Cursor
+                      <MousePointer size={13} /> Large Reading Cursor
                     </span>
-                    {bigCursor && <Check size={14} className="text-[#00f5a0]" />}
+                    {bigCursor && <Check size={13} className="text-[#635BFF]" />}
                   </button>
 
                 </div>
@@ -363,9 +362,9 @@ export default function AccessibilityWidget() {
                   <button
                     type="button"
                     onClick={resetAll}
-                    className="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all border border-white/10 cursor-pointer"
+                    className="w-full py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center gap-1.5 transition-all border border-slate-200 cursor-pointer"
                   >
-                    <RotateCcw size={13} /> Reset All Preferences
+                    <RotateCcw size={12} /> Reset Preferences
                   </button>
                 </div>
 
