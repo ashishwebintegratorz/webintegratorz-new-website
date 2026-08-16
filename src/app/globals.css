@@ -177,10 +177,6 @@
 
 @layer utilities {
   /* Core Web Vitals & Mobile CPU Defer Rendering Utility */
-  .content-auto {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 700px;
-  }
 
   .text-gradient-emerald {
     background: linear-gradient(135deg, #00f5a0 0%, #00d9f5 50%, #6366f1 100%);

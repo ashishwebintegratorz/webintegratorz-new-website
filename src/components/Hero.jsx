@@ -20,22 +20,8 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function HeroSection({ mobileOpen }) {
-  const heroRef = useRef(null);
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("ai"); // 'ai' | 'squads' | 'security'
-
-  const handleMouseMove = (e) => {
-    if (!heroRef.current || (typeof window !== "undefined" && window.innerWidth < 768)) return;
-    const { clientX, clientY, currentTarget } = e;
-    requestAnimationFrame(() => {
-      if (!heroRef.current) return;
-      const rect = currentTarget.getBoundingClientRect();
-      const x = clientX - rect.left;
-      const y = clientY - rect.top;
-      heroRef.current.style.setProperty("--x", `${x}px`);
-      heroRef.current.style.setProperty("--y", `${y}px`);
-    });
-  };
 
   const techPills = [
     "Next.js 16", "React 19", "Generative AI", "Python / PyTorch", "LLM Fine-Tuning", "AWS Cloud", "Node.js", "Flutter", "Kubernetes"
@@ -79,17 +65,15 @@ export default function HeroSection({ mobileOpen }) {
 
   return (
     <section
-      ref={heroRef}
-      onMouseMove={handleMouseMove}
       className="hero relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-between overflow-hidden bg-[#030712] text-white pt-24 sm:pt-28 md:pt-32"
       style={{ display: mobileOpen ? "none" : "flex" }}
     >
       {/* Dynamic Cyber Aurora Background (0KB Video Overhead, Pure GPU Composited CSS) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
         {/* Deep Cosmic Radial Aurora Centerpieces */}
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] sm:w-[1000px] h-[450px] sm:h-[550px] bg-[radial-gradient(ellipse_at_center,rgba(0,245,160,0.14),rgba(0,217,245,0.08),transparent_70%)] blur-[100px] rounded-full" />
-        <div className="absolute top-1/3 -right-32 w-[450px] h-[450px] bg-[radial-gradient(circle,rgba(99,102,241,0.12),transparent_70%)] blur-[120px] rounded-full" />
-        <div className="absolute bottom-10 -left-32 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(0,245,160,0.08),transparent_70%)] blur-[120px] rounded-full" />
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] sm:w-[900px] h-[400px] sm:h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(0,245,160,0.12),rgba(0,217,245,0.06),transparent_70%)] blur-[80px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 -right-32 w-[350px] h-[350px] bg-[radial-gradient(circle,rgba(99,102,241,0.1),transparent_70%)] blur-[80px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-10 -left-32 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(0,245,160,0.06),transparent_70%)] blur-[80px] rounded-full pointer-events-none" />
 
         {/* Cyber Matrix Coordinate Grid */}
         <div 
@@ -103,9 +87,6 @@ export default function HeroSection({ mobileOpen }) {
         {/* Ambient Top & Bottom Depth Vignettes */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#030712]/60 via-transparent to-[#030712]" />
       </div>
-
-      {/* Glow Follower Layer */}
-      <div className="glow-layer absolute inset-0 pointer-events-none z-0" />
 
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex flex-col justify-center flex-grow">
