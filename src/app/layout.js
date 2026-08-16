@@ -111,18 +111,12 @@ export default function RootLayout({ children }) {
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
                 />
-                {/* Preload critical resources */}
-                <link
-                    rel="preload"
-                    href="/font/SpaceGrotesk-VariableFont_wght.ttf"
-                    as="font"
-                    type="font/ttf"
-                    crossOrigin="anonymous"
-                />
+                {/* Preload critical hero image */}
                 <link
                     rel="preload"
                     href="/weblogo.webp"
                     as="image"
+                    fetchPriority="high"
                 />
             </head>
             <body className={`${spaceGrotesk.variable} font-sans antialiased`}>

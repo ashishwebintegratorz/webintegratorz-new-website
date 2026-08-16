@@ -5,6 +5,9 @@ const nextConfig = {
   images: {
     unoptimized: true, // required for static export
   },
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
   // Compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",

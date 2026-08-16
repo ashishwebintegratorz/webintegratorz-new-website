@@ -18,7 +18,7 @@ export default function Featuredsection() {
   const marqueeLogos = [...mediaLogos, ...mediaLogos, ...mediaLogos, ...mediaLogos];
 
   return (
-    <section className="w-full bg-[#030712] py-20 overflow-hidden relative border-t border-white/[0.06]">
+    <section className="w-full bg-[#030712] py-20 overflow-hidden relative border-t border-white/[0.06] content-auto">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-12 relative">
         <div className="flex flex-col items-center text-center">
           <motion.div
@@ -70,6 +70,8 @@ export default function Featuredsection() {
                   alt={logo.name}
                   width={140}
                   height={50}
+                  loading="lazy"
+                  decoding="async"
                   className="object-contain max-h-12"
                 />
               </div>
