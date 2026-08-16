@@ -129,6 +129,11 @@ export default function AccessibilityWidget() {
             e.stopPropagation();
             setIsOpen((prev) => !prev);
           }}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsOpen((prev) => !prev);
+          }}
           aria-label={isOpen ? "Close Accessibility Options" : "Open Accessibility and Disability Options"}
           aria-expanded={isOpen}
           aria-controls="accessibility-modal"
@@ -151,7 +156,12 @@ export default function AccessibilityWidget() {
                 e.preventDefault();
                 e.stopPropagation();
                 setIsOpen(false);
-              }} 
+              }}
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setIsOpen(false);
+              }}
               className="fixed inset-0 z-[99998] bg-black/60 backdrop-blur-sm transition-opacity touch-manipulation" 
               aria-hidden="true"
             />
@@ -165,7 +175,7 @@ export default function AccessibilityWidget() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 15, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="fixed bottom-20 sm:bottom-24 left-4 sm:left-6 right-4 sm:right-auto sm:w-[380px] max-h-[85vh] max-h-[85dvh] overflow-y-auto rounded-3xl bg-[#070b14] border-2 border-white/20 shadow-[0_30px_90px_rgba(0,0,0,0.98)] p-5 sm:p-6 text-white z-[99999] touch-manipulation"
+              className="fixed bottom-20 sm:bottom-24 left-4 sm:left-6 right-4 sm:right-auto sm:w-[380px] max-h-[85vh] max-h-[85dvh] overflow-y-auto rounded-3xl bg-[#070b14] border-2 border-white/20 shadow-[0_30px_90px_rgba(0,0,0,0.98)] p-5 sm:p-6 text-white z-[99999] touch-manipulation overscroll-contain"
               style={{ WebkitOverflowScrolling: 'touch' }}
             >
               {/* Modal Header */}
@@ -183,9 +193,18 @@ export default function AccessibilityWidget() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setIsOpen(false);
+                  }}
+                  onTouchEnd={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setIsOpen(false);
+                  }}
                   aria-label="Close accessibility menu"
-                  className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-all cursor-pointer"
+                  className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-all cursor-pointer touch-manipulation"
                 >
                   <X size={16} />
                 </button>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
@@ -14,26 +14,15 @@ import {
   Code2,
   Users,
   Activity,
-  Layers,
-  ArrowUpRight
+  ArrowUpRight,
+  CheckCircle2
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function HeroSection({ mobileOpen }) {
   const heroRef = useRef(null);
   const router = useRouter();
-  const [mountVideo, setMountVideo] = useState(false);
   const [activeTab, setActiveTab] = useState("ai"); // 'ai' | 'squads' | 'security'
-
-  useEffect(() => {
-    // Only load video in the background for desktop users after hydration (0KB mobile overhead)
-    if (typeof window !== "undefined" && window.innerWidth >= 768) {
-      const timer = setTimeout(() => {
-        setMountVideo(true);
-      }, 1200);
-      return () => clearTimeout(timer);
-    }
-  }, []);
 
   const handleMouseMove = (e) => {
     if (!heroRef.current || (typeof window !== "undefined" && window.innerWidth < 768)) return;
@@ -58,29 +47,29 @@ export default function HeroSection({ mobileOpen }) {
       badge: "Active Neural Pipelines",
       metrics: [
         { label: "Inference Latency", value: "<45ms", sub: "Sub-second SLA" },
-        { label: "Vector Search", value: "99.8%", sub: "RAG Accuracy" },
-        { label: "Agent Pipelines", value: "50+", sub: "Production Agents" },
+        { label: "Vector Search", value: "99.8%", sub: "RAG Precision" },
+        { label: "Production Agents", value: "50+", sub: "Autonomous Workflows" },
         { label: "Data Isolation", value: "100%", sub: "Private VPC Host" },
       ],
-      detail: "Autonomous multi-agent architectures, enterprise LLM fine-tuning, and deterministic vector databases engineered for private enterprise workflows."
+      detail: "Autonomous multi-agent architectures, enterprise LLM fine-tuning, and deterministic vector search engineered for private enterprise workflows."
     },
     squads: {
       title: "Dedicated Agile Engineering Squads",
       badge: "High-Velocity Sprints",
       metrics: [
-        { label: "Sprint Precision", value: "99.4%", sub: "On-Time Delivery" },
-        { label: "Senior Engineers", value: "10-50", sub: "Top 3% Tech Talent" },
+        { label: "Sprint Precision", value: "99.4%", sub: "On-Time SLA Delivery" },
+        { label: "Senior Engineers", value: "10-50", sub: "Top 3% Talent Pool" },
         { label: "Timezone Overlap", value: "4-8 Hrs", sub: "USA / UAE / EU / APAC" },
         { label: "IP Ownership", value: "100%", sub: "Zero Vendor Lock-In" },
       ],
-      detail: "Cross-functional engineering pods with full-stack React, Next.js, Python, and mobile architects dedicated to rapid product execution."
+      detail: "Cross-functional agile pods with full-stack React, Next.js, Python, and mobile architects dedicated to rapid product execution."
     },
     security: {
-      title: "Enterprise Architecture & Security",
+      title: "Enterprise Cloud & Security",
       badge: "Bank-Grade Standards",
       metrics: [
-        { label: "Cloud Uptime", value: "99.99%", sub: "AWS / GCP Cluster" },
-        { label: "Code Auditing", value: "OWASP", sub: "Automated CI/CD" },
+        { label: "Cloud Uptime", value: "99.99%", sub: "AWS / GCP Multi-Region" },
+        { label: "Code Auditing", value: "OWASP", sub: "Automated CI/CD Gates" },
         { label: "Compliance", value: "SOC-2", sub: "Audit Certified" },
         { label: "Client Rating", value: "4.9 ★", sub: "100+ Global Reviews" },
       ],
@@ -95,52 +84,40 @@ export default function HeroSection({ mobileOpen }) {
       className="hero relative w-full min-h-screen min-h-[100dvh] flex flex-col justify-between overflow-hidden bg-[#030712] text-white pt-24 sm:pt-28 md:pt-32"
       style={{ display: mobileOpen ? "none" : "flex" }}
     >
-      {/* Background Video (Desktop client idle mount, 0KB mobile payload) */}
-      {!mobileOpen && (
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          {mountVideo && (
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="none"
-              aria-hidden="true"
-              className="w-full h-full object-cover opacity-20 filter contrast-125"
-            >
-              <source src="/hero.mp4" type="video/mp4" />
-            </video>
-          )}
-          {/* Cosmic ambient gradient layers */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#030712] via-transparent to-[#030712]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(0,245,160,0.15),transparent_70%)]" />
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-gradient-to-r from-emerald-500/10 via-cyan-500/10 to-indigo-500/10 blur-[130px] rounded-full pointer-events-none" />
-        </div>
-      )}
+      {/* Dynamic Cyber Aurora Background (0KB Video Overhead, Pure GPU Composited CSS) */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
+        {/* Deep Cosmic Radial Aurora Centerpieces */}
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] sm:w-[1000px] h-[450px] sm:h-[550px] bg-[radial-gradient(ellipse_at_center,rgba(0,245,160,0.14),rgba(0,217,245,0.08),transparent_70%)] blur-[100px] rounded-full" />
+        <div className="absolute top-1/3 -right-32 w-[450px] h-[450px] bg-[radial-gradient(circle,rgba(99,102,241,0.12),transparent_70%)] blur-[120px] rounded-full" />
+        <div className="absolute bottom-10 -left-32 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(0,245,160,0.08),transparent_70%)] blur-[120px] rounded-full" />
 
-      {/* Cyber Grid Background Matrix */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-          backgroundSize: "40px 40px"
-        }}
-      />
+        {/* Cyber Matrix Coordinate Grid */}
+        <div 
+          className="absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage: "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+            backgroundSize: "48px 48px"
+          }}
+        />
 
-      {/* Glow Follower Effect */}
+        {/* Ambient Top & Bottom Depth Vignettes */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030712]/60 via-transparent to-[#030712]" />
+      </div>
+
+      {/* Glow Follower Layer */}
       <div className="glow-layer absolute inset-0 pointer-events-none z-0" />
 
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex flex-col justify-center flex-grow">
         
-        {/* Top Floating Badges */}
+        {/* Top Floating Trust Badges */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="flex flex-wrap items-center gap-3 mb-6"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0a101d] border border-white/20 backdrop-blur-xl shadow-lg hover:border-emerald-400/60 transition-colors">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#070d18] border border-white/20 backdrop-blur-xl shadow-lg hover:border-emerald-400/50 transition-colors">
             <span className="flex h-2.5 w-2.5 relative" aria-hidden="true">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00f5a0] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00f5a0]"></span>
@@ -150,19 +127,19 @@ export default function HeroSection({ mobileOpen }) {
             </p>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#05241b] border border-[#00f5a0]/50 text-[#00f5a0] text-xs sm:text-[13px] font-extrabold shadow-lg">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#05241b] border border-[#00f5a0]/50 text-[#00f5a0] text-xs sm:text-[13px] font-extrabold shadow-lg">
             <Globe2 size={15} className="text-[#00f5a0]" aria-hidden="true" />
-            <span>100% Fully Remote • Solving Complex Problems Globally</span>
+            <span>100% Fully Remote • Global Engineering Squads</span>
           </div>
         </motion.div>
 
-        {/* Main Headline & Two-Column Hero Grid */}
+        {/* Main Headline & Two-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* Left Column: Value Proposition & CTAs */}
           <div className="lg:col-span-7 space-y-6">
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.06] text-white"
@@ -173,17 +150,17 @@ export default function HeroSection({ mobileOpen }) {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base sm:text-lg md:text-xl leading-relaxed text-slate-200 max-w-2xl font-normal"
             >
-              A 100% fully remote engineering organization solving complex technical problems globally. We build mission-critical web applications, custom Generative AI ecosystems, and high-performance digital products for high-growth startups and global innovators worldwide.
+              A 100% fully remote engineering organization solving complex technical problems globally. We build mission-critical web applications, custom Generative AI ecosystems, and high-performance digital products for high-growth startups and enterprise innovators worldwide.
             </motion.p>
 
-            {/* High-Converting Action CTAs */}
+            {/* Action CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
@@ -239,7 +216,7 @@ export default function HeroSection({ mobileOpen }) {
               transition={{ duration: 0.7, delay: 0.25 }}
               className="p-6 sm:p-7 rounded-3xl relative overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.9)] bg-[#070b14] border-2 border-white/20"
             >
-              {/* Top ambient radial glow */}
+              {/* Radial background glow inside card */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
