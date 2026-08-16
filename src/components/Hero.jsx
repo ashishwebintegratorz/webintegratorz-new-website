@@ -145,7 +145,7 @@ export default function HeroSection({ mobileOpen }) {
               className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.06] text-white"
             >
               Engineering <br className="hidden sm:inline" />
-              <span className="text-[#00f5a0] font-black drop-shadow-[0_0_35px_rgba(0,245,160,0.35)]">Intelligent Software</span> &amp; <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#6366f1] font-black drop-shadow-[0_0_35px_rgba(0,245,160,0.35)]">Intelligent Software</span> &amp; <br />
               <span className="text-slate-100 font-black">Enterprise AI Solutions</span>
             </motion.h1>
 
@@ -168,7 +168,7 @@ export default function HeroSection({ mobileOpen }) {
               <button
                 type="button"
                 onClick={() => router.push("/contact-us")}
-                className="group relative px-8 py-4 bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#00f5a0] bg-[length:200%_auto] hover:bg-[position:right_center] rounded-2xl font-black text-black text-base md:text-lg flex items-center justify-center gap-3 shadow-[0_0_35px_-5px_rgba(0,245,160,0.5)] transition-all duration-500 hover:scale-[1.02] active:scale-95 cursor-pointer touch-manipulation"
+                className="group relative px-8 py-4 bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#6366f1] bg-[length:200%_auto] hover:bg-[position:right_center] rounded-2xl font-black text-black text-base md:text-lg flex items-center justify-center gap-3 shadow-[0_0_35px_-5px_rgba(0,245,160,0.5)] transition-all duration-500 hover:scale-[1.02] active:scale-95 cursor-pointer touch-manipulation"
               >
                 <span>Book Free Architecture Session</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
@@ -214,8 +214,9 @@ export default function HeroSection({ mobileOpen }) {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="p-6 sm:p-7 rounded-3xl relative overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.9)] bg-[#070b14] border-2 border-white/20"
+              className="relative group p-[1.5px] rounded-3xl overflow-hidden bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#6366f1] shadow-[0_25px_70px_rgba(0,0,0,0.9)]"
             >
+              <div className="p-6 sm:p-7 rounded-[22px] bg-[#070b14] relative overflow-hidden">
               {/* Radial background glow inside card */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -349,6 +350,7 @@ export default function HeroSection({ mobileOpen }) {
                 </button>
               </div>
 
+              </div>
             </motion.div>
           </div>
 

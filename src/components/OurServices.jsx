@@ -166,7 +166,7 @@ export default function ServicesPage() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   activeCategory === cat.id
-                    ? 'bg-gradient-to-r from-[#00f5a0] to-[#00d9f5] text-black shadow-lg font-bold shadow-emerald-500/20'
+                    ? 'bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#6366f1] text-black shadow-lg font-bold shadow-emerald-500/20'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'
                 }`}
               >
@@ -195,7 +195,7 @@ export default function ServicesPage() {
                 className="group relative rounded-3xl p-px overflow-hidden flex flex-col"
               >
                 {/* Glow Border Effect */}
-                <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 bg-gradient-to-b from-[#00f5a0]/30 to-transparent ${hoveredCard === service.id ? 'opacity-100' : 'opacity-20'}`} />
+                <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#6366f1] ${hoveredCard === service.id ? 'opacity-100' : 'opacity-20'}`} />
 
                 {/* Card Interior (100% Solid & High Contrast) */}
                 <div className="relative flex-1 bg-[#090d16] rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220] border border-white/10">

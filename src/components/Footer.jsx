@@ -54,7 +54,7 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
             <Link
               href="/contact-us"
-              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#00f5a0] to-[#00d9f5] hover:opacity-95 text-black font-black text-sm rounded-xl transition-all duration-300 shadow-[0_0_25px_rgba(0,245,160,0.4)] flex items-center justify-center gap-2 hover:scale-105 active:scale-95"
+              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#6366f1] bg-[length:200%_auto] hover:bg-[position:right_center] text-black font-black text-sm rounded-xl transition-all duration-500 shadow-[0_0_25px_rgba(0,245,160,0.4)] flex items-center justify-center gap-2 hover:scale-105 active:scale-95 cursor-pointer touch-manipulation"
             >
               <span>Schedule Free Tech Session</span>
               <ArrowRight size={16} />

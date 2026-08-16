@@ -255,7 +255,7 @@ export default function WorkflowCycle() {
                       </div>
                       <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
                         <div 
-                          className="h-full bg-gradient-to-r from-[#00f5a0] to-[#00d9f5] rounded-full transition-all duration-500" 
+                          className="h-full bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#6366f1] rounded-full transition-all duration-500" 
                           style={{ width: `${((activeStep + 1) / 6) * 100}%` }}
                         />
                       </div>
@@ -274,8 +274,9 @@ export default function WorkflowCycle() {
                   </div>
 
                   <button
+                    type="button"
                     onClick={() => router.push('/contact-us')}
-                    className="w-full py-3.5 rounded-xl bg-[#00f5a0] hover:bg-[#00d9f5] text-black font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(0,245,160,0.4)] flex items-center justify-center gap-2"
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#6366f1] bg-[length:200%_auto] hover:bg-[position:right_center] text-black font-black text-xs uppercase tracking-wider transition-all duration-500 shadow-[0_0_25px_rgba(0,245,160,0.4)] flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 cursor-pointer touch-manipulation"
                   >
                     <span>Start Phase 01 Discovery</span>
                     <ArrowRight size={14} />

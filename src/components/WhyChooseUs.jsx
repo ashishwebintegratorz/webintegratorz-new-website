@@ -131,7 +131,7 @@ export default function WhyChooseUsSection() {
               className="group relative rounded-3xl p-px overflow-hidden flex flex-col"
             >
               {/* Outer glow line */}
-              <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 bg-gradient-to-b from-[#00f5a0]/30 via-white/5 to-transparent ${hoveredCard === index ? 'opacity-100' : 'opacity-20'}`} />
+              <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#6366f1] ${hoveredCard === index ? 'opacity-100' : 'opacity-20'}`} />
 
               <div className="relative flex-1 bg-[#090d16]/95 backdrop-blur-xl rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220]">
                 <div>
