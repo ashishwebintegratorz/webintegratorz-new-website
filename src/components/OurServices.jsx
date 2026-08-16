@@ -1,21 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe, Cpu, ShoppingCart, Smartphone, Brain, LineChart, Bot, Palette, ShieldCheck, ArrowRight, CheckCircle2, Zap } from 'lucide-react';
+import { Globe, Cpu, ShoppingCart, Smartphone, Brain, LineChart, Bot, Settings, Palette, ShieldCheck, ArrowRight, CheckCircle2, Sparkles, Layers, Zap } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function ServicesPage() {
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState('all');
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   const categories = [
-    { id: 'all', label: 'All Capabilities' },
-    { id: 'compliance', label: 'Accessibility & Compliance' },
+    { id: 'all', label: 'All Services' },
+    { id: 'compliance', label: 'Accessibility Remediation' },
     { id: 'ai', label: 'AI & Data Intelligence' },
-    { id: 'web', label: 'Web & Cloud SaaS' },
-    { id: 'mobile', label: 'Mobile Engineering' },
-    { id: 'growth', label: 'Design & Systems' },
+    { id: 'web', label: 'Web & SaaS' },
+    { id: 'mobile', label: 'Mobile & Apps' },
+    { id: 'growth', label: 'Design & Growth' },
   ];
 
   const services = [
@@ -116,53 +117,57 @@ export default function ServicesPage() {
     : services.filter(s => s.category === activeCategory);
 
   return (
-    <section id="services" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden content-auto">
+    <section id="services" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.06] content-auto">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[150px] pointer-events-none" />
+
       <div className="relative max-w-[1440px] mx-auto">
         
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-14">
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 mb-4"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
           >
-            <Zap size={13} className="text-[#635BFF]" />
-            <span className="text-[#635BFF] text-xs font-bold tracking-wider uppercase">
-              Service Capabilities
+            <Zap size={14} className="text-[#00f5a0]" />
+            <span className="text-[#00f5a0] text-xs tracking-[0.2em] uppercase font-bold">
+              Comprehensive Service Portfolio
             </span>
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight leading-[1.15]"
+            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]"
           >
-            Specialized Digital &amp; <span className="text-[#635BFF]">AI Engineering</span>
+            Transform Your Vision with <br className="hidden sm:inline" />
+            <span className="text-gradient-emerald">Specialized Digital Engineering</span>
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-4 text-base sm:text-lg text-[#475569] max-w-2xl font-normal leading-relaxed"
+            className="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed"
           >
             Deploy elite multidisciplinary engineering squads to accelerate your roadmap, optimize infrastructure, and outpace the competition.
           </motion.p>
 
           {/* Interactive Category Filter Pills */}
-          <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mt-8 p-1.5 rounded-xl bg-slate-100/90 border border-slate-200/80">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-10 p-1.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md">
             {categories.map((cat) => (
               <button
                 key={cat.id}
-                type="button"
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+                className={`px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   activeCategory === cat.id
-                    ? 'bg-white text-[#0A2540] shadow-sm font-black'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-gradient-to-r from-[#00f5a0] to-[#00d9f5] text-black shadow-lg font-bold shadow-emerald-500/20'
+                    : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'
                 }`}
               >
                 {cat.label}
@@ -171,85 +176,91 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        {/* Dynamic Services Grid - Stripe Clean Cards */}
+        {/* Dynamic Services Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
           <AnimatePresence>
             {filteredServices.map((service, index) => (
               <motion.div
                 key={service.id}
                 layout
-                initial={{ opacity: 0, scale: 0.97 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.97 }}
-                transition={{ duration: 0.3 }}
-                className="group relative rounded-2xl bg-white border border-slate-200 hover:border-slate-300 p-7 sm:p-8 flex flex-col justify-between shadow-[0_4px_20px_-2px_rgba(15,23,42,0.04)] hover:shadow-[0_15px_35px_-5px_rgba(15,23,42,0.08)] transition-all duration-300"
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                onMouseEnter={() => setHoveredCard(service.id)}
+                onMouseLeave={() => setHoveredCard(null)}
+                className="group relative rounded-3xl p-px overflow-hidden flex flex-col"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-11 h-11 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-[#635BFF] group-hover:bg-[#635BFF] group-hover:text-white transition-all duration-300">
-                      <service.icon size={22} />
-                    </div>
-                    <span className="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-100 text-slate-600">
-                      0{index + 1}
-                    </span>
-                  </div>
+                {/* Glow Border Effect */}
+                <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 bg-gradient-to-b from-[#00f5a0]/30 to-transparent ${hoveredCard === service.id ? 'opacity-100' : 'opacity-20'}`} />
 
-                  <h3 className="text-xl font-bold text-[#0A2540] mb-2.5 group-hover:text-[#635BFF] transition-colors leading-snug">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-sm text-[#475569] leading-relaxed mb-6 font-normal">
-                    {service.description}
-                  </p>
-
-                  {/* Deliverables */}
-                  <div className="space-y-2 mb-6">
-                    <p className="text-xs font-bold text-[#0A2540] uppercase tracking-wider">Key Capabilities:</p>
-                    {service.deliverables.map((item, dIdx) => (
-                      <div key={dIdx} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                        <CheckCircle2 size={13} className="text-[#635BFF] shrink-0" />
-                        <span>{item}</span>
+                {/* Card Interior (100% Solid & High Contrast) */}
+                <div className="relative flex-1 bg-[#090d16] rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220] border border-white/10">
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-[#00f5a0] group-hover:scale-110 group-hover:bg-[#00f5a0] group-hover:text-black transition-all duration-300">
+                        <service.icon size={24} />
                       </div>
-                    ))}
-                  </div>
-                </div>
+                      <span className="text-xs font-black px-3 py-1 rounded-full bg-white/10 text-white border border-white/20">
+                        0{index + 1}
+                      </span>
+                    </div>
 
-                {/* Card Bottom Link */}
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <button
-                    type="button"
-                    onClick={() => router.push(service.route)}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#635BFF] hover:underline transition-colors py-1 cursor-pointer"
-                  >
-                    <span>Explore Service Details</span>
-                    <ArrowRight size={13} />
-                  </button>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#00f5a0] transition-colors leading-snug">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-sm text-slate-200 leading-relaxed mb-6 font-normal">
+                      {service.description}
+                    </p>
+
+                    {/* Key Deliverables Bullet Points */}
+                    <div className="space-y-2 mb-6">
+                      <p className="text-xs font-black text-[#00f5a0] uppercase tracking-wider">Key Capabilities:</p>
+                      {service.deliverables.map((item, dIdx) => (
+                        <div key={dIdx} className="flex items-center gap-2 text-xs text-slate-100 font-medium">
+                          <CheckCircle2 size={14} className="text-[#00f5a0] shrink-0" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Card Bottom CTA */}
+                  <div className="pt-5 border-t border-white/10 flex items-center justify-between">
+                    <button
+                      onClick={() => router.push(service.route)}
+                      className="inline-flex items-center gap-2 text-xs font-black text-[#00f5a0] hover:text-white transition-colors group-hover:translate-x-1 duration-200 py-1"
+                    >
+                      <span>Explore Service Details</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
 
-        {/* Global Consult Strip */}
+        {/* Global Consult Banner */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 sm:mt-20 p-8 sm:p-10 rounded-2xl bg-[#F8FAFC] border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6"
+          className="mt-16 sm:mt-20 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-emerald-950/40 via-[#090d16] to-cyan-950/40 border border-emerald-500/20 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8"
         >
-          <div className="space-y-1.5 text-center md:text-left">
-            <h3 className="text-2xl font-bold text-[#0A2540]">Need a Dedicated Engineering Squad?</h3>
-            <p className="text-sm sm:text-base text-[#475569] max-w-xl font-normal">
+          <div className="space-y-2 text-center md:text-left">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white">Need a Custom Dedicated Squad?</h3>
+            <p className="text-sm sm:text-base text-slate-300 max-w-xl font-normal">
               Hire vetted React, Node.js, AI/ML, and Mobile engineers with rapid onboarding and flexible engagement models.
             </p>
           </div>
           <button
-            type="button"
             onClick={() => router.push('/contact-us')}
-            className="px-7 py-3.5 bg-[#0A2540] hover:bg-[#635BFF] text-white font-bold text-sm rounded-xl shrink-0 transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
+            className="px-8 py-4 bg-[#00f5a0] hover:bg-[#00d9f5] text-black font-bold text-base rounded-2xl shrink-0 transition-all duration-300 shadow-[0_0_30px_rgba(0,245,160,0.3)] hover:scale-105 active:scale-95"
           >
             Hire Dedicated Engineers →
           </button>

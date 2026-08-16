@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronDown, HelpCircle, ArrowRight } from "lucide-react";
+import { ChevronDown, HelpCircle, MessageSquare, ArrowRight, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Faq() {
@@ -45,67 +45,69 @@ export default function Faq() {
   ];
 
   return (
-    <section id="faq" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] overflow-hidden border-t border-slate-200/80 content-auto">
+    <section id="faq" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.06] content-auto">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/3 right-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
+
       <div className="relative max-w-4xl mx-auto">
         
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-14">
+        <div className="flex flex-col items-center text-center mb-16">
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 mb-4"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
           >
-            <HelpCircle size={13} className="text-[#635BFF]" />
-            <span className="text-[#635BFF] text-xs font-bold uppercase tracking-wider">
+            <HelpCircle size={14} className="text-[#00f5a0]" />
+            <span className="text-[#00f5a0] text-xs font-bold uppercase tracking-[0.25em]">
               Knowledge Base
             </span>
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight leading-tight"
+            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight"
           >
-            Frequently Asked <span className="text-[#635BFF]">Questions</span>
+            Frequently Asked <span className="text-gradient-emerald">Questions</span>
           </motion.h2>
 
-          <p className="mt-3 text-base text-[#475569] max-w-xl font-normal">
+          <p className="mt-4 text-base text-slate-300 max-w-xl font-normal">
             Everything you need to know about our engineering standards, engagement models, and AI delivery capabilities.
           </p>
         </div>
 
-        {/* Accordion Cards - Stripe Clean Cards */}
-        <div className="space-y-3">
+        {/* Accordion Cards */}
+        <div className="space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.2, delay: index * 0.03 }}
-                className={`rounded-xl bg-white border transition-all duration-200 shadow-sm ${
-                  isOpen ? "border-indigo-200 shadow-md" : "border-slate-200 hover:border-slate-300"
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className={`rounded-2xl p-px transition-all duration-300 ${
+                  isOpen ? "bg-gradient-to-r from-emerald-500/40 via-cyan-500/30 to-transparent" : "bg-white/[0.06] hover:bg-white/[0.12]"
                 }`}
               >
-                <div className="p-5 sm:p-6">
+                <div className="rounded-2xl bg-[#090d16]/95 backdrop-blur-xl p-5 sm:p-6 overflow-hidden">
                   <button
                     type="button"
-                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                    className="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus:outline-none"
+                    id={`faq-btn-${index}`}
                     aria-expanded={isOpen}
+                    aria-controls={`faq-panel-${index}`}
+                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    className="w-full flex justify-between items-center text-left gap-4 group focus:outline-none"
                   >
-                    <span className={`text-base sm:text-lg font-bold transition-colors ${
-                      isOpen ? "text-[#0A2540]" : "text-slate-800 hover:text-[#0A2540]"
-                    }`}>
+                    <span className={`text-base sm:text-lg font-bold transition-colors ${isOpen ? "text-[#00f5a0]" : "text-white group-hover:text-slate-200"}`}>
                       {faq.question}
                     </span>
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                      isOpen ? "bg-indigo-50 text-[#635BFF] rotate-180" : "bg-slate-100 text-slate-500"
-                    }`}>
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "bg-emerald-500/20 text-[#00f5a0] rotate-180" : "bg-white/[0.04] text-slate-400"}`}>
                       <ChevronDown size={18} />
                     </div>
                   </button>
@@ -113,13 +115,16 @@ export default function Faq() {
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
+                        id={`faq-panel-${index}`}
+                        role="region"
+                        aria-labelledby={`faq-btn-${index}`}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <p className="mt-3.5 pt-3.5 border-t border-slate-100 text-sm sm:text-base text-[#475569] leading-relaxed font-normal">
+                        <p className="text-sm sm:text-base text-slate-300 leading-relaxed pt-4 mt-3 border-t border-white/[0.06] font-normal">
                           {faq.answer}
                         </p>
                       </motion.div>
@@ -131,21 +136,26 @@ export default function Faq() {
           })}
         </div>
 
-        {/* Bottom Help Box */}
-        <div className="mt-12 p-6 rounded-2xl bg-white border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-sm">
-          <div>
-            <p className="text-sm font-bold text-[#0A2540]">Still have questions?</p>
-            <p className="text-xs text-slate-500">Our senior engineering architects are available for technical scoping.</p>
+        {/* Bottom Contact Callout */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-14 p-8 rounded-3xl bg-gradient-to-r from-emerald-950/30 via-[#090d16] to-cyan-950/30 border border-emerald-500/20 text-center flex flex-col sm:flex-row items-center justify-between gap-6"
+        >
+          <div className="text-left">
+            <h3 className="text-lg font-bold text-white">Have a specific architectural query?</h3>
+            <p className="text-xs sm:text-sm text-slate-400 mt-0.5">Talk directly with our technical solutions team.</p>
           </div>
+
           <button
-            type="button"
             onClick={() => router.push("/contact-us")}
-            className="px-5 py-2.5 rounded-xl bg-[#0A2540] hover:bg-[#635BFF] text-white text-xs font-bold flex items-center gap-1.5 transition-all duration-200 cursor-pointer shrink-0 shadow-sm"
+            className="px-6 py-3 bg-[#00f5a0] hover:bg-[#00d9f5] text-black font-bold text-sm rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(0,245,160,0.3)] flex items-center gap-2 shrink-0 hover:scale-105"
           >
-            <span>Ask an Architect</span>
-            <ArrowRight size={13} />
+            <span>Ask Us Anything</span>
+            <ArrowRight size={14} />
           </button>
-        </div>
+        </motion.div>
 
       </div>
     </section>

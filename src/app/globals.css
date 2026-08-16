@@ -4,55 +4,53 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
 
-    --primary: 243 100% 68%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 168 80% 47%;
+    --primary-foreground: 224 71% 4%;
 
-    --brand-navy: #0A2540;
-    --brand-indigo: #635BFF;
-    --brand-blue: #0066CC;
-    --brand-cyan: #00D4FF;
+    --accent-emerald: #00f5a0;
+    --accent-cyan: #00d9f5;
+    --accent-teal: #25ccad;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --border: 214.3 31.8% 91.4%;
+    --border: 217 33% 17%;
     --radius: 0.75rem;
   }
 
   /* Improved Selection */
   ::selection {
-    background-color: #635BFF;
-    color: #FFFFFF;
+    background-color: #00f5a0;
+    color: #030712;
   }
 
   .dark {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
   }
 }
 
 /* ======================================================
-   BASE STYLES - STRIPE & NAGARRO LIGHT ENTERPRISE
+   BASE STYLES
 ====================================================== */
 @layer base {
   * {
     @apply border-border;
-    outline-color: #635BFF;
+    outline-color: #00f5a0;
     -webkit-tap-highlight-color: transparent;
   }
 
   html {
     height: -webkit-fill-available;
-    color-scheme: light;
-    background-color: #FFFFFF;
+    color-scheme: dark;
   }
 
   body {
-    background-color: #FFFFFF;
-    color: #334155;
+    background-color: #030712;
+    color: #f8fafc;
     scroll-behavior: smooth;
     min-height: 100vh;
     min-height: 100dvh;
@@ -60,14 +58,13 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   /* High-Contrast Focus Visible for WCAG 2.2 / ADA / Section 508 / EAA */
   :focus-visible {
-    outline: 2px solid #635BFF !important;
+    outline: 2px solid #00f5a0 !important;
     outline-offset: 3px !important;
-    box-shadow: 0 0 0 4px rgba(99, 91, 255, 0.25) !important;
+    box-shadow: 0 0 0 4px rgba(0, 245, 160, 0.25) !important;
   }
 
   /* Screen Reader Utility */
@@ -120,8 +117,8 @@
   }
 
   html.a11y-high-contrast body {
-    background-color: #FFFFFF !important;
-    color: #000000 !important;
+    background-color: #000000 !important;
+    color: #ffffff !important;
   }
 
   html.a11y-monochrome {
@@ -140,10 +137,10 @@
 
   html.a11y-highlight-links a,
   html.a11y-highlight-links button {
-    outline: 2px solid #635BFF !important;
+    outline: 2px solid #facc15 !important;
     outline-offset: 2px !important;
     text-decoration: underline !important;
-    text-decoration-color: #635BFF !important;
+    text-decoration-color: #facc15 !important;
     text-decoration-thickness: 2px !important;
   }
 
@@ -159,22 +156,22 @@
     cursor: default !important;
   }
 
-  /* Custom Light Enterprise Scrollbar */
+  /* Custom Premium Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #F8FAFC;
+    background: #030712;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #CBD5E1;
+    background: #1e293b;
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #635BFF;
+    background: #00f5a0;
   }
 }
 
@@ -185,88 +182,46 @@
     contain-intrinsic-size: 1px 700px;
   }
 
-  /* Stripe-Style Floating Shadow and Border Utilities */
-  .stripe-card {
-    background: #FFFFFF;
-    border: 1px solid #E2E8F0;
-    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .stripe-card:hover {
-    border-color: #CBD5E1;
-    box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
-    transform: translateY(-2px);
-  }
-
-  .stripe-shadow-sm {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
-  }
-
-  .stripe-shadow-md {
-    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
-  }
-
-  .stripe-shadow-lg {
-    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.04);
-  }
-
-  /* High-Contrast Enterprise Typography */
-  .text-brand-navy {
-    color: #0A2540;
-  }
-
-  .text-brand-indigo {
-    color: #635BFF;
-  }
-
-  .text-gradient-stripe {
-    background: linear-gradient(135deg, #0A2540 0%, #635BFF 50%, #00D4FF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .text-gradient-emerald,
-  .text-gradient-cyan,
-  .text-gradient-electric {
-    background: linear-gradient(135deg, #0A2540 0%, #635BFF 100%);
+  .text-gradient-emerald {
+    background: linear-gradient(135deg, #00f5a0 0%, #00d9f5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-silver {
-    background: linear-gradient(180deg, #0F172A 0%, #475569 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .bg-cyber-gradient {
-    background: linear-gradient(135deg, #0A2540 0%, #635BFF 100%);
+    background: linear-gradient(135deg, #00f5a0 0%, #00d9f5 100%);
   }
 
   .glass-panel {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(15, 23, 42, 0.65);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .glass-card {
-    background: #FFFFFF;
-    border: 1px solid #E2E8F0;
-    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .glass-card:hover {
-    border-color: #635BFF;
-    box-shadow: 0 12px 30px -4px rgba(99, 91, 255, 0.12);
-    transform: translateY(-2px);
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(0, 245, 160, 0.35);
+    box-shadow: 0 20px 50px -10px rgba(0, 245, 160, 0.15);
+    transform: translateY(-3px);
   }
 
   .cyber-glow {
-    box-shadow: 0 0 40px -5px rgba(56, 189, 248, 0.35);
+    box-shadow: 0 0 40px -5px rgba(0, 245, 160, 0.3);
   }
 
   .cyan-glow {
