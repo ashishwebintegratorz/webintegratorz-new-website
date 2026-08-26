@@ -185,11 +185,24 @@ const websiteSchema = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en" className="dark" style={{ colorScheme: "dark" }} suppressHydrationWarning>
+        <html lang="en" className="dark" suppressHydrationWarning>
             <head>
                 <script
                     dangerouslySetInnerHTML={{
-                        __html: `document.documentElement.classList.add('dark');`,
+                        __html: `
+                          (function() {
+                            try {
+                              var stored = localStorage.getItem('theme');
+                              if (stored === 'light') {
+                                document.documentElement.classList.remove('dark');
+                                document.documentElement.style.colorScheme = 'light';
+                              } else {
+                                document.documentElement.classList.add('dark');
+                                document.documentElement.style.colorScheme = 'dark';
+                              }
+                            } catch(e) {}
+                          })();
+                        `,
                     }}
                 />
                 <script
@@ -212,9 +225,10 @@ export default function RootLayout({ children }) {
                     fetchPriority="high"
                 />
             </head>
-            <body className={`${inter.variable} font-sans antialiased text-white bg-[#030712] selection:bg-[#50a2ff] selection:text-[#030712]`}>
+            <body className={`${inter.variable} font-sans antialiased text-slate-900 bg-white dark:text-white dark:bg-[#030712] selection:bg-[#50a2ff] selection:text-[#030712]`}>
                 <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
             </body>
         </html>
     );
 }
+
