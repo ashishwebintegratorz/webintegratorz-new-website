@@ -134,14 +134,14 @@ export default function Navbar() {
                                                 <Link 
                                                     key={i} 
                                                     href={item.href} 
-                                                    className="group flex items-start gap-3.5 p-3 rounded-xl bg-gray-50/80 hover:bg-blue-50/80 dark:bg-white/[0.03] dark:hover:bg-[#155dfc]/10 border border-gray-100 dark:border-white/[0.05] hover:border-[#155dfc]/30 dark:hover:border-[#50a2ff]/30 transition-all"
+                                                    className="group flex items-start gap-3.5 p-3 rounded-xl bg-gray-50/90 hover:bg-blue-50 dark:bg-white/[0.03] dark:hover:bg-blue-950/40 border border-gray-200/60 dark:border-white/[0.05] hover:border-blue-200 dark:hover:border-blue-800/40 transition-all"
                                                 >
-                                                    <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-[#155dfc]/15 border border-blue-200 dark:border-[#155dfc]/30 flex items-center justify-center text-[#155dfc] dark:text-[#50a2ff] group-hover:scale-110 group-hover:bg-[#155dfc] group-hover:text-white transition-all shrink-0 mt-0.5">
+                                                    <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/40 flex items-center justify-center text-[#155dfc] dark:text-[#50a2ff] group-hover:scale-110 group-hover:bg-[#155dfc] group-hover:text-white transition-all shrink-0 mt-0.5">
                                                         <item.icon size={18} />
                                                     </div>
                                                     <div>
                                                         <p className="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-[#155dfc] dark:group-hover:text-[#50a2ff] transition-colors">{item.label}</p>
-                                                        <p className="text-xs text-gray-600 dark:text-gray-400 leading-snug mt-0.5 font-normal">{item.desc}</p>
+                                                        <p className="text-xs text-gray-500 dark:text-gray-400 leading-snug mt-0.5 font-normal">{item.desc}</p>
                                                     </div>
                                                 </Link>
                                             ))}
@@ -185,7 +185,7 @@ export default function Navbar() {
                                         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
                                         <div className="grid grid-cols-3 gap-4 relative z-10">
                                             {aiCategories.map((category, idx) => (
-                                                <div key={idx} className="p-4 rounded-xl bg-gray-50/80 dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/[0.06] space-y-3">
+                                                <div key={idx} className="p-4 rounded-xl bg-gray-50/90 dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/[0.06] space-y-3">
                                                     <div className="flex items-center gap-2 pb-2 border-b border-gray-200 dark:border-white/[0.08]">
                                                         <div className="w-2 h-2 rounded-full bg-[#155dfc] dark:bg-[#50a2ff]" />
                                                         <p className="text-xs font-bold tracking-wider text-[#155dfc] dark:text-[#50a2ff] uppercase">{category.title}</p>
@@ -195,7 +195,7 @@ export default function Navbar() {
                                                             <Link
                                                                 key={sIdx}
                                                                 href={service.href}
-                                                                className="group flex items-center justify-between py-2 px-2.5 rounded-lg hover:bg-blue-50/80 dark:hover:bg-[#155dfc]/15 border border-transparent hover:border-[#155dfc]/20 dark:hover:border-[#50a2ff]/20 transition-all"
+                                                                className="group flex items-center justify-between py-2 px-2.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-950/40 border border-transparent hover:border-blue-200 dark:hover:border-blue-800/40 transition-all"
                                                             >
                                                                 <div className="flex items-center gap-2.5">
                                                                     <div className="w-7 h-7 rounded-lg bg-gray-200/80 dark:bg-white/[0.06] flex items-center justify-center text-gray-700 dark:text-gray-300 group-hover:text-white group-hover:bg-[#155dfc] transition-all">
@@ -218,7 +218,7 @@ export default function Navbar() {
                                         </div>
 
                                         {/* AI Banner Footer */}
-                                        <div className="mt-4 p-4 rounded-xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] flex items-center justify-between relative z-10">
+                                        <div className="mt-4 p-4 rounded-xl bg-gray-100 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] flex items-center justify-between relative z-10">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-[#155dfc]/15 border border-blue-200 dark:border-[#155dfc]/30 flex items-center justify-center text-[#155dfc] dark:text-[#50a2ff]">
                                                     <Zap size={18} />
