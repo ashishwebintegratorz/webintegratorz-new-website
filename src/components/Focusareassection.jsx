@@ -66,12 +66,12 @@ export default function FocusAreasSection() {
   ];
 
   return (
-    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.08] overflow-hidden">
+    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-gray-200 dark:border-white/[0.08] overflow-hidden">
       {/* Subtle Background Radial Grid */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-[0.04]"
         style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, #50a2ff 1px, transparent 0)",
+          backgroundImage: "radial-gradient(circle at 1px 1px, #155dfc 1px, transparent 0)",
           backgroundSize: "32px 32px"
         }}
       />
@@ -84,10 +84,10 @@ export default function FocusAreasSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030712] border border-[#155dfc]/30 mb-6 font-semibold shadow-inner"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-[#030712] border border-blue-200 dark:border-[#155dfc]/40 mb-6 font-bold shadow-sm"
           >
-            <Sparkles size={14} className="text-[#50a2ff]" />
-            <span className="text-[#50a2ff] text-xs tracking-wider uppercase font-semibold">
+            <Sparkles size={14} className="text-blue-600 dark:text-[#50a2ff]" />
+            <span className="text-blue-700 dark:text-[#50a2ff] text-xs tracking-wider uppercase font-bold">
               Engineering Capabilities
             </span>
           </motion.div>
@@ -99,7 +99,7 @@ export default function FocusAreasSection() {
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white tracking-tight leading-[1.15]"
           >
-            Our Core <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">Focus Areas</span>
+            Our Core <span className="bg-gradient-to-r from-[#155dfc] to-[#2563eb] dark:from-[#50a2ff] dark:to-[#93c5fd] bg-clip-text text-transparent">Focus Areas</span>
           </motion.h2>
 
           <motion.p
@@ -107,7 +107,7 @@ export default function FocusAreasSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-5 text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl font-normal leading-relaxed"
+            className="mt-5 text-base sm:text-lg text-slate-700 dark:text-gray-300 max-w-2xl font-normal leading-relaxed"
           >
             From custom foundational AI systems to global-scale cloud applications, we turn ambitious technical visions into flawless digital realities.
           </motion.p>
@@ -118,31 +118,31 @@ export default function FocusAreasSection() {
           {focusAreas.map((area, index) => (
             <div
               key={index}
-              className="relative rounded-2xl bg-[#030712] border border-white/[0.08] p-6 sm:p-7 shadow-2xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#50a2ff]/40 hover:shadow-[#155dfc]/10 group overflow-hidden flex flex-col justify-between"
+              className="relative rounded-2xl bg-gray-50/90 dark:bg-[#030712] border border-gray-200 dark:border-white/[0.08] p-6 sm:p-7 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-500/40 dark:hover:border-[#50a2ff]/40 group overflow-hidden flex flex-col justify-between"
             >
-              {/* Aceternity Top Shine Line */}
-              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-all duration-300" />
+              {/* Top Shine Line */}
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 transition-all duration-300" />
 
-              {/* Ambient Glow Spotlight inside card */}
+              {/* Ambient Glow */}
               <div className="absolute -top-20 -right-20 w-44 h-44 bg-gradient-to-b from-[#155dfc]/20 via-[#50a2ff]/10 to-transparent rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 pointer-events-none" />
 
               <div className="relative z-10">
-                {/* Header Row: Icon & Category Tag */}
+                {/* Header Row */}
                 <div className="flex items-center justify-between mb-5">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#155dfc]/30 bg-[#155dfc]/10 text-[#50a2ff] shadow-inner group-hover:scale-110 group-hover:text-white transition-transform duration-300">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-blue-200 dark:border-[#155dfc]/30 bg-blue-50 dark:bg-[#155dfc]/15 text-[#155dfc] dark:text-[#50a2ff] shadow-inner group-hover:scale-110 group-hover:bg-[#155dfc] group-hover:text-white transition-all duration-300">
                     <area.icon className="h-6 w-6" />
                   </div>
-                  <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#50a2ff]/30 bg-[#50a2ff]/10 text-[#50a2ff]">
+                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-blue-200 dark:border-blue-800/60 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-sky-300">
                     {area.tag}
                   </span>
                 </div>
 
                 {/* Title & Description */}
-                <h3 className="mb-2 text-xl font-bold text-white tracking-tight group-hover:text-[#50a2ff] transition-colors leading-snug">
+                <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white tracking-tight group-hover:text-[#155dfc] dark:group-hover:text-[#50a2ff] transition-colors leading-snug">
                   {area.title}
                 </h3>
 
-                <p className="text-sm text-gray-400 leading-relaxed mb-6 font-normal">
+                <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-6 font-normal">
                   {area.description}
                 </p>
 
@@ -151,7 +151,7 @@ export default function FocusAreasSection() {
                   {area.tags.map((t, idx) => (
                     <span
                       key={idx}
-                      className="text-xs font-medium px-2.5 py-1 rounded-lg bg-white/[0.05] border border-white/[0.08] text-gray-300 group-hover:border-[#50a2ff]/30 transition-colors"
+                      className="text-xs font-medium px-2.5 py-1 rounded-lg bg-gray-200/70 dark:bg-white/[0.06] border border-gray-300 dark:border-white/[0.1] text-gray-800 dark:text-gray-200 group-hover:border-blue-400/40 transition-colors"
                     >
                       {t}
                     </span>
@@ -160,14 +160,14 @@ export default function FocusAreasSection() {
               </div>
 
               {/* Bottom Action Link */}
-              <div className="relative z-10 pt-4 border-t border-white/[0.08] flex items-center justify-between">
+              <div className="relative z-10 pt-4 border-t border-gray-200 dark:border-white/[0.08] flex items-center justify-between">
                 <button
                   type="button"
                   onClick={() => router.push(area.route)}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-300 hover:text-white group-hover:text-[#50a2ff] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-semibold text-gray-800 dark:text-gray-200 hover:text-[#155dfc] dark:hover:text-white group-hover:text-[#155dfc] dark:group-hover:text-[#50a2ff] transition-colors cursor-pointer"
                 >
                   <span>Explore Architecture</span>
-                  <ArrowRight size={14} className="text-[#50a2ff] group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={14} className="text-[#155dfc] dark:text-[#50a2ff] group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>

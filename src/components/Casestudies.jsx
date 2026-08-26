@@ -203,20 +203,18 @@ export default function Casestudies() {
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
               Ready to build mission-critical digital products?
             </h3>
-            <p className="text-sm sm:text-base text-gray-400">
+            <p className="text-sm sm:text-base text-gray-300">
               Join leading global enterprises delivering next-gen software with Webintegratorz.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full lg:w-auto">
             <NoiseButton
-              onClick={() => {}}
+              href="/contact-us"
               className="w-full sm:w-auto text-base font-semibold"
             >
-              <Link href="/contact-us" className="flex items-center gap-2">
-                <span>Schedule Architecture Call</span>
-                <ArrowRight size={16} className="text-[#50a2ff]" />
-              </Link>
+              <span>Schedule Architecture Call</span>
+              <ArrowRight size={16} className="text-white" />
             </NoiseButton>
           </div>
         </div>

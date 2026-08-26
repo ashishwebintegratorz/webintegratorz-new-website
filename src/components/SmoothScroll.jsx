@@ -11,21 +11,21 @@ export default function SmoothScroll({ children }) {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
     const lenis = new Lenis({
-      duration: 1.0, // Fast, light, snappy and silky smooth
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential deceleration curve
+      duration: isTouchDevice ? 0.8 : 1.0, // Fast, snappy, responsive
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential curve
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.05,
-      touchMultiplier: 1.2,
-      smoothTouch: false, // Maintain native 120Hz scrolling on touch devices
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
+      smoothTouch: false, // Preserves 120Hz native touch responsiveness on iOS/Android
       infinite: false,
     });
 
     lenisRef.current = lenis;
-
-    // Attach to global window for anchor jumps or modal scroll stops
     window.__lenis = lenis;
 
     let reqId;

@@ -45,7 +45,7 @@ export default function Faq() {
   ];
 
   return (
-    <section id="faq" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden border-t border-neutral-800/80">
+    <section id="faq" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden border-t border-gray-200 dark:border-neutral-800/80">
       <div className="relative max-w-4xl mx-auto">
         
         {/* Header */}
@@ -54,10 +54,10 @@ export default function Faq() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030712] border border-[#155dfc]/30 mb-6 font-semibold shadow-inner"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-[#030712] border border-blue-200 dark:border-[#155dfc]/40 mb-6 font-bold shadow-sm"
           >
-            <HelpCircle size={14} className="text-[#50a2ff]" />
-            <span className="text-[#50a2ff] text-xs font-semibold uppercase tracking-wider">
+            <HelpCircle size={14} className="text-blue-600 dark:text-[#50a2ff]" />
+            <span className="text-blue-700 dark:text-[#50a2ff] text-xs font-bold uppercase tracking-wider">
               Knowledge Base
             </span>
           </motion.div>
@@ -68,10 +68,10 @@ export default function Faq() {
             viewport={{ once: true }}
             className="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-white tracking-tight leading-tight"
           >
-            Frequently Asked <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">Questions</span>
+            Frequently Asked <span className="bg-gradient-to-r from-[#155dfc] to-[#2563eb] dark:from-[#50a2ff] dark:to-[#93c5fd] bg-clip-text text-transparent">Questions</span>
           </motion.h2>
 
-          <p className="mt-4 text-base text-gray-600 dark:text-gray-400 max-w-xl font-normal">
+          <p className="mt-4 text-base text-slate-700 dark:text-gray-300 max-w-xl font-normal">
             Everything you need to know about our engineering standards, engagement models, and AI delivery capabilities.
           </p>
         </div>
@@ -83,7 +83,7 @@ export default function Faq() {
             return (
               <div
                 key={index}
-                className="relative rounded-2xl bg-[#030712] border border-white/[0.08] p-5 sm:p-6 transition-all duration-300 hover:border-[#50a2ff]/40 hover:shadow-xl shadow-lg overflow-hidden group"
+                className="relative rounded-2xl bg-gray-50/90 dark:bg-[#030712] border border-gray-200 dark:border-white/[0.08] p-5 sm:p-6 transition-all duration-300 hover:border-blue-500/40 dark:hover:border-[#50a2ff]/40 shadow-md hover:shadow-xl overflow-hidden group"
               >
                 {/* Top Shine on open */}
                 {isOpen && (
@@ -96,12 +96,12 @@ export default function Faq() {
                   aria-expanded={isOpen}
                   aria-controls={`faq-panel-${index}`}
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full flex justify-between items-center text-left gap-4 group focus:outline-none cursor-pointer"
+                  className="w-full flex justify-between items-center text-left gap-4 group focus:outline-none cursor-pointer min-h-[44px]"
                 >
-                  <span className={`text-base sm:text-lg font-bold transition-colors ${isOpen ? "text-[#50a2ff]" : "text-white group-hover:text-[#50a2ff]"}`}>
+                  <span className={`text-base sm:text-lg font-bold transition-colors ${isOpen ? "text-[#155dfc] dark:text-[#50a2ff]" : "text-gray-900 dark:text-white group-hover:text-[#155dfc] dark:group-hover:text-[#50a2ff]"}`}>
                     {faq.question}
                   </span>
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "bg-[#155dfc]/20 text-[#50a2ff] rotate-180 border border-[#155dfc]/40" : "bg-white/[0.05] text-gray-400 border border-white/[0.08]"}`}>
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "bg-blue-100 dark:bg-[#155dfc]/20 text-[#155dfc] dark:text-[#50a2ff] rotate-180 border border-blue-200 dark:border-[#155dfc]/40" : "bg-gray-200/80 dark:bg-white/[0.05] text-gray-700 dark:text-gray-400 border border-gray-300 dark:border-white/[0.08]"}`}>
                     <ChevronDown size={18} />
                   </div>
                 </button>
@@ -118,7 +118,7 @@ export default function Faq() {
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-sm sm:text-base text-gray-400 leading-relaxed pt-4 mt-3 border-t border-white/[0.08] font-normal">
+                      <p className="text-sm sm:text-base text-slate-600 dark:text-gray-300 leading-relaxed pt-4 mt-3 border-t border-gray-200 dark:border-white/[0.08] font-normal">
                         {faq.answer}
                       </p>
                     </motion.div>
@@ -131,22 +131,22 @@ export default function Faq() {
 
         {/* Bottom Contact Callout */}
         <div
-          className="relative mt-14 p-8 rounded-2xl bg-[#030712] border border-white/[0.08] text-center flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl overflow-hidden"
+          className="relative mt-14 p-8 rounded-2xl bg-gray-50/90 dark:bg-[#030712] border border-gray-200 dark:border-white/[0.08] text-center flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl overflow-hidden"
         >
           <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
 
           <div className="text-left relative z-10">
-            <h3 className="text-xl font-bold text-white tracking-tight">Have a specific architectural query?</h3>
-            <p className="text-sm text-gray-400 mt-1">Talk directly with our technical solutions team.</p>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Have a specific architectural query?</h3>
+            <p className="text-sm text-slate-600 dark:text-gray-300 mt-1">Talk directly with our technical solutions team.</p>
           </div>
 
           <button
             type="button"
             onClick={() => router.push("/contact-us")}
-            className="relative z-10 px-7 py-3 bg-[#155dfc] hover:bg-[#50a2ff] hover:text-[#030712] text-white font-semibold text-sm rounded-full transition-all duration-200 shadow-md flex items-center gap-2 shrink-0 cursor-pointer"
+            className="relative z-10 px-7 py-3 min-h-[44px] rounded-full bg-[#155dfc] hover:bg-[#2563eb] text-white font-bold text-sm shadow-md transition-all flex items-center gap-2 shrink-0 cursor-pointer active:scale-95"
           >
             <span>Ask Us Anything</span>
-            <ArrowRight size={14} />
+            <ArrowRight size={15} />
           </button>
         </div>
 
