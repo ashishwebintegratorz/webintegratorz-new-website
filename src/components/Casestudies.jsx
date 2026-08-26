@@ -1,297 +1,226 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { ChevronLeft, ChevronRight, ArrowUpRight, MapPin, Sparkles, TrendingUp, Shield } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Sparkles, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { NoiseButton } from './ui/noise-background';
 
-const Casestudies = () => {
-  const router = useRouter();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [slidesToShow, setSlidesToShow] = useState(3);
-
-  useEffect(() => {
-    const updateSlides = () => {
-      if (window.innerWidth < 768) {
-        setSlidesToShow(1);
-      } else if (window.innerWidth < 1180) {
-        setSlidesToShow(2);
-      } else {
-        setSlidesToShow(3);
-      }
-    };
-    updateSlides();
-    window.addEventListener('resize', updateSlides);
-    return () => window.removeEventListener('resize', updateSlides);
-  }, []);
-
-  const CasestudiesData = [
-    {
-      id: 1,
-      title: "Rent Buddy",
-      subtitle: "Rental Marketplace Platform",
-      description: "Scaled peer-to-peer real-time property & equipment rental ecosystem with automated tenant vetting.",
-      metric: "100k+ Active Listings",
-      location: "India",
-      tag: "Web & SaaS",
-      image: "/images/rentbuddy1.webp"
-    },
-    {
-      id: 2,
-      title: "New Era Shipping",
-      subtitle: "AI Logistics & Freight System",
-      description: "AI-powered automated route dispatch and real-time cargo container tracking across GCC ports.",
-      metric: "+42% Dispatch Velocity",
-      location: "UAE",
-      tag: "AI & Logistics",
-      image: "/images/newera.jpeg"
-    },
-    {
-      id: 3,
-      title: "Fresh Go",
-      subtitle: "Hyperlocal Quick-Commerce App",
-      description: "Ultra-fast mobile commerce app with instant delivery routing, dynamic cart surge, and inventory sync.",
-      metric: "$3.5M GMV Handled",
-      location: "India",
-      tag: "Mobile App",
-      image: "/images/fresh.webp"
-    },
-    {
-      id: 4,
-      title: "Protech HPL",
-      subtitle: "Industrial ERP & Manufacturing",
-      description: "End-to-end industrial floor control, automated raw material scheduling, and predictive QA analytics.",
-      metric: "3.2x Ops Throughput",
-      location: "India",
-      tag: "Custom Software",
-      image: "/images/protech.webp"
-    },
-    {
-      id: 5,
-      title: "Gober Superapp",
-      subtitle: "All-in-One Multi-Service Superapp",
-      description: "Unified urban superapp powering ride-hailing, food delivery, and digital peer-to-peer wallet payments.",
-      metric: "500k+ App Installs",
-      location: "Bolivia",
-      tag: "Superapp",
-      image: "/icone7.png"
-    },
-    {
-      id: 6,
-      title: "Healthcare Cloud Portal",
-      subtitle: "HIPAA Compliant Clinical EHR",
-      description: "Secure telemedicine platform with encrypted video consultations and real-time biometric tracking.",
-      metric: "99.99% Cloud Uptime",
-      location: "Canada",
-      tag: "HealthTech",
-      image: "/icone1.webp"
-    },
-    {
-      id: 7,
-      title: "Global Health Research",
-      subtitle: "Hospital Analytics Platform",
-      description: "High-throughput clinical trial data ingestion and machine learning biomarker identification engine.",
-      metric: "Petabyte Data Scale",
-      location: "Germany",
-      tag: "Big Data & ML",
-      image: "/icone3.webp"
-    },
-    {
-      id: 8,
-      title: "EduQuest AI",
-      subtitle: "Adaptive Learning Engine",
-      description: "Personalized AI curriculum generator adapting to individual student pace using fine-tuned LLMs.",
-      metric: "88% Retention Rate",
-      location: "India",
-      tag: "Gen AI",
-      image: "/icone4.webp"
-    },
-    {
-      id: 9,
-      title: "Urban Fleet",
-      subtitle: "Intelligent Fleet Routing",
-      description: "Dynamic telematics dashboard reducing fleet idle time through real-time traffic prediction models.",
-      metric: "28% Fuel Efficiency",
-      location: "United Kingdom",
-      tag: "IoT & Cloud",
-      image: "/icone6.webp"
-    }
+export default function Casestudies() {
+  const clientLogosRow1 = [
+    { name: "Rentbuddy", img: "/rentbuddy.webp", category: "Furniture Rental Systems ERP" },
+    { name: "Trade Care", img: "/tradecare.webp", category: "SEBI Research & Financial Tech" },
+    { name: "Solid Rental Car", img: "/solidrental.webp", category: "Miami Car Rental Platform" },
+    { name: "MK Information System", img: "/mkinformation.webp", category: "Enterprise IT & Cloud Systems" },
+    { name: "Datatoniq Systems", img: "/datatoniqlogo.png", category: "Enterprise AI & Cloud Tech" },
+    { name: "New Era", img: "/images/newera2.webp", category: "E-Commerce & Freight UAE" },
+    { name: "Protech HPL", img: "/images/protech.webp", category: "Architectural Laminates ERP" },
   ];
 
-  const maxIndex = Math.max(0, CasestudiesData.length - slidesToShow);
+  const clientLogosRow2 = [
+    { name: "Stock Market Research", img: "/stockmarketresearch.webp", category: "Market Advisory & Analytics" },
+    { name: "AKS Research", img: "/aksresearch.webp", category: "SEBI Stock Research Analyst" },
+    { name: "Equycom Research", img: "/equycom.webp", category: "FinTech & Equity Advisory" },
+    { name: "FreshNow", img: "/images/fresh.webp", category: "Quick Commerce Platform" },
+    { name: "Crown Medical Center", img: "/icone1.webp", category: "Healthcare & Hospital UAE" },
+    { name: "Lotte Aimée", img: "/lotteaimee.webp", category: "Movement & Studio Platform" },
+    { name: "AWS Cloud Partner", img: "/AWS.webp", category: "Cloud Infrastructure Partner" },
+  ];
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-  };
+  // Quadruple for smooth infinite marquee loops
+  const marquee1 = [...clientLogosRow1, ...clientLogosRow1, ...clientLogosRow1, ...clientLogosRow1];
+  const marquee2 = [...clientLogosRow2, ...clientLogosRow2, ...clientLogosRow2, ...clientLogosRow2];
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-  };
+  const metrics = [
+    { value: "100+", label: "Global Deployments", sub: "Production systems live" },
+    { value: "99.9%", label: "Platform SLA Uptime", sub: "Enterprise infrastructure" },
+    { value: "15+", label: "Countries Served", sub: "USA, UAE, Japan, EU, India" },
+    { value: "4.9/5", label: "Client Satisfaction", sub: "Verified customer rating" },
+  ];
 
   return (
-    <section id="casestudies" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.06]">
+    <section id="casestudies" className="relative w-full py-24 sm:py-32 bg-[#030712] overflow-hidden border-t border-white/[0.08] selection:bg-[#50a2ff] selection:text-[#030712]">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[350px] bg-[#155dfc]/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[300px] bg-[#50a2ff]/5 rounded-full blur-[160px] pointer-events-none" />
 
-      <div className="relative max-w-[1440px] mx-auto">
+      <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-20">
         
-        {/* Header with Navigation Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
-            >
-              <Sparkles size={14} className="text-[#00f5a0]" />
-              <span className="text-[#00f5a0] text-xs tracking-[0.2em] uppercase font-bold">
-                Proven Track Record
-              </span>
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]"
-            >
-              What It&apos;s Like To Build With <br />
-              <span className="text-gradient-emerald">Webintegratorz</span>
-            </motion.h2>
-          </div>
-
-          {/* Slider Control Buttons */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={prevSlide}
-              className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/[0.1] hover:bg-white/[0.1] hover:border-emerald-500/40 text-white flex items-center justify-center transition-all duration-200 active:scale-95"
-              aria-label="Previous Slide"
-            >
-              <ChevronLeft size={22} />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="w-12 h-12 rounded-2xl bg-[#00f5a0] text-black hover:bg-[#00d9f5] flex items-center justify-center transition-all duration-200 shadow-[0_0_20px_rgba(0,245,160,0.3)] active:scale-95"
-              aria-label="Next Slide"
-            >
-              <ChevronRight size={22} />
-            </button>
-          </div>
-        </div>
-
-        {/* Carousel Slider */}
-        <div className="overflow-hidden">
-          <div
-            className="flex transition-transform duration-500 ease-out gap-6"
-            style={{
-              transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)`
-            }}
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030712] border border-[#155dfc]/30 mb-6 font-bold"
           >
-            {CasestudiesData.map((study) => (
-              <div
-                key={study.id}
-                style={{ flex: `0 0 calc(${100 / slidesToShow}% - ${(slidesToShow - 1) * 24 / slidesToShow}px)` }}
-                className="group relative rounded-3xl p-px overflow-hidden flex flex-col min-w-0"
-              >
-                {/* Glow Border */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/15 via-white/5 to-transparent group-hover:from-[#00f5a0]/40 transition-all duration-500" />
+            <Sparkles size={14} className="text-[#50a2ff]" />
+            <span className="text-[#50a2ff] text-xs tracking-[0.2em] uppercase font-bold">
+              Trusted by Industry Leaders
+            </span>
+          </motion.div>
 
-                {/* Card Interior */}
-                <div className="relative flex-1 bg-[#090d16] rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220] border border-white/10">
-                  
-                  {/* Image Container */}
-                  <div className="relative w-full h-52 sm:h-56 bg-black/40 overflow-hidden">
-                    <Image
-                      src={study.image}
-                      alt={study.title}
-                      fill
-                      loading="lazy"
-                      decoding="async"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-black/40" />
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6"
+          >
+            What It&apos;s Like To Build With <br />
+            <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">Webintegratorz</span>
+          </motion.h2>
 
-                    {/* Tag badge on image */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2">
-                      <span className="text-[11px] font-black px-3 py-1 rounded-full bg-[#030712] border border-white/30 text-white">
-                        {study.tag}
-                      </span>
-                    </div>
-
-                    {/* Metric highlight badge */}
-                    <div className="absolute bottom-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#061e16] border border-emerald-500/60 text-[#00f5a0] text-xs font-black shadow-lg">
-                      <TrendingUp size={13} />
-                      <span>{study.metric}</span>
-                    </div>
-                  </div>
-
-                  {/* Body Content */}
-                  <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-black text-[#00f5a0] uppercase tracking-wider">
-                          {study.subtitle}
-                        </span>
-                        <div className="flex items-center gap-1 text-xs text-slate-200 font-bold">
-                          <MapPin size={13} className="text-[#00f5a0]" />
-                          <span>{study.location}</span>
-                        </div>
-                      </div>
-
-                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2.5 group-hover:text-[#00f5a0] transition-colors leading-snug">
-                        {study.title}
-                      </h3>
-
-                      <p className="text-sm text-slate-200 leading-relaxed font-normal">
-                        {study.description}
-                      </p>
-                    </div>
-
-                    {/* Card Footer Link */}
-                    <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                      <button
-                        onClick={() => router.push('/contact-us')}
-                        className="inline-flex items-center gap-2 text-xs font-bold text-slate-100 hover:text-[#00f5a0] transition-colors py-1"
-                      >
-                        <span>Request Architecture Brief</span>
-                        <ArrowUpRight size={15} className="text-[#00f5a0]" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Dynamic Pagination Indicators (Accessible 32px Touch Targets) */}
-        <div className="flex justify-center items-center gap-1.5 mt-10" role="tablist" aria-label="Case studies pagination">
-          {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => setCurrentIndex(idx)}
-              className="w-8 h-8 flex items-center justify-center rounded-full focus:outline-none"
-              aria-label={`Go to case study slide ${idx + 1}`}
-              aria-selected={idx === currentIndex}
-              role="tab"
-            >
-              <span
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  idx === currentIndex ? 'w-8 bg-[#00f5a0]' : 'w-2.5 bg-white/40 hover:bg-white/80'
-                }`}
-              />
-            </button>
-          ))}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-base sm:text-lg text-gray-400 max-w-2xl font-normal leading-relaxed"
+          >
+            Empowering visionary enterprises, hyper-growth startups, and global brands with production-grade engineering, reliable SLAs, and AI-accelerated delivery.
+          </motion.p>
         </div>
 
       </div>
+
+      {/* DUAL MARQUEE SECTION WITH 100% PURE WHITE CLIENT LOGOS */}
+      <div className="relative space-y-6 overflow-hidden">
+        
+        {/* Gradient edge masks for smooth fade in/out */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-48 bg-gradient-to-r from-[#030712] via-[#030712]/90 to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-48 bg-gradient-to-l from-[#030712] via-[#030712]/90 to-transparent z-20 pointer-events-none" />
+
+        {/* Row 1: Leftward Marquee */}
+        <div className="relative flex items-center">
+          <motion.div
+            initial={{ x: 0 }}
+            animate={{ x: "-50%" }}
+            transition={{
+              duration: 34,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="flex whitespace-nowrap gap-6 sm:gap-8"
+          >
+            {marquee1.map((client, i) => (
+              <div
+                key={`row1-${i}`}
+                className="flex items-center gap-4 min-w-[250px] sm:min-w-[300px] h-24 sm:h-28 rounded-2xl bg-[#030712] border border-white/[0.08] hover:border-[#50a2ff]/40 shadow-xl transition-all duration-300 group px-6 relative overflow-hidden shrink-0"
+              >
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+
+                {/* 100% Pure White Logo Filter */}
+                <div className="relative w-28 sm:w-32 h-12 flex items-center justify-center">
+                  <Image
+                    src={client.img}
+                    alt={client.name}
+                    width={140}
+                    height={48}
+                    loading="lazy"
+                    decoding="async"
+                    className="object-contain max-h-10 sm:max-h-12 brightness-0 invert opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                  />
+                </div>
+
+                <div className="hidden sm:block text-left border-l border-white/[0.08] pl-3.5">
+                  <p className="text-xs font-bold text-white tracking-wide">{client.name}</p>
+                  <p className="text-[10px] text-[#50a2ff] font-medium tracking-wide">{client.category}</p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Row 2: Rightward Reverse Marquee */}
+        <div className="relative flex items-center">
+          <motion.div
+            initial={{ x: "-50%" }}
+            animate={{ x: "0%" }}
+            transition={{
+              duration: 36,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="flex whitespace-nowrap gap-6 sm:gap-8"
+          >
+            {marquee2.map((client, i) => (
+              <div
+                key={`row2-${i}`}
+                className="flex items-center gap-4 min-w-[250px] sm:min-w-[300px] h-24 sm:h-28 rounded-2xl bg-[#030712] border border-white/[0.08] hover:border-[#50a2ff]/40 shadow-xl transition-all duration-300 group px-6 relative overflow-hidden shrink-0"
+              >
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+
+                {/* 100% Pure White Logo Filter */}
+                <div className="relative w-28 sm:w-32 h-12 flex items-center justify-center">
+                  <Image
+                    src={client.img}
+                    alt={client.name}
+                    width={140}
+                    height={48}
+                    loading="lazy"
+                    decoding="async"
+                    className="object-contain max-h-10 sm:max-h-12 brightness-0 invert opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                  />
+                </div>
+
+                <div className="hidden sm:block text-left border-l border-white/[0.08] pl-3.5">
+                  <p className="text-xs font-bold text-white tracking-wide">{client.name}</p>
+                  <p className="text-[10px] text-[#50a2ff] font-medium tracking-wide">{client.category}</p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+      </div>
+
+      {/* METRICS & PROMISE RIBBON */}
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {metrics.map((item, idx) => (
+            <div
+              key={idx}
+              className="p-6 sm:p-8 rounded-2xl bg-[#030712] border border-white/[0.08] relative overflow-hidden group hover:border-[#155dfc]/40 transition-all duration-300"
+            >
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-40 group-hover:opacity-100 transition-opacity" />
+              <p className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                {item.value}
+              </p>
+              <p className="mt-2 text-sm sm:text-base font-bold text-gray-200">
+                {item.label}
+              </p>
+              <p className="mt-1 text-xs text-gray-400 font-medium">
+                {item.sub}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA Strip */}
+        <div className="mt-12 sm:mt-16 p-8 sm:p-12 rounded-3xl bg-[#030712] border border-white/[0.08] relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
+          <div className="space-y-2 text-center lg:text-left">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+              Ready to build mission-critical digital products?
+            </h3>
+            <p className="text-sm sm:text-base text-gray-400">
+              Join leading global enterprises delivering next-gen software with Webintegratorz.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full lg:w-auto">
+            <NoiseButton
+              onClick={() => {}}
+              className="w-full sm:w-auto text-base font-semibold"
+            >
+              <Link href="/contact-us" className="flex items-center gap-2">
+                <span>Schedule Architecture Call</span>
+                <ArrowRight size={16} className="text-[#50a2ff]" />
+              </Link>
+            </NoiseButton>
+          </div>
+        </div>
+      </div>
     </section>
   );
-};
-
-export default Casestudies;
+}

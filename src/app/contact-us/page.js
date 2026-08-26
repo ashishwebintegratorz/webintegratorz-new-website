@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Send,
-  MessageSquare,
   ChevronRight,
   CheckCircle2,
   User,
@@ -22,6 +21,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function ContactUsPage() {
   const breadcrumbItems = [
+    { label: 'Home', href: '/' },
     { label: 'Contact Us', href: '/contact-us' }
   ];
   const [formData, setFormData] = useState({
@@ -52,7 +52,6 @@ export default function ContactUsPage() {
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
 
-    // Professional Message Formatting for WhatsApp
     const whatsappMsg = `*🌟 NEW PROJECT INQUIRY*%0A` +
       `----------------------------%0A` +
       `*👤 Client Name:* ${formData.name}%0A` +
@@ -67,7 +66,6 @@ export default function ContactUsPage() {
 
     setIsSubmitted(true);
 
-    // Small delay to show success state before redirecting
     setTimeout(() => {
       window.open(whatsappUrl, '_blank');
       setIsSubmitted(false);
@@ -75,15 +73,15 @@ export default function ContactUsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white pt-32 pb-20 selection:bg-[#25ccad]/30 relative overflow-hidden font-inter">
+    <div className="min-h-screen bg-[#030712] text-white pt-32 pb-20 selection:bg-[#50a2ff] selection:text-[#030712] relative overflow-hidden font-inter">
 
-      {/* Premium Design Accents - Dark & Energetic */}
-      <div className="absolute top-0 right-[-10%] w-[60%] h-[60%] bg-[#25ccad]/10 rounded-full blur-[150px] -z-10 opacity-40" />
-      <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-[#25ccad]/5 rounded-full blur-[120px] -z-10 opacity-30" />
+      {/* Ambient Glows */}
+      <div className="absolute top-0 right-[-10%] w-[60%] h-[60%] bg-[#155dfc]/5 rounded-full blur-[150px] -z-10 opacity-70 pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-[#50a2ff]/5 rounded-full blur-[120px] -z-10 opacity-60 pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
 
-        <div className="flex flex-col lg:flex-row gap-20 items-stretch">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-stretch">
 
           {/* Left Side: Strategic Info */}
           <motion.div
@@ -100,51 +98,50 @@ export default function ContactUsPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-[#25ccad]/10 rounded-2xl border border-[#25ccad]/20 mb-8"
+                  className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-[#030712] rounded-full border border-[#155dfc]/30 mb-8"
                 >
-                  <Zap className="w-4 h-4 text-[#25ccad] fill-[#25ccad]" />
-                  <span className="text-[11px] font-black tracking-[0.25em] text-[#25ccad] uppercase">Strategic Consulting</span>
+                  <Zap className="w-4 h-4 text-[#50a2ff]" />
+                  <span className="text-[11px] font-bold tracking-[0.25em] text-[#50a2ff] uppercase">Strategic Consulting</span>
                 </motion.div>
 
-                <h1 className="text-6xl md:text-8xl font-black leading-[0.95] tracking-tighter mb-10">
+                <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tight mb-8 text-white">
                   Connect with <br />
-                  <span className="text-[#25ccad] relative">
+                  <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">
                     Webintegratorz.
-                    <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#25ccad]/20" viewBox="0 0 100 10" preserveAspectRatio="none">
-                      <path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="8" />
-                    </svg>
                   </span>
                 </h1>
 
-                <p className="text-xl text-slate-300 max-w-lg leading-relaxed font-medium">
+                <p className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed font-normal">
                   Experience a partnership built on transparency, technical excellence, and rapid scaling. Fill the form to initiate a high-priority discussion.
                 </p>
               </div>
 
               {/* High-End Trust Indicators */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="p-8 bg-[#25ccad]/10 border border-[#25ccad]/20 rounded-[2rem] backdrop-blur-sm">
-                  <Clock className="w-8 h-8 text-[#25ccad] mb-4" />
-                  <h4 className="text-sm font-black uppercase tracking-widest text-[#25ccad] mb-2">Response Time</h4>
-                  <p className="text-2xl font-black text-white tracking-tight">Under 2 Hours</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-7 bg-[#030712] border border-white/[0.08] rounded-2xl shadow-2xl hover:border-[#50a2ff]/40 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+                  <Clock className="w-8 h-8 text-[#50a2ff] mb-4" />
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-[#50a2ff] mb-1">Response Time</h4>
+                  <p className="text-2xl font-bold text-white tracking-tight">Under 2 Hours</p>
                 </div>
 
-                <div className="p-8 bg-slate-800/50 border border-slate-700 rounded-[2rem] backdrop-blur-sm">
-                  <ShieldCheck className="w-8 h-8 text-slate-400 mb-4" />
-                  <h4 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-2">Priority Support</h4>
-                  <p className="text-2xl font-black text-white tracking-tight">Active Team</p>
+                <div className="p-7 bg-[#030712] border border-white/[0.08] rounded-2xl shadow-2xl hover:border-[#50a2ff]/40 transition-all relative overflow-hidden group">
+                  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+                  <ShieldCheck className="w-8 h-8 text-[#50a2ff] mb-4" />
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-[#50a2ff] mb-1">Priority Support</h4>
+                  <p className="text-2xl font-bold text-white tracking-tight">Active Team</p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-16 pt-10 border-t border-slate-800 flex items-center justify-between">
+            <div className="mt-16 pt-10 border-t border-white/[0.08] flex items-center justify-between">
               <div>
-                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3">Support Central</p>
-                <p className="text-2xl font-black text-[#25ccad] tracking-tight">+91 89899 44488</p>
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Support Central</p>
+                <p className="text-2xl font-bold text-[#50a2ff] tracking-tight">+91 89899 44488</p>
               </div>
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map(i => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 shadow-sm overflow-hidden relative">
+                  <div key={i} className="w-10 h-10 rounded-full border-2 border-[#030712] bg-[#030712] shadow-xs overflow-hidden relative">
                     <Image
                       src={`https://i.pravatar.cc/100?u=${i}`}
                       alt="user"
@@ -154,7 +151,7 @@ export default function ContactUsPage() {
                     />
                   </div>
                 ))}
-                <div className="w-10 h-10 rounded-full border-2 border-white bg-[#25ccad] flex items-center justify-center text-[10px] font-black text-white">
+                <div className="w-10 h-10 rounded-full border-2 border-[#030712] bg-[#155dfc] flex items-center justify-center text-[10px] font-black text-white">
                   +12
                 </div>
               </div>
@@ -168,7 +165,8 @@ export default function ContactUsPage() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="lg:w-[55%] relative"
           >
-            <div className="bg-slate-900/50 backdrop-blur-xl p-8 md:p-14 rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 relative overflow-hidden group">
+            <div className="bg-[#030712] border border-white/[0.08] p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
 
               {/* Submission Animation */}
               <AnimatePresence>
@@ -177,38 +175,38 @@ export default function ContactUsPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-slate-950/98 backdrop-blur-md z-50 flex flex-col items-center justify-center text-center p-10"
+                    className="absolute inset-0 bg-[#030712] z-50 flex flex-col items-center justify-center text-center p-10"
                   >
-                    <div className="w-24 h-24 bg-[#25ccad]/10 rounded-full flex items-center justify-center mb-8 relative">
+                    <div className="w-24 h-24 bg-[#155dfc]/15 rounded-full flex items-center justify-center mb-8 relative">
                       <motion.div
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ duration: 2, repeat: Infinity }}
-                        className="absolute inset-0 bg-[#25ccad]/10 rounded-full"
+                        className="absolute inset-0 bg-[#155dfc]/10 rounded-full"
                       />
-                      <CheckCircle2 className="w-12 h-12 text-[#25ccad]" />
+                      <CheckCircle2 className="w-12 h-12 text-[#50a2ff]" />
                     </div>
-                    <h2 className="text-4xl font-black mb-4 tracking-tight text-white">Syncing with WhatsApp</h2>
-                    <p className="text-slate-400 font-bold max-w-xs leading-relaxed">
+                    <h2 className="text-3xl font-bold mb-3 tracking-tight text-white">Syncing with WhatsApp</h2>
+                    <p className="text-gray-400 font-medium max-w-xs leading-relaxed">
                       Handshaking with our priority support channel...
                     </p>
                   </motion.div>
                 )}
               </AnimatePresence>
 
-              <div className="flex items-center justify-between mb-12">
-                <h2 className="text-4xl font-black tracking-tight text-white">Inquiry Form</h2>
-                <div className="flex gap-1">
-                  <span className="w-2 h-2 rounded-full bg-[#25ccad]" />
-                  <span className="w-4 h-2 rounded-full bg-[#25ccad]/30" />
-                  <span className="w-2 h-2 rounded-full bg-[#25ccad]/30" />
+              <div className="flex items-center justify-between mb-10">
+                <h2 className="text-3xl font-extrabold tracking-tight text-white">Inquiry Form</h2>
+                <div className="flex gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#155dfc]" />
+                  <span className="w-4 h-2 rounded-full bg-[#50a2ff]" />
+                  <span className="w-2 h-2 rounded-full bg-white/20" />
                 </div>
               </div>
 
-              <form onSubmit={handleWhatsAppSubmit} className="space-y-8" aria-label="Contact and Consultation Form">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label htmlFor="contact-name" className="text-xs font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
-                      <User size={14} className="text-[#25ccad]" /> Full Name <span className="text-emerald-400" aria-hidden="true">*</span>
+              <form onSubmit={handleWhatsAppSubmit} className="space-y-6" aria-label="Contact and Consultation Form">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2.5">
+                    <label htmlFor="contact-name" className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+                      <User size={14} className="text-[#50a2ff]" /> Full Name <span className="text-[#50a2ff]" aria-hidden="true">*</span>
                     </label>
                     <input
                       required
@@ -221,13 +219,13 @@ export default function ContactUsPage() {
                       onFocus={() => setActiveField('name')}
                       onBlur={() => setActiveField(null)}
                       onChange={handleInputChange}
-                      className={`w-full px-7 py-5 bg-slate-800/70 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-400 ${activeField === 'name' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/10'
+                      className={`w-full px-5 py-4 bg-white/[0.04] border rounded-xl focus:outline-none transition-all font-medium text-white placeholder:text-gray-500 ${activeField === 'name' ? 'border-[#50a2ff] ring-4 ring-[#155dfc]/10' : 'border-white/[0.08]'
                         }`}
                     />
                   </div>
-                  <div className="space-y-3">
-                    <label htmlFor="contact-email" className="text-xs font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
-                      <Mail size={14} className="text-[#25ccad]" /> Business Email <span className="text-emerald-400" aria-hidden="true">*</span>
+                  <div className="space-y-2.5">
+                    <label htmlFor="contact-email" className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+                      <Mail size={14} className="text-[#50a2ff]" /> Business Email <span className="text-[#50a2ff]" aria-hidden="true">*</span>
                     </label>
                     <input
                       required
@@ -240,16 +238,16 @@ export default function ContactUsPage() {
                       onFocus={() => setActiveField('email')}
                       onBlur={() => setActiveField(null)}
                       onChange={handleInputChange}
-                      className={`w-full px-7 py-5 bg-slate-800/70 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-400 ${activeField === 'email' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/10'
+                      className={`w-full px-5 py-4 bg-white/[0.04] border rounded-xl focus:outline-none transition-all font-medium text-white placeholder:text-gray-500 ${activeField === 'email' ? 'border-[#50a2ff] ring-4 ring-[#155dfc]/10' : 'border-white/[0.08]'
                         }`}
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label htmlFor="contact-phone" className="text-xs font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
-                      <Phone size={14} className="text-[#25ccad]" /> Phone Number <span className="text-emerald-400" aria-hidden="true">*</span>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2.5">
+                    <label htmlFor="contact-phone" className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+                      <Phone size={14} className="text-[#50a2ff]" /> Phone Number <span className="text-[#50a2ff]" aria-hidden="true">*</span>
                     </label>
                     <input
                       required
@@ -262,13 +260,13 @@ export default function ContactUsPage() {
                       onFocus={() => setActiveField('phone')}
                       onBlur={() => setActiveField(null)}
                       onChange={handleInputChange}
-                      className={`w-full px-7 py-5 bg-slate-800/70 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-400 ${activeField === 'phone' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/10'
+                      className={`w-full px-5 py-4 bg-white/[0.04] border rounded-xl focus:outline-none transition-all font-medium text-white placeholder:text-gray-500 ${activeField === 'phone' ? 'border-[#50a2ff] ring-4 ring-[#155dfc]/10' : 'border-white/[0.08]'
                         }`}
                     />
                   </div>
-                  <div className="space-y-3">
-                    <label htmlFor="contact-project-type" className="text-xs font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
-                      <FileText size={14} className="text-[#25ccad]" /> Project Nature
+                  <div className="space-y-2.5">
+                    <label htmlFor="contact-project-type" className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+                      <FileText size={14} className="text-[#50a2ff]" /> Project Nature
                     </label>
                     <div className="relative">
                       <select
@@ -278,21 +276,21 @@ export default function ContactUsPage() {
                         onFocus={() => setActiveField('projectType')}
                         onBlur={() => setActiveField(null)}
                         onChange={handleInputChange}
-                        className={`w-full px-7 py-5 bg-slate-800/70 border-2 rounded-[1.5rem] focus:outline-none transition-all font-black appearance-none cursor-pointer text-white ${activeField === 'projectType' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/10'
+                        className={`w-full px-5 py-4 bg-[#030712] border rounded-xl focus:outline-none transition-all font-medium appearance-none cursor-pointer text-white ${activeField === 'projectType' ? 'border-[#50a2ff] ring-4 ring-[#155dfc]/10' : 'border-white/[0.08]'
                           }`}
                       >
                         {projectOptions.map(option => (
-                          <option key={option} value={option} className="bg-slate-900">{option}</option>
+                          <option key={option} value={option} className="bg-[#030712] text-white">{option}</option>
                         ))}
                       </select>
-                      <ChevronRight className="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 rotate-90 pointer-events-none" />
+                      <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 rotate-90 pointer-events-none" />
                     </div>
                   </div>
                 </div>
 
-                <div className="space-y-3">
-                  <label htmlFor="contact-message" className="text-xs font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
-                    <Send size={14} className="text-[#25ccad]" /> Detailed Message <span className="text-emerald-400" aria-hidden="true">*</span>
+                <div className="space-y-2.5">
+                  <label htmlFor="contact-message" className="text-xs font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+                    <Send size={14} className="text-[#50a2ff]" /> Detailed Message <span className="text-[#50a2ff]" aria-hidden="true">*</span>
                   </label>
                   <textarea
                     required
@@ -305,58 +303,35 @@ export default function ContactUsPage() {
                     onFocus={() => setActiveField('message')}
                     onBlur={() => setActiveField(null)}
                     onChange={handleInputChange}
-                    className={`w-full px-7 py-5 bg-slate-800/70 border-2 rounded-[1.5rem] focus:outline-none transition-all font-bold text-white placeholder:text-slate-400 resize-none ${activeField === 'message' ? 'border-[#25ccad] bg-slate-800 ring-8 ring-[#25ccad]/5' : 'border-white/10'
+                    className={`w-full px-5 py-4 bg-white/[0.04] border rounded-xl focus:outline-none transition-all font-medium text-white placeholder:text-gray-500 resize-none ${activeField === 'message' ? 'border-[#50a2ff] ring-4 ring-[#155dfc]/10' : 'border-white/[0.08]'
                       }`}
                   ></textarea>
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full h-20 bg-[#25ccad] hover:bg-[#1fa98d] text-black font-black text-xl rounded-[1.8rem] shadow-[0_30px_60px_-15px_rgba(37,204,173,0.4)] hover:shadow-[0_40px_80px_-20px_rgba(37,204,173,0.5)] hover:-translate-y-1.5 transition-all duration-500 flex items-center justify-between px-8 md:justify-center md:gap-4 group"
+                    className="w-full h-16 bg-[#155dfc] hover:bg-[#50a2ff] hover:text-[#030712] text-white font-bold text-lg rounded-2xl shadow-xl transition-all duration-300 flex items-center justify-between px-8 md:justify-center md:gap-4 group cursor-pointer"
                   >
-                    {/* Desktop WhatsApp Icon (Left) */}
-                    <div className="hidden md:block">
-                      <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.119.553 4.187 1.602 6.007L0 24l6.123-1.606a11.845 11.845 0 005.683 1.448h.005c6.632 0 12.029-5.394 12.035-12.031a11.77 11.77 0 00-3.517-8.417" />
-                      </svg>
-                    </div>
-
                     <span className="flex-1 md:flex-none text-left md:text-center">Connect via WhatsApp</span>
-
-                    {/* Mobile WhatsApp Icon (Right) */}
-                    <div className="md:hidden">
-                      <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.119.553 4.187 1.602 6.007L0 24l6.123-1.606a11.845 11.845 0 005.928 1.57h.005c6.632 0 12.029-5.394 12.035-12.031a11.77 11.77 0 00-3.517-8.417" />
-                      </svg>
-                    </div>
-
-                    {/* Desktop Chevron (Right) */}
-                    <div className="hidden md:flex w-8 h-8 rounded-full bg-black/10 items-center justify-center group-hover:bg-black/20 transition-colors">
-                      <ChevronRight className="w-5 h-5" />
+                    <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
+                      <ChevronRight className="w-4 h-4" />
                     </div>
                   </button>
 
-                  <div className="mt-8 flex items-center justify-center gap-10 opacity-40">
-                    <div className="flex items-center gap-2">
-                      <Globe size={14} />
-                      <span className="text-[10px] font-black uppercase tracking-widest">Global Ops</span>
+                  <div className="mt-6 flex items-center justify-center gap-8 text-gray-400">
+                    <div className="flex items-center gap-1.5">
+                      <Globe size={13} className="text-[#50a2ff]" />
+                      <span className="text-[10px] font-bold uppercase tracking-widest">Global Ops</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 size={14} />
-                      <span className="text-[10px] font-black uppercase tracking-widest">256-Bit Secure</span>
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 size={13} className="text-[#50a2ff]" />
+                      <span className="text-[10px] font-bold uppercase tracking-widest">256-Bit Secure</span>
                     </div>
                   </div>
                 </div>
               </form>
             </div>
-
-            {/* Premium Interactive Backdrop Element */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute -top-10 -right-10 w-40 h-40 border-4 border-[#25ccad]/10 rounded-full pointer-events-none"
-            />
           </motion.div>
 
         </div>

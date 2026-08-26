@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { FileText, Gavel, Scale, AlertCircle, Clock, Globe, Laptop, ArrowRight } from "lucide-react";
+import { FileText, Gavel, Scale, AlertCircle, Clock, Globe, Laptop } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 const TermsAndConditions = () => {
@@ -47,38 +47,38 @@ const TermsAndConditions = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[#050505] text-white pt-32 pb-24 font-inter overflow-hidden relative">
+        <div className="min-h-screen bg-[#030712] text-white pt-32 pb-24 font-inter selection:bg-[#50a2ff] selection:text-[#030712] overflow-hidden relative">
             {/* Decorative Background Elements */}
-            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#25ccad] opacity-[0.05] rounded-full blur-[120px] -z-0" />
-            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#25ccad] opacity-[0.03] rounded-full blur-[100px] -z-0" />
+            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#155dfc]/5 rounded-full blur-[120px] -z-0 pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#50a2ff]/5 rounded-full blur-[100px] -z-0 pointer-events-none" />
 
             <div className="relative z-10 max-w-4xl mx-auto px-6">
                 <Breadcrumbs items={[{ label: 'Terms & Conditions', href: '/terms' }]} />
                 {/* Header Section */}
                 <div className={`transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#25ccad]/10 text-[#25ccad] rounded-full mb-8 text-xs font-black tracking-widest uppercase border border-[#25ccad]/20">
-                        <FileText className="w-3.5 h-3.5" />
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#030712] text-[#50a2ff] rounded-full mb-8 text-xs font-bold tracking-widest uppercase border border-[#155dfc]/30">
+                        <FileText className="w-3.5 h-3.5 text-[#50a2ff]" />
                         Legal Agreement
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter leading-none">
-                        Terms & <span className="text-[#25ccad]">Conditions</span>
+                    <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-none text-white">
+                        Terms & <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">Conditions</span>
                     </h1>
 
-                    <div className="flex flex-col md:flex-row md:items-center gap-4 text-white/50 text-sm font-medium mb-16">
+                    <div className="flex flex-col md:flex-row md:items-center gap-4 text-gray-400 text-sm font-medium mb-16">
                         <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-[#25ccad]" />
+                            <span className="w-2 h-2 rounded-full bg-[#155dfc]" />
                             Effective Date: {lastUpdated}
                         </div>
-                        <div className="hidden md:block w-1 h-1 bg-white/10 rounded-full" />
+                        <div className="hidden md:block w-1 h-1 bg-white/20 rounded-full" />
                         <span>Standard Service Agreement</span>
                     </div>
                 </div>
 
                 {/* Content Section */}
                 <div className="space-y-12">
-                    <div className={`prose prose-invert max-w-none transition-all duration-1000 delay-200 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        <p className="text-xl text-white/70 leading-relaxed font-medium">
+                    <div className={`max-w-none transition-all duration-1000 delay-200 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <p className="text-xl text-gray-400 leading-relaxed font-normal">
                             By engaging with Webintegratorz Technologies for IT services, you agree to the following terms and conditions. Please read them carefully to understand our commitment to your project and our professional standards.
                         </p>
                     </div>
@@ -87,53 +87,22 @@ const TermsAndConditions = () => {
                         {sections.map((section, idx) => (
                             <div
                                 key={idx}
-                                className={`group p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-[#25ccad]/30 transition-all duration-500 hover:bg-[#25ccad]/5 transition-all duration-1000 delay-${300 + (idx * 100)} transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                                className={`group p-8 rounded-2xl bg-[#030712] border border-white/[0.08] shadow-2xl hover:border-[#50a2ff]/40 transition-all duration-300 relative overflow-hidden flex flex-col md:flex-row gap-8 items-start ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                             >
-                                <div className="flex flex-col md:flex-row gap-8 items-start">
-                                    <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center rounded-2xl bg-[#25ccad]/10 text-[#25ccad] group-hover:scale-110 transition-transform duration-500">
-                                        <section.icon className="w-8 h-8" />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-2xl font-black mb-4 tracking-tight group-hover:text-[#25ccad] transition-colors">
-                                            {section.title}
-                                        </h3>
-                                        <p className="text-white/60 leading-relaxed text-lg font-medium">
-                                            {section.content}
-                                        </p>
-                                    </div>
+                                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+                                <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center rounded-xl bg-[#155dfc]/15 text-[#50a2ff] border border-[#155dfc]/30 group-hover:scale-110 group-hover:text-white transition-transform duration-300">
+                                    <section.icon className="w-7 h-7" />
+                                </div>
+                                <div className="space-y-2">
+                                    <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-[#50a2ff] transition-colors">
+                                        {section.title}
+                                    </h3>
+                                    <p className="text-gray-400 leading-relaxed text-base font-normal">
+                                        {section.content}
+                                    </p>
                                 </div>
                             </div>
                         ))}
-                    </div>
-
-                    {/* Engagement Section */}
-                    <div className={`mt-24 p-10 md:p-16 rounded-[3rem] bg-gradient-to-tr from-[#25ccad]/20 to-transparent border border-[#25ccad]/20 relative overflow-hidden transition-all duration-1000 delay-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
-                            <div className="text-center md:text-left">
-                                <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">Need a Custom SOW?</h2>
-                                <p className="text-white/70 text-lg max-w-md font-medium">
-                                    We provide detailed Statement of Work documents tailored to the specific needs of your enterprise project.
-                                </p>
-                            </div>
-
-                            <a
-                                href="/contact-us"
-                                className="group flex items-center gap-4 px-10 py-5 bg-[#25ccad] text-black font-black text-lg rounded-[1.5rem] hover:shadow-[0_20px_40px_rgba(37,204,173,0.3)] transition-all duration-500 hover:-translate-y-1"
-                            >
-                                Contact Sales
-                                <div className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-black/20 transition-colors">
-                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                </div>
-                            </a>
-                        </div>
-
-                        <div className="absolute top-0 left-0 w-64 h-64 bg-[#25ccad]/20 rounded-full blur-3xl -z-0 opacity-50" />
-                    </div>
-
-                    {/* Legal Footer */}
-                    <div className={`pt-16 pb-8 text-center text-white/30 text-sm font-medium transition-all duration-1000 delay-800 transform ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-                        <p>© {new Date().getFullYear()} Webintegratorz Technologies. Professional IT Services Agreement.</p>
-                        <p className="mt-2">Indore, India | Global Software Engineering Standards</p>
                     </div>
                 </div>
             </div>

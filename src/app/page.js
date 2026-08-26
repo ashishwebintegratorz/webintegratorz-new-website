@@ -1,13 +1,23 @@
 "use client";
+
 import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import Focusareassection from "@/components/Focusareassection";
 import OurServices from "@/components/OurServices";
 import WhyChooseUs from "@/components/WhyChooseUs";
-const Casestudies = dynamic(() => import("@/components/Casestudies"));
-const Workflowcycle = dynamic(() => import("@/components/Workflowcycle"));
-const Featuredsection = dynamic(() => import("@/components/Featuredsection"));
-const Faq = dynamic(() => import("@/components/Faq"));
+
+const Casestudies = dynamic(() => import("@/components/Casestudies"), {
+  ssr: true,
+});
+const Workflowcycle = dynamic(() => import("@/components/Workflowcycle"), {
+  ssr: true,
+});
+const Featuredsection = dynamic(() => import("@/components/Featuredsection"), {
+  ssr: true,
+});
+const Faq = dynamic(() => import("@/components/Faq"), {
+  ssr: true,
+});
 
 export default function Home() {
   const faqSchema = {
@@ -16,74 +26,66 @@ export default function Home() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Why is Webintegratorz Technologies considered a top IT company in India?",
+        "name": "Why is Webintegratorz Technologies considered a top IT and Mobile App development company in India?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Webintegratorz Technologies is recognized as a top IT company in India due to its AI-first engineering approach, expertise in MERN stack development, enterprise-grade security standards, and proven delivery for global clients across UAE, USA, Europe, Japan, and India."
+          "text": "Webintegratorz Technologies is recognized as a top IT company in India due to its AI-first engineering approach, production-grade iOS and Android mobile app development (React Native & Flutter), MERN stack expertise, enterprise-grade security, and proven delivery for 100+ global clients across USA, UAE, Europe, Japan, and India."
         }
       },
       {
         "@type": "Question",
-        "name": "What IT outsourcing services does Webintegratorz Technologies offer?",
+        "name": "What mobile app development services do you provide?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Webintegratorz Technologies offers end-to-end IT outsourcing services including custom software development, AI and machine learning solutions, MERN stack development, mobile app development, cloud engineering, and dedicated offshore development teams in India."
+          "text": "We build end-to-end custom mobile applications including native iOS (Swift), native Android (Kotlin), and cross-platform apps using React Native and Flutter. Our mobile solutions include eCommerce apps, enterprise ERP mobile suites, FinTech applications, and AI-powered mobile experiences."
         }
       },
       {
         "@type": "Question",
-        "name": "Do you provide AI development services for global enterprises?",
+        "name": "What IT outsourcing and dedicated engineering services does Webintegratorz offer?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, Webintegratorz Technologies provides enterprise-grade AI development services including Generative AI solutions, ChatGPT integration, AI agents, predictive analytics, and custom machine learning models for businesses worldwide."
+          "text": "Webintegratorz Technologies offers end-to-end IT outsourcing including custom SaaS engineering, Generative AI integration, MERN stack web applications, native and cross-platform mobile apps, cloud infrastructure on AWS, and dedicated offshore development teams in India."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I hire dedicated developers from India through Webintegratorz?",
+        "name": "Do you provide AI development and LLM integration for global businesses?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Absolutely. Webintegratorz Technologies allows businesses to hire dedicated developers in India including React developers, MERN stack engineers, AI/ML specialists, mobile app developers, and DevOps engineers with flexible engagement models."
+          "text": "Yes, Webintegratorz provides enterprise-grade AI development including Generative AI solutions, ChatGPT & Claude API integration, autonomous AI agent networks, private vector search RAG systems, and custom predictive ML pipelines."
         }
       },
       {
         "@type": "Question",
-        "name": "Which countries do you serve for software development and IT outsourcing?",
+        "name": "Can I hire dedicated mobile app and full stack developers from Webintegratorz?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Webintegratorz Technologies serves clients globally including UAE, United States, Europe, Japan, India, and other international markets through its offshore and remote delivery model."
+          "text": "Yes. Businesses can hire vetted senior developers from India across React Native, Flutter, Next.js, Node.js, Python AI/ML specialists, and cloud architects with 100% IP ownership, flexible time-zone overlap, and rapid 48-hour onboarding."
         }
       },
       {
         "@type": "Question",
-        "name": "What technologies does Webintegratorz Technologies specialize in?",
+        "name": "Which countries do you serve for software development?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Webintegratorz Technologies specializes in MERN stack, React.js, Next.js, Node.js, Flutter, AI and Generative AI, machine learning, cloud-native architectures, and enterprise software development."
+          "text": "Webintegratorz Technologies serves clients globally across the United States, United Arab Emirates (Dubai/Abu Dhabi), United Kingdom, Europe, Japan, and India through our 100% remote-first delivery model."
         }
       },
       {
         "@type": "Question",
-        "name": "Do you work with startups as well as large enterprises?",
+        "name": "How does Webintegratorz ensure enterprise data security and compliance?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, Webintegratorz Technologies partners with early-stage startups, funded scale-ups, and large enterprises, providing tailored product engineering and AI solutions based on business stage and growth goals."
+          "text": "We adhere to enterprise-grade security protocols including strict non-disclosure agreements (NDAs), encrypted CI/CD pipelines, private data isolation with zero third-party model leaks, and compliance-ready architectures (HIPAA, GDPR, SOC 2 alignment)."
         }
       },
       {
         "@type": "Question",
-        "name": "How does Webintegratorz ensure data security and compliance?",
+        "name": "How quickly can I get a project architecture roadmap and estimate?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We follow enterprise-grade security practices including secure coding standards, data encryption, access control, NDA protection, and compliance-ready architectures suitable for global business environments."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How can I get a project estimate or consultation?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can contact Webintegratorz Technologies via email or WhatsApp to request a free consultation, discuss project requirements, and receive a customized project estimate from our technical experts."
+          "text": "You can schedule a direct technical discovery call or message our lead architects via WhatsApp or contact form to receive a detailed technical scope, architectural diagram, and delivery timeline within 24 hours."
         }
       }
     ]
@@ -96,13 +98,27 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Hero />
-      <Focusareassection />
-      <OurServices />
-      <WhyChooseUs />
-      <Casestudies />
-      <Workflowcycle />
-      <Featuredsection />
-      <Faq />
+      <div className="render-optimize">
+        <Focusareassection />
+      </div>
+      <div className="render-optimize">
+        <OurServices />
+      </div>
+      <div className="render-optimize">
+        <WhyChooseUs />
+      </div>
+      <div className="render-optimize">
+        <Casestudies />
+      </div>
+      <div className="render-optimize">
+        <Workflowcycle />
+      </div>
+      <div className="render-optimize">
+        <Featuredsection />
+      </div>
+      <div className="render-optimize">
+        <Faq />
+      </div>
     </>
   );
 }

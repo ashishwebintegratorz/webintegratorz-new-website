@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from "next/navigation";
-import { CircleDollarSign, Zap, Target, Lock, TrendingUp, Clock, Sparkles, ShieldCheck, CheckCircle2, ArrowRight, Award } from "lucide-react";
+import { CircleDollarSign, Zap, Lock, TrendingUp, Clock, Sparkles, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function WhyChooseUsSection() {
   const router = useRouter();
-  const [hoveredCard, setHoveredCard] = useState(null);
 
   const stats = [
     { number: "100+", label: "Clients Globally", sub: "Enterprise & funded startups" },
@@ -56,10 +55,7 @@ export default function WhyChooseUsSection() {
   ];
 
   return (
-    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.06]">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-emerald-500/[0.04] rounded-full blur-[160px] pointer-events-none" />
-
+    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden border-t border-white/[0.08]">
       <div className="relative max-w-[1440px] mx-auto">
         
         {/* Section Header */}
@@ -68,10 +64,10 @@ export default function WhyChooseUsSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030712] border border-[#155dfc]/30 mb-6 font-semibold shadow-inner"
           >
-            <ShieldCheck size={14} className="text-[#00f5a0]" />
-            <span className="text-[#00f5a0] text-xs tracking-[0.2em] uppercase font-bold">
+            <ShieldCheck size={14} className="text-[#50a2ff]" />
+            <span className="text-[#50a2ff] text-xs tracking-wider uppercase font-semibold">
               Why Partner With Us
             </span>
           </motion.div>
@@ -80,9 +76,9 @@ export default function WhyChooseUsSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]"
+            className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white tracking-tight leading-[1.15]"
           >
-            Engineered for <span className="text-gradient-emerald">High-Stakes Reliability</span>
+            Engineered for <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">High-Stakes Reliability</span>
           </motion.h2>
 
           <motion.p
@@ -90,75 +86,67 @@ export default function WhyChooseUsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed"
+            className="mt-5 text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl font-normal leading-relaxed"
           >
             We combine elite engineering discipline with cutting-edge AI expertise to deliver digital assets that perform, scale, and generate long-term equity.
           </motion.p>
         </div>
 
-        {/* Top 4 KPI Metrics Ribbon */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-16">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-6 sm:p-8 rounded-3xl bg-[#090d16]/90 border border-white/[0.08] backdrop-blur-xl relative overflow-hidden group hover:border-emerald-500/30 transition-all"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-xl pointer-events-none group-hover:bg-emerald-500/15 transition-colors" />
-              <p className="text-3xl sm:text-4xl lg:text-5xl font-black text-white text-gradient-emerald">
-                {stat.number}
-              </p>
-              <p className="text-sm font-bold text-white mt-2">{stat.label}</p>
-              <p className="text-xs text-slate-400 mt-0.5">{stat.sub}</p>
-            </motion.div>
-          ))}
+        {/* Brand Dark Metric Ribbon */}
+        <div className="relative rounded-2xl bg-[#030712] border border-white/[0.08] p-8 sm:p-10 mb-16 shadow-2xl overflow-hidden">
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent" />
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-[#155dfc]/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 mx-auto grid max-w-4xl grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+            {stats.map((stat, index) => (
+              <div key={index}>
+                <p className="text-3xl font-bold sm:text-4xl text-white tracking-tight">
+                  {stat.number}
+                </p>
+                <p className="mt-1.5 text-sm text-[#50a2ff] font-semibold">{stat.label}</p>
+                <p className="text-xs text-gray-400 mt-0.5">{stat.sub}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* 6 Features Grid */}
+        {/* 6 Aceternity Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              onMouseEnter={() => setHoveredCard(index)}
-              onMouseLeave={() => setHoveredCard(null)}
-              className="group relative rounded-3xl p-px overflow-hidden flex flex-col"
+              className="relative rounded-2xl bg-[#030712] border border-white/[0.08] p-6 sm:p-7 shadow-2xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#50a2ff]/40 group overflow-hidden flex flex-col justify-between"
             >
-              {/* Outer glow line */}
-              <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#6366f1] ${hoveredCard === index ? 'opacity-100' : 'opacity-20'}`} />
+              {/* Top Shine */}
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+              
+              {/* Radial Accent Glow */}
+              <div className="absolute -top-20 -right-20 w-44 h-44 bg-gradient-to-b from-[#155dfc]/20 via-[#50a2ff]/10 to-transparent rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
 
-              <div className="relative flex-1 bg-[#090d16]/95 backdrop-blur-xl rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220]">
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0] group-hover:scale-110 group-hover:bg-[#00f5a0] group-hover:text-black transition-all duration-300">
-                      <feature.icon size={22} />
-                    </div>
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/[0.04] text-slate-400 border border-white/[0.06]">
-                      {feature.tag}
-                    </span>
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#155dfc]/30 bg-[#155dfc]/10 text-[#50a2ff] shadow-inner group-hover:scale-110 group-hover:text-white transition-transform duration-300">
+                    <feature.icon className="h-6 w-6" />
                   </div>
-
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#00f5a0] transition-colors leading-snug">
-                    {feature.title}
-                  </h3>
-
-                  <p className="text-sm text-slate-300 leading-relaxed font-normal">
-                    {feature.description}
-                  </p>
+                  <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#50a2ff]/30 bg-[#50a2ff]/10 text-[#50a2ff]">
+                    {feature.tag}
+                  </span>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-white/[0.06] flex items-center gap-2 text-xs font-semibold text-slate-400 group-hover:text-[#00f5a0] transition-colors">
-                  <CheckCircle2 size={14} className="text-[#00f5a0]" />
-                  <span>Guaranteed SLA Standard</span>
-                </div>
+                <h3 className="mb-2 text-xl font-bold text-white tracking-tight leading-snug">
+                  {feature.title}
+                </h3>
+
+                <p className="text-sm text-gray-400 leading-relaxed mb-6 font-normal">
+                  {feature.description}
+                </p>
               </div>
-            </motion.div>
+
+              <div className="relative z-10 pt-4 border-t border-white/[0.08] flex items-center gap-2 text-xs font-semibold text-gray-400">
+                <CheckCircle2 size={14} className="text-[#50a2ff]" />
+                <span>Guaranteed SLA Standard</span>
+              </div>
+            </div>
           ))}
         </div>
 

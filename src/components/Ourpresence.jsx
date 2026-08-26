@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Globe, MapPin, Sparkles, Calendar, ArrowRight } from 'lucide-react';
+import { Globe, MapPin, Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function OurPresenceSection() {
@@ -63,9 +63,9 @@ export default function OurPresenceSection() {
   }, [isPaused]);
 
   return (
-    <section className="relative w-full py-24 sm:py-32 bg-[#030712] overflow-hidden border-t border-white/[0.06]">
+    <section className="relative w-full py-24 sm:py-32 bg-transparent overflow-hidden border-t border-white/[0.08]">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-cyan-500/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#155dfc]/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-16 relative">
         <div className="flex flex-col items-center text-center">
@@ -73,10 +73,10 @@ export default function OurPresenceSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030712] border border-[#155dfc]/30 mb-6 font-bold"
           >
-            <Globe size={14} className="text-[#00f5a0]" />
-            <span className="text-[#00f5a0] text-xs font-bold uppercase tracking-[0.25em]">
+            <Globe size={14} className="text-[#50a2ff]" />
+            <span className="text-[#50a2ff] text-xs font-bold uppercase tracking-[0.25em]">
               Global Presence &amp; Outreach
             </span>
           </motion.div>
@@ -88,7 +88,7 @@ export default function OurPresenceSection() {
             className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]"
           >
             Delivering Globally. <br />
-            <span className="text-gradient-emerald">Empowering Ecosystems Everywhere.</span>
+            <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">Empowering Ecosystems Everywhere.</span>
           </motion.h2>
 
           <motion.p
@@ -96,24 +96,25 @@ export default function OurPresenceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed"
+            className="mt-5 text-base sm:text-lg text-gray-400 max-w-2xl font-normal leading-relaxed"
           >
             With international clients across North America, Europe, the Middle East, and Asia, our reach extends across borders through remote agile squads and worldwide tech summits.
           </motion.p>
         </div>
 
-        {/* Global Hubs Pills Bar */}
+        {/* Global Hubs Aceternity Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
           {globalHubs.map((hub, i) => (
             <div
               key={i}
-              className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-emerald-500/30 transition-all text-center"
+              className="relative p-5 rounded-2xl bg-[#030712] border border-white/[0.08] hover:border-[#50a2ff]/40 shadow-xl transition-all duration-300 text-center group overflow-hidden"
             >
-              <span className="text-[10px] font-bold text-[#00f5a0] uppercase tracking-wider block mb-1">
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+              <span className="text-[10px] font-bold text-[#50a2ff] uppercase tracking-wider block mb-1">
                 {hub.tag}
               </span>
-              <p className="text-sm font-bold text-white">{hub.country}</p>
-              <p className="text-xs text-slate-400 mt-0.5">{hub.city}</p>
+              <p className="text-base font-bold text-white group-hover:text-[#50a2ff] transition-colors">{hub.country}</p>
+              <p className="text-xs text-gray-400 mt-0.5">{hub.city}</p>
             </div>
           ))}
         </div>
@@ -131,34 +132,36 @@ export default function OurPresenceSection() {
           {[...events, ...events, ...events, ...events].map((event, index) => (
             <div
               key={index}
-              className="group relative w-[300px] sm:w-[420px] h-[260px] sm:h-[320px] rounded-3xl overflow-hidden bg-[#090d16] border border-white/[0.08] hover:border-emerald-500/40 transition-all duration-500 flex-shrink-0"
+              className="group relative w-[300px] sm:w-[420px] h-[260px] sm:h-[320px] rounded-3xl overflow-hidden bg-[#030712] border border-white/[0.08] hover:border-[#50a2ff]/40 shadow-2xl transition-all duration-500 flex-shrink-0"
             >
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent z-20 opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+
               {/* Event Image */}
               <div className="absolute inset-0 w-full h-full">
                 <Image
                   src={event.image}
                   alt={event.title}
                   fill
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-75 contrast-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                   sizes="420px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/50 to-transparent" />
               </div>
 
               {/* Category Pill */}
               <div className="absolute top-4 left-4 z-10">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[#00f5a0]">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#030712]/90 backdrop-blur-md border border-white/[0.12] text-white shadow-md">
                   {event.category}
                 </span>
               </div>
 
               {/* Bottom Details */}
               <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug group-hover:text-[#00f5a0] transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug group-hover:text-[#50a2ff] transition-colors">
                   {event.title}
                 </h3>
-                <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
-                  <MapPin size={14} className="text-[#00f5a0]" />
+                <div className="flex items-center gap-2 text-xs font-semibold text-gray-300">
+                  <MapPin size={14} className="text-[#50a2ff]" />
                   <span>{event.location}</span>
                 </div>
               </div>

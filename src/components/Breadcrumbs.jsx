@@ -7,10 +7,10 @@ export default function Breadcrumbs({ items }) {
     if (!items || items.length === 0) return null;
 
     return (
-        <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-white/40 mb-8 overflow-x-auto whitespace-nowrap pb-2 md:pb-0 scrollbar-hide">
+        <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-gray-400 mb-8 overflow-x-auto whitespace-nowrap pb-2 md:pb-0 scrollbar-hide">
             <Link
                 href="/"
-                className="flex items-center gap-1.5 hover:text-[#25ccad] transition-colors shrink-0"
+                className="flex items-center gap-1.5 hover:text-[#50a2ff] transition-colors shrink-0"
             >
                 <Home size={14} />
                 <span>Home</span>
@@ -22,12 +22,12 @@ export default function Breadcrumbs({ items }) {
                     {item.href ? (
                         <Link
                             href={item.href}
-                            className="hover:text-[#25ccad] transition-colors shrink-0"
+                            className="hover:text-[#50a2ff] transition-colors shrink-0"
                         >
                             {item.label}
                         </Link>
                     ) : (
-                        <span className="text-white/80 shrink-0">{item.label}</span>
+                        <span className="text-white shrink-0 font-medium">{item.label}</span>
                     )}
                 </React.Fragment>
             ))}

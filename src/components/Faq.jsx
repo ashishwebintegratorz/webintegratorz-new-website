@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronDown, HelpCircle, MessageSquare, ArrowRight, Sparkles } from "lucide-react";
+import { ChevronDown, HelpCircle, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Faq() {
@@ -45,11 +45,7 @@ export default function Faq() {
   ];
 
   return (
-    <section id="faq" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.06]">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/3 right-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
-
+    <section id="faq" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden border-t border-neutral-800/80">
       <div className="relative max-w-4xl mx-auto">
         
         {/* Header */}
@@ -58,10 +54,10 @@ export default function Faq() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030712] border border-[#155dfc]/30 mb-6 font-semibold shadow-inner"
           >
-            <HelpCircle size={14} className="text-[#00f5a0]" />
-            <span className="text-[#00f5a0] text-xs font-bold uppercase tracking-[0.25em]">
+            <HelpCircle size={14} className="text-[#50a2ff]" />
+            <span className="text-[#50a2ff] text-xs font-semibold uppercase tracking-wider">
               Knowledge Base
             </span>
           </motion.div>
@@ -70,92 +66,89 @@ export default function Faq() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight"
+            className="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-white tracking-tight leading-tight"
           >
-            Frequently Asked <span className="text-gradient-emerald">Questions</span>
+            Frequently Asked <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">Questions</span>
           </motion.h2>
 
-          <p className="mt-4 text-base text-slate-300 max-w-xl font-normal">
+          <p className="mt-4 text-base text-gray-600 dark:text-gray-400 max-w-xl font-normal">
             Everything you need to know about our engineering standards, engagement models, and AI delivery capabilities.
           </p>
         </div>
 
-        {/* Accordion Cards */}
+        {/* Aceternity UI Accordion Cards */}
         <div className="space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className={`rounded-2xl p-px transition-all duration-300 ${
-                  isOpen ? "bg-gradient-to-r from-emerald-500/40 via-cyan-500/30 to-transparent" : "bg-white/[0.06] hover:bg-white/[0.12]"
-                }`}
+                className="relative rounded-2xl bg-[#030712] border border-white/[0.08] p-5 sm:p-6 transition-all duration-300 hover:border-[#50a2ff]/40 hover:shadow-xl shadow-lg overflow-hidden group"
               >
-                <div className="rounded-2xl bg-[#090d16]/95 backdrop-blur-xl p-5 sm:p-6 overflow-hidden">
-                  <button
-                    type="button"
-                    id={`faq-btn-${index}`}
-                    aria-expanded={isOpen}
-                    aria-controls={`faq-panel-${index}`}
-                    onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="w-full flex justify-between items-center text-left gap-4 group focus:outline-none"
-                  >
-                    <span className={`text-base sm:text-lg font-bold transition-colors ${isOpen ? "text-[#00f5a0]" : "text-white group-hover:text-slate-200"}`}>
-                      {faq.question}
-                    </span>
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "bg-emerald-500/20 text-[#00f5a0] rotate-180" : "bg-white/[0.04] text-slate-400"}`}>
-                      <ChevronDown size={18} />
-                    </div>
-                  </button>
+                {/* Top Shine on open */}
+                {isOpen && (
+                  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent" />
+                )}
 
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        id={`faq-panel-${index}`}
-                        role="region"
-                        aria-labelledby={`faq-btn-${index}`}
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-sm sm:text-base text-slate-300 leading-relaxed pt-4 mt-3 border-t border-white/[0.06] font-normal">
-                          {faq.answer}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </motion.div>
+                <button
+                  type="button"
+                  id={`faq-btn-${index}`}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${index}`}
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="w-full flex justify-between items-center text-left gap-4 group focus:outline-none cursor-pointer"
+                >
+                  <span className={`text-base sm:text-lg font-bold transition-colors ${isOpen ? "text-[#50a2ff]" : "text-white group-hover:text-[#50a2ff]"}`}>
+                    {faq.question}
+                  </span>
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "bg-[#155dfc]/20 text-[#50a2ff] rotate-180 border border-[#155dfc]/40" : "bg-white/[0.05] text-gray-400 border border-white/[0.08]"}`}>
+                    <ChevronDown size={18} />
+                  </div>
+                </button>
+
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      id={`faq-panel-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-btn-${index}`}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="text-sm sm:text-base text-gray-400 leading-relaxed pt-4 mt-3 border-t border-white/[0.08] font-normal">
+                        {faq.answer}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             );
           })}
         </div>
 
         {/* Bottom Contact Callout */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-14 p-8 rounded-3xl bg-gradient-to-r from-emerald-950/30 via-[#090d16] to-cyan-950/30 border border-emerald-500/20 text-center flex flex-col sm:flex-row items-center justify-between gap-6"
+        <div
+          className="relative mt-14 p-8 rounded-2xl bg-[#030712] border border-white/[0.08] text-center flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl overflow-hidden"
         >
-          <div className="text-left">
-            <h3 className="text-lg font-bold text-white">Have a specific architectural query?</h3>
-            <p className="text-xs sm:text-sm text-slate-400 mt-0.5">Talk directly with our technical solutions team.</p>
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
+
+          <div className="text-left relative z-10">
+            <h3 className="text-xl font-bold text-white tracking-tight">Have a specific architectural query?</h3>
+            <p className="text-sm text-gray-400 mt-1">Talk directly with our technical solutions team.</p>
           </div>
 
           <button
+            type="button"
             onClick={() => router.push("/contact-us")}
-            className="px-6 py-3 bg-[#00f5a0] hover:bg-[#00d9f5] text-black font-bold text-sm rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(0,245,160,0.3)] flex items-center gap-2 shrink-0 hover:scale-105"
+            className="relative z-10 px-7 py-3 bg-[#155dfc] hover:bg-[#50a2ff] hover:text-[#030712] text-white font-semibold text-sm rounded-full transition-all duration-200 shadow-md flex items-center gap-2 shrink-0 cursor-pointer"
           >
             <span>Ask Us Anything</span>
             <ArrowRight size={14} />
           </button>
-        </motion.div>
+        </div>
 
       </div>
     </section>

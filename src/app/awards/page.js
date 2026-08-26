@@ -3,25 +3,20 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   Award, 
   Trophy, 
   Sparkles, 
-  Star, 
   ShieldCheck, 
   CheckCircle2, 
   ArrowRight, 
-  ArrowUpRight, 
   Building2, 
-  Globe2, 
-  Zap, 
-  FileText,
   BadgeCheck,
-  GraduationCap,
   MapPin
 } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { NoiseButton } from '@/components/ui/noise-background';
 
 export default function AwardsPage() {
   const router = useRouter();
@@ -115,20 +110,11 @@ export default function AwardsPage() {
     : awards.filter(a => a.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white pt-24 sm:pt-28 pb-24 overflow-hidden relative selection:bg-[#00f5a0] selection:text-black">
+    <div className="min-h-screen bg-[#030712] text-white pt-24 sm:pt-28 pb-24 overflow-hidden relative selection:bg-[#50a2ff] selection:text-[#030712]">
       
       {/* Background Ambient Glow */}
-      <div className="absolute top-0 left-1/4 w-[700px] h-[400px] bg-emerald-500/10 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-[600px] h-[400px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none" />
-
-      {/* Cyber Grid */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage: "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-          backgroundSize: "40px 40px"
-        }}
-      />
+      <div className="absolute top-0 left-1/4 w-[700px] h-[400px] bg-[#155dfc]/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/3 right-10 w-[600px] h-[400px] bg-[#50a2ff]/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -142,10 +128,10 @@ export default function AwardsPage() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 shadow-lg"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030712] border border-[#155dfc]/30 mb-6 font-bold"
           >
-            <Trophy size={14} className="text-[#00f5a0]" />
-            <span className="text-[#00f5a0] text-xs font-bold uppercase tracking-[0.25em]">
+            <Trophy size={14} className="text-[#50a2ff]" />
+            <span className="text-[#50a2ff] text-xs font-bold uppercase tracking-[0.25em]">
               Global Honors &amp; Industry Distinction
             </span>
           </motion.div>
@@ -154,9 +140,9 @@ export default function AwardsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-6xl font-black text-white tracking-tight leading-[1.1] mb-6"
+            className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6"
           >
-            Recognized for <span className="text-gradient-emerald">Technical Excellence</span> &amp; <br />
+            Recognized for <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">Technical Excellence</span> &amp; <br />
             Breakthrough AI Innovation
           </motion.h1>
 
@@ -164,7 +150,7 @@ export default function AwardsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-base sm:text-xl text-slate-300 leading-relaxed font-normal max-w-3xl mb-8"
+            className="text-base sm:text-xl text-gray-400 leading-relaxed font-normal max-w-3xl mb-8"
           >
             Our dedication to engineering perfection, AI-first innovation, and 100% client satisfaction has earned us accolades across global enterprise markets, review platforms, and technology institutes.
           </motion.p>
@@ -172,91 +158,84 @@ export default function AwardsPage() {
 
         {/* METRICS & VERIFIED STATS RIBBON */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-20">
-          <div className="p-6 rounded-3xl bg-[#090d16]/90 border border-white/[0.08] backdrop-blur-xl">
-            <p className="text-3xl font-black text-white text-gradient-emerald">100+</p>
+          <div className="p-6 rounded-2xl bg-[#030712] border border-white/[0.08] shadow-2xl hover:border-[#50a2ff]/40 transition-all relative overflow-hidden group">
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+            <p className="text-3xl font-black bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">100+</p>
             <p className="text-sm font-bold text-white mt-1">Clients Globally</p>
-            <p className="text-xs text-slate-400 mt-0.5">USA, UAE, EU, Japan</p>
+            <p className="text-xs text-gray-400 mt-0.5">USA, UAE, EU, Japan</p>
           </div>
-          <div className="p-6 rounded-3xl bg-[#090d16]/90 border border-white/[0.08] backdrop-blur-xl">
-            <p className="text-3xl font-black text-white text-gradient-emerald">4.9 ★</p>
+          <div className="p-6 rounded-2xl bg-[#030712] border border-white/[0.08] shadow-2xl hover:border-[#50a2ff]/40 transition-all relative overflow-hidden group">
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+            <p className="text-3xl font-black bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">4.9 ★</p>
             <p className="text-sm font-bold text-white mt-1">Client Satisfaction</p>
-            <p className="text-xs text-slate-400 mt-0.5">Verified review score</p>
+            <p className="text-xs text-gray-400 mt-0.5">Verified review score</p>
           </div>
-          <div className="p-6 rounded-3xl bg-[#090d16]/90 border border-white/[0.08] backdrop-blur-xl">
-            <p className="text-3xl font-black text-white text-gradient-emerald">99.4%</p>
+          <div className="p-6 rounded-2xl bg-[#030712] border border-white/[0.08] shadow-2xl hover:border-[#50a2ff]/40 transition-all relative overflow-hidden group">
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+            <p className="text-3xl font-black bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">99.4%</p>
             <p className="text-sm font-bold text-white mt-1">SLA Sprint Precision</p>
-            <p className="text-xs text-slate-400 mt-0.5">On-time milestone delivery</p>
+            <p className="text-xs text-gray-400 mt-0.5">On-time milestone delivery</p>
           </div>
-          <div className="p-6 rounded-3xl bg-[#090d16]/90 border border-white/[0.08] backdrop-blur-xl">
-            <p className="text-3xl font-black text-white text-gradient-emerald">100%</p>
+          <div className="p-6 rounded-2xl bg-[#030712] border border-white/[0.08] shadow-2xl hover:border-[#50a2ff]/40 transition-all relative overflow-hidden group">
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+            <p className="text-3xl font-black bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">100%</p>
             <p className="text-sm font-bold text-white mt-1">Remote Agility</p>
-            <p className="text-xs text-slate-400 mt-0.5">Solving problems worldwide</p>
+            <p className="text-xs text-gray-400 mt-0.5">Solving problems worldwide</p>
           </div>
         </div>
 
-        {/* FEATURED KEYNOTE HONORS SPOTLIGHT (SOFTVISION COLLEGE) */}
+        {/* FEATURED KEYNOTE HONORS SPOTLIGHT */}
         <section className="mb-24">
           <div className="group relative rounded-3xl p-px overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#00f5a0]/40 via-cyan-500/30 to-[#00f5a0]/40 opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
-
-            <div className="relative bg-[#090d16]/95 backdrop-blur-xl rounded-3xl p-8 sm:p-12 lg:p-14 border border-white/[0.08] overflow-hidden">
-              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="relative bg-[#030712] rounded-3xl p-8 sm:p-12 lg:p-14 border border-white/[0.08] overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
                 
                 {/* Left Photo */}
-                <div className="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/[0.08] shadow-2xl">
+                <div className="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/[0.08] shadow-md">
                   <Image
                     src="/vision.jpeg"
                     alt="Softvision College Tech Symposium Keynote"
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                     sizes="(max-width: 1024px) 100vw, 40vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent" />
                   
                   <div className="absolute top-4 left-4">
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[#00f5a0]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#030712]/90 backdrop-blur-md border border-white/[0.12] text-white shadow-md">
                       Keynote &amp; Symposium
                     </span>
-                  </div>
-
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 text-xs font-semibold text-white">
-                    <MapPin size={14} className="text-[#00f5a0] shrink-0" />
-                    <span>Softvision College of Science &amp; Technology</span>
                   </div>
                 </div>
 
                 {/* Right Details */}
                 <div className="lg:col-span-7 space-y-5">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0]">
-                      <GraduationCap size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-[#00f5a0] uppercase tracking-wider">Academic &amp; Technology Leadership</p>
-                      <p className="text-xs text-slate-400">Institutional Recognition</p>
-                    </div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#155dfc]/15 border border-[#155dfc]/30 text-[#50a2ff] text-xs font-bold uppercase tracking-wider">
+                    <Award size={14} className="text-[#50a2ff]" />
+                    Keynote Speaker &amp; Academic Honors
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-black text-white leading-snug">
-                    Keynote Address on Modern Cloud Architecture &amp; Enterprise Software
+                  <h3 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                    Recognized by Softvision College for Technical Innovation &amp; Mentorship
                   </h3>
 
-                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                    Invited as distinguished keynote speakers and industry mentors at the Softvision College Technical Symposium. Our leadership presented real-world architectural blueprints for scalable MERN microservices, cloud orchestration, and AI-assisted software delivery to aspiring computer scientists and engineers.
+                  <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-normal">
+                    Invited as Distinguished Keynote Speaker to address emerging software engineers on enterprise MERN stack scalability, cloud architecture, and real-world software product engineering.
                   </p>
 
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-                    <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                    <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08]">
                       <p className="text-xs font-bold text-white">Keynote Speaker</p>
-                      <p className="text-[10px] text-slate-400">Technical Symposium</p>
+                      <p className="text-[10px] text-gray-400">Technical Symposium</p>
                     </div>
-                    <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                    <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08]">
                       <p className="text-xs font-bold text-white">Industry Mentor</p>
-                      <p className="text-[10px] text-slate-400">Engineering Labs</p>
+                      <p className="text-[10px] text-gray-400">Engineering Labs</p>
                     </div>
-                    <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] col-span-2 sm:col-span-1">
-                      <p className="text-xs font-bold text-[#00f5a0]">Cloud Systems</p>
-                      <p className="text-[10px] text-slate-400">MERN &amp; Distributed</p>
+                    <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] col-span-2 sm:col-span-1">
+                      <p className="text-xs font-bold text-[#50a2ff]">Cloud Systems</p>
+                      <p className="text-[10px] text-gray-400">MERN &amp; Distributed</p>
                     </div>
                   </div>
                 </div>
@@ -270,7 +249,7 @@ export default function AwardsPage() {
         <section className="mb-24">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#00f5a0] block mb-1">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#50a2ff] block mb-1">
                 Honors Showcase
               </span>
               <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
@@ -279,15 +258,16 @@ export default function AwardsPage() {
             </div>
 
             {/* Category Filter Pills */}
-            <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md">
+            <div className="flex flex-wrap gap-2 p-2 rounded-2xl bg-[#030712] border border-white/[0.08] shadow-2xl">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
+                  type="button"
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     activeCategory === cat.id
-                      ? "bg-gradient-to-r from-[#00f5a0] to-[#00d9f5] text-black shadow-lg shadow-emerald-500/20"
-                      : "text-slate-400 hover:text-white hover:bg-white/[0.05]"
+                      ? "bg-[#155dfc] text-white shadow-md"
+                      : "text-gray-400 hover:text-white hover:bg-white/[0.05]"
                   }`}
                 >
                   {cat.label}
@@ -298,47 +278,46 @@ export default function AwardsPage() {
 
           {/* Awards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredAwards.map((award, index) => (
+            {filteredAwards.map((award) => (
               <div
                 key={award.id}
-                className="group relative rounded-3xl p-px overflow-hidden flex flex-col transition-all duration-500"
+                className="group relative rounded-2xl bg-[#030712] border border-white/[0.08] p-7 sm:p-8 flex flex-col justify-between shadow-2xl hover:border-[#50a2ff]/40 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
               >
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-[#00f5a0]/30 via-white/5 to-transparent opacity-20 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+                <div className="absolute -top-20 -right-20 w-44 h-44 bg-gradient-to-b from-[#155dfc]/20 via-[#50a2ff]/10 to-transparent rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
                 
-                <div className="relative flex-1 bg-[#090d16]/95 backdrop-blur-xl rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220] border border-white/[0.06]">
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0] group-hover:bg-[#00f5a0] group-hover:text-black transition-all">
-                        <Trophy size={22} />
-                      </div>
-                      <span className="text-[11px] font-bold text-emerald-400 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                        {award.rank}
-                      </span>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-[#155dfc]/20 border border-[#155dfc]/30 flex items-center justify-center text-[#50a2ff] group-hover:scale-110 group-hover:text-white transition-all">
+                      <Trophy size={22} />
                     </div>
-
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
-                      {award.issuer} • {award.year}
-                    </p>
-
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00f5a0] transition-colors leading-snug">
-                      {award.title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-6">
-                      {award.description}
-                    </p>
+                    <span className="text-[11px] font-bold text-[#50a2ff] px-3 py-1 rounded-full bg-[#155dfc]/10 border border-[#155dfc]/30">
+                      {award.rank}
+                    </span>
                   </div>
 
-                  <div className="pt-4 border-t border-white/[0.06] flex flex-wrap gap-1.5">
-                    {award.tags.map((tag, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-white/[0.04] text-slate-300 border border-white/[0.06]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
+                    {award.issuer} • {award.year}
+                  </p>
+
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#50a2ff] transition-colors leading-snug">
+                    {award.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-gray-400 leading-relaxed font-normal mb-6">
+                    {award.description}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-white/[0.08] flex flex-wrap gap-1.5 relative z-10">
+                  {award.tags.map((tag, tIdx) => (
+                    <span
+                      key={tIdx}
+                      className="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-white/[0.05] text-gray-300 border border-white/[0.08]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
@@ -346,32 +325,33 @@ export default function AwardsPage() {
         </section>
 
         {/* OFFICIAL CERTIFICATIONS & CREDENTIALS */}
-        <section className="mb-28 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#090d16] via-[#0b1222] to-[#090d16] border border-white/[0.08] relative overflow-hidden">
-          <div className="max-w-4xl mb-10">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#00f5a0] block mb-2">
+        <section className="mb-28 p-8 sm:p-12 rounded-3xl bg-[#030712] border border-white/[0.08] relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
+          <div className="max-w-4xl mb-10 relative z-10">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#50a2ff] block mb-2">
               Verified Accreditation
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
               Official Registrations &amp; Standards Conformance
             </h2>
-            <p className="text-sm sm:text-base text-slate-300 mt-2 font-normal">
+            <p className="text-sm sm:text-base text-gray-400 mt-2 font-normal">
               Our engineering practices are audited, certified, and compliant with international technical and legal requirements.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10">
             {certifications.map((cert, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-emerald-500/40 hover:bg-white/[0.06] transition-all flex flex-col justify-between"
+                className="p-5 rounded-2xl bg-[#030712] border border-white/[0.08] hover:border-[#50a2ff]/40 shadow-xl transition-all flex flex-col justify-between"
               >
                 <div>
-                  <BadgeCheck size={20} className="text-[#00f5a0] mb-3" />
+                  <BadgeCheck size={20} className="text-[#50a2ff] mb-3" />
                   <h4 className="text-sm font-bold text-white mb-1">{cert.name}</h4>
-                  <p className="text-xs text-slate-400">{cert.org}</p>
+                  <p className="text-xs text-gray-400">{cert.org}</p>
                 </div>
-                <div className="pt-3 mt-3 border-t border-white/[0.06]">
-                  <span className="text-[11px] font-mono font-semibold text-emerald-400">{cert.badge}</span>
+                <div className="pt-3 mt-3 border-t border-white/[0.08]">
+                  <span className="text-[11px] font-mono font-semibold text-[#50a2ff]">{cert.badge}</span>
                 </div>
               </div>
             ))}
@@ -379,20 +359,23 @@ export default function AwardsPage() {
         </section>
 
         {/* BOTTOM CTA */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-emerald-950/40 via-[#090d16] to-cyan-950/40 border border-emerald-500/20 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
-          <div className="space-y-2 text-center lg:text-left">
+        <section className="p-8 sm:p-12 rounded-3xl bg-[#030712] border border-white/[0.08] relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
+          <div className="space-y-2 text-center lg:text-left relative z-10">
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white">Partner with an Award-Winning Team</h3>
-            <p className="text-sm text-slate-300 max-w-xl font-normal">
+            <p className="text-sm text-gray-400 max-w-xl font-normal">
               Experience the difference of working with an elite, AI-first remote engineering studio dedicated to your product success.
             </p>
           </div>
-          <button
-            onClick={() => router.push("/contact-us")}
-            className="px-8 py-4 bg-[#00f5a0] hover:bg-[#00d9f5] text-black font-bold text-base rounded-2xl transition-all duration-300 shadow-[0_0_30px_rgba(0,245,160,0.3)] shrink-0 hover:scale-105 active:scale-95 flex items-center gap-2"
-          >
-            <span>Start Project Discussion</span>
-            <ArrowRight size={17} />
-          </button>
+          <div className="relative z-10">
+            <NoiseButton
+              onClick={() => router.push("/contact-us")}
+              className="w-full sm:w-auto"
+            >
+              <span>Start Project Discussion</span>
+              <ArrowRight size={17} className="text-[#50a2ff]" />
+            </NoiseButton>
+          </div>
         </section>
 
       </div>

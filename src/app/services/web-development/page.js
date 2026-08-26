@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   Globe, 
   Cpu, 
@@ -20,6 +20,7 @@ import {
   TrendingUp
 } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { NoiseButton } from '@/components/ui/noise-background';
 
 export default function WebDevelopmentPage() {
   const router = useRouter();
@@ -119,20 +120,11 @@ export default function WebDevelopmentPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white pt-24 sm:pt-28 pb-24 overflow-hidden relative selection:bg-[#00f5a0] selection:text-black">
+    <div className="min-h-screen bg-[#030712] text-white pt-24 sm:pt-28 pb-24 overflow-hidden relative selection:bg-[#50a2ff] selection:text-[#030712]">
       
       {/* Ambient Lighting */}
-      <div className="absolute top-0 left-1/4 w-[700px] h-[400px] bg-emerald-500/10 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-[600px] h-[400px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none" />
-
-      {/* Cyber Grid */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage: "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-          backgroundSize: "40px 40px"
-        }}
-      />
+      <div className="absolute top-0 left-1/4 w-[700px] h-[400px] bg-[#155dfc]/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/3 right-10 w-[600px] h-[400px] bg-[#50a2ff]/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -147,10 +139,10 @@ export default function WebDevelopmentPage() {
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 shadow-lg"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030712] border border-[#155dfc]/30 mb-2 font-bold"
             >
-              <Sparkles size={14} className="text-[#00f5a0]" />
-              <span className="text-xs font-bold text-[#00f5a0] uppercase tracking-widest">
+              <Sparkles size={14} className="text-[#50a2ff]" />
+              <span className="text-xs font-bold text-[#50a2ff] uppercase tracking-widest">
                 Full-Stack &amp; MERN Specialists
               </span>
             </motion.div>
@@ -159,17 +151,17 @@ export default function WebDevelopmentPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]"
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]"
             >
               Engineering Scalable, <br />
-              <span className="text-gradient-emerald">High-Throughput Web Platforms</span>
+              <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">High-Throughput Web Platforms</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-base sm:text-xl text-slate-300 leading-relaxed font-normal max-w-2xl"
+              className="text-base sm:text-xl text-gray-400 leading-relaxed font-normal max-w-2xl"
             >
               We design and construct mission-critical web applications, enterprise SaaS platforms, and distributed microservices engineered with Next.js 16, React 19, Node.js, and cloud-native backends.
             </motion.p>
@@ -180,19 +172,20 @@ export default function WebDevelopmentPage() {
               transition={{ delay: 0.3 }}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4"
             >
-              <button
+              <NoiseButton
                 onClick={() => router.push("/contact-us")}
-                className="px-8 py-4 bg-gradient-to-r from-[#00f5a0] via-[#00d9f5] to-[#00f5a0] text-black font-bold text-base rounded-2xl shadow-[0_0_30px_rgba(0,245,160,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto"
               >
                 <span>Request Project Scope</span>
-                <ArrowRight size={17} />
-              </button>
+                <ArrowRight size={17} className="text-[#50a2ff]" />
+              </NoiseButton>
               <button
+                type="button"
                 onClick={() => {
                   const el = document.getElementById("services-capabilities");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="px-6 py-4 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.12] rounded-2xl font-semibold text-white text-base transition-all"
+                className="px-8 py-3.5 bg-[#030712] hover:border-[#50a2ff]/50 border border-white/[0.12] rounded-full font-semibold text-white text-base shadow-md transition-all cursor-pointer"
               >
                 <span>View Engineering Capabilities</span>
               </button>
@@ -204,38 +197,39 @@ export default function WebDevelopmentPage() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="glass-panel p-6 sm:p-8 rounded-3xl relative overflow-hidden shadow-2xl space-y-6"
+              className="bg-[#030712] border border-white/[0.08] p-6 sm:p-8 rounded-3xl relative overflow-hidden shadow-2xl space-y-6"
             >
-              <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
+              <div className="flex items-center justify-between pb-4 border-b border-white/[0.08] relative z-10">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#00f5a0]">Delivery Metrics</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#50a2ff]">Delivery Metrics</p>
                   <h3 className="text-lg font-bold text-white">Full-Stack Standards</h3>
                 </div>
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0]">
+                <div className="w-9 h-9 rounded-xl bg-[#155dfc]/15 border border-[#155dfc]/30 flex items-center justify-center text-[#50a2ff]">
                   <Zap size={18} />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3.5">
-                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
-                  <p className="text-2xl font-black text-white text-gradient-emerald">100+</p>
+              <div className="grid grid-cols-2 gap-3.5 relative z-10">
+                <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/[0.08]">
+                  <p className="text-2xl font-black bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">100+</p>
                   <p className="text-xs font-bold text-white mt-1">Web Apps Built</p>
-                  <p className="text-[10px] text-slate-400 mt-0.5">Global Deliveries</p>
+                  <p className="text-[10px] text-gray-400 mt-0.5">Global Deliveries</p>
                 </div>
-                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
-                  <p className="text-2xl font-black text-white text-gradient-emerald">95+</p>
+                <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/[0.08]">
+                  <p className="text-2xl font-black bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">95+</p>
                   <p className="text-xs font-bold text-white mt-1">Core Web Vitals</p>
-                  <p className="text-[10px] text-slate-400 mt-0.5">Lighthouse Score</p>
+                  <p className="text-[10px] text-gray-400 mt-0.5">Lighthouse Score</p>
                 </div>
-                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
-                  <p className="text-2xl font-black text-white text-gradient-emerald">&lt;50ms</p>
+                <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/[0.08]">
+                  <p className="text-2xl font-black bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">&lt;50ms</p>
                   <p className="text-xs font-bold text-white mt-1">API Latency</p>
-                  <p className="text-[10px] text-slate-400 mt-0.5">Redis Optimized</p>
+                  <p className="text-[10px] text-gray-400 mt-0.5">Redis Optimized</p>
                 </div>
-                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
-                  <p className="text-2xl font-black text-white text-gradient-emerald">99.9%</p>
+                <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/[0.08]">
+                  <p className="text-2xl font-black bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">99.9%</p>
                   <p className="text-xs font-bold text-white mt-1">Cloud Uptime</p>
-                  <p className="text-[10px] text-slate-400 mt-0.5">AWS &amp; Kubernetes</p>
+                  <p className="text-[10px] text-gray-400 mt-0.5">AWS &amp; Kubernetes</p>
                 </div>
               </div>
             </motion.div>
@@ -245,14 +239,14 @@ export default function WebDevelopmentPage() {
         {/* CORE CAPABILITIES GRID */}
         <section id="services-capabilities" className="mb-28">
           <div className="flex flex-col items-center text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4 font-bold">
-              <Cpu size={14} className="text-[#00f5a0]" />
-              <span className="text-[#00f5a0] text-xs font-bold uppercase tracking-[0.2em]">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030712] border border-[#155dfc]/30 mb-4 font-bold">
+              <Cpu size={14} className="text-[#50a2ff]" />
+              <span className="text-[#50a2ff] text-xs font-bold uppercase tracking-[0.2em]">
                 Full-Stack Offerings
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              Web Development <span className="text-gradient-emerald">Services</span>
+              Web Development <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">Services</span>
             </h2>
           </div>
 
@@ -260,47 +254,48 @@ export default function WebDevelopmentPage() {
             {services.map((srv, idx) => (
               <div
                 key={idx}
-                className="group relative rounded-3xl p-px overflow-hidden flex flex-col"
+                className="group relative rounded-2xl bg-[#030712] border border-white/[0.08] p-8 flex flex-col justify-between shadow-2xl hover:border-[#50a2ff]/40 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
               >
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-[#00f5a0]/30 via-white/5 to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative flex-1 bg-[#090d16]/95 backdrop-blur-xl rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220] border border-white/[0.06]">
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0] group-hover:bg-[#00f5a0] group-hover:text-black transition-all">
-                        <srv.icon size={22} />
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+                <div className="absolute -top-20 -right-20 w-44 h-44 bg-gradient-to-b from-[#155dfc]/20 via-[#50a2ff]/10 to-transparent rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
+                
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-[#155dfc]/15 border border-[#155dfc]/30 flex items-center justify-center text-[#50a2ff] group-hover:scale-110 group-hover:text-white transition-all">
+                      <srv.icon size={22} />
+                    </div>
+                    <span className="text-2xl font-black text-white/20 group-hover:text-[#50a2ff]/50 transition-colors">
+                      0{idx + 1}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#50a2ff] transition-colors leading-snug">
+                    {srv.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-400 leading-relaxed font-normal mb-6">
+                    {srv.description}
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
+                    {srv.features.map((feat, fIdx) => (
+                      <div key={fIdx} className="flex items-center gap-2 text-xs text-gray-300 font-medium">
+                        <CheckCircle2 size={14} className="text-[#50a2ff] shrink-0" />
+                        <span>{feat}</span>
                       </div>
-                      <span className="text-2xl font-black text-white/10 group-hover:text-[#00f5a0]/30 transition-colors">
-                        0{idx + 1}
-                      </span>
-                    </div>
-
-                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#00f5a0] transition-colors leading-snug">
-                      {srv.title}
-                    </h3>
-
-                    <p className="text-sm text-slate-300 leading-relaxed font-normal mb-6">
-                      {srv.description}
-                    </p>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
-                      {srv.features.map((feat, fIdx) => (
-                        <div key={fIdx} className="flex items-center gap-2 text-xs text-slate-300">
-                          <CheckCircle2 size={14} className="text-[#00f5a0] shrink-0" />
-                          <span>{feat}</span>
-                        </div>
-                      ))}
-                    </div>
+                    ))}
                   </div>
+                </div>
 
-                  <div className="pt-5 border-t border-white/[0.06] flex items-center justify-between">
-                    <button
-                      onClick={() => router.push("/contact-us")}
-                      className="inline-flex items-center gap-2 text-xs font-bold text-[#00f5a0] hover:text-white transition-colors"
-                    >
-                      <span>Request Technical Consultation</span>
-                      <ArrowRight size={14} />
-                    </button>
-                  </div>
+                <div className="pt-5 border-t border-white/[0.08] flex items-center justify-between relative z-10">
+                  <button
+                    type="button"
+                    onClick={() => router.push("/contact-us")}
+                    className="inline-flex items-center gap-2 text-xs font-bold text-[#50a2ff] hover:text-white transition-colors cursor-pointer"
+                  >
+                    <span>Request Technical Consultation</span>
+                    <ArrowRight size={14} />
+                  </button>
                 </div>
               </div>
             ))}
@@ -308,10 +303,11 @@ export default function WebDevelopmentPage() {
         </section>
 
         {/* INTERACTIVE TECH STACK MATRIX */}
-        <section className="mb-28 p-8 sm:p-12 rounded-3xl bg-[#090d16]/95 border border-white/[0.08] backdrop-blur-xl relative overflow-hidden">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+        <section className="mb-28 p-8 sm:p-12 rounded-3xl bg-[#030712] border border-white/[0.08] relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 relative z-10">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#00f5a0] block mb-1">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#50a2ff] block mb-1">
                 Modern Stack
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
@@ -319,15 +315,16 @@ export default function WebDevelopmentPage() {
               </h2>
             </div>
 
-            <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/[0.08]">
+            <div className="flex flex-wrap gap-2 p-2 rounded-2xl bg-[#030712] border border-white/[0.08] shadow-xl">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
+                  type="button"
                   onClick={() => setActiveTab(cat.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     activeTab === cat.id
-                      ? "bg-gradient-to-r from-[#00f5a0] to-[#00d9f5] text-black shadow-lg"
-                      : "text-slate-400 hover:text-white hover:bg-white/[0.05]"
+                      ? "bg-[#155dfc] text-white shadow-md"
+                      : "text-gray-400 hover:text-white hover:bg-white/[0.05]"
                   }`}
                 >
                   {cat.label}
@@ -336,17 +333,17 @@ export default function WebDevelopmentPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 relative z-10">
             {stackDetails[activeTab].map((item, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-emerald-500/40 hover:bg-white/[0.06] transition-all"
+                className="p-5 rounded-2xl bg-[#030712] border border-white/[0.08] hover:border-[#50a2ff]/40 shadow-xl transition-all"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold text-[#00f5a0] uppercase">{item.tag}</span>
+                  <span className="text-xs font-bold text-[#50a2ff] uppercase">{item.tag}</span>
                 </div>
                 <h4 className="text-base font-bold text-white mb-1">{item.name}</h4>
-                <p className="text-xs text-slate-400">{item.role}</p>
+                <p className="text-xs text-gray-400">{item.role}</p>
               </div>
             ))}
           </div>
@@ -356,7 +353,7 @@ export default function WebDevelopmentPage() {
         <section className="mb-28">
           <div className="flex items-center justify-between mb-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#00f5a0] block mb-1">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#50a2ff] block mb-1">
                 Portfolio Impact
               </span>
               <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
@@ -369,34 +366,35 @@ export default function WebDevelopmentPage() {
             {projects.map((proj, idx) => (
               <div
                 key={idx}
-                className="p-7 rounded-3xl bg-[#090d16]/95 border border-white/[0.08] backdrop-blur-xl relative overflow-hidden group hover:border-emerald-500/40 transition-all flex flex-col justify-between"
+                className="p-7 rounded-2xl bg-[#030712] border border-white/[0.08] shadow-2xl relative overflow-hidden group hover:border-[#50a2ff]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
               >
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[#00f5a0]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#155dfc]/15 border border-[#155dfc]/30 text-[#50a2ff]">
                       {proj.category}
                     </span>
-                    <span className="text-xs font-bold text-emerald-400">{proj.metric}</span>
+                    <span className="text-xs font-bold text-[#50a2ff]">{proj.metric}</span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2.5 group-hover:text-[#00f5a0] transition-colors leading-snug">
+                  <h3 className="text-xl font-bold text-white mb-2.5 group-hover:text-[#50a2ff] transition-colors leading-snug">
                     {proj.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-6">
+                  <p className="text-xs sm:text-sm text-gray-400 leading-relaxed font-normal mb-6">
                     {proj.description}
                   </p>
 
                   <div className="flex flex-wrap gap-1.5 mb-6">
                     {proj.tech.map((t, tIdx) => (
-                      <span key={tIdx} className="text-[11px] font-medium px-2 py-0.5 rounded bg-white/[0.04] text-slate-400 border border-white/[0.06]">
+                      <span key={tIdx} className="text-[11px] font-medium px-2 py-0.5 rounded-lg bg-white/[0.04] text-gray-300 border border-white/[0.08]">
                         {t}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-bold text-[#00f5a0]">
+                <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold text-[#50a2ff]">
                   <span>Explore Case Study</span>
                   <ArrowUpRight size={16} />
                 </div>
@@ -406,19 +404,23 @@ export default function WebDevelopmentPage() {
         </section>
 
         {/* BOTTOM CTA */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-emerald-950/40 via-[#090d16] to-cyan-950/40 border border-emerald-500/20 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
-          <div className="space-y-2 text-center lg:text-left">
+        <section className="p-8 sm:p-12 rounded-3xl bg-[#030712] border border-white/[0.08] relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
+          <div className="space-y-2 text-center lg:text-left relative z-10">
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white">Ready to build your next web application?</h3>
-            <p className="text-sm text-slate-300 max-w-xl font-normal">
+            <p className="text-sm text-gray-400 max-w-xl font-normal">
               Get in touch with our lead architects to discuss requirements, architecture blueprints, and milestone sprint schedules.
             </p>
           </div>
-          <button
-            onClick={() => router.push("/contact-us")}
-            className="px-8 py-4 bg-[#00f5a0] hover:bg-[#00d9f5] text-black font-bold text-base rounded-2xl transition-all duration-300 shadow-[0_0_30px_rgba(0,245,160,0.3)] shrink-0 hover:scale-105 active:scale-95"
-          >
-            Start Project Discussion →
-          </button>
+          <div className="relative z-10">
+            <NoiseButton
+              onClick={() => router.push("/contact-us")}
+              className="w-full sm:w-auto"
+            >
+              <span>Start Project Discussion</span>
+              <ArrowRight size={17} className="text-[#50a2ff]" />
+            </NoiseButton>
+          </div>
         </section>
 
       </div>

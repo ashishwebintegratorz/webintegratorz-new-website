@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import { Layers, Zap, Shield, Globe, CheckCircle2, ArrowRight, Code, Layout, Sparkles, Database, Lock, Gauge } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { NoiseButton } from '@/components/ui/noise-background';
 
 export default function CMSSolutionsPage() {
   const router = useRouter();
@@ -15,116 +16,100 @@ export default function CMSSolutionsPage() {
 
   const cmsServices = [
     {
-      icon: <Layers className="w-7 h-7" />,
+      icon: <Layers className="w-7 h-7 text-[#50a2ff]" />,
       title: "Custom CMS Development",
-      description: "Tailored content management systems built specifically for your business needs and workflow.",
-      features: ["Custom Architecture", "Scalable Infrastructure", "API Integration", "Admin Dashboard"]
+      description: "Tailored content management systems built specifically for your enterprise workflows and operational pipelines.",
+      features: ["Custom Architecture", "Scalable Infrastructure", "API Integration", "Custom Admin Dashboards"]
     },
     {
-      icon: <Layout className="w-7 h-7" />,
-      title: "Headless CMS",
-      description: "Modern, API-first content management with maximum flexibility and performance.",
+      icon: <Layout className="w-7 h-7 text-[#50a2ff]" />,
+      title: "Headless CMS Architecture",
+      description: "Modern, API-first headless content management with maximum frontend performance and multi-channel publishing.",
       features: ["Contentful", "Strapi", "Sanity", "Prismic"]
     },
     {
-      icon: <Code className="w-7 h-7" />,
-      title: "WordPress Solutions",
-      description: "Enterprise-grade WordPress development with custom themes and advanced functionality.",
-      features: ["Custom Themes", "Plugin Development", "WooCommerce", "Multisite"]
+      icon: <Code className="w-7 h-7 text-[#50a2ff]" />,
+      title: "Enterprise WordPress & Headless",
+      description: "High-performance WordPress engineering with custom Next.js frontends, bespoke plugins, and decoupled databases.",
+      features: ["Decoupled Next.js", "Plugin Development", "WooCommerce APIs", "Global Multisite Networks"]
     }
   ];
 
   const features = [
     {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Lightning Fast",
-      description: "Optimized for speed and performance"
+      icon: <Zap className="w-6 h-6 text-[#50a2ff]" />,
+      title: "Lightning Fast Delivery",
+      description: "Edge-cached static and dynamic routing with Sub-50ms TTFB."
     },
     {
-      icon: <Shield className="w-6 h-6" />,
+      icon: <Shield className="w-6 h-6 text-[#50a2ff]" />,
       title: "Enterprise Security",
-      description: "Bank-level security protocols"
+      description: "SOC 2 Type II compliant pipelines with automated vulnerability patching."
     },
     {
-      icon: <Globe className="w-6 h-6" />,
-      title: "Multi-Language",
-      description: "Global reach with i18n support"
+      icon: <Globe className="w-6 h-6 text-[#50a2ff]" />,
+      title: "Multi-Language & i18n",
+      description: "Global localization with synchronized translation workflows."
     },
     {
-      icon: <Database className="w-6 h-6" />,
-      title: "Scalable Database",
-      description: "Handle millions of content pieces"
+      icon: <Database className="w-6 h-6 text-[#50a2ff]" />,
+      title: "Scalable Schema Design",
+      description: "Structured relational models ready for millions of content nodes."
     },
     {
-      icon: <Lock className="w-6 h-6" />,
-      title: "Role-Based Access",
-      description: "Granular permission controls"
+      icon: <Lock className="w-6 h-6 text-[#50a2ff]" />,
+      title: "Granular RBAC",
+      description: "Multi-tier role-based access control and editorial approval gates."
     },
     {
-      icon: <Gauge className="w-6 h-6" />,
-      title: "Real-Time Analytics",
-      description: "Track content performance live"
+      icon: <Gauge className="w-6 h-6 text-[#50a2ff]" />,
+      title: "Real-Time Telemetry",
+      description: "Live content performance, indexing alerts, and SEO scoring."
     }
   ];
 
   const platforms = [
-    { name: "WordPress", icon: "🔷" },
-    { name: "Contentful", icon: "📦" },
-    { name: "Strapi", icon: "🚀" },
-    { name: "Sanity", icon: "✨" },
-    { name: "Drupal", icon: "💧" },
-    { name: "Custom CMS", icon: "⚡" }
-  ];
-
-  const benefits = [
-    "Easy content updates without technical knowledge",
-    "SEO-optimized content management",
-    "Multi-channel content distribution",
-    "Version control and content scheduling",
-    "Collaborative editing workflows",
-    "Media library management"
+    { name: "WordPress / VIP" },
+    { name: "Contentful" },
+    { name: "Strapi" },
+    { name: "Sanity.io" },
+    { name: "Drupal Enterprise" },
+    { name: "Custom GraphQL CMS" }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+    <div className="min-h-screen bg-[#030712] text-white pt-24 sm:pt-28 pb-24 overflow-hidden relative selection:bg-[#50a2ff] selection:text-[#030712] font-inter">
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-10 w-72 h-72 bg-[#27ccae]/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        </div>
-
+      <section className="relative pt-6 pb-20 lg:pb-28 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <Breadcrumbs items={[{ label: 'Services', href: '/services' }, { label: 'SaaS & CMS', href: '/services/cms-solution' }]} />
-          <div className="max-w-4xl mx-auto text-center space-y-8">
+          <div className="max-w-4xl mx-auto text-center space-y-8 mt-6">
             <div className={`${mounted ? 'animate-fadeIn' : 'opacity-0'}`}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#27ccae]/10 border border-[#27ccae]/30 rounded-full text-sm mb-8">
-                <Sparkles className="w-4 h-4 text-[#27ccae]" />
-                <span className="text-[#27ccae] font-medium">Enterprise SaaS & CMS Experts</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#030712] border border-[#155dfc]/30 rounded-full text-sm mb-6">
+                <Sparkles className="w-4 h-4 text-[#50a2ff]" />
+                <span className="text-[#50a2ff] font-bold uppercase tracking-wider text-xs">Enterprise SaaS &amp; CMS Engineering</span>
               </div>
 
-              <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
-                Architecting Scalable
-                <span className="block mt-2 bg-gradient-to-r from-[#27ccae] via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                  Enterprise SaaS & CMS
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+                Architecting Scalable <br />
+                <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">
+                  Enterprise SaaS &amp; Headless CMS
                 </span>
               </h1>
 
-              <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto mb-8">
-                Take control of your content with enterprise-grade CMS solutions. Fast, secure, and built to grow with your business.
+              <p className="text-lg sm:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto mb-8 font-normal">
+                Take command of your digital publishing with enterprise-grade headless CMS architectures. Engineered with Next.js, GraphQL, and cloud-native backends.
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center">
-                <button
+                <NoiseButton
                   onClick={() => router.push("/contact-us")}
-                  className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+                  className="w-full sm:w-auto"
                 >
-                  Get Started
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-
-
+                  <span>Start CMS Architecture Discussion</span>
+                  <ArrowRight className="w-5 h-5 text-[#50a2ff]" />
+                </NoiseButton>
               </div>
             </div>
           </div>
@@ -132,14 +117,15 @@ export default function CMSSolutionsPage() {
       </section>
 
       {/* CMS Services */}
-      <section className="py-20 lg:py-32 relative">
+      <section className="py-20 lg:py-28 relative border-t border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl lg:text-5xl font-bold">
-              Our CMS <span className="text-[#27ccae]">Solutions</span>
+          <div className="text-center mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#50a2ff] block">Offerings</span>
+            <h2 className="text-3xl lg:text-5xl font-extrabold text-white tracking-tight">
+              Our CMS <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">Solutions</span>
             </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              From custom builds to enterprise platforms, we deliver CMS solutions that empower your team
+            <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto font-normal">
+              From decoupled headless CMS pipelines to enterprise platforms, we deliver content hubs that empower your marketing and editorial squads.
             </p>
           </div>
 
@@ -147,27 +133,30 @@ export default function CMSSolutionsPage() {
             {cmsServices.map((service, idx) => (
               <div
                 key={idx}
-                className="group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-8 border border-[#27ccae]/10 hover:border-[#27ccae]/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#27ccae]/20"
+                className="group relative bg-[#030712] rounded-2xl p-8 border border-white/[0.08] hover:border-[#50a2ff]/40 transition-all duration-300 hover:-translate-y-1.5 shadow-2xl flex flex-col justify-between overflow-hidden"
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-[#27ccae] to-emerald-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  {service.icon}
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+                <div className="absolute -top-20 -right-20 w-44 h-44 bg-gradient-to-b from-[#155dfc]/20 via-[#50a2ff]/10 to-transparent rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
+                
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-[#155dfc]/15 border border-[#155dfc]/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    {service.icon}
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#50a2ff] transition-colors">{service.title}</h3>
+                  <p className="text-gray-400 leading-relaxed mb-6 text-sm font-normal">
+                    {service.description}
+                  </p>
                 </div>
 
-                <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                <p className="text-slate-400 leading-relaxed mb-6">
-                  {service.description}
-                </p>
-
-                <div className="space-y-2">
+                <div className="space-y-2.5 pt-4 border-t border-white/[0.08] relative z-10">
                   {service.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-[#27ccae]" />
-                      <span className="text-slate-300">{feature}</span>
+                    <div key={i} className="flex items-center gap-2 text-xs text-gray-300 font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-[#50a2ff] shrink-0" />
+                      <span>{feature}</span>
                     </div>
                   ))}
                 </div>
-
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#27ccae]/0 to-[#27ccae]/0 group-hover:from-[#27ccae]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none"></div>
               </div>
             ))}
           </div>
@@ -175,11 +164,12 @@ export default function CMSSolutionsPage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 relative">
+      <section className="py-20 relative border-t border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Why Choose Our <span className="text-[#27ccae]">CMS Solutions</span>
+          <div className="text-center mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#50a2ff] block">Standards</span>
+            <h2 className="text-3xl lg:text-5xl font-extrabold text-white">
+              Why Partner with Us for <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">CMS Architecture</span>
             </h2>
           </div>
 
@@ -187,13 +177,14 @@ export default function CMSSolutionsPage() {
             {features.map((feature, idx) => (
               <div
                 key={idx}
-                className="bg-gradient-to-br from-slate-800/30 to-slate-900/30 rounded-xl p-6 border border-[#27ccae]/10 hover:border-[#27ccae]/30 transition-all duration-300"
+                className="bg-[#030712] rounded-2xl p-7 border border-white/[0.08] hover:border-[#50a2ff]/40 transition-all duration-300 shadow-xl relative overflow-hidden group"
               >
-                <div className="w-12 h-12 bg-[#27ccae]/10 rounded-lg flex items-center justify-center mb-4 text-[#27ccae]">
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-opacity" />
+                <div className="w-12 h-12 bg-[#155dfc]/15 border border-[#155dfc]/30 rounded-2xl flex items-center justify-center mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                <p className="text-slate-400 text-sm">{feature.description}</p>
+                <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed font-normal">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -201,61 +192,49 @@ export default function CMSSolutionsPage() {
       </section>
 
       {/* Platforms */}
-      <section className="py-16 relative">
+      <section className="py-16 relative border-t border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold mb-2">Platforms We Master</h3>
-            <p className="text-slate-400">Expert implementation across all major CMS platforms</p>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">CMS Platforms We Specialize In</h3>
+            <p className="text-gray-400 text-sm font-normal">Enterprise implementation and data migration across all industry-standard frameworks</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-4">
             {platforms.map((platform, idx) => (
-              <div key={idx} className="px-8 py-4 bg-slate-800/50 border border-[#27ccae]/20 rounded-xl hover:border-[#27ccae]/50 hover:bg-slate-800 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#27ccae]/20 flex items-center gap-3">
-                <span className="text-2xl">{platform.icon}</span>
-                <span className="font-semibold text-slate-200">{platform.name}</span>
+              <div key={idx} className="px-8 py-4 bg-[#030712] border border-white/[0.08] rounded-2xl hover:border-[#50a2ff]/40 transition-all duration-300 hover:scale-105 shadow-xl">
+                <span className="font-bold text-[#50a2ff] text-sm">{platform.name}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-
-
-
-
-
       {/* CTA Section */}
-      <section className="py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#27ccae]/20 to-emerald-500/20 blur-3xl"></div>
-        </div>
-
+      <section className="py-20 lg:py-28 relative border-t border-white/[0.08]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
-          <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-12 border border-[#27ccae]/30 shadow-2xl shadow-[#27ccae]/20">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Ready to Transform
-              <span className="block mt-2 bg-gradient-to-r from-[#27ccae] to-emerald-400 bg-clip-text text-transparent">
-                Your Content Management?
+          <div className="bg-[#030712] rounded-3xl p-10 md:p-14 border border-white/[0.08] shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
+            <h2 className="text-3xl lg:text-5xl font-extrabold text-white mb-4 relative z-10">
+              Ready to Upgrade Your <br />
+              <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">
+                Enterprise Content Engine?
               </span>
             </h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Let's build a CMS solution that scales with your ambitions. Get started with a free consultation.
+            <p className="text-base text-gray-400 mb-8 max-w-2xl mx-auto font-normal relative z-10">
+              Let&apos;s engineer a headless CMS architecture that scales with your global publishing needs and eliminates editorial bottlenecks.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <button
+            <div className="flex flex-wrap gap-4 justify-center relative z-10">
+              <NoiseButton
                 onClick={() => router.push("/contact-us")}
-                className="px-8 py-4 bg-gradient-to-r from-[#27ccae] to-emerald-400 rounded-xl font-bold text-base hover:shadow-2xl hover:shadow-[#27ccae]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 group"
+                className="w-full sm:w-auto"
               >
-                Get Started Now
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-
-
+                <span>Request CMS Scoping Call</span>
+                <ArrowRight className="w-5 h-5 text-[#50a2ff]" />
+              </NoiseButton>
             </div>
           </div>
         </div>
       </section>
-
 
     </div>
   );

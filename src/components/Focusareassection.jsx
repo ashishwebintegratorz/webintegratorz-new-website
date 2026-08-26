@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { useRouter } from "next/navigation";
-import { Globe, Cpu, Brain, Smartphone, Bot, Palette, ArrowRight, Sparkles, Code2, Layers, ShieldCheck, Zap } from "lucide-react";
+import { Globe, Cpu, Brain, Smartphone, Bot, Palette, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function FocusAreasSection() {
   const router = useRouter();
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const focusAreas = [
     {
@@ -18,7 +17,6 @@ export default function FocusAreasSection() {
       tag: "Deep Tech",
       tags: ["Agentic AI", "Custom LLMs", "RAG Pipelines", "OpenAI / Claude"],
       route: "/services/ai-integration",
-      highlight: true
     },
     {
       number: "02",
@@ -28,7 +26,6 @@ export default function FocusAreasSection() {
       tag: "Scalable Architecture",
       tags: ["Next.js 16", "React 19", "Microservices", "TypeScript"],
       route: "/services/web-development",
-      highlight: false
     },
     {
       number: "03",
@@ -38,7 +35,6 @@ export default function FocusAreasSection() {
       tag: "Enterprise Core",
       tags: ["Cloud-Native", "REST / GraphQL", "PostgreSQL", "Docker / K8s"],
       route: "/services/web-development",
-      highlight: false
     },
     {
       number: "04",
@@ -48,7 +44,6 @@ export default function FocusAreasSection() {
       tag: "Mobile First",
       tags: ["Flutter", "React Native", "iOS / Android", "Offline-First"],
       route: "/services/mobile-development",
-      highlight: false
     },
     {
       number: "05",
@@ -58,7 +53,6 @@ export default function FocusAreasSection() {
       tag: "Automation",
       tags: ["Multi-Agent", "Workflow AI", "CRM Bots", "Predictive ML"],
       route: "/services/ai-integration",
-      highlight: false
     },
     {
       number: "06",
@@ -68,32 +62,16 @@ export default function FocusAreasSection() {
       tag: "Design Craft",
       tags: ["Design Tokens", "Figma Systems", "Micro-Interactions", "UX Research"],
       route: "/services/ui-ux",
-      highlight: false
     }
   ];
 
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
-
   return (
-    <section
-      onMouseMove={handleMouseMove}
-      className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden"
-    >
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
-
-      {/* Grid Pattern */}
+    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-white/[0.08] overflow-hidden">
+      {/* Subtle Background Radial Grid */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.02]"
+        className="absolute inset-0 pointer-events-none opacity-[0.04]"
         style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)",
+          backgroundImage: "radial-gradient(circle at 1px 1px, #50a2ff 1px, transparent 0)",
           backgroundSize: "32px 32px"
         }}
       />
@@ -106,10 +84,10 @@ export default function FocusAreasSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 font-bold"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030712] border border-[#155dfc]/30 mb-6 font-semibold shadow-inner"
           >
-            <Sparkles size={14} className="text-[#00f5a0]" />
-            <span className="text-[#00f5a0] text-xs tracking-[0.2em] uppercase font-bold">
+            <Sparkles size={14} className="text-[#50a2ff]" />
+            <span className="text-[#50a2ff] text-xs tracking-wider uppercase font-semibold">
               Engineering Capabilities
             </span>
           </motion.div>
@@ -119,9 +97,9 @@ export default function FocusAreasSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]"
+            className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white tracking-tight leading-[1.15]"
           >
-            Our Core <span className="text-gradient-emerald">Focus Areas</span>
+            Our Core <span className="bg-gradient-to-r from-[#155dfc] to-[#50a2ff] bg-clip-text text-transparent">Focus Areas</span>
           </motion.h2>
 
           <motion.p
@@ -129,78 +107,70 @@ export default function FocusAreasSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed"
+            className="mt-5 text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl font-normal leading-relaxed"
           >
             From custom foundational AI systems to global-scale cloud applications, we turn ambitious technical visions into flawless digital realities.
           </motion.p>
         </div>
 
-        {/* Bento Grid */}
+        {/* Aceternity UI Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {focusAreas.map((area, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group relative rounded-3xl p-px overflow-hidden transition-all duration-500"
+              className="relative rounded-2xl bg-[#030712] border border-white/[0.08] p-6 sm:p-7 shadow-2xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#50a2ff]/40 hover:shadow-[#155dfc]/10 group overflow-hidden flex flex-col justify-between"
             >
-              {/* Outer Glowing Border on Hover */}
-              <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 ${area.highlight ? 'bg-gradient-to-b from-[#00f5a0]/40 via-white/5 to-transparent opacity-80 group-hover:opacity-100' : 'bg-gradient-to-b from-white/10 to-transparent opacity-40 group-hover:opacity-100 group-hover:from-emerald-400/40'}`} />
+              {/* Aceternity Top Shine Line */}
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-60 group-hover:opacity-100 group-hover:via-[#50a2ff] transition-all duration-300" />
 
-              {/* Card Container */}
-              <div className="relative h-full bg-[#090d16]/90 backdrop-blur-xl rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group-hover:bg-[#0c1220]">
-                
-                {/* Top Bar: Icon + Number */}
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[#00f5a0] group-hover:scale-110 group-hover:bg-[#00f5a0] group-hover:text-black transition-all duration-300 shadow-lg">
-                      <area.icon size={26} />
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-slate-400 group-hover:text-slate-200">
-                        {area.tag}
-                      </span>
-                      <span className="text-3xl font-black text-white/10 group-hover:text-[#00f5a0]/30 transition-colors">
-                        {area.number}
-                      </span>
-                    </div>
+              {/* Ambient Glow Spotlight inside card */}
+              <div className="absolute -top-20 -right-20 w-44 h-44 bg-gradient-to-b from-[#155dfc]/20 via-[#50a2ff]/10 to-transparent rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 pointer-events-none" />
+
+              <div className="relative z-10">
+                {/* Header Row: Icon & Category Tag */}
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#155dfc]/30 bg-[#155dfc]/10 text-[#50a2ff] shadow-inner group-hover:scale-110 group-hover:text-white transition-transform duration-300">
+                    <area.icon className="h-6 w-6" />
                   </div>
-
-                  {/* Title & Description */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#00f5a0] transition-colors leading-snug">
-                    {area.title}
-                  </h3>
-
-                  <p className="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
-                    {area.description}
-                  </p>
-
-                  {/* Tech Stack Chips */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {area.tags.map((t, idx) => (
-                      <span key={idx} className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-white/[0.03] border border-white/[0.06] text-slate-400 group-hover:border-emerald-500/20 group-hover:text-slate-300 transition-colors">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                  <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#50a2ff]/30 bg-[#50a2ff]/10 text-[#50a2ff]">
+                    {area.tag}
+                  </span>
                 </div>
 
-                {/* Bottom Action Link */}
-                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                  <button
-                    onClick={() => router.push(area.route)}
-                    className="inline-flex items-center gap-2 text-xs font-bold text-[#00f5a0] hover:text-[#00d9f5] group-hover:translate-x-1 transition-all"
-                  >
-                    <span>Explore Solutions</span>
-                    <ArrowRight size={14} />
-                  </button>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity animate-ping" />
-                </div>
+                {/* Title & Description */}
+                <h3 className="mb-2 text-xl font-bold text-white tracking-tight group-hover:text-[#50a2ff] transition-colors leading-snug">
+                  {area.title}
+                </h3>
 
+                <p className="text-sm text-gray-400 leading-relaxed mb-6 font-normal">
+                  {area.description}
+                </p>
+
+                {/* Tech Stack Chips */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {area.tags.map((t, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs font-medium px-2.5 py-1 rounded-lg bg-white/[0.05] border border-white/[0.08] text-gray-300 group-hover:border-[#50a2ff]/30 transition-colors"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </motion.div>
+
+              {/* Bottom Action Link */}
+              <div className="relative z-10 pt-4 border-t border-white/[0.08] flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={() => router.push(area.route)}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-300 hover:text-white group-hover:text-[#50a2ff] transition-colors cursor-pointer"
+                >
+                  <span>Explore Architecture</span>
+                  <ArrowRight size={14} className="text-[#50a2ff] group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
           ))}
         </div>
 
