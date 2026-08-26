@@ -66,7 +66,7 @@ export default function FocusAreasSection() {
   ];
 
   return (
-    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-transparent border-t border-gray-200 dark:border-white/[0.08] overflow-hidden">
+    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#030712] border-t border-gray-200 dark:border-white/[0.08] overflow-hidden">
       {/* Subtle Background Radial Grid */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-[0.04]"
@@ -87,7 +87,7 @@ export default function FocusAreasSection() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-[#030712] border border-blue-200 dark:border-[#155dfc]/40 mb-6 font-bold shadow-sm"
           >
             <Sparkles size={14} className="text-blue-600 dark:text-[#50a2ff]" />
-            <span className="text-blue-700 dark:text-[#50a2ff] text-xs tracking-wider uppercase font-bold">
+            <span className="text-blue-800 dark:text-sky-300 text-xs tracking-wider uppercase font-bold">
               Engineering Capabilities
             </span>
           </motion.div>
@@ -132,7 +132,7 @@ export default function FocusAreasSection() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-blue-200 dark:border-[#155dfc]/30 bg-blue-50 dark:bg-[#155dfc]/15 text-[#155dfc] dark:text-[#50a2ff] shadow-inner group-hover:scale-110 group-hover:bg-[#155dfc] group-hover:text-white transition-all duration-300">
                     <area.icon className="h-6 w-6" />
                   </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-blue-200 dark:border-blue-800/60 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-sky-300">
+                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-blue-200 dark:border-blue-800/60 bg-blue-50 dark:bg-blue-950/60 text-blue-800 dark:text-sky-300">
                     {area.tag}
                   </span>
                 </div>
@@ -142,7 +142,7 @@ export default function FocusAreasSection() {
                   {area.title}
                 </h3>
 
-                <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-6 font-normal">
+                <p className="text-sm text-slate-700 dark:text-gray-200 leading-relaxed mb-6 font-normal">
                   {area.description}
                 </p>
 
@@ -151,7 +151,7 @@ export default function FocusAreasSection() {
                   {area.tags.map((t, idx) => (
                     <span
                       key={idx}
-                      className="text-xs font-medium px-2.5 py-1 rounded-lg bg-gray-200/70 dark:bg-white/[0.06] border border-gray-300 dark:border-white/[0.1] text-gray-800 dark:text-gray-200 group-hover:border-blue-400/40 transition-colors"
+                      className="text-xs font-medium px-2.5 py-1 rounded-lg bg-gray-200/80 dark:bg-white/[0.08] border border-gray-300 dark:border-white/[0.12] text-slate-900 dark:text-slate-100 group-hover:border-blue-400/40 transition-colors"
                     >
                       {t}
                     </span>
@@ -164,7 +164,7 @@ export default function FocusAreasSection() {
                 <button
                   type="button"
                   onClick={() => router.push(area.route)}
-                  className="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-semibold text-gray-800 dark:text-gray-200 hover:text-[#155dfc] dark:hover:text-white group-hover:text-[#155dfc] dark:group-hover:text-[#50a2ff] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-semibold text-slate-900 dark:text-slate-100 hover:text-[#155dfc] dark:hover:text-white group-hover:text-[#155dfc] dark:group-hover:text-[#50a2ff] transition-colors cursor-pointer"
                 >
                   <span>Explore Architecture</span>
                   <ArrowRight size={14} className="text-[#155dfc] dark:text-[#50a2ff] group-hover:translate-x-1 transition-transform" />

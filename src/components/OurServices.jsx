@@ -120,7 +120,7 @@ export default function OurServices() {
     : services.filter(s => s.category === activeCategory);
 
   return (
-    <section id="services" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden border-t border-gray-200 dark:border-white/[0.08]">
+    <section id="services" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#030712] overflow-hidden border-t border-gray-200 dark:border-white/[0.08]">
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#155dfc]/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-[#50a2ff]/5 rounded-full blur-[150px] pointer-events-none" />
@@ -136,7 +136,7 @@ export default function OurServices() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-[#030712] border border-blue-200 dark:border-[#155dfc]/40 mb-6 font-bold shadow-sm"
           >
             <Zap size={14} className="text-blue-600 dark:text-[#50a2ff]" />
-            <span className="text-blue-700 dark:text-[#50a2ff] text-xs tracking-[0.2em] uppercase font-bold">
+            <span className="text-blue-800 dark:text-sky-300 text-xs tracking-[0.2em] uppercase font-bold">
               Comprehensive Service Portfolio
             </span>
           </motion.div>
@@ -156,7 +156,7 @@ export default function OurServices() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-5 text-base sm:text-lg text-slate-700 dark:text-gray-300 max-w-2xl font-normal leading-relaxed"
+            className="mt-5 text-base sm:text-lg text-slate-800 dark:text-gray-200 max-w-2xl font-normal leading-relaxed"
           >
             Deploy elite multidisciplinary engineering squads to accelerate your roadmap, optimize infrastructure, and outpace the competition.
           </motion.p>
@@ -171,7 +171,7 @@ export default function OurServices() {
                 className={`px-4 sm:px-6 py-2.5 min-h-[44px] rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
                   activeCategory === cat.id
                     ? 'bg-[#155dfc] text-white shadow-md'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-white dark:hover:bg-white/[0.05]'
+                    : 'text-slate-900 dark:text-slate-100 hover:text-[#155dfc] dark:hover:text-white hover:bg-white dark:hover:bg-white/[0.05]'
                 }`}
               >
                 {cat.label}
@@ -216,15 +216,15 @@ export default function OurServices() {
                     {service.title}
                   </h3>
 
-                  <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-6 font-normal">
+                  <p className="text-sm text-slate-700 dark:text-gray-200 leading-relaxed mb-6 font-normal">
                     {service.description}
                   </p>
 
                   {/* Key Deliverables Bullet Points */}
                   <div className="space-y-2.5 mb-6">
-                    <p className="text-xs font-bold text-blue-700 dark:text-[#50a2ff] uppercase tracking-wider">Key Capabilities:</p>
+                    <p className="text-xs font-bold text-blue-800 dark:text-sky-300 uppercase tracking-wider">Key Capabilities:</p>
                     {service.deliverables.map((item, dIdx) => (
-                      <div key={dIdx} className="flex items-center gap-2 text-xs text-gray-800 dark:text-gray-200 font-medium">
+                      <div key={dIdx} className="flex items-center gap-2 text-xs text-slate-900 dark:text-slate-100 font-medium">
                         <CheckCircle2 size={14} className="text-[#155dfc] dark:text-[#50a2ff] shrink-0" />
                         <span>{item}</span>
                       </div>

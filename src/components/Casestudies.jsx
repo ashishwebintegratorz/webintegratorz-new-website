@@ -125,7 +125,7 @@ export default function Casestudies() {
 
                 <div className="hidden sm:block text-left border-l border-white/[0.08] pl-3.5">
                   <p className="text-xs font-bold text-white tracking-wide">{client.name}</p>
-                  <p className="text-[10px] text-[#50a2ff] font-medium tracking-wide">{client.category}</p>
+                  <p className="text-[10px] text-sky-300 font-semibold tracking-wide">{client.category}</p>
                 </div>
               </div>
             ))}
@@ -166,7 +166,7 @@ export default function Casestudies() {
 
                 <div className="hidden sm:block text-left border-l border-white/[0.08] pl-3.5">
                   <p className="text-xs font-bold text-white tracking-wide">{client.name}</p>
-                  <p className="text-[10px] text-[#50a2ff] font-medium tracking-wide">{client.category}</p>
+                  <p className="text-[10px] text-sky-300 font-semibold tracking-wide">{client.category}</p>
                 </div>
               </div>
             ))}
@@ -190,7 +190,7 @@ export default function Casestudies() {
               <p className="mt-2 text-sm sm:text-base font-bold text-gray-200">
                 {item.label}
               </p>
-              <p className="mt-1 text-xs text-gray-400 font-medium">
+              <p className="mt-1 text-xs text-slate-300 font-medium">
                 {item.sub}
               </p>
             </div>

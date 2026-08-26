@@ -45,7 +45,7 @@ export default function Faq() {
   ];
 
   return (
-    <section id="faq" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden border-t border-gray-200 dark:border-neutral-800/80">
+    <section id="faq" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#030712] overflow-hidden border-t border-gray-200 dark:border-neutral-800/80">
       <div className="relative max-w-4xl mx-auto">
         
         {/* Header */}
@@ -57,7 +57,7 @@ export default function Faq() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-[#030712] border border-blue-200 dark:border-[#155dfc]/40 mb-6 font-bold shadow-sm"
           >
             <HelpCircle size={14} className="text-blue-600 dark:text-[#50a2ff]" />
-            <span className="text-blue-700 dark:text-[#50a2ff] text-xs font-bold uppercase tracking-wider">
+            <span className="text-blue-800 dark:text-sky-300 text-xs font-bold uppercase tracking-wider">
               Knowledge Base
             </span>
           </motion.div>
@@ -71,7 +71,7 @@ export default function Faq() {
             Frequently Asked <span className="bg-gradient-to-r from-[#155dfc] to-[#2563eb] dark:from-[#50a2ff] dark:to-[#93c5fd] bg-clip-text text-transparent">Questions</span>
           </motion.h2>
 
-          <p className="mt-4 text-base text-slate-700 dark:text-gray-300 max-w-xl font-normal">
+          <p className="mt-4 text-base text-slate-800 dark:text-gray-200 max-w-xl font-normal">
             Everything you need to know about our engineering standards, engagement models, and AI delivery capabilities.
           </p>
         </div>
@@ -101,7 +101,7 @@ export default function Faq() {
                   <span className={`text-base sm:text-lg font-bold transition-colors ${isOpen ? "text-[#155dfc] dark:text-[#50a2ff]" : "text-gray-900 dark:text-white group-hover:text-[#155dfc] dark:group-hover:text-[#50a2ff]"}`}>
                     {faq.question}
                   </span>
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "bg-blue-100 dark:bg-[#155dfc]/20 text-[#155dfc] dark:text-[#50a2ff] rotate-180 border border-blue-200 dark:border-[#155dfc]/40" : "bg-gray-200/80 dark:bg-white/[0.05] text-gray-700 dark:text-gray-400 border border-gray-300 dark:border-white/[0.08]"}`}>
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "bg-blue-100 dark:bg-[#155dfc]/20 text-[#155dfc] dark:text-[#50a2ff] rotate-180 border border-blue-200 dark:border-[#155dfc]/40" : "bg-gray-200/80 dark:bg-white/[0.05] text-slate-800 dark:text-gray-200 border border-gray-300 dark:border-white/[0.08]"}`}>
                     <ChevronDown size={18} />
                   </div>
                 </button>
@@ -118,7 +118,7 @@ export default function Faq() {
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-sm sm:text-base text-slate-600 dark:text-gray-300 leading-relaxed pt-4 mt-3 border-t border-gray-200 dark:border-white/[0.08] font-normal">
+                      <p className="text-sm sm:text-base text-slate-700 dark:text-gray-200 leading-relaxed pt-4 mt-3 border-t border-gray-200 dark:border-white/[0.08] font-normal">
                         {faq.answer}
                       </p>
                     </motion.div>
@@ -137,7 +137,7 @@ export default function Faq() {
 
           <div className="text-left relative z-10">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Have a specific architectural query?</h3>
-            <p className="text-sm text-slate-600 dark:text-gray-300 mt-1">Talk directly with our technical solutions team.</p>
+            <p className="text-sm text-slate-700 dark:text-gray-200 mt-1">Talk directly with our technical solutions team.</p>
           </div>
 
           <button

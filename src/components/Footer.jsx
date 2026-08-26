@@ -79,7 +79,7 @@ const Footer = () => {
               </span>
             </Link>
 
-            <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed max-w-sm font-normal">
+            <p className="text-sm text-slate-700 dark:text-gray-200 leading-relaxed max-w-sm font-normal">
               Webintegratorz Technologies is a premier global AI &amp; IT engineering firm delivering scalable cloud architectures, generative AI ecosystems, and bespoke digital software.
             </p>
 
@@ -92,7 +92,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.label}
-                  className="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white text-gray-700 dark:text-gray-300 transition-colors cursor-pointer"
+                  className="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white text-slate-900 dark:text-slate-100 transition-colors cursor-pointer"
                 >
                   <item.Icon className="w-4 h-4" />
                 </a>

@@ -55,7 +55,7 @@ export default function WhyChooseUsSection() {
   ];
 
   return (
-    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden border-t border-gray-200 dark:border-white/[0.08]">
+    <section className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#030712] overflow-hidden border-t border-gray-200 dark:border-white/[0.08]">
       <div className="relative max-w-[1440px] mx-auto">
         
         {/* Section Header */}
@@ -67,7 +67,7 @@ export default function WhyChooseUsSection() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-[#030712] border border-blue-200 dark:border-[#155dfc]/40 mb-6 font-bold shadow-sm"
           >
             <ShieldCheck size={14} className="text-blue-600 dark:text-[#50a2ff]" />
-            <span className="text-blue-700 dark:text-[#50a2ff] text-xs tracking-wider uppercase font-bold">
+            <span className="text-blue-800 dark:text-sky-300 text-xs tracking-wider uppercase font-bold">
               Why Partner With Us
             </span>
           </motion.div>
@@ -86,7 +86,7 @@ export default function WhyChooseUsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-5 text-base sm:text-lg text-slate-700 dark:text-gray-300 max-w-2xl font-normal leading-relaxed"
+            className="mt-5 text-base sm:text-lg text-slate-800 dark:text-gray-200 max-w-2xl font-normal leading-relaxed"
           >
             We combine elite engineering discipline with cutting-edge AI expertise to deliver digital assets that perform, scale, and generate long-term equity.
           </motion.p>
@@ -103,8 +103,8 @@ export default function WhyChooseUsSection() {
                 <p className="text-3xl font-extrabold sm:text-4xl text-gray-900 dark:text-white tracking-tight">
                   {stat.number}
                 </p>
-                <p className="mt-1.5 text-sm text-[#155dfc] dark:text-[#50a2ff] font-bold">{stat.label}</p>
-                <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5 font-medium">{stat.sub}</p>
+                <p className="mt-1.5 text-sm text-blue-800 dark:text-sky-300 font-bold">{stat.label}</p>
+                <p className="text-xs text-slate-700 dark:text-gray-200 mt-0.5 font-medium">{stat.sub}</p>
               </div>
             ))}
           </div>
@@ -128,7 +128,7 @@ export default function WhyChooseUsSection() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-blue-200 dark:border-[#155dfc]/30 bg-blue-50 dark:bg-[#155dfc]/15 text-[#155dfc] dark:text-[#50a2ff] shadow-inner group-hover:scale-110 group-hover:bg-[#155dfc] group-hover:text-white transition-all duration-300">
                     <feature.icon className="h-6 w-6" />
                   </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-blue-200 dark:border-blue-800/60 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-sky-300">
+                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-blue-200 dark:border-blue-800/60 bg-blue-50 dark:bg-blue-950/60 text-blue-800 dark:text-sky-300">
                     {feature.tag}
                   </span>
                 </div>
@@ -137,12 +137,12 @@ export default function WhyChooseUsSection() {
                   {feature.title}
                 </h3>
 
-                <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-6 font-normal">
+                <p className="text-sm text-slate-700 dark:text-gray-200 leading-relaxed mb-6 font-normal">
                   {feature.description}
                 </p>
               </div>
 
-              <div className="relative z-10 pt-4 border-t border-gray-200 dark:border-white/[0.08] flex items-center justify-between text-xs font-semibold text-[#155dfc] dark:text-[#50a2ff]">
+              <div className="relative z-10 pt-4 border-t border-gray-200 dark:border-white/[0.08] flex items-center justify-between text-xs font-semibold text-blue-800 dark:text-sky-300">
                 <span>Guaranteed SLA Standard</span>
                 <CheckCircle2 size={16} />
               </div>

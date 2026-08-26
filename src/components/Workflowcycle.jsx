@@ -614,13 +614,13 @@ export default function WorkflowCycle() {
                   activeStep === 0 ? "bg-[#155dfc]/10 border border-[#155dfc]/40 shadow-lg" : "hover:bg-white/[0.03]"
                 }`}
               >
-                <span className="text-[10px] font-black uppercase tracking-widest text-[#50a2ff] block">
+                <span className="text-[10px] font-black uppercase tracking-widest text-sky-300 block">
                   Phase 01 • Analysis & Planning
                 </span>
-                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 0 ? "text-white" : "text-gray-300 group-hover:text-white"}`}>
+                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 0 ? "text-white" : "text-gray-200 group-hover:text-white"}`}>
                   Requirement Gathering & Discovery
                 </span>
-                <span className="text-[11px] text-gray-400 block mt-0.5 font-medium">
+                <span className="text-[11px] text-gray-300 block mt-0.5 font-medium">
                   Feasibility & Architecture Spec
                 </span>
               </button>
@@ -638,13 +638,13 @@ export default function WorkflowCycle() {
                   activeStep === 3 ? "bg-[#155dfc]/10 border border-[#155dfc]/40 shadow-lg" : "hover:bg-white/[0.03]"
                 }`}
               >
-                <span className="text-[10px] font-black uppercase tracking-widest text-[#50a2ff] block">
+                <span className="text-[10px] font-black uppercase tracking-widest text-sky-300 block">
                   Phase 04 • Implementation
                 </span>
-                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 3 ? "text-white" : "text-gray-300 group-hover:text-white"}`}>
+                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 3 ? "text-white" : "text-gray-200 group-hover:text-white"}`}>
                   Development & Sprint Coding
                 </span>
-                <span className="text-[11px] text-gray-400 block mt-0.5 font-medium">
+                <span className="text-[11px] text-gray-300 block mt-0.5 font-medium">
                   Frontend, Backend & Microservices
                 </span>
               </button>
@@ -662,13 +662,13 @@ export default function WorkflowCycle() {
                   activeStep === 2 ? "bg-[#50a2ff]/10 border border-[#50a2ff]/40 shadow-lg" : "hover:bg-white/[0.03]"
                 }`}
               >
-                <span className="text-[10px] font-black uppercase tracking-widest text-[#50a2ff] block">
+                <span className="text-[10px] font-black uppercase tracking-widest text-sky-300 block">
                   Phase 03 • UI/UX Design
                 </span>
-                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 2 ? "text-white" : "text-gray-300 group-hover:text-white"}`}>
+                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 2 ? "text-white" : "text-gray-200 group-hover:text-white"}`}>
                   Design & Prototyping
                 </span>
-                <span className="text-[11px] text-gray-400 block mt-0.5 font-medium">
+                <span className="text-[11px] text-gray-300 block mt-0.5 font-medium">
                   Design Systems & Tokens
                 </span>
               </button>
@@ -686,13 +686,13 @@ export default function WorkflowCycle() {
                   activeStep === 1 ? "bg-[#0ea5e9]/10 border border-[#0ea5e9]/40 shadow-lg" : "hover:bg-white/[0.03]"
                 }`}
               >
-                <span className="text-[10px] font-black uppercase tracking-widest text-[#50a2ff] block">
+                <span className="text-[10px] font-black uppercase tracking-widest text-sky-300 block">
                   Phase 02 • System Modeling
                 </span>
-                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 1 ? "text-white" : "text-gray-300 group-hover:text-white"}`}>
+                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 1 ? "text-white" : "text-gray-200 group-hover:text-white"}`}>
                   Sitemap & Wireframing
                 </span>
-                <span className="text-[11px] text-gray-400 block mt-0.5 font-medium">
+                <span className="text-[11px] text-gray-300 block mt-0.5 font-medium">
                   Information & User Flow Maps
                 </span>
               </button>
@@ -710,13 +710,13 @@ export default function WorkflowCycle() {
                   activeStep === 4 ? "bg-[#38bdf8]/10 border border-[#38bdf8]/40 shadow-lg" : "hover:bg-white/[0.03]"
                 }`}
               >
-                <span className="text-[10px] font-black uppercase tracking-widest text-[#50a2ff] block">
+                <span className="text-[10px] font-black uppercase tracking-widest text-sky-300 block">
                   Phase 05 • QA & Deployment
                 </span>
-                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 4 ? "text-white" : "text-gray-300 group-hover:text-white"}`}>
+                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 4 ? "text-white" : "text-gray-200 group-hover:text-white"}`}>
                   Testing, QA, & Launch
                 </span>
-                <span className="text-[11px] text-gray-400 block mt-0.5 font-medium">
+                <span className="text-[11px] text-gray-300 block mt-0.5 font-medium">
                   UAT, Pentests & CI/CD Release
                 </span>
               </button>
@@ -734,13 +734,13 @@ export default function WorkflowCycle() {
                   activeStep === 5 ? "bg-[#155dfc]/10 border border-[#155dfc]/40 shadow-lg" : "hover:bg-white/[0.03]"
                 }`}
               >
-                <span className="text-[10px] font-black uppercase tracking-widest text-[#50a2ff] block">
+                <span className="text-[10px] font-black uppercase tracking-widest text-sky-300 block">
                   Phase 06 • Operations
                 </span>
-                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 5 ? "text-white" : "text-gray-300 group-hover:text-white"}`}>
+                <span className={`text-sm sm:text-[15px] font-bold block leading-snug ${activeStep === 5 ? "text-white" : "text-gray-200 group-hover:text-white"}`}>
                   Maintenance & Support
                 </span>
-                <span className="text-[11px] text-gray-400 block mt-0.5 font-medium">
+                <span className="text-[11px] text-gray-300 block mt-0.5 font-medium">
                   24/7 Telemetry & Evolution
                 </span>
               </button>
