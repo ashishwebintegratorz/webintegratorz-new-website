@@ -12,9 +12,6 @@ const Casestudies = dynamic(() => import("@/components/Casestudies"), {
 const Workflowcycle = dynamic(() => import("@/components/Workflowcycle"), {
   ssr: true,
 });
-const Featuredsection = dynamic(() => import("@/components/Featuredsection"), {
-  ssr: true,
-});
 const Faq = dynamic(() => import("@/components/Faq"), {
   ssr: true,
 });
@@ -112,9 +109,6 @@ export default function Home() {
       </div>
       <div className="render-optimize">
         <Workflowcycle />
-      </div>
-      <div className="render-optimize">
-        <Featuredsection />
       </div>
       <div className="render-optimize">
         <Faq />
