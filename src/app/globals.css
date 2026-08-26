@@ -4704,35 +4704,55 @@ html:not(.dark) [class*="to-[#030712]"] {
 
 /* Header & Nav in Light Mode */
 html:not(.dark) header {
-  background-color: rgba(255, 255, 255, 0.85) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
   border-color: rgba(15, 23, 42, 0.08) !important;
 }
 
-/* BUTTONS IN LIGHT MODE: Sleek Rich Black with Crisp Pure White Text */
-html:not(.dark) button.cursor-pointer,
+/* BUTTONS IN LIGHT MODE: Signature Webintegratorz Brand Blue with Pure White Text */
+html:not(.dark) [class*="NoiseButton"] button,
 html:not(.dark) .cta-button,
-html:not(.dark) [class*="NoiseButton"],
-html:not(.dark) [class*="from-neutral-900"],
-html:not(.dark) [class*="bg-neutral-900"],
-html:not(.dark) [class*="bg-[#030712]"][class*="rounded-full"],
-html:not(.dark) a[class*="rounded-full"][class*="bg-neutral-900"],
-html:not(.dark) a[class*="rounded-full"][class*="from-neutral-900"] {
-  background: #0f172a !important;
+html:not(.dark) button[class*="bg-gradient-to-r"],
+html:not(.dark) a[class*="bg-[#155dfc]"] {
+  background: linear-gradient(135deg, #155dfc 0%, #2563eb 50%, #1d4ed8 100%) !important;
   color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 4px 14px 0 rgba(15, 23, 42, 0.25) !important;
+  border-color: rgba(80, 162, 255, 0.5) !important;
+  box-shadow: 0 4px 18px -2px rgba(21, 93, 252, 0.4) !important;
 }
 
-/* Ensure text, spans, and icons inside black & primary buttons stay pure white */
-html:not(.dark) button[class*="from-neutral-900"] *,
-html:not(.dark) button[class*="bg-neutral-900"] *,
+/* Secondary outline buttons in Light Mode */
+html:not(.dark) button:not([class*="NoiseButton"]):not([class*="bg-gradient-to-r"]):not([class*="bg-[#155dfc]"]):not([class*="bg-blue"]):not([class*="p-2"]):not([class*="ThemeToggle"]) {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Ensure text & icons inside brand blue buttons stay pure white */
 html:not(.dark) [class*="NoiseButton"] *,
 html:not(.dark) .cta-button *,
 html:not(.dark) [class*="bg-[#155dfc]"] *,
 html:not(.dark) [class*="bg-blue-600"] *,
-html:not(.dark) button.cursor-pointer:not([class*="bg-transparent"]):not([class*="bg-white"]):not([class*="hover:bg-gray-100"]) span,
-html:not(.dark) button.cursor-pointer:not([class*="bg-transparent"]):not([class*="bg-white"]):not([class*="hover:bg-gray-100"]) p {
+html:not(.dark) button[class*="bg-gradient-to-r"] * {
   color: #ffffff !important;
+}
+
+/* Dropdown menus & links in Light Mode */
+html:not(.dark) #desktop-services-dropdown,
+html:not(.dark) #desktop-ai-dropdown {
+  background-color: #ffffff !important;
+}
+
+html:not(.dark) #desktop-services-dropdown p,
+html:not(.dark) #desktop-ai-dropdown p,
+html:not(.dark) #desktop-services-dropdown span,
+html:not(.dark) #desktop-ai-dropdown span {
+  color: #0f172a !important;
+}
+
+html:not(.dark) #desktop-services-dropdown .text-gray-400,
+html:not(.dark) #desktop-services-dropdown .text-gray-600,
+html:not(.dark) #desktop-ai-dropdown .text-gray-400,
+html:not(.dark) #desktop-ai-dropdown .text-gray-600 {
+  color: #475569 !important;
 }
 
 /* Accessibility & Dropdown Panels in Light Mode */

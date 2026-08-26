@@ -41,7 +41,7 @@ export const NoiseBackground = ({
   gradientColors = [
     "rgb(21, 93, 252)",   // #155dfc Primary Brand Blue
     "rgb(80, 162, 255)",  // #50a2ff Accent Light Blue
-    "rgb(21, 93, 252)",   // #155dfc Primary Brand Blue
+    "rgb(37, 99, 235)",   // #2563eb Blue
   ],
   noiseIntensity = 0.2,
   speed = 0.1,
@@ -144,9 +144,9 @@ export const NoiseBackground = ({
     <div
       ref={containerRef}
       className={cn(
-        "group relative overflow-hidden rounded-full p-1 sm:p-1.5 backdrop-blur-md bg-neutral-900/90",
-        "border border-neutral-700/80 shadow-[0px_0.5px_2px_0px_rgba(255,255,255,0.15)_inset,0px_10px_25px_-5px_rgba(0,0,0,0.5)]",
-        "hover:border-neutral-600 transition-all duration-300",
+        "group relative overflow-hidden rounded-full p-1 sm:p-1.5 backdrop-blur-md",
+        "bg-blue-600/10 dark:bg-neutral-900/90 border border-blue-500/30 dark:border-neutral-700/80 shadow-[0px_0.5px_2px_0px_rgba(255,255,255,0.15)_inset,0px_10px_25px_-5px_rgba(21,93,252,0.3)]",
+        "hover:border-blue-500/60 dark:hover:border-neutral-600 transition-all duration-300",
         backdropBlur &&
           "after:absolute after:inset-0 after:h-full after:w-full after:backdrop-blur-lg after:content-['']",
         containerClassName,
@@ -213,7 +213,7 @@ export function NoiseButton({
   gradientColors = [
     "rgb(21, 93, 252)",   // #155dfc Primary Brand Blue
     "rgb(80, 162, 255)",  // #50a2ff Accent Light Blue
-    "rgb(21, 93, 252)",   // #155dfc Primary Brand Blue
+    "rgb(37, 99, 235)",   // #2563eb Blue
   ],
   type = "button",
 }) {
@@ -227,9 +227,9 @@ export function NoiseButton({
         onClick={onClick}
         className={cn(
           "relative flex items-center justify-center gap-2 px-6 py-2.5 sm:px-8 sm:py-3 cursor-pointer rounded-full",
-          "bg-gradient-to-r from-neutral-900 via-neutral-950 to-neutral-900 text-white font-semibold text-sm sm:text-base",
-          "border border-white/10 shadow-[0px_1px_0px_0px_rgba(255,255,255,0.15)_inset,0px_1px_2px_0px_rgba(0,0,0,0.6)]",
-          "hover:bg-neutral-800/90 transition-all duration-200 active:scale-98",
+          "bg-gradient-to-r from-[#155dfc] via-[#2563eb] to-[#155dfc] text-white font-semibold text-sm sm:text-base",
+          "border border-[#50a2ff]/40 shadow-[0_4px_20px_-4px_rgba(21,93,252,0.5)]",
+          "hover:brightness-110 hover:shadow-[0_6px_25px_-4px_rgba(21,93,252,0.7)] transition-all duration-200 active:scale-98",
           className
         )}
       >
