@@ -9,7 +9,8 @@ import {
   Code2, 
   Rocket, 
   Settings, 
-  Sparkles
+  Sparkles,
+  CheckCircle2
 } from "lucide-react";
 
 export default function WorkflowCycle() {
@@ -20,68 +21,80 @@ export default function WorkflowCycle() {
     {
       number: "01",
       icon: FileSearch,
+      phase: "Phase 01 • Analysis & Planning",
       title: "Requirement Gathering & Discovery",
       subtitle: "Planning, Feasibility & Architecture Spec",
       color: "#155dfc",
       gradient: "from-[#155dfc] to-[#2563eb]",
       badgePos: { left: '34.6%', top: '24%' },
       calloutPos: { left: '2%', top: '3%' },
-      textAlign: "text-right"
+      textAlign: "text-right",
+      highlights: ["Business Goal Discovery", "Technical Feasibility Audit", "Architecture & Cloud Spec"]
     },
     {
       number: "02",
       icon: Network,
+      phase: "Phase 02 • System Modeling",
       title: "Sitemap, Wireframe & Architecture",
       subtitle: "Information Architecture & User Flow Models",
       color: "#0ea5e9",
       gradient: "from-[#0ea5e9] to-[#38bdf8]",
       badgePos: { left: '56.6%', top: '73.1%' },
       calloutPos: { left: '68%', top: '84%' },
-      textAlign: "text-left"
+      textAlign: "text-left",
+      highlights: ["Information Architecture", "Interactive Wireframing", "Entity-Relationship Modeling"]
     },
     {
       number: "03",
       icon: Palette,
+      phase: "Phase 03 • UI/UX Design",
       title: "UI/UX Design & Prototyping",
       subtitle: "Design Systems, Tokens & Clickable High-Fi",
       color: "#50a2ff",
       gradient: "from-[#50a2ff] to-[#38bdf8]",
       badgePos: { left: '81%', top: '50%' },
       calloutPos: { left: '94%', top: '44%' },
-      textAlign: "text-left"
+      textAlign: "text-left",
+      highlights: ["Design System & Tokens", "Figma High-Fidelity Prototypes", "Usability & Micro-Interactions"]
     },
     {
       number: "04",
       icon: Code2,
+      phase: "Phase 04 • Implementation",
       title: "Development & Sprint Engineering",
       subtitle: "Frontend, Backend & Microservice Coding",
       color: "#2563eb",
       gradient: "from-[#2563eb] to-[#155dfc]",
       badgePos: { left: '65.4%', top: '24%' },
       calloutPos: { left: '76%', top: '3%' },
-      textAlign: "text-left"
+      textAlign: "text-left",
+      highlights: ["Full-Stack & Microservices", "CI/CD Deployment Pipelines", "Rigorous Code Reviews"]
     },
     {
       number: "05",
       icon: Rocket,
+      phase: "Phase 05 • QA & Deployment",
       title: "Testing, QA, Review & Launch",
       subtitle: "UAT, Security Audits & Zero-Downtime Deploy",
       color: "#38bdf8",
       gradient: "from-[#38bdf8] to-[#50a2ff]",
       badgePos: { left: '43.4%', top: '73.1%' },
       calloutPos: { left: '3%', top: '84%' },
-      textAlign: "text-right"
+      textAlign: "text-right",
+      highlights: ["Automated Regression Testing", "OWASP Security & Pentests", "Zero-Downtime Production Launch"]
     },
     {
       number: "06",
       icon: Settings,
+      phase: "Phase 06 • Operations",
       title: "Maintenance & Continuous Evolution",
       subtitle: "24/7 SLA Telemetry, Security Patches & Scale",
       color: "#1e40af",
       gradient: "from-[#1e40af] to-[#155dfc]",
       badgePos: { left: '19%', top: '50%' },
       calloutPos: { left: '0%', top: '44%' },
-      textAlign: "text-right"
+      textAlign: "text-right",
+      highlights: ["24/7 Monitoring & Telemetry", "SLA Incident Response", "Iterative Feature Scaling"]
     }
   ];
 
@@ -94,7 +107,7 @@ export default function WorkflowCycle() {
   }, [steps.length]);
 
   return (
-    <section id="process" className="relative w-full py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#030712] overflow-hidden border-t border-white/[0.08]">
+    <section id="process" className="relative w-full py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#030712] overflow-hidden border-t border-gray-200 dark:border-white/[0.08]">
       {/* Background ambient lighting effects tailored to Brand UI */}
       <div className="absolute top-1/4 -left-40 w-[500px] h-[500px] bg-[#155dfc]/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-[#50a2ff]/10 rounded-full blur-[140px] pointer-events-none" />
@@ -117,10 +130,10 @@ export default function WorkflowCycle() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030712] border border-[#155dfc]/30 mb-5 font-bold shadow-lg backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-[#030712] border border-blue-200 dark:border-[#155dfc]/30 mb-5 font-bold shadow-lg backdrop-blur-md"
           >
-            <Sparkles size={14} className="text-[#50a2ff] animate-pulse" />
-            <span className="text-[#50a2ff] text-xs tracking-[0.2em] uppercase font-bold">
+            <Sparkles size={14} className="text-blue-600 dark:text-[#50a2ff] animate-pulse" />
+            <span className="text-blue-800 dark:text-sky-300 text-xs tracking-[0.2em] uppercase font-bold">
               SDLC & Web Dev Lifecycle
             </span>
           </motion.div>
@@ -129,7 +142,7 @@ export default function WorkflowCycle() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] max-w-4xl"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-[1.15] max-w-4xl"
           >
             From Concept to Scale: <br />
             <span className="bg-gradient-to-r from-[#155dfc] via-[#2b7fff] to-[#50a2ff] bg-clip-text text-transparent">
@@ -142,16 +155,16 @@ export default function WorkflowCycle() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-4 text-sm sm:text-base md:text-lg text-gray-400 max-w-3xl font-normal leading-relaxed"
+            className="mt-4 text-sm sm:text-base md:text-lg text-slate-800 dark:text-gray-200 max-w-3xl font-normal leading-relaxed"
           >
             A unified execution framework harmonizing the Web Development Life Cycle (WDLC) and Software Development Life Cycle (SDLC) — from requirements gathering to enterprise cloud deployment.
           </motion.p>
         </div>
 
         {/* ========================================================= */}
-        {/* ANIMATED INFINITY LOOP DIAGRAM (Brand UI Palette) */}
+        {/* DESKTOP ANIMATED INFINITY LOOP DIAGRAM (≥1024px) */}
         {/* ========================================================= */}
-        <div className="relative w-full select-none overflow-x-auto pb-6 scrollbar-none">
+        <div className="hidden lg:block relative w-full select-none overflow-x-auto pb-6 scrollbar-none">
           <div className="relative min-w-[800px] max-w-[1140px] mx-auto aspect-[1140/560]">
             
             {/* SVG Canvas for Infinity Ribbon and Animated Light Track */}
@@ -255,6 +268,10 @@ export default function WorkflowCycle() {
                 strokeOpacity="0.25"
                 strokeDasharray="6 6"
               />
+
+              {/* Center Intersect Core Glowing Pulse */}
+              <circle cx="570" cy="280" r="14" fill="#ffffff" filter="url(#glowFilter)" opacity="0.9" />
+              <circle cx="570" cy="280" r="6" fill="#155dfc" />
 
               {/* ---------------------------------------------------- */}
               {/* ANIMATED LIGHT BEAM TRAVELING ALONG THE INFINITY TRACK */}
@@ -448,10 +465,10 @@ export default function WorkflowCycle() {
               </button>
             </div>
 
-            {/* 02: Bottom Right Crossover */}
+            {/* 02: Bottom Right */}
             <div 
               style={{ left: '56.6%', top: '73.1%' }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 z-30"
+              className="absolute -translate-x-1/2 -translate-y-1/2 z-20"
             >
               <button
                 type="button"
@@ -747,6 +764,112 @@ export default function WorkflowCycle() {
             </div>
 
           </div>
+        </div>
+
+        {/* ========================================================= */}
+        {/* MOBILE & TABLET RESPONSIVE 6-PHASE WORKFLOW (<1024px) */}
+        {/* ========================================================= */}
+        <div className="block lg:hidden mt-6 sm:mt-10">
+          
+          {/* Mobile & Tablet Interactive Phase Switcher */}
+          <div className="grid grid-cols-6 gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-2xl bg-gray-100 dark:bg-[#030712] border border-gray-200 dark:border-white/[0.08] mb-8 shadow-inner">
+            {steps.map((step, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setActiveStep(idx)}
+                className={`flex flex-col items-center justify-center py-2.5 sm:py-3 px-1 rounded-xl transition-all duration-300 cursor-pointer ${
+                  activeStep === idx
+                    ? "bg-[#155dfc] text-white shadow-lg scale-102"
+                    : "text-slate-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/[0.05]"
+                }`}
+              >
+                <span className="text-xs sm:text-sm font-black">{step.number}</span>
+                <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider truncate max-w-full hidden sm:inline">
+                  P{step.number}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {/* Responsive Card Grid: 1 Col on Phone, 2 Col on Tablet */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            {steps.map((step, idx) => {
+              const isCurrent = activeStep === idx;
+              const StepIcon = step.icon;
+              return (
+                <div
+                  key={idx}
+                  onClick={() => setActiveStep(idx)}
+                  className={`group relative rounded-2xl p-6 sm:p-7 transition-all duration-300 overflow-hidden cursor-pointer flex flex-col justify-between border ${
+                    isCurrent
+                      ? "bg-blue-50/90 dark:bg-[#0a1024] border-[#155dfc] dark:border-[#50a2ff] shadow-xl ring-2 ring-[#155dfc]/20"
+                      : "bg-gray-50/90 dark:bg-[#030712] border-gray-200 dark:border-white/[0.08] hover:border-blue-300 dark:hover:border-white/[0.2] shadow-md"
+                  }`}
+                >
+                  {/* Top Shine */}
+                  <div className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${step.gradient} ${isCurrent ? "opacity-100" : "opacity-0 group-hover:opacity-60"} transition-opacity`} />
+
+                  <div>
+                    {/* Header Row: Badge, Phase Tag, Icon */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-2">
+                        <span className={`text-xs font-black px-2.5 py-1 rounded-full border ${
+                          isCurrent
+                            ? "bg-[#155dfc] text-white border-white/60"
+                            : "bg-white dark:bg-white/[0.06] text-blue-700 dark:text-sky-300 border-blue-200 dark:border-white/[0.1]"
+                        }`}>
+                          {step.number}
+                        </span>
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-blue-800 dark:text-sky-300">
+                          {step.phase}
+                        </span>
+                      </div>
+
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
+                        isCurrent
+                          ? "bg-[#155dfc] text-white shadow-md"
+                          : "bg-blue-50 dark:bg-white/[0.05] text-[#155dfc] dark:text-[#50a2ff] border border-blue-200 dark:border-white/[0.08]"
+                      }`}>
+                        <StepIcon size={18} />
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-1.5 tracking-tight leading-snug">
+                      {step.title}
+                    </h3>
+
+                    {/* Subtitle */}
+                    <p className="text-xs sm:text-sm text-slate-700 dark:text-gray-300 font-normal leading-relaxed mb-4">
+                      {step.subtitle}
+                    </p>
+
+                    {/* Deliverable Highlights */}
+                    <div className="space-y-1.5 pt-3 border-t border-gray-200 dark:border-white/[0.08]">
+                      {step.highlights.map((item, hIdx) => (
+                        <div key={hIdx} className="flex items-center gap-2 text-xs text-slate-800 dark:text-gray-200 font-medium">
+                          <CheckCircle2 size={13} className="text-[#155dfc] dark:text-[#50a2ff] shrink-0" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Active Indicator Footer */}
+                  <div className="mt-4 pt-3 flex items-center justify-between text-xs font-semibold">
+                    <span className={isCurrent ? "text-[#155dfc] dark:text-sky-300 font-bold" : "text-slate-500 dark:text-gray-400"}>
+                      {isCurrent ? "Active Execution Phase" : "Tap to inspect phase"}
+                    </span>
+                    {isCurrent && (
+                      <span className="w-2 h-2 rounded-full bg-[#155dfc] dark:bg-sky-400 animate-pulse" />
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
 
       </div>
