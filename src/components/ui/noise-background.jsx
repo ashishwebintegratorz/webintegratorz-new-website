@@ -215,21 +215,21 @@ export function NoiseButton({
   gradientColors = [
     "rgb(21, 93, 252)",   // #155dfc Primary Brand Blue
     "rgb(80, 162, 255)",  // #50a2ff Accent Light Blue
-    "rgb(37, 99, 235)",   // #2563eb Blue
+    "rgb(29, 78, 216)",   // #1d4ed8 Deep Brand Blue
   ],
   type = "button",
 }) {
   const commonClasses = cn(
-    "relative flex items-center justify-center gap-2 px-6 py-2.5 sm:px-8 sm:py-3 cursor-pointer rounded-full min-h-[44px]",
-    "bg-gradient-to-r from-[#155dfc] via-[#2563eb] to-[#155dfc] text-white font-semibold text-sm sm:text-base",
-    "border border-[#50a2ff]/40 shadow-[0_4px_20px_-4px_rgba(21,93,252,0.5)]",
-    "hover:brightness-110 hover:shadow-[0_6px_25px_-4px_rgba(21,93,252,0.7)] transition-all duration-200 active:scale-98",
+    "btn-brand-primary relative flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 cursor-pointer rounded-full min-h-[48px]",
+    "bg-gradient-to-r from-[#155dfc] via-[#1d4ed8] to-[#155dfc] text-white font-bold text-sm sm:text-base tracking-wide",
+    "border border-[#50a2ff]/50 shadow-[0_4px_20px_-4px_rgba(21,93,252,0.6)]",
+    "hover:brightness-110 hover:shadow-[0_6px_25px_-4px_rgba(21,93,252,0.8)] transition-all duration-200 active:scale-98",
     className
   );
 
   return (
     <NoiseBackground
-      containerClassName={cn("w-fit p-1 rounded-full", containerClassName)}
+      containerClassName={cn("NoiseButton w-fit p-1 rounded-full", containerClassName)}
       gradientColors={gradientColors}
     >
       {href ? (

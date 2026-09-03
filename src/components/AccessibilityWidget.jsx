@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useSyncExternalStore } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   Accessibility, 
   X, 
@@ -14,41 +15,48 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const emptySubscribe = () => () => {};
+
+const defaultPrefs = {
+  textSize: 'normal', // 'normal' | 'large' | 'xlarge'
+  contrastMode: 'default', // 'default' | 'high' | 'monochrome' | 'invert'
+  dyslexicFont: false,
+  highlightLinks: false,
+  pauseAnimations: false,
+  bigCursor: false,
+};
+
+const getInitialPrefs = () => {
+  if (typeof window === 'undefined') return defaultPrefs;
+  try {
+    const saved = localStorage.getItem('webint_a11y_prefs');
+    if (saved) {
+      return { ...defaultPrefs, ...JSON.parse(saved) };
+    }
+  } catch (e) {
+    console.error(e);
+  }
+  return defaultPrefs;
+};
+
 export default function AccessibilityWidget() {
+  const isClient = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const widgetRef = useRef(null);
   
   // Accessibility states
-  const [textSize, setTextSize] = useState('normal'); // 'normal' | 'large' | 'xlarge'
-  const [contrastMode, setContrastMode] = useState('default'); // 'default' | 'high' | 'monochrome' | 'invert'
-  const [dyslexicFont, setDyslexicFont] = useState(false);
-  const [highlightLinks, setHighlightLinks] = useState(false);
-  const [pauseAnimations, setPauseAnimations] = useState(false);
-  const [bigCursor, setBigCursor] = useState(false);
+  const [prefs, setPrefs] = useState(getInitialPrefs);
 
-  // Avoid SSR hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-    try {
-      const saved = localStorage.getItem('webint_a11y_prefs');
-      if (saved) {
-        const prefs = JSON.parse(saved);
-        if (prefs.textSize) setTextSize(prefs.textSize);
-        if (prefs.contrastMode) setContrastMode(prefs.contrastMode);
-        if (prefs.dyslexicFont !== undefined) setDyslexicFont(prefs.dyslexicFont);
-        if (prefs.highlightLinks !== undefined) setHighlightLinks(prefs.highlightLinks);
-        if (prefs.pauseAnimations !== undefined) setPauseAnimations(prefs.pauseAnimations);
-        if (prefs.bigCursor !== undefined) setBigCursor(prefs.bigCursor);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }, []);
+  const { textSize, contrastMode, dyslexicFont, highlightLinks, pauseAnimations, bigCursor } = prefs;
 
   // Sync DOM classes whenever preferences change
   useEffect(() => {
-    if (!mounted) return;
+    if (!isClient) return;
     const root = document.documentElement;
     
     // Text sizing
@@ -80,26 +88,30 @@ export default function AccessibilityWidget() {
 
     // Save to localStorage
     try {
-      localStorage.setItem('webint_a11y_prefs', JSON.stringify({
-        textSize,
-        contrastMode,
-        dyslexicFont,
-        highlightLinks,
-        pauseAnimations,
-        bigCursor
-      }));
+      localStorage.setItem('webint_a11y_prefs', JSON.stringify(prefs));
     } catch (e) {
       console.error(e);
     }
-  }, [textSize, contrastMode, dyslexicFont, highlightLinks, pauseAnimations, bigCursor, mounted]);
+  }, [prefs, textSize, contrastMode, dyslexicFont, highlightLinks, pauseAnimations, bigCursor, isClient]);
+
+  // Close when pressing Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
+  const updatePref = (key, value) => {
+    setPrefs((prev) => ({ ...prev, [key]: value }));
+  };
 
   const resetAll = () => {
-    setTextSize('normal');
-    setContrastMode('default');
-    setDyslexicFont(false);
-    setHighlightLinks(false);
-    setPauseAnimations(false);
-    setBigCursor(false);
+    setPrefs(defaultPrefs);
     try {
       localStorage.removeItem('webint_a11y_prefs');
     } catch (e) {
@@ -109,13 +121,13 @@ export default function AccessibilityWidget() {
 
   const hasActiveOverrides = textSize !== 'normal' || contrastMode !== 'default' || dyslexicFont || highlightLinks || pauseAnimations || bigCursor;
 
-  if (!mounted) return null;
+  if (!isClient) return null;
 
-  return (
-    <div ref={widgetRef} className="relative z-[99999]">
+  const content = (
+    <div ref={widgetRef} className="fixed bottom-5 left-5 sm:bottom-6 sm:left-6 z-[999999] pointer-events-auto select-none">
       
       {/* FLOATING ACCESSIBILITY TRIGGER BUTTON */}
-      <div className="fixed bottom-5 left-5 sm:bottom-6 sm:left-6 z-[99999] flex items-center gap-2.5 pointer-events-auto select-none touch-manipulation">
+      <div className="flex items-center gap-2.5 touch-manipulation">
         <button
           type="button"
           onClick={(e) => {
@@ -138,19 +150,26 @@ export default function AccessibilityWidget() {
       {/* ACCESSIBILITY MODAL DIALOG */}
       <AnimatePresence>
         {isOpen && (
-          <>
+          <div key="a11y-dialog-wrapper">
             {/* Backdrop */}
-            <div 
+            <motion.div 
+              key="a11y-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 setIsOpen(false);
               }}
-              className="fixed inset-0 z-[99998] bg-black/60 backdrop-blur-xs transition-opacity touch-manipulation" 
+              className="fixed inset-0 z-[999998] bg-black/60 backdrop-blur-xs touch-manipulation cursor-pointer" 
               aria-hidden="true"
             />
 
+            {/* Modal Content */}
             <motion.div
+              key="a11y-modal"
               id="accessibility-modal"
               role="dialog"
               aria-modal="true"
@@ -159,10 +178,10 @@ export default function AccessibilityWidget() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 15, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="fixed bottom-20 sm:bottom-24 left-4 sm:left-6 right-4 sm:right-auto sm:w-[380px] max-h-[85vh] max-h-[85dvh] overflow-y-auto rounded-3xl bg-[#030712] border border-white/[0.12] shadow-2xl p-5 sm:p-6 text-white z-[99999] touch-manipulation overscroll-contain relative font-inter"
+              className="fixed bottom-20 sm:bottom-24 left-4 sm:left-6 right-4 sm:right-auto sm:w-[380px] max-h-[82vh] max-h-[82dvh] overflow-y-auto rounded-3xl bg-[#030712] border border-white/[0.12] shadow-2xl p-5 sm:p-6 text-white z-[999999] touch-manipulation overscroll-contain font-inter"
               style={{ WebkitOverflowScrolling: 'touch' }}
             >
-              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70" />
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#155dfc] to-transparent opacity-70 pointer-events-none" />
 
               {/* Modal Header */}
               <div className="flex items-center justify-between pb-4 border-b border-white/[0.08] relative z-10">
@@ -202,7 +221,7 @@ export default function AccessibilityWidget() {
                   <div className="grid grid-cols-3 gap-2">
                     <button
                       type="button"
-                      onClick={() => setTextSize('normal')}
+                      onClick={() => updatePref('textSize', 'normal')}
                       className={`py-2 px-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
                         textSize === 'normal'
                           ? 'bg-[#155dfc] text-white border-[#155dfc]'
@@ -213,7 +232,7 @@ export default function AccessibilityWidget() {
                     </button>
                     <button
                       type="button"
-                      onClick={() => setTextSize('large')}
+                      onClick={() => updatePref('textSize', 'large')}
                       className={`py-2 px-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
                         textSize === 'large'
                           ? 'bg-[#155dfc] text-white border-[#155dfc]'
@@ -224,7 +243,7 @@ export default function AccessibilityWidget() {
                     </button>
                     <button
                       type="button"
-                      onClick={() => setTextSize('xlarge')}
+                      onClick={() => updatePref('textSize', 'xlarge')}
                       className={`py-2 px-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
                         textSize === 'xlarge'
                           ? 'bg-[#155dfc] text-white border-[#155dfc]'
@@ -244,7 +263,7 @@ export default function AccessibilityWidget() {
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       type="button"
-                      onClick={() => setContrastMode('default')}
+                      onClick={() => updatePref('contrastMode', 'default')}
                       className={`py-2 px-3 rounded-xl text-xs font-bold border text-left transition-all cursor-pointer ${
                         contrastMode === 'default'
                           ? 'bg-[#155dfc] text-white border-[#155dfc]'
@@ -255,7 +274,7 @@ export default function AccessibilityWidget() {
                     </button>
                     <button
                       type="button"
-                      onClick={() => setContrastMode('high')}
+                      onClick={() => updatePref('contrastMode', 'high')}
                       className={`py-2 px-3 rounded-xl text-xs font-bold border text-left transition-all cursor-pointer ${
                         contrastMode === 'high'
                           ? 'bg-[#155dfc] text-white border-[#155dfc]'
@@ -266,7 +285,7 @@ export default function AccessibilityWidget() {
                     </button>
                     <button
                       type="button"
-                      onClick={() => setContrastMode('monochrome')}
+                      onClick={() => updatePref('contrastMode', 'monochrome')}
                       className={`py-2 px-3 rounded-xl text-xs font-bold border text-left transition-all cursor-pointer ${
                         contrastMode === 'monochrome'
                           ? 'bg-[#155dfc] text-white border-[#155dfc]'
@@ -277,7 +296,7 @@ export default function AccessibilityWidget() {
                     </button>
                     <button
                       type="button"
-                      onClick={() => setContrastMode('invert')}
+                      onClick={() => updatePref('contrastMode', 'invert')}
                       className={`py-2 px-3 rounded-xl text-xs font-bold border text-left transition-all cursor-pointer ${
                         contrastMode === 'invert'
                           ? 'bg-[#155dfc] text-white border-[#155dfc]'
@@ -295,7 +314,7 @@ export default function AccessibilityWidget() {
                   {/* Dyslexia font */}
                   <button
                     type="button"
-                    onClick={() => setDyslexicFont(!dyslexicFont)}
+                    onClick={() => updatePref('dyslexicFont', !dyslexicFont)}
                     className={`w-full py-2.5 px-3.5 rounded-xl text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
                       dyslexicFont
                         ? 'bg-[#155dfc]/20 text-[#50a2ff] border-[#155dfc]/40'
@@ -311,7 +330,7 @@ export default function AccessibilityWidget() {
                   {/* Highlight links */}
                   <button
                     type="button"
-                    onClick={() => setHighlightLinks(!highlightLinks)}
+                    onClick={() => updatePref('highlightLinks', !highlightLinks)}
                     className={`w-full py-2.5 px-3.5 rounded-xl text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
                       highlightLinks
                         ? 'bg-[#155dfc]/20 text-[#50a2ff] border-[#155dfc]/40'
@@ -327,7 +346,7 @@ export default function AccessibilityWidget() {
                   {/* Pause Animations */}
                   <button
                     type="button"
-                    onClick={() => setPauseAnimations(!pauseAnimations)}
+                    onClick={() => updatePref('pauseAnimations', !pauseAnimations)}
                     className={`w-full py-2.5 px-3.5 rounded-xl text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
                       pauseAnimations
                         ? 'bg-[#155dfc]/20 text-[#50a2ff] border-[#155dfc]/40'
@@ -343,7 +362,7 @@ export default function AccessibilityWidget() {
                   {/* Big Cursor */}
                   <button
                     type="button"
-                    onClick={() => setBigCursor(!bigCursor)}
+                    onClick={() => updatePref('bigCursor', !bigCursor)}
                     className={`w-full py-2.5 px-3.5 rounded-xl text-xs font-bold border flex items-center justify-between transition-all cursor-pointer ${
                       bigCursor
                         ? 'bg-[#155dfc]/20 text-[#50a2ff] border-[#155dfc]/40'
@@ -371,9 +390,11 @@ export default function AccessibilityWidget() {
 
               </div>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : null;
 }

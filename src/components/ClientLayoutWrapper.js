@@ -35,9 +35,10 @@ export default function ClientLayoutWrapper({ children }) {
             {children}
           </main>
           <Footer />
-          <AccessibilityWidget />
         </>
       )}
+
+      <AccessibilityWidget />
     </SmoothScroll>
   );
 }
