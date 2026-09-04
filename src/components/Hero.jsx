@@ -12,13 +12,12 @@ import {
 } from "lucide-react";
 import { NoiseButton } from "./ui/noise-background";
 
-export default function HeroSection({ mobileOpen }) {
+export default function HeroSection() {
   const router = useRouter();
 
   return (
     <section
       className="hero relative w-full bg-white dark:bg-[#030712] text-gray-900 dark:text-white pt-32 sm:pt-36 md:pt-40 pb-16 px-4 text-center overflow-hidden transition-colors duration-200"
-      style={{ display: mobileOpen ? "none" : "block" }}
     >
       <div className="mx-auto max-w-4xl">
         {/* Top Badges */}

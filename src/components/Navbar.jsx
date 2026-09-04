@@ -298,31 +298,32 @@ export default function Navbar() {
             <AnimatePresence>
                 {mobileOpen && (
                     <motion.div
+                        id="mobile-fullscreen-menu"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.25 }}
-                        className="fixed inset-0 z-[999] bg-white dark:bg-[#030712]/98 backdrop-blur-2xl flex flex-col h-screen overflow-hidden text-gray-900 dark:text-white font-inter"
+                        className="fixed inset-0 z-[999] bg-[#030712] backdrop-blur-2xl flex flex-col h-screen overflow-hidden text-white font-inter"
                     >
                         {/* Top Bar */}
-                        <div className="flex items-center justify-between px-6 py-5 border-b border-gray-200 dark:border-white/[0.08]">
+                        <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.08]">
                             <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 rounded-lg bg-[#155dfc] text-white flex items-center justify-center font-black text-sm shadow-md">
                                     W
                                 </div>
-                                <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                    Webintegratorz<span className="text-[#155dfc]">.</span>
+                                <span className="text-xl font-bold tracking-tight text-white">
+                                    Webintegratorz<span className="text-[#50a2ff]">.</span>
                                 </span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <ThemeToggle />
+                                <ThemeToggle className="text-gray-300 hover:text-white hover:bg-white/[0.08]" />
                                 <button
                                     type="button"
                                     onClick={() => setMobileOpen(false)}
-                                    className="p-2 rounded-xl bg-gray-100 dark:bg-white/[0.06] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08]"
+                                    className="p-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/[0.1] transition-all cursor-pointer"
                                     aria-label="Close menu"
                                 >
-                                    <X size={20} />
+                                    <X size={20} className="text-white" />
                                 </button>
                             </div>
                         </div>
@@ -333,7 +334,7 @@ export default function Navbar() {
                                 <Link
                                     href="/"
                                     onClick={() => setMobileOpen(false)}
-                                    className="block text-lg font-semibold text-gray-900 dark:text-white hover:text-[#155dfc]"
+                                    className="block text-lg font-semibold text-white hover:text-[#50a2ff] transition-colors"
                                 >
                                     Home
                                 </Link>
@@ -343,19 +344,19 @@ export default function Navbar() {
                                     <button
                                         type="button"
                                         onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                                        className="w-full flex items-center justify-between py-2 text-lg font-semibold text-gray-900 dark:text-white"
+                                        className="w-full flex items-center justify-between py-2 text-lg font-semibold text-white hover:text-[#50a2ff] transition-colors cursor-pointer"
                                     >
                                         <span>Services</span>
-                                        <ChevronDown size={18} className={`transition-transform ${mobileServicesOpen ? "rotate-180 text-[#155dfc]" : ""}`} />
+                                        <ChevronDown size={18} className={`transition-transform duration-200 text-gray-400 ${mobileServicesOpen ? "rotate-180 text-[#50a2ff]" : ""}`} />
                                     </button>
                                     {mobileServicesOpen && (
-                                        <div className="pl-4 pt-2 pb-3 space-y-3 border-l-2 border-blue-200 dark:border-[#155dfc]/30 mt-1">
+                                        <div className="pl-4 pt-2 pb-3 space-y-3 border-l-2 border-[#155dfc]/40 mt-1">
                                             {coreServices.map((item, i) => (
                                                 <Link
                                                     key={i}
                                                     href={item.href}
                                                     onClick={() => setMobileOpen(false)}
-                                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#155dfc]"
+                                                    className="block text-sm font-medium text-gray-300 hover:text-[#50a2ff] transition-colors"
                                                 >
                                                     {item.label}
                                                 </Link>
@@ -369,25 +370,25 @@ export default function Navbar() {
                                     <button
                                         type="button"
                                         onClick={() => setMobileAIOpen(!mobileAIOpen)}
-                                        className="w-full flex items-center justify-between py-2 text-lg font-semibold text-[#155dfc] dark:text-[#50a2ff]"
+                                        className="w-full flex items-center justify-between py-2 text-lg font-semibold text-[#50a2ff] hover:text-[#60a5fa] transition-colors cursor-pointer"
                                     >
                                         <div className="flex items-center gap-2">
                                             <Sparkles size={16} />
                                             <span>AI Suite</span>
                                         </div>
-                                        <ChevronDown size={18} className={`transition-transform ${mobileAIOpen ? "rotate-180 text-[#155dfc]" : ""}`} />
+                                        <ChevronDown size={18} className={`transition-transform duration-200 text-[#50a2ff] ${mobileAIOpen ? "rotate-180" : ""}`} />
                                     </button>
                                     {mobileAIOpen && (
-                                        <div className="pl-4 pt-2 pb-3 space-y-4 border-l-2 border-blue-200 dark:border-[#155dfc]/30 mt-1">
+                                        <div className="pl-4 pt-2 pb-3 space-y-4 border-l-2 border-[#155dfc]/40 mt-1">
                                             {aiCategories.map((cat, idx) => (
                                                 <div key={idx} className="space-y-1.5">
-                                                    <p className="text-xs font-bold text-[#155dfc] uppercase">{cat.title}</p>
+                                                    <p className="text-xs font-bold text-[#50a2ff] uppercase tracking-wider">{cat.title}</p>
                                                     {cat.items.map((it, iIdx) => (
                                                         <Link
                                                             key={iIdx}
                                                             href={it.href}
                                                             onClick={() => setMobileOpen(false)}
-                                                            className="block text-sm text-gray-700 dark:text-gray-300 hover:text-[#155dfc]"
+                                                            className="block text-sm text-gray-300 hover:text-[#50a2ff] transition-colors"
                                                         >
                                                             {it.label}
                                                         </Link>
@@ -401,40 +402,40 @@ export default function Navbar() {
                                 <Link
                                     href="/about"
                                     onClick={() => setMobileOpen(false)}
-                                    className="block text-lg font-semibold text-gray-900 dark:text-white hover:text-[#155dfc]"
+                                    className="block text-lg font-semibold text-white hover:text-[#50a2ff] transition-colors"
                                 >
                                     About
                                 </Link>
                                 <Link
                                     href="/awards"
                                     onClick={() => setMobileOpen(false)}
-                                    className="block text-lg font-semibold text-gray-900 dark:text-white hover:text-[#155dfc]"
+                                    className="block text-lg font-semibold text-white hover:text-[#50a2ff] transition-colors"
                                 >
                                     Awards
                                 </Link>
                                 <Link
                                     href="/news"
                                     onClick={() => setMobileOpen(false)}
-                                    className="block text-lg font-semibold text-gray-900 dark:text-white hover:text-[#155dfc]"
+                                    className="block text-lg font-semibold text-white hover:text-[#50a2ff] transition-colors"
                                 >
                                     Insights
                                 </Link>
                                 <Link
                                     href="/contact-us"
                                     onClick={() => setMobileOpen(false)}
-                                    className="block text-lg font-semibold text-gray-900 dark:text-white hover:text-[#155dfc]"
+                                    className="block text-lg font-semibold text-white hover:text-[#50a2ff] transition-colors"
                                 >
                                     Contact
                                 </Link>
                             </div>
 
-                            <div className="pt-6 border-t border-gray-200 dark:border-white/[0.08]">
+                            <div className="pt-6 border-t border-white/[0.08]">
                                 <NoiseButton
                                     onClick={() => {
                                         setMobileOpen(false);
                                         router.push("/contact-us");
                                     }}
-                                    className="w-full text-center justify-center font-semibold"
+                                    className="w-full text-center justify-center font-semibold min-h-[48px]"
                                 >
                                     Hire Us — Start Project
                                 </NoiseButton>

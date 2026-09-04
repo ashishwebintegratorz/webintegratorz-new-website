@@ -4748,4 +4748,46 @@ html:not(.dark) [class*="z-[99999]"] {
   border-color: rgba(15, 23, 42, 0.12) !important;
 }
 
+/* ======================================================
+   MOBILE FULLSCREEN MENU: STRICT PREMIUM DARK UI SYSTEM
+   Guarantees mobile menu always renders in solid obsidian dark theme
+====================================================== */
+#mobile-fullscreen-menu,
+html:not(.dark) #mobile-fullscreen-menu {
+  background-color: #030712 !important;
+  color: #ffffff !important;
+}
+
+#mobile-fullscreen-menu a,
+#mobile-fullscreen-menu button,
+#mobile-fullscreen-menu h1,
+#mobile-fullscreen-menu h2,
+#mobile-fullscreen-menu h3,
+#mobile-fullscreen-menu span:not([class*="text-transparent"]),
+html:not(.dark) #mobile-fullscreen-menu a,
+html:not(.dark) #mobile-fullscreen-menu button,
+html:not(.dark) #mobile-fullscreen-menu h1,
+html:not(.dark) #mobile-fullscreen-menu h2,
+html:not(.dark) #mobile-fullscreen-menu h3,
+html:not(.dark) #mobile-fullscreen-menu span:not([class*="text-transparent"]) {
+  color: #ffffff;
+}
+
+#mobile-fullscreen-menu .text-gray-300,
+#mobile-fullscreen-menu .text-gray-400,
+html:not(.dark) #mobile-fullscreen-menu .text-gray-300,
+html:not(.dark) #mobile-fullscreen-menu .text-gray-400 {
+  color: #cbd5e1 !important;
+}
+
+#mobile-fullscreen-menu a:hover,
+html:not(.dark) #mobile-fullscreen-menu a:hover {
+  color: #50a2ff !important;
+}
+
+#mobile-fullscreen-menu [class*="border-white"],
+html:not(.dark) #mobile-fullscreen-menu [class*="border-white"] {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
 /* End of Accessibility Styles */

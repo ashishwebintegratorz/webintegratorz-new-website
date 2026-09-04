@@ -1,14 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import AccessibilityWidget from "./AccessibilityWidget";
 import SmoothScroll from "./SmoothScroll";
 
 export default function ClientLayoutWrapper({ children }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
   return (
     <SmoothScroll>
       {/* Skip to Main Content Link for WCAG 2.2 / ADA / Section 508 */}
@@ -27,16 +24,12 @@ export default function ClientLayoutWrapper({ children }) {
         <div className="glow-orb-quaternary" />
       </div>
 
-      <Navbar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
+      <Navbar />
       
-      {!mobileOpen && (
-        <>
-          <main id="main-content" tabIndex="-1" className="outline-none relative z-10">
-            {children}
-          </main>
-          <Footer />
-        </>
-      )}
+      <main id="main-content" tabIndex="-1" className="outline-none relative z-10">
+        {children}
+      </main>
+      <Footer />
 
       <AccessibilityWidget />
     </SmoothScroll>
